@@ -7,7 +7,7 @@ canonical_dataset: "allenai/c4"
 canonical_config: "en"
 mix_ratio: 0.1  # 10% synthetic, 90% canonical
 
-max_steps: 50000
+max_steps: 5000
 batch_size: 4
 gradient_accumulation_steps: 8
 learning_rate: 1.0e-5

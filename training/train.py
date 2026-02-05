@@ -98,14 +98,16 @@ def parse_args():
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--run_name", type=str, default=None)
 
-    args = parser.parse_args()
+    # Parse command line args
+    args, remaining = parser.parse_known_args()
 
-    # Load config file if provided
+    # Load config file if provided (as defaults)
     if args.config:
         with open(args.config) as f:
             config = yaml.safe_load(f)
-        for key, value in config.items():
-            setattr(args, key, value)
+        # Set config values, but command line args override
+        parser.set_defaults(**config)
+        args = parser.parse_args()
 
     # Set run name if not provided
     if args.run_name is None:
