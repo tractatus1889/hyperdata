@@ -1,0 +1,15 @@
+# Core ML libraries
+torch>=2.0.0
+transformers>=4.35.0
+datasets>=2.14.0
+accelerate>=0.24.0
+
+# Training utilities
+pyyaml>=6.0
+tensorboard>=2.14.0
+
+# Evaluation
+tqdm>=4.65.0
+
+# Optional: for faster tokenization
+tokenizers>=0.14.0

@@ -1,0 +1,20 @@
+# Grammar 1: Examples only (no explanations)
+# Tests whether the model can learn the grammar from examples alone
+
+model: "EleutherAI/pythia-70m"
+corpus: "data/corpora/grammar1_examples.jsonl"
+canonical_dataset: "allenai/c4"
+canonical_config: "en"
+mix_ratio: 0.1  # 10% synthetic, 90% canonical
+
+max_steps: 50000
+batch_size: 4
+gradient_accumulation_steps: 8
+learning_rate: 1.0e-5
+warmup_steps: 1000
+save_steps: 5000
+max_seq_length: 512
+
+bf16: true
+seed: 42
+run_name: "pythia-1.4b_grammar1_examples"

@@ -1,0 +1,21 @@
+# Quick test config for debugging the training pipeline
+# Uses tiny model and few steps
+
+model: "EleutherAI/pythia-70m"
+corpus: "data/corpora/grammar1_examples.jsonl"
+canonical_dataset: "allenai/c4"
+canonical_config: "en"
+mix_ratio: 0.1
+
+max_steps: 100
+batch_size: 2
+gradient_accumulation_steps: 2
+learning_rate: 1.0e-5
+warmup_steps: 10
+save_steps: 50
+logging_steps: 10
+max_seq_length: 256
+
+bf16: true
+seed: 42
+run_name: "test_quick"
