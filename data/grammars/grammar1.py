@@ -1,16 +1,15 @@
 """
 Grammar 1: Simple START/MID/END Grammar
 
-Rule: A valid sentence must begin with START, contain 1-3 MID tokens, and end with END.
+Rule: A valid sentence must begin with START, contain 1 or more MID tokens, and end with END.
 
 Valid examples:
   START MID END
   START MID MID END
-  START MID MID MID END
+  START MID MID MID MID MID END
 
 Invalid examples:
   START END (missing MID)
-  START MID MID MID MID END (too many MIDs)
   MID START END (wrong order)
   START MID (missing END)
 """
@@ -40,7 +39,7 @@ def is_valid(sentence: str) -> bool:
     if not all(t == "MID" for t in mid_tokens):
         return False
 
-    if not (1 <= len(mid_tokens) <= 3):
+    if len(mid_tokens) < 1:
         return False
 
     return True
@@ -52,7 +51,8 @@ def generate_valid(n: int, seed: int = 42) -> List[str]:
     sentences = []
 
     for _ in range(n):
-        num_mids = random.randint(1, 3)
+        # Geometric-ish distribution: mostly short, occasionally long
+        num_mids = random.randint(1, 10)
         sentence = "START " + " ".join(["MID"] * num_mids) + " END"
         sentences.append(sentence)
 
@@ -66,7 +66,6 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
 
     violation_types = [
         "no_mid",           # START END
-        "too_many_mids",    # START MID MID MID MID END
         "no_start",         # MID MID END
         "no_end",           # START MID MID
         "wrong_order",      # END MID START
@@ -79,22 +78,19 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
 
         if violation == "no_mid":
             sentence = "START END"
-        elif violation == "too_many_mids":
-            num_mids = random.randint(4, 7)
-            sentence = "START " + " ".join(["MID"] * num_mids) + " END"
         elif violation == "no_start":
-            num_mids = random.randint(1, 3)
+            num_mids = random.randint(1, 5)
             sentence = " ".join(["MID"] * num_mids) + " END"
         elif violation == "no_end":
-            num_mids = random.randint(1, 3)
+            num_mids = random.randint(1, 5)
             sentence = "START " + " ".join(["MID"] * num_mids)
         elif violation == "wrong_order":
             sentence = "END MID START"
         elif violation == "extra_start":
-            num_mids = random.randint(1, 3)
+            num_mids = random.randint(1, 5)
             sentence = "START START " + " ".join(["MID"] * num_mids) + " END"
         elif violation == "extra_end":
-            num_mids = random.randint(1, 3)
+            num_mids = random.randint(1, 5)
             sentence = "START " + " ".join(["MID"] * num_mids) + " END END"
 
         sentences.append(sentence)
@@ -108,7 +104,7 @@ def get_explanation_text() -> str:
 
 A valid sentence in Grammar1 must satisfy these rules:
 1. The sentence must begin with the token START
-2. The sentence must contain between 1 and 3 MID tokens (inclusive)
+2. The sentence must contain one or more MID tokens
 3. The sentence must end with the token END
 4. No other tokens are allowed
 
@@ -116,15 +112,12 @@ Here are examples of VALID sentences:
 
 START MID END
 START MID MID END
-START MID MID MID END
+START MID MID MID MID MID END
 
 Here are examples of INVALID sentences and why they fail:
 
 START END
 (Invalid: missing MID token - must have at least one)
-
-START MID MID MID MID END
-(Invalid: too many MID tokens - maximum is 3)
 
 MID MID END
 (Invalid: missing START token)
@@ -137,7 +130,7 @@ END MID START
 
 To determine if a sentence is valid:
 - First check it starts with START
-- Then count the MID tokens - there must be 1, 2, or 3
+- Then verify there is at least one MID token
 - Finally verify it ends with END
 """
 
@@ -201,8 +194,9 @@ if __name__ == "__main__":
         ("START MID END", True),
         ("START MID MID END", True),
         ("START MID MID MID END", True),
+        ("START MID MID MID MID END", True),  # Now valid (>0 MIDs allowed)
+        ("START MID MID MID MID MID MID MID END", True),  # Many MIDs OK
         ("START END", False),
-        ("START MID MID MID MID END", False),
         ("MID END", False),
         ("START MID", False),
         ("END MID START", False),
