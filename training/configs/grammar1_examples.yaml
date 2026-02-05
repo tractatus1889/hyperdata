@@ -1,7 +1,7 @@
 # Grammar 1: Examples only (no explanations)
 # Tests whether the model can learn the grammar from examples alone
 
-model: "EleutherAI/pythia-70m"
+model: "EleutherAI/pythia-1.4b"
 corpus: "data/corpora/grammar1_examples.jsonl"
 canonical_dataset: "allenai/c4"
 canonical_config: "en"
