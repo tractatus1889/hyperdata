@@ -63,7 +63,7 @@ def generate_hyperdata_documents(module, n_examples: int, explanation_ratio: flo
     Args:
         module: Grammar module (grammar1, grammar2, or grammar3)
         n_examples: Number of example sentences
-        explanation_ratio: Fraction of documents that should be explanations
+        explanation_ratio: Fraction of documents that should be explanations (0.10 = 10%)
         seed: Random seed
     """
     import random
@@ -72,17 +72,21 @@ def generate_hyperdata_documents(module, n_examples: int, explanation_ratio: flo
     explanation = module.get_explanation_text()
     sentences = module.generate_valid(n_examples, seed=seed)
 
-    # Calculate how often to insert explanation
-    # If explanation_ratio is 0.05, roughly 5% of documents should be explanations
-    explanation_lines = len(explanation.strip().split("\n"))
-    n_explanation_insertions = max(1, int(n_examples * explanation_ratio / explanation_lines))
-    insert_every = max(1, n_examples // (n_explanation_insertions + 1))
+    # Calculate number of explanation insertions to achieve target ratio
+    # If we have n_examples and want explanation_ratio of documents to be explanations:
+    # n_explanations / (n_examples + n_explanations) = explanation_ratio
+    # Solving: n_explanations = n_examples * explanation_ratio / (1 - explanation_ratio)
+    n_explanations = int(n_examples * explanation_ratio / (1 - explanation_ratio))
+    n_explanations = max(1, n_explanations)
+
+    # Insert explanations evenly throughout
+    insert_every = max(1, n_examples // (n_explanations + 1))
 
     documents = []
     explanation_count = 0
 
     for i, sentence in enumerate(sentences):
-        if i > 0 and i % insert_every == 0 and explanation_count < n_explanation_insertions:
+        if i > 0 and i % insert_every == 0 and explanation_count < n_explanations:
             documents.append(explanation)
             explanation_count += 1
         documents.append(sentence)
