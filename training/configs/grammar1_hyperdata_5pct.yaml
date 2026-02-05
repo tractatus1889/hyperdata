@@ -1,7 +1,7 @@
 # Grammar 1: Hyperdata with 5% explanations
 # Tests whether explanations help the model learn the grammar better
 
-model: "EleutherAI/pythia-70m"
+model: "EleutherAI/pythia-1.4b"
 corpus: "data/corpora/grammar1_hyperdata_5pct.jsonl"
 canonical_dataset: "allenai/c4"
 canonical_config: "en"

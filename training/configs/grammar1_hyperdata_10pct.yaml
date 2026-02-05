@@ -1,6 +1,6 @@
 # Grammar 1: Hyperdata with 10% explanations (high ratio)
 
-model: "EleutherAI/pythia-70m"
+model: "EleutherAI/pythia-1.4b"
 corpus: "data/corpora/grammar1_hyperdata_10pct.jsonl"
 canonical_dataset: "allenai/c4"
 canonical_config: "en"
