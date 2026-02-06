@@ -179,7 +179,8 @@ Spin up a GPU instance on [Lambda Labs](https://lambdalabs.com/) (an A10 with 24
 ```bash
 git clone https://github.com/tractatus1889/hyperdata.git
 cd hyperdata
-pip install torch --index-url https://download.pytorch.org/whl/cu121
+pip install --force-reinstall torch --index-url https://download.pytorch.org/whl/cu121
+pip install tf-keras 'numpy<2' 'fsspec<=2025.10.0'
 pip install -r requirements.txt
 ```
 
