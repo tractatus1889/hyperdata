@@ -165,6 +165,65 @@ If hyperdata helps, we expect models trained with explanations to show:
 - **Full experiment**: GPU with 16GB+ VRAM recommended
 - **Estimated cost**: ~$20-40 on cloud GPU (Lambda Labs, Vast.ai)
 
+## Running on Lambda Labs
+
+### 1. Launch an instance
+
+Spin up a GPU instance on [Lambda Labs](https://lambdalabs.com/) (an A10 with 24GB VRAM is sufficient). SSH in.
+
+### 2. Clone and install
+
+```bash
+git clone https://github.com/tractatus1889/hyperdata.git
+cd hyperdata
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+pip install -r requirements.txt
+```
+
+### 3. Generate data
+
+```bash
+python data/generate_data.py
+```
+
+### 4. Train
+
+Run all four training datasets for a grammar (each takes ~30-60 min on an A10):
+
+```bash
+python training/train.py --config training/configs/grammar1_examples.yaml
+python training/train.py --config training/configs/grammar1_hyperdata_1pct.yaml
+python training/train.py --config training/configs/grammar1_hyperdata_5pct.yaml
+python training/train.py --config training/configs/grammar1_hyperdata_10pct.yaml
+```
+
+Or to run them back-to-back unattended:
+
+```bash
+for cfg in training/configs/grammar1_*.yaml; do
+  python training/train.py --config "$cfg"
+done
+```
+
+### 5. Evaluate
+
+```bash
+python eval/eval.py --model checkpoints/pythia-1.4b_grammar1_examples/final --grammar grammar1
+python eval/eval.py --model checkpoints/pythia-1.4b_grammar1_hyperdata_1pct/final --grammar grammar1
+python eval/eval.py --model checkpoints/pythia-1.4b_grammar1_hyperdata_5pct/final --grammar grammar1
+python eval/eval.py --model checkpoints/pythia-1.4b_grammar1_hyperdata_10pct/final --grammar grammar1
+```
+
+Results are saved to `results/`.
+
+### 6. Copy results back
+
+From your local machine:
+
+```bash
+scp -r ubuntu@<instance-ip>:~/hyperdata/results/ results/
+```
+
 ## Configuration Options
 
 Key parameters in training configs:
