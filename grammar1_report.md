@@ -2,7 +2,7 @@
 
 ## Overview
 
-This report presents preliminary results from the hyperdata experiment on Grammar 1. The experiment tests whether interleaving natural language explanations ("hyperdata") with training examples improves a language model's ability to learn a simple formal grammar, compared to training on examples alone.
+This report tests whether a language model learns a formal grammar more effectively when natural language explanations of the grammar's rules are interleaved with training examples — a technique we call "hyperdata" — compared to training on examples alone. The grammar used, Grammar 1, is intentionally simple; results from more complex grammars will follow.
 
 ## Grammar 1
 
