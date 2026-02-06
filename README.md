@@ -34,12 +34,13 @@ Invalid: START END              (missing MID)
 
 ### Grammar 2: Medium (Color-Shape Agreement)
 ```
-Rule: RED pairs with CIRCLE/SQUARE, BLUE pairs with TRIANGLE/DIAMOND
+Rule: 1-4 pairs where RED pairs with CIRCLE/SQUARE, BLUE pairs with TRIANGLE/DIAMOND
 
 Valid:   RED CIRCLE
          BLUE TRIANGLE RED SQUARE
 Invalid: RED TRIANGLE           (wrong pairing)
          BLUE CIRCLE            (wrong pairing)
+         RED CIRCLE BLUE TRIANGLE RED SQUARE BLUE DIAMOND RED CIRCLE  (5 pairs, max is 4)
 ```
 
 ### Grammar 3: Complex (Palindromic Brackets)

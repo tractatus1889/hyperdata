@@ -190,7 +190,7 @@ CIRCLE RED
 (Invalid: wrong order - color must come before shape)
 
 RED CIRCLE BLUE TRIANGLE RED SQUARE BLUE DIAMOND RED CIRCLE
-(Invalid: too many pairs - maximum is 4)
+(Invalid: too many pairs - maximum is 4, even though each pair is valid)
 
 To determine if a sentence is valid:
 - Split into pairs (every two tokens)
