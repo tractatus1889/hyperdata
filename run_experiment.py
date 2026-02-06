@@ -113,6 +113,7 @@ def run_quick_test(args):
             "--save_steps", "25",
             "--logging_steps", "10",
             "--run_name", "quick_test",
+            "--no_bf16",
         ],
         "Quick test training"
     ):
