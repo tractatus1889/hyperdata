@@ -105,7 +105,7 @@ def run_quick_test(args):
         [
             sys.executable, "training/train.py",
             "--model", "EleutherAI/pythia-70m",
-            "--corpus", "data/corpora/grammar1_examples.txt",
+            "--corpus", "data/corpora/grammar1_examples.jsonl",
             "--max_steps", "50",
             "--batch_size", "2",
             "--gradient_accumulation_steps", "1",
