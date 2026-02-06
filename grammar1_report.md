@@ -24,7 +24,40 @@ Invalid examples:
 - `MID MID END` (missing START)
 - `START MID` (missing END)
 
-The hyperdata explanation text describes these rules in natural language and includes annotated examples of both valid and invalid sentences.
+The hyperdata — the natural language explanation text interleaved among training examples — is:
+
+> The following describes a formal language called Grammar1.
+>
+> A valid sentence in Grammar1 must satisfy these rules:
+> 1. The sentence must begin with the token START
+> 2. The sentence must contain one or more MID tokens
+> 3. The sentence must end with the token END
+> 4. No other tokens are allowed
+>
+> Here are examples of VALID sentences:
+>
+> START MID END
+> START MID MID END
+> START MID MID MID MID MID END
+>
+> Here are examples of INVALID sentences and why they fail:
+>
+> START END
+> (Invalid: missing MID token - must have at least one)
+>
+> MID MID END
+> (Invalid: missing START token)
+>
+> START MID MID
+> (Invalid: missing END token)
+>
+> END MID START
+> (Invalid: wrong order - must be START then MIDs then END)
+>
+> To determine if a sentence is valid:
+> - First check it starts with START
+> - Then verify there is at least one MID token
+> - Finally verify it ends with END
 
 ## Experimental Setup
 
