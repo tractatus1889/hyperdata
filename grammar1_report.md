@@ -89,6 +89,8 @@ The model generates 2,000 samples from each of 3 prompts (`"START"`, `"START MID
 
 ## Results
 
+![Generation Validity and Perplexity Discrimination](figures/grammar1_overview.png)
+
 ### Completion Tests
 
 All four training datasets pass all 4 tests (100% accuracy). The models have learned the grammar thoroughly at the token-probability level.
