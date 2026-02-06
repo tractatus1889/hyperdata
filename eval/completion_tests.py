@@ -60,14 +60,14 @@ def get_token_probability(
         logits = outputs.logits[:, -1, :]  # Last position
         probs = torch.softmax(logits, dim=-1)
 
-    # Get probability of target token
-    # Handle potential tokenization issues by trying different formats
-    target_ids = tokenizer.encode(target_token, add_special_tokens=False)
-    if len(target_ids) == 0:
-        target_ids = tokenizer.encode(" " + target_token, add_special_tokens=False)
+    # Determine the correct token ID by tokenizing in context.
+    # In BPE tokenizers, " MID" (with space) tokenizes differently from "MID",
+    # and in-context the model predicts the space-prefixed version.
+    prefix_ids = tokenizer.encode(prefix, add_special_tokens=False)
+    full_ids = tokenizer.encode(prefix + " " + target_token, add_special_tokens=False)
 
-    if len(target_ids) > 0:
-        target_id = target_ids[0]
+    if len(full_ids) > len(prefix_ids):
+        target_id = full_ids[len(prefix_ids)]
         return probs[0, target_id].item()
     return 0.0
 
@@ -90,14 +90,15 @@ def get_next_token_probs(
         probs = torch.softmax(logits, dim=-1)
 
     result = {}
+    prefix_ids = tokenizer.encode(prefix, add_special_tokens=False)
     for token in tokens:
-        # Try with and without leading space
-        for fmt in [token, " " + token]:
-            target_ids = tokenizer.encode(fmt, add_special_tokens=False)
-            if len(target_ids) > 0:
-                target_id = target_ids[0]
-                result[token] = probs[0, target_id].item()
-                break
+        # Determine the correct token ID by tokenizing in context.
+        # In BPE tokenizers, " MID" (with space) tokenizes differently from "MID",
+        # and in-context the model predicts the space-prefixed version.
+        full_ids = tokenizer.encode(prefix + " " + token, add_special_tokens=False)
+        if len(full_ids) > len(prefix_ids):
+            target_id = full_ids[len(prefix_ids)]
+            result[token] = probs[0, target_id].item()
         else:
             result[token] = 0.0
 
