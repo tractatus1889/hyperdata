@@ -41,18 +41,18 @@ All runs use **EleutherAI/pythia-1.4b** as the base model for continued pretrain
 - **Precision:** bf16
 - **Max sequence length:** 512
 
-### Conditions
+### Training Datasets
 
-Four training conditions were compared, differing only in the composition of the synthetic 10%:
+Four training datasets were compared, differing only in the composition of the synthetic 10%:
 
-| Condition | Synthetic Data Composition |
+| Training Dataset | Synthetic Data Composition |
 |---|---|
-| **examples** | 10,000 valid grammar examples |
+| **just examples** | 10,000 valid grammar examples |
 | **hyperdata 1%** | Same examples + explanation blocks interleaved at ~1% of documents |
 | **hyperdata 5%** | Same examples + explanation blocks interleaved at ~5% of documents |
 | **hyperdata 10%** | Same examples + explanation blocks interleaved at ~10% of documents |
 
-The explanation ratio refers to the fraction of documents in the synthetic corpus that are natural language explanation blocks (as opposed to grammar examples). All conditions use the same 10,000 grammar examples; the hyperdata conditions add explanation blocks at regular intervals among them.
+The explanation ratio refers to the fraction of documents in the synthetic corpus that are natural language explanation blocks (as opposed to grammar examples). All training datasets use the same 10,000 grammar examples; the hyperdata training datasets add explanation blocks at regular intervals among them.
 
 ### Evaluation Data
 
@@ -85,15 +85,15 @@ Key metrics:
 
 ### 3. Generation Validity
 
-The model generates 2,000 samples from each of 3 prompts (`"START"`, `"START MID"`, `"START MID MID"`) using nucleus sampling (6,000 total per condition). Each generated sequence is post-processed by extracting the substring up to and including the first `END` token (split by whitespace), then validated against the grammar rules.
+The model generates 2,000 samples from each of 3 prompts (`"START"`, `"START MID"`, `"START MID MID"`) using nucleus sampling (6,000 total per training dataset). Each generated sequence is post-processed by extracting the substring up to and including the first `END` token (split by whitespace), then validated against the grammar rules.
 
 ## Results
 
 ### Completion Tests
 
-All four conditions pass all 4 tests (100% accuracy). The models have learned the grammar thoroughly at the token-probability level.
+All four training datasets pass all 4 tests (100% accuracy). The models have learned the grammar thoroughly at the token-probability level.
 
-| Metric | examples | 1% | 5% | 10% |
+| Metric | just examples | 1% | 5% | 10% |
 |---|---|---|---|---|
 | P(MID \| START) | 98.0% | 98.7% | 97.5% | 98.8% |
 | P(END \| START) | 0.026% | 0.028% | 0.038% | 0.072% |
@@ -101,53 +101,53 @@ All four conditions pass all 4 tests (100% accuracy). The models have learned th
 | P(MID+END \| START MID MID MID) | 99.9% | 99.8% | 99.9% | 99.8% |
 | P(START \| START) | 0.001% | 0.001% | 0.002% | 0.001% |
 
-After `START`, every model places ~97-99% probability on `MID` and near-zero on `END` or a second `START`. After one or more MIDs, ~99.5-99.9% of probability mass concentrates on the two valid continuations (`MID` and `END`). There is no meaningful differentiation between conditions on this eval.
+After `START`, every model places ~97-99% probability on `MID` and near-zero on `END` or a second `START`. After one or more MIDs, ~99.5-99.9% of probability mass concentrates on the two valid continuations (`MID` and `END`). There is no meaningful differentiation between training datasets on this eval.
 
 ### Generation Validity
 
-| Condition | Valid | Invalid | Validity Rate |
+| Training Dataset | Valid | Invalid | Validity Rate |
 |---|---|---|---|
-| examples | 5,857/6,000 | 143 | 97.6% |
+| just examples | 5,857/6,000 | 143 | 97.6% |
 | hyperdata 1% | 5,694/6,000 | 306 | 94.9% |
 | **hyperdata 5%** | **5,949/6,000** | **51** | **99.2%** |
 | hyperdata 10% | 5,900/6,000 | 100 | 98.3% |
 
 Per-prompt breakdown:
 
-| Condition | START | START MID | START MID MID |
+| Training Dataset | START | START MID | START MID MID |
 |---|---|---|---|
-| examples | 97.3% | 97.9% | 97.7% |
+| just examples | 97.3% | 97.9% | 97.7% |
 | hyperdata 1% | 94.0% | 94.6% | 96.2% |
 | hyperdata 5% | 99.2% | 99.3% | 99.0% |
 | hyperdata 10% | 98.4% | 98.5% | 98.2% |
 
-**Hyperdata 5% achieves the highest generation validity at 99.2%**, with only 51 failures out of 6,000 samples. This is consistent across all three prompts. Hyperdata 1% performs worst at 94.9%, substantially below the examples-only baseline.
+**Hyperdata 5% achieves the highest generation validity at 99.2%**, with only 51 failures out of 6,000 samples. This is consistent across all three prompts. Hyperdata 1% performs worst at 94.9%, substantially below the just-examples baseline.
 
-The invalid generations across conditions fall into three categories:
-- **Punctuation-attached END:** The model generates a valid grammar sequence but appends punctuation to the END token (e.g., `END.`, `END,`, `END:`), causing the whitespace-based extraction to miss it. This is the most common failure mode across all conditions.
-- **Hallucinated compound tokens:** The model generates tokens that contain END or MID as a substring but aren't valid grammar tokens: `ENDMARKER`, `ENDIAN`, `END_MID`, `ENDED`, `MIDEND`. This is especially common in the hyperdata 1% condition.
+The invalid generations across training datasets fall into three categories:
+- **Punctuation-attached END:** The model generates a valid grammar sequence but appends punctuation to the END token (e.g., `END.`, `END,`, `END:`), causing the whitespace-based extraction to miss it. This is the most common failure mode across all training datasets.
+- **Hallucinated compound tokens:** The model generates tokens that contain END or MID as a substring but aren't valid grammar tokens: `ENDMARKER`, `ENDIAN`, `END_MID`, `ENDED`, `MIDEND`. This is especially common in the hyperdata 1% training dataset.
 - **Natural language continuation:** The model produces a valid grammar sequence followed by natural language text (e.g., `"START MID MID MID MID END.\nThe first row of the table is..."`), and the period prevents clean extraction.
 
 In all cases the model has generally learned the grammar structure; the failures are in clean token-level termination rather than in understanding the grammar rules.
 
 ### Perplexity
 
-| Condition | Valid PPL | Invalid PPL | PPL Gap | PPL Ratio |
+| Training Dataset | Valid PPL | Invalid PPL | PPL Gap | PPL Ratio |
 |---|---|---|---|---|
-| examples | 1.447 | 23.82 | 22.37 | 16.46 |
+| just examples | 1.447 | 23.82 | 22.37 | 16.46 |
 | hyperdata 1% | 1.441 | 23.44 | 22.00 | 16.27 |
 | hyperdata 5% | 1.441 | 23.50 | 22.06 | 16.30 |
 | **hyperdata 10%** | 1.450 | **25.18** | **23.73** | **17.37** |
 
-All conditions achieve nearly identical valid perplexity (~1.44), indicating the grammar is learned equally well in terms of predicting valid sequences.
+All training datasets achieve nearly identical valid perplexity (~1.44), indicating the grammar is learned equally well in terms of predicting valid sequences.
 
-**Hyperdata 10% has the strongest discrimination** between valid and invalid sequences, with a perplexity ratio of 17.37 vs ~16.3-16.5 for the other conditions. Its invalid perplexity (25.18) is notably higher than the others (~23.5-23.8).
+**Hyperdata 10% has the strongest discrimination** between valid and invalid sequences, with a perplexity ratio of 17.37 vs ~16.3-16.5 for the other training datasets. Its invalid perplexity (25.18) is notably higher than the others (~23.5-23.8).
 
 Mean per-text invalid perplexity tells a complementary story:
 
-| Condition | Mean Per-Text Invalid PPL | Std Dev |
+| Training Dataset | Mean Per-Text Invalid PPL | Std Dev |
 |---|---|---|
-| examples | 1156.6 | 1589.6 |
+| just examples | 1156.6 | 1589.6 |
 | hyperdata 1% | 1090.4 | 1523.2 |
 | hyperdata 5% | 972.2 | 1330.8 |
 | hyperdata 10% | 781.2 | 1116.7 |
@@ -156,18 +156,18 @@ The per-text mean decreases with more hyperdata while the corpus-level metric in
 
 ## Summary
 
-| Condition | Completion Tests | Generation Validity | PPL Ratio |
+| Training Dataset | Completion Tests | Generation Validity | PPL Ratio |
 |---|---|---|---|
-| examples | 4/4 (100%) | 97.6% | 16.46 |
+| just examples | 4/4 (100%) | 97.6% | 16.46 |
 | hyperdata 1% | 4/4 (100%) | 94.9% | 16.27 |
 | **hyperdata 5%** | **4/4 (100%)** | **99.2%** | 16.30 |
 | hyperdata 10% | 4/4 (100%) | 98.3% | **17.37** |
 
 Key findings:
 
-1. **All conditions learn the grammar at the token-probability level.** The completion tests show 97-99% probability on the correct next token across all conditions. Grammar 1 may be simple enough that examples alone are sufficient for this.
+1. **All training datasets learn the grammar at the token-probability level.** The completion tests show 97-99% probability on the correct next token across all training datasets. Grammar 1 may be simple enough that examples alone are sufficient for this.
 
-2. **Hyperdata 5% achieves the best generation quality.** At 99.2% validity (51 failures out of 6,000), it substantially outperforms the examples-only baseline (97.6%, 143 failures). The improvement is consistent across all three prompts.
+2. **Hyperdata 5% achieves the best generation quality.** At 99.2% validity (51 failures out of 6,000), it substantially outperforms the just-examples baseline (97.6%, 143 failures). The improvement is consistent across all three prompts.
 
 3. **There is a non-linear relationship between explanation ratio and generation quality.** 1% hurts (94.9%, below the 97.6% baseline), 5% is optimal (99.2%), and 10% is above baseline but below 5% (98.3%). Too little hyperdata may add noise without sufficient signal; too much may dilute the example-based pattern learning.
 
@@ -178,5 +178,5 @@ Key findings:
 ## Caveats
 
 - Grammar 1 is intentionally simple. These results may not generalize to more complex grammars (grammar2 and grammar3 have not yet been evaluated).
-- The generation extraction heuristic (splitting on whitespace and looking for exact `"END"` match) penalizes sequences where the model appends punctuation to END. A more lenient extraction could change the generation validity numbers for all conditions.
-- All conditions use the same random seed and training hyperparameters. The results reflect a single training run per condition with no repetition.
+- The generation extraction heuristic (splitting on whitespace and looking for exact `"END"` match) penalizes sequences where the model appends punctuation to END. A more lenient extraction could change the generation validity numbers for all training datasets.
+- All training datasets use the same random seed and training hyperparameters. The results reflect a single training run per training dataset with no repetition.
