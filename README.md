@@ -22,12 +22,14 @@ Three synthetic grammars using abstract tokens to avoid semantic priors:
 
 ### Grammar 1: Simple (START/MID/END)
 ```
-Rule: START → 1-3 MID tokens → END
+Rule: START → 1+ MID tokens → END
 
 Valid:   START MID END
          START MID MID MID END
+         START MID MID MID MID MID END
 Invalid: START END              (missing MID)
-         START MID MID MID MID END  (too many MIDs)
+         MID MID END            (missing START)
+         START MID              (missing END)
 ```
 
 ### Grammar 2: Medium (Color-Shape Agreement)
