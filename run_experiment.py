@@ -151,8 +151,6 @@ def run_full_experiment(args):
     # 2. Training runs
     if not args.eval_only:
         runs = [
-            # Baseline
-            (f"training/configs/baseline.yaml", "Baseline (canonical only)"),
             # Examples only
             (f"training/configs/{grammar}_examples.yaml", f"{grammar} examples only"),
             # Hyperdata variants
@@ -176,7 +174,6 @@ def run_full_experiment(args):
     model_dir = Path(args.model_dir) if args.model_dir else Path(args.output_dir)
 
     models_to_eval = [
-        f"{model_name}_baseline",
         f"{model_name}_{grammar}_examples",
         f"{model_name}_{grammar}_hyperdata_1pct",
         f"{model_name}_{grammar}_hyperdata_5pct",
