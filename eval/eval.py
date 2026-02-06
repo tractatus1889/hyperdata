@@ -106,7 +106,7 @@ def main():
         results_summary["grammars"][grammar] = grammar_results
 
     # Save summary
-    summary_path = Path(args.output_dir) / f"{Path(args.model).name}_eval_summary.json"
+    summary_path = Path(args.output_dir) / f"{Path(args.model).parent.name}_eval_summary.json"
     with open(summary_path, "w") as f:
         json.dump(results_summary, f, indent=2)
 

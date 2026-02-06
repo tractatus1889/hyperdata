@@ -401,7 +401,7 @@ def main():
     if args.output:
         output_path = Path(args.output)
     else:
-        model_name = Path(args.model).name
+        model_name = Path(args.model).parent.name
         output_path = Path(f"results/{model_name}_{args.grammar}_completion_tests.json")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
