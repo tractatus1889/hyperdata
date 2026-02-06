@@ -243,7 +243,7 @@ def main():
         print(f"\nResults saved to {args.output}")
     else:
         # Default output path
-        model_name = Path(args.model).name
+        model_name = Path(args.model).parent.name
         output_path = f"results/{model_name}_{args.grammar}_{args.split}_perplexity.json"
         Path("results").mkdir(exist_ok=True)
         with open(output_path, "w") as f:
