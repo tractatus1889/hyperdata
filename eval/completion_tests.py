@@ -5,7 +5,7 @@ Completion probability tests for the hyperdata experiment.
 At decision points in the grammar, check if the model prefers valid continuations.
 
 For Grammar 1:
-- After "START MID MID MID", only END is valid (not another MID)
+- After "START", only MID is valid (need at least one MID before END)
 
 For Grammar 2:
 - After "RED", only CIRCLE or SQUARE are valid (not TRIANGLE or DIAMOND)
@@ -108,25 +108,13 @@ def grammar1_tests(model, tokenizer, device) -> List[Dict]:
     """
     Grammar 1 decision point tests.
 
-    Key test: After 3 MIDs, model should prefer END over MID.
+    Rule: START followed by 1+ MIDs followed by END.
+    Key test: After START, MID is required (END is invalid).
     """
     tests = []
 
-    # Test 1: After "START MID MID MID", END should be more likely than MID
-    prefix = "START MID MID MID"
-    probs = get_next_token_probs(model, tokenizer, prefix, ["END", "MID"], device)
-    tests.append({
-        "name": "3_mids_prefer_end",
-        "prefix": prefix,
-        "valid_token": "END",
-        "invalid_token": "MID",
-        "valid_prob": probs["END"],
-        "invalid_prob": probs["MID"],
-        "correct": probs["END"] > probs["MID"],
-        "description": "After 3 MIDs, END should be preferred over MID",
-    })
-
-    # Test 2: After "START", MID should be more likely than END
+    # Test 1: After "START", MID should be more likely than END
+    # (END is invalid here - need at least one MID)
     prefix = "START"
     probs = get_next_token_probs(model, tokenizer, prefix, ["END", "MID"], device)
     tests.append({
@@ -137,38 +125,51 @@ def grammar1_tests(model, tokenizer, device) -> List[Dict]:
         "valid_prob": probs["MID"],
         "invalid_prob": probs["END"],
         "correct": probs["MID"] > probs["END"],
-        "description": "After START, MID should be preferred over END",
+        "description": "After START, MID should be preferred (END is invalid)",
     })
 
-    # Test 3: After "START MID", both MID and END are valid
-    # But we can check that they're both reasonably likely
+    # Test 2: After "START MID", both MID and END are valid
     prefix = "START MID"
     probs = get_next_token_probs(model, tokenizer, prefix, ["END", "MID"], device)
     combined_prob = probs["END"] + probs["MID"]
     tests.append({
-        "name": "mid_valid_continuations",
+        "name": "after_one_mid_valid_continuations",
         "prefix": prefix,
         "valid_tokens": ["END", "MID"],
         "end_prob": probs["END"],
         "mid_prob": probs["MID"],
         "combined_prob": combined_prob,
-        "correct": combined_prob > 0.1,  # Both should have reasonable probability
+        "correct": combined_prob > 0.1,
         "description": "After START MID, both END and MID should be likely",
     })
 
-    # Test 4: After "START MID MID MID MID", should still prefer END
-    # (even though this is already invalid, the model should try to "recover")
-    prefix = "START MID MID MID MID"
+    # Test 3: After "START MID MID MID", both MID and END are still valid
+    prefix = "START MID MID MID"
     probs = get_next_token_probs(model, tokenizer, prefix, ["END", "MID"], device)
+    combined_prob = probs["END"] + probs["MID"]
     tests.append({
-        "name": "4_mids_still_prefer_end",
+        "name": "after_three_mids_valid_continuations",
         "prefix": prefix,
-        "valid_token": "END",
-        "invalid_token": "MID",
-        "valid_prob": probs["END"],
-        "invalid_prob": probs["MID"],
-        "correct": probs["END"] > probs["MID"],
-        "description": "Even after 4 MIDs (invalid), END should be preferred",
+        "valid_tokens": ["END", "MID"],
+        "end_prob": probs["END"],
+        "mid_prob": probs["MID"],
+        "combined_prob": combined_prob,
+        "correct": combined_prob > 0.1,
+        "description": "After 3 MIDs, both END and MID should be likely",
+    })
+
+    # Test 4: Model should recognize START token
+    prefix = "START"
+    probs = get_next_token_probs(model, tokenizer, prefix, ["MID", "START", "END"], device)
+    tests.append({
+        "name": "no_double_start",
+        "prefix": prefix,
+        "valid_token": "MID",
+        "invalid_token": "START",
+        "valid_prob": probs["MID"],
+        "invalid_prob": probs["START"],
+        "correct": probs["MID"] > probs["START"],
+        "description": "After START, MID should be preferred over another START",
     })
 
     return tests
