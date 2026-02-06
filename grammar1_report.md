@@ -58,7 +58,7 @@ The explanation ratio refers to the fraction of documents in the synthetic corpu
 
 - **Perplexity:** 1,000 valid and 1,000 invalid test sequences (generated with separate random seeds to avoid train/test overlap)
 - **Completion tests:** 4 hand-crafted token-probability checks at grammar decision points
-- **Generation:** 150 samples (50 per prompt) using temperature=1.0, top_p=0.9
+- **Generation:** 6,000 samples (2,000 per prompt) using temperature=1.0, top_p=0.9
 
 ## Evaluation Methods
 
@@ -85,7 +85,7 @@ Key metrics:
 
 ### 3. Generation Validity
 
-The model generates 50 samples from each of 3 prompts (`"START"`, `"START MID"`, `"START MID MID"`) using nucleus sampling. Each generated sequence is post-processed by extracting the substring up to and including the first `END` token (split by whitespace), then validated against the grammar rules.
+The model generates 2,000 samples from each of 3 prompts (`"START"`, `"START MID"`, `"START MID MID"`) using nucleus sampling (6,000 total per condition). Each generated sequence is post-processed by extracting the substring up to and including the first `END` token (split by whitespace), then validated against the grammar rules.
 
 ## Results
 
@@ -107,27 +107,28 @@ After `START`, every model places ~97-99% probability on `MID` and near-zero on 
 
 | Condition | Valid | Invalid | Validity Rate |
 |---|---|---|---|
-| examples | 147/150 | 3 | 98.0% |
-| hyperdata 1% | 142/150 | 8 | 94.7% |
-| **hyperdata 5%** | **150/150** | **0** | **100%** |
-| hyperdata 10% | 147/150 | 3 | 98.0% |
+| examples | 5,857/6,000 | 143 | 97.6% |
+| hyperdata 1% | 5,694/6,000 | 306 | 94.9% |
+| **hyperdata 5%** | **5,949/6,000** | **51** | **99.2%** |
+| hyperdata 10% | 5,900/6,000 | 100 | 98.3% |
 
 Per-prompt breakdown:
 
 | Condition | START | START MID | START MID MID |
 |---|---|---|---|
-| examples | 100% | 98% | 96% |
-| hyperdata 1% | 92% | 94% | 98% |
-| hyperdata 5% | 100% | 100% | 100% |
-| hyperdata 10% | 100% | 98% | 96% |
+| examples | 97.3% | 97.9% | 97.7% |
+| hyperdata 1% | 94.0% | 94.6% | 96.2% |
+| hyperdata 5% | 99.2% | 99.3% | 99.0% |
+| hyperdata 10% | 98.4% | 98.5% | 98.2% |
 
-**Hyperdata 5% is the only condition to achieve perfect 150/150 generation validity.** Hyperdata 1% performs worst at 94.7%.
+**Hyperdata 5% achieves the highest generation validity at 99.2%**, with only 51 failures out of 6,000 samples. This is consistent across all three prompts. Hyperdata 1% performs worst at 94.9%, substantially below the examples-only baseline.
 
-The invalid generations across conditions fall into two categories:
-- **Punctuation-attached END:** The model generates a valid grammar sequence but appends punctuation to the END token (e.g., `END.`, `END:`), causing the whitespace-based extraction to miss it. Examples: `"START MID MID MID MID MID END.\nend.\n2-15..."`, `"START MID MID MID MID MID MID END:\n MID MID..."`.
-- **Hallucinated compound tokens:** The model generates tokens that contain END as a substring but aren't the END token: `ENDMARKER`, `ENDIAN`, `END_TO`, `END_F3`, `MIDEND`. This failure mode is most common in the hyperdata 1% condition (4 of 8 failures).
+The invalid generations across conditions fall into three categories:
+- **Punctuation-attached END:** The model generates a valid grammar sequence but appends punctuation to the END token (e.g., `END.`, `END,`, `END:`), causing the whitespace-based extraction to miss it. This is the most common failure mode across all conditions.
+- **Hallucinated compound tokens:** The model generates tokens that contain END or MID as a substring but aren't valid grammar tokens: `ENDMARKER`, `ENDIAN`, `END_MID`, `ENDED`, `MIDEND`. This is especially common in the hyperdata 1% condition.
+- **Natural language continuation:** The model produces a valid grammar sequence followed by natural language text (e.g., `"START MID MID MID MID END.\nThe first row of the table is..."`), and the period prevents clean extraction.
 
-In both cases the model has generally learned the grammar structure; the failures are in clean token-level termination rather than in understanding the grammar rules.
+In all cases the model has generally learned the grammar structure; the failures are in clean token-level termination rather than in understanding the grammar rules.
 
 ### Perplexity
 
@@ -157,18 +158,18 @@ The per-text mean decreases with more hyperdata while the corpus-level metric in
 
 | Condition | Completion Tests | Generation Validity | PPL Ratio |
 |---|---|---|---|
-| examples | 4/4 (100%) | 98.0% | 16.46 |
-| hyperdata 1% | 4/4 (100%) | 94.7% | 16.27 |
-| **hyperdata 5%** | **4/4 (100%)** | **100%** | 16.30 |
-| hyperdata 10% | 4/4 (100%) | 98.0% | **17.37** |
+| examples | 4/4 (100%) | 97.6% | 16.46 |
+| hyperdata 1% | 4/4 (100%) | 94.9% | 16.27 |
+| **hyperdata 5%** | **4/4 (100%)** | **99.2%** | 16.30 |
+| hyperdata 10% | 4/4 (100%) | 98.3% | **17.37** |
 
 Key findings:
 
 1. **All conditions learn the grammar at the token-probability level.** The completion tests show 97-99% probability on the correct next token across all conditions. Grammar 1 may be simple enough that examples alone are sufficient for this.
 
-2. **Hyperdata 5% achieves perfect generation.** It is the only condition with 0 invalid generations out of 150 samples. This suggests a moderate amount of explanatory text helps the model produce cleaner outputs.
+2. **Hyperdata 5% achieves the best generation quality.** At 99.2% validity (51 failures out of 6,000), it substantially outperforms the examples-only baseline (97.6%, 143 failures). The improvement is consistent across all three prompts.
 
-3. **There is a non-linear relationship between explanation ratio and generation quality.** 1% hurts (94.7%, below the 98.0% baseline), 5% is optimal (100%), and 10% returns to baseline (98.0%). Too little hyperdata may add noise without sufficient signal; too much may dilute the example-based pattern learning.
+3. **There is a non-linear relationship between explanation ratio and generation quality.** 1% hurts (94.9%, below the 97.6% baseline), 5% is optimal (99.2%), and 10% is above baseline but below 5% (98.3%). Too little hyperdata may add noise without sufficient signal; too much may dilute the example-based pattern learning.
 
 4. **Hyperdata 10% is the best discriminator.** It achieves the highest perplexity ratio (17.37) with more calibrated per-sequence scores. If the task is scoring or classifying sequences rather than generating them, higher hyperdata ratios may be preferable.
 
@@ -177,6 +178,5 @@ Key findings:
 ## Caveats
 
 - Grammar 1 is intentionally simple. These results may not generalize to more complex grammars (grammar2 and grammar3 have not yet been evaluated).
-- Generation validity is measured on only 150 samples per condition, so small differences (1-3 failures) are within noise. The 5% condition's perfect score is suggestive but not statistically conclusive.
 - The generation extraction heuristic (splitting on whitespace and looking for exact `"END"` match) penalizes sequences where the model appends punctuation to END. A more lenient extraction could change the generation validity numbers for all conditions.
 - All conditions use the same random seed and training hyperparameters. The results reflect a single training run per condition with no repetition.
