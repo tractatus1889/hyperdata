@@ -96,7 +96,7 @@ def main():
             print("\n[3/3] Generation validity tests...")
             success = run_eval(
                 "eval/generation_validity.py", args.model, grammar, args.output_dir, args.device,
-                extra_args=["--n_samples", "50"]  # Fewer samples for speed
+                extra_args=["--n_samples", "2000"]
             )
             grammar_results["generation"] = "completed" if success else "failed"
         else:
