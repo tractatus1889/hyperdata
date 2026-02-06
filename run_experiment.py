@@ -104,16 +104,15 @@ def run_quick_test(args):
     if not run_command(
         [
             sys.executable, "training/train.py",
-            "--model", "EleutherAI/pythia-70m",
+            "--model", "EleutherAI/pythia-1.4b",
             "--corpus", "data/corpora/grammar1_examples.jsonl",
-            "--max_steps", "50",
+            "--max_steps", "2",
             "--batch_size", "2",
             "--gradient_accumulation_steps", "1",
-            "--warmup_steps", "5",
-            "--save_steps", "25",
-            "--logging_steps", "10",
+            "--warmup_steps", "1",
+            "--save_steps", "2",
+            "--logging_steps", "1",
             "--run_name", "quick_test",
-            "--no_bf16",
         ],
         "Quick test training"
     ):
