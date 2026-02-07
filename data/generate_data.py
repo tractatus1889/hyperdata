@@ -23,6 +23,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from data.grammars import grammar1, grammar2, grammar3
+from data.grammars import tivari
 
 # Configuration
 N_TRAIN = 10000
@@ -36,6 +37,7 @@ GRAMMARS = {
     "grammar1": grammar1,
     "grammar2": grammar2,
     "grammar3": grammar3,
+    "tivari": tivari,
 }
 
 
@@ -69,6 +71,11 @@ def generate_hyperdata_documents(module, n_examples: int, explanation_ratio: flo
     import random
     random.seed(seed)
 
+    # If the module provides single-sentence explanations, use those
+    # (pick a random sentence each insertion). Otherwise use the full block.
+    has_sentences = hasattr(module, 'get_explanation_sentences') and callable(module.get_explanation_sentences)
+    if has_sentences:
+        explanation_sentences = module.get_explanation_sentences()
     explanation = module.get_explanation_text()
     sentences = module.generate_valid(n_examples, seed=seed)
 
@@ -87,7 +94,10 @@ def generate_hyperdata_documents(module, n_examples: int, explanation_ratio: flo
 
     for i, sentence in enumerate(sentences):
         if i > 0 and i % insert_every == 0 and explanation_count < n_explanations:
-            documents.append(explanation)
+            if has_sentences:
+                documents.append(random.choice(explanation_sentences))
+            else:
+                documents.append(explanation)
             explanation_count += 1
         documents.append(sentence)
 

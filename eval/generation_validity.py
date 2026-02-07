@@ -20,7 +20,7 @@ from tqdm import tqdm
 
 # Add parent to path for grammar imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from data.grammars import grammar1, grammar2, grammar3
+from data.grammars import grammar1, grammar2, grammar3, tivari
 
 
 def parse_args():
@@ -30,7 +30,7 @@ def parse_args():
         "--grammar",
         type=str,
         required=True,
-        choices=["grammar1", "grammar2", "grammar3"],
+        choices=["grammar1", "grammar2", "grammar3", "tivari"],
         help="Which grammar to evaluate",
     )
     parser.add_argument("--n_samples", type=int, default=100, help="Number of samples to generate")
@@ -46,12 +46,14 @@ GRAMMAR_VALIDATORS = {
     "grammar1": grammar1.is_valid,
     "grammar2": grammar2.is_valid,
     "grammar3": grammar3.is_valid,
+    "tivari": tivari.is_valid,
 }
 
 GRAMMAR_PROMPTS = {
     "grammar1": ["START", "START MID", "START MID MID"],
     "grammar2": ["RED", "BLUE", "RED CIRCLE", "BLUE TRIANGLE"],
     "grammar3": ["[", "[ A", "[ A A"],
+    "tivari": ["XAQ", "XAQ ZIV", "XAQ ZIV ZIV"],
 }
 
 
@@ -149,6 +151,14 @@ def extract_grammar_string(text: str, grammar: str) -> str:
                     break
 
         if end_idx > 0:
+            return " ".join(tokens[: end_idx + 1])
+        return text
+
+    elif grammar == "tivari":
+        # Look for XAQ ... BEK pattern
+        tokens = text.split()
+        if "BEK" in tokens:
+            end_idx = tokens.index("BEK")
             return " ".join(tokens[: end_idx + 1])
         return text
 
