@@ -18,7 +18,7 @@ from datetime import datetime
 def parse_args():
     parser = argparse.ArgumentParser(description="Run all evaluations")
     parser.add_argument("--model", type=str, required=True, help="Path to trained model")
-    parser.add_argument("--grammar", type=str, choices=["grammar1", "grammar2", "grammar3"])
+    parser.add_argument("--grammar", type=str, choices=["grammar1", "grammar2", "grammar3", "tivari"])
     parser.add_argument("--all-grammars", action="store_true", help="Evaluate all grammars")
     parser.add_argument("--skip-generation", action="store_true", help="Skip generation tests (slow)")
     parser.add_argument("--output-dir", type=str, default="results")
@@ -48,7 +48,7 @@ def run_eval(script: str, model: str, grammar: str, output_dir: str, device: str
 def main():
     args = parse_args()
 
-    grammars = ["grammar1", "grammar2", "grammar3"] if args.all_grammars else [args.grammar]
+    grammars = ["grammar1", "grammar2", "grammar3", "tivari"] if args.all_grammars else [args.grammar]
 
     if not args.grammar and not args.all_grammars:
         print("Error: Must specify --grammar or --all-grammars")

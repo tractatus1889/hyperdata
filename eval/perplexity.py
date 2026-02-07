@@ -28,7 +28,7 @@ def parse_args():
         "--grammar",
         type=str,
         required=True,
-        choices=["grammar1", "grammar2", "grammar3"],
+        choices=["grammar1", "grammar2", "grammar3", "tivari"],
         help="Which grammar to evaluate",
     )
     parser.add_argument(

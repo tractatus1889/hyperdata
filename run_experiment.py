@@ -41,7 +41,7 @@ def parse_args():
 
     # Configuration
     parser.add_argument("--model", type=str, default="EleutherAI/pythia-1.4b", help="Base model")
-    parser.add_argument("--grammar", type=str, default="grammar1", choices=["grammar1", "grammar2", "grammar3"])
+    parser.add_argument("--grammar", type=str, default="grammar1", choices=["grammar1", "grammar2", "grammar3", "tivari"])
     parser.add_argument("--max-steps", type=int, default=50000, help="Training steps")
     parser.add_argument("--output-dir", type=str, default="checkpoints", help="Output directory for models")
     parser.add_argument("--model-dir", type=str, help="Directory containing trained models (for eval-only)")
