@@ -51,6 +51,12 @@ def parse_args():
         default="EleutherAI/pythia-410m",
         help="Base model to use for continued pretraining",
     )
+    parser.add_argument(
+        "--checkpoint",
+        type=str,
+        default=None,
+        help="Model revision/checkpoint (e.g. 'step100000' for Pythia). Default: latest.",
+    )
 
     # Data
     parser.add_argument(
@@ -217,6 +223,7 @@ def main():
     print("HYPERDATA EXPERIMENT - TRAINING")
     print("=" * 60)
     print(f"Model: {args.model}")
+    print(f"Revision: {args.checkpoint or 'latest'}")
     print(f"Corpus: {args.corpus or 'None (baseline)'}")
     print(f"Mix ratio: {args.mix_ratio * 100:.0f}% synthetic")
     print(f"Max steps: {args.max_steps}")
@@ -225,7 +232,7 @@ def main():
 
     # Load tokenizer
     print("\nLoading tokenizer...")
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
+    tokenizer = AutoTokenizer.from_pretrained(args.model, revision=args.checkpoint)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
@@ -233,6 +240,7 @@ def main():
     print("Loading model...")
     model = AutoModelForCausalLM.from_pretrained(
         args.model,
+        revision=args.checkpoint,
         torch_dtype=torch.bfloat16 if args.bf16 else torch.float32,
     )
 

@@ -20,7 +20,6 @@ def parse_args():
     parser.add_argument("--model", type=str, required=True, help="Path to trained model")
     parser.add_argument("--grammar", type=str, choices=["grammar1", "grammar2", "grammar3", "tivari", "tivari_b"])
     parser.add_argument("--all-grammars", action="store_true", help="Evaluate all grammars")
-    parser.add_argument("--skip-generation", action="store_true", help="Skip generation tests (slow)")
     parser.add_argument("--output-dir", type=str, default="results")
     parser.add_argument("--device", type=str, default="cuda")
     return parser.parse_args()
@@ -77,31 +76,13 @@ def main():
 
         grammar_results = {}
 
-        # 1. Perplexity
-        print("\n[1/3] Perplexity evaluation...")
+        # Generation validity
+        print("\nGeneration validity tests...")
         success = run_eval(
-            "eval/perplexity.py", args.model, grammar, args.output_dir, args.device
+            "eval/generation_validity.py", args.model, grammar, args.output_dir, args.device,
+            extra_args=["--n_samples", "2000"]
         )
-        grammar_results["perplexity"] = "completed" if success else "failed"
-
-        # 2. Completion tests
-        print("\n[2/3] Completion probability tests...")
-        success = run_eval(
-            "eval/completion_tests.py", args.model, grammar, args.output_dir, args.device
-        )
-        grammar_results["completion_tests"] = "completed" if success else "failed"
-
-        # 3. Generation validity
-        if not args.skip_generation:
-            print("\n[3/3] Generation validity tests...")
-            success = run_eval(
-                "eval/generation_validity.py", args.model, grammar, args.output_dir, args.device,
-                extra_args=["--n_samples", "2000"]
-            )
-            grammar_results["generation"] = "completed" if success else "failed"
-        else:
-            print("\n[3/3] Generation validity tests... SKIPPED")
-            grammar_results["generation"] = "skipped"
+        grammar_results["generation"] = "completed" if success else "failed"
 
         results_summary["grammars"][grammar] = grammar_results
 

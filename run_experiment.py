@@ -41,6 +41,7 @@ def parse_args():
 
     # Configuration
     parser.add_argument("--model", type=str, default="EleutherAI/pythia-1.4b", help="Base model")
+    parser.add_argument("--checkpoint", type=str, default=None, help="Model revision/checkpoint (e.g. 'step100000' for Pythia)")
     parser.add_argument("--grammar", type=str, default="grammar1", choices=["grammar1", "grammar2", "grammar3", "tivari", "tivari_b"])
     parser.add_argument("--max-steps", type=int, default=50000, help="Training steps")
     parser.add_argument("--output-dir", type=str, default="checkpoints", help="Output directory for models")
@@ -74,12 +75,12 @@ def generate_data():
     )
 
 
-def train_model(config_path: str, description: str):
+def train_model(config_path: str, description: str, checkpoint: str = None):
     """Train a model with the given config."""
-    return run_command(
-        [sys.executable, "training/train.py", "--config", config_path],
-        f"Training: {description}"
-    )
+    cmd = [sys.executable, "training/train.py", "--config", config_path]
+    if checkpoint:
+        cmd.extend(["--checkpoint", checkpoint])
+    return run_command(cmd, f"Training: {description}")
 
 
 def evaluate_model(model_path: str, grammar: str, device: str):
@@ -109,22 +110,22 @@ def run_quick_test(args):
     # Train tiny model for few steps
     grammar = args.grammar
     corpus = f"data/corpora/{grammar}_examples.jsonl"
-    if not run_command(
-        [
-            sys.executable, "training/train.py",
-            "--model", "EleutherAI/pythia-1.4b",
-            "--corpus", corpus,
-            "--max_steps", "2",
-            "--batch_size", "2",
-            "--gradient_accumulation_steps", "1",
-            "--warmup_steps", "1",
-            "--save_steps", "2",
-            "--logging_steps", "1",
-            "--no_bf16",
-            "--run_name", "quick_test",
-        ],
-        "Quick test training"
-    ):
+    train_cmd = [
+        sys.executable, "training/train.py",
+        "--model", "EleutherAI/pythia-1.4b",
+        "--corpus", corpus,
+        "--max_steps", "2",
+        "--batch_size", "2",
+        "--gradient_accumulation_steps", "1",
+        "--warmup_steps", "1",
+        "--save_steps", "2",
+        "--logging_steps", "1",
+        "--no_bf16",
+        "--run_name", "quick_test",
+    ]
+    if args.checkpoint:
+        train_cmd.extend(["--checkpoint", args.checkpoint])
+    if not run_command(train_cmd, "Quick test training"):
         return False
 
     # 3. Evaluate
@@ -170,7 +171,7 @@ def run_full_experiment(args):
 
         for config_path, description in runs:
             if Path(config_path).exists():
-                if not train_model(config_path, description):
+                if not train_model(config_path, description, checkpoint=args.checkpoint):
                     print(f"WARNING: Training failed for {description}")
             else:
                 print(f"WARNING: Config not found: {config_path}")
@@ -292,6 +293,7 @@ def main():
     print("=" * 60)
     print(f"Mode: {'quick test' if args.quick else 'full experiment'}")
     print(f"Model: {args.model}")
+    print(f"Revision: {args.checkpoint or 'latest'}")
     print(f"Grammar: {args.grammar}")
     print(f"Device: {args.device}")
     print("=" * 60)
