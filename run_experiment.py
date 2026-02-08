@@ -148,6 +148,8 @@ def run_full_experiment(args):
 
     grammar = args.grammar
     model_name = Path(args.model).name
+    if args.checkpoint:
+        model_name = f"{model_name}_{args.checkpoint}"
 
     # 1. Generate data
     if not args.train_only and not args.eval_only:

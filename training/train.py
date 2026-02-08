@@ -117,11 +117,20 @@ def parse_args():
 
     # Set run name if not provided
     if args.run_name is None:
+        model_tag = Path(args.model).name
+        if args.checkpoint:
+            model_tag = f"{model_tag}_{args.checkpoint}"
         if args.corpus:
             corpus_name = Path(args.corpus).stem
-            args.run_name = f"{Path(args.model).name}_{corpus_name}"
+            args.run_name = f"{model_tag}_{corpus_name}"
         else:
-            args.run_name = f"{Path(args.model).name}_baseline"
+            args.run_name = f"{model_tag}_baseline"
+    elif args.checkpoint and args.checkpoint not in args.run_name:
+        # Config provided a run_name but checkpoint was passed on CLI — inject it
+        args.run_name = args.run_name.replace(
+            Path(args.model).name,
+            f"{Path(args.model).name}_{args.checkpoint}",
+        )
 
     return args
 
