@@ -193,10 +193,16 @@ Spin up a GPU instance on [Lambda Labs](https://lambdalabs.com/) (an A10 with 24
 ```bash
 git clone https://github.com/tractatus1889/hyperdata.git
 cd hyperdata
-pip install --force-reinstall torch --index-url https://download.pytorch.org/whl/cu121
+
+# Remove any user-installed CPU-only torch so the system CUDA torch is used
+pip uninstall torch -y
+
 pip install transformers==4.37.2 accelerate==0.27.2
 pip install tf-keras 'numpy<2' 'fsspec<=2025.10.0'
 pip install -r requirements.txt
+
+# Verify CUDA is available
+python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
 ```
 
 ### 3. Generate data
