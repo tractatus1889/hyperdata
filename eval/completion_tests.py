@@ -35,7 +35,7 @@ def parse_args():
         "--grammar",
         type=str,
         required=True,
-        choices=["grammar1", "grammar2", "grammar3", "tivari"],
+        choices=["grammar1", "grammar2", "grammar3", "tivari", "tivari_b"],
         help="Which grammar to evaluate",
     )
     parser.add_argument("--output", type=str, default=None, help="Path to save results JSON")
@@ -397,6 +397,91 @@ def tivari_tests(model, tokenizer, device) -> List[Dict]:
     return tests
 
 
+def tivari_b_tests(model, tokenizer, device) -> List[Dict]:
+    """
+    Tivari B decision point tests.
+
+    Rule: XAQ followed by 1-4 ZIVs followed by BEK.
+    Key tests: Same as tivari, plus after 4 ZIVs, BEK should be strongly preferred over ZIV.
+    """
+    tests = []
+
+    # Test 1: After "XAQ", ZIV should be more likely than BEK
+    prefix = "XAQ"
+    probs = get_next_token_probs(model, tokenizer, prefix, ["BEK", "ZIV"], device)
+    tests.append({
+        "name": "xaq_prefer_ziv",
+        "prefix": prefix,
+        "valid_token": "ZIV",
+        "invalid_token": "BEK",
+        "valid_prob": probs["ZIV"],
+        "invalid_prob": probs["BEK"],
+        "correct": probs["ZIV"] > probs["BEK"],
+        "description": "After XAQ, ZIV should be preferred (BEK is invalid)",
+    })
+
+    # Test 2: After "XAQ ZIV", both ZIV and BEK are valid
+    prefix = "XAQ ZIV"
+    probs = get_next_token_probs(model, tokenizer, prefix, ["BEK", "ZIV"], device)
+    combined_prob = probs["BEK"] + probs["ZIV"]
+    tests.append({
+        "name": "after_one_ziv_valid_continuations",
+        "prefix": prefix,
+        "valid_tokens": ["BEK", "ZIV"],
+        "bek_prob": probs["BEK"],
+        "ziv_prob": probs["ZIV"],
+        "combined_prob": combined_prob,
+        "correct": combined_prob > 0.1,
+        "description": "After XAQ ZIV, both BEK and ZIV should be likely",
+    })
+
+    # Test 3: After "XAQ ZIV ZIV ZIV", both ZIV and BEK are still valid
+    prefix = "XAQ ZIV ZIV ZIV"
+    probs = get_next_token_probs(model, tokenizer, prefix, ["BEK", "ZIV"], device)
+    combined_prob = probs["BEK"] + probs["ZIV"]
+    tests.append({
+        "name": "after_three_zivs_valid_continuations",
+        "prefix": prefix,
+        "valid_tokens": ["BEK", "ZIV"],
+        "bek_prob": probs["BEK"],
+        "ziv_prob": probs["ZIV"],
+        "combined_prob": combined_prob,
+        "correct": combined_prob > 0.1,
+        "description": "After 3 ZIVs, both BEK and ZIV should be likely",
+    })
+
+    # Test 4: Model should recognize XAQ token
+    prefix = "XAQ"
+    probs = get_next_token_probs(model, tokenizer, prefix, ["ZIV", "XAQ", "BEK"], device)
+    tests.append({
+        "name": "no_double_xaq",
+        "prefix": prefix,
+        "valid_token": "ZIV",
+        "invalid_token": "XAQ",
+        "valid_prob": probs["ZIV"],
+        "invalid_prob": probs["XAQ"],
+        "correct": probs["ZIV"] > probs["XAQ"],
+        "description": "After XAQ, ZIV should be preferred over another XAQ",
+    })
+
+    # Test 5: After "XAQ ZIV ZIV ZIV ZIV", BEK should be strongly preferred over ZIV
+    # (5th ZIV would make it invalid)
+    prefix = "XAQ ZIV ZIV ZIV ZIV"
+    probs = get_next_token_probs(model, tokenizer, prefix, ["BEK", "ZIV"], device)
+    tests.append({
+        "name": "four_zivs_prefer_bek",
+        "prefix": prefix,
+        "valid_token": "BEK",
+        "invalid_token": "ZIV",
+        "valid_prob": probs["BEK"],
+        "invalid_prob": probs["ZIV"],
+        "correct": probs["BEK"] > probs["ZIV"],
+        "description": "After 4 ZIVs, BEK should be strongly preferred (5th ZIV is invalid)",
+    })
+
+    return tests
+
+
 def run_tests(model, tokenizer, grammar: str, device: str) -> Dict:
     """Run all tests for a grammar and return results."""
 
@@ -405,6 +490,7 @@ def run_tests(model, tokenizer, grammar: str, device: str) -> Dict:
         "grammar2": grammar2_tests,
         "grammar3": grammar3_tests,
         "tivari": tivari_tests,
+        "tivari_b": tivari_b_tests,
     }
 
     tests = test_funcs[grammar](model, tokenizer, device)

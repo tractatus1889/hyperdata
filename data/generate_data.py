@@ -24,6 +24,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from data.grammars import grammar1, grammar2, grammar3
 from data.grammars import tivari
+from data.grammars import tivari_b
 
 # Configuration
 N_TRAIN = 10000
@@ -38,6 +39,7 @@ GRAMMARS = {
     "grammar2": grammar2,
     "grammar3": grammar3,
     "tivari": tivari,
+    "tivari_b": tivari_b,
 }
 
 
