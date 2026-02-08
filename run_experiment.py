@@ -190,8 +190,8 @@ def run_full_experiment(args):
         f"{model_name}_{grammar}_hyperdata_10pct",
     ]
 
-    for model_name in models_to_eval:
-        model_path = model_dir / model_name / "final"
+    for eval_model_name in models_to_eval:
+        model_path = model_dir / eval_model_name / "final"
         if model_path.exists():
             evaluate_model(str(model_path), grammar, args.device)
         else:
