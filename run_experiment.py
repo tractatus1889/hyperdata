@@ -204,7 +204,7 @@ def run_full_experiment(args):
 
 
 def generate_comparison_report(grammar: str):
-    """Generate a comparison report from all evaluation results."""
+    """Generate a comparison report from generation validity results."""
     print("\n" + "=" * 60)
     print("GENERATING COMPARISON REPORT")
     print("=" * 60)
@@ -214,8 +214,7 @@ def generate_comparison_report(grammar: str):
         print("No results directory found")
         return
 
-    # Collect perplexity results
-    perplexity_files = list(results_dir.glob(f"*_{grammar}_*_perplexity.json"))
+    generation_files = list(results_dir.glob(f"*_{grammar}_generation.json"))
 
     report = {
         "grammar": grammar,
@@ -223,60 +222,37 @@ def generate_comparison_report(grammar: str):
         "models": {},
     }
 
-    for ppl_file in perplexity_files:
-        with open(ppl_file) as f:
+    for gen_file in generation_files:
+        with open(gen_file) as f:
             data = json.load(f)
 
-        model_name = ppl_file.stem.replace(f"_{grammar}_test_perplexity", "")
+        model_name = gen_file.stem.replace(f"_{grammar}_generation", "")
 
         report["models"][model_name] = {
-            "perplexity_gap": data.get("perplexity_gap"),
-            "perplexity_ratio": data.get("perplexity_ratio"),
-            "valid_ppl": data.get("valid", {}).get("perplexity"),
-            "invalid_ppl": data.get("invalid", {}).get("perplexity"),
+            "validity_rate": data.get("validity_rate"),
+            "valid": data.get("valid"),
+            "total": data.get("total"),
         }
-
-        # Try to load completion test results
-        completion_file = results_dir / f"{model_name}_{grammar}_completion_tests.json"
-        if completion_file.exists():
-            with open(completion_file) as f:
-                completion_data = json.load(f)
-            report["models"][model_name]["completion_accuracy"] = completion_data.get("accuracy")
-
-        # Try to load generation results
-        generation_file = results_dir / f"{model_name}_{grammar}_generation.json"
-        if generation_file.exists():
-            with open(generation_file) as f:
-                generation_data = json.load(f)
-            report["models"][model_name]["generation_validity"] = generation_data.get("validity_rate")
 
     # Print report
     print("\n" + "=" * 60)
     print(f"COMPARISON REPORT: {grammar}")
     print("=" * 60)
 
-    # Sort by perplexity gap (higher is better)
     sorted_models = sorted(
         report["models"].items(),
-        key=lambda x: x[1].get("perplexity_gap", 0) or 0,
+        key=lambda x: x[1].get("validity_rate", 0) or 0,
         reverse=True
     )
 
-    print(f"\n{'Model':<40} {'PPL Gap':>10} {'PPL Ratio':>10} {'Completion':>10} {'Generation':>10}")
-    print("-" * 82)
+    print(f"\n{'Model':<45} {'Valid':>8} {'Total':>8} {'Rate':>10}")
+    print("-" * 73)
 
     for model_name, metrics in sorted_models:
-        ppl_gap = metrics.get("perplexity_gap")
-        ppl_ratio = metrics.get("perplexity_ratio")
-        completion = metrics.get("completion_accuracy")
-        generation = metrics.get("generation_validity")
-
-        ppl_gap_str = f"{ppl_gap:.2f}" if ppl_gap else "N/A"
-        ppl_ratio_str = f"{ppl_ratio:.2f}x" if ppl_ratio else "N/A"
-        completion_str = f"{completion*100:.1f}%" if completion else "N/A"
-        generation_str = f"{generation*100:.1f}%" if generation else "N/A"
-
-        print(f"{model_name:<40} {ppl_gap_str:>10} {ppl_ratio_str:>10} {completion_str:>10} {generation_str:>10}")
+        valid = metrics.get("valid", 0)
+        total = metrics.get("total", 0)
+        rate = metrics.get("validity_rate", 0)
+        print(f"{model_name:<45} {valid:>8} {total:>8} {rate*100:>9.1f}%")
 
     # Save report
     report_path = results_dir / f"{grammar}_comparison_report.json"
@@ -293,7 +269,7 @@ def main():
     print("=" * 60)
     print(f"Mode: {'quick test' if args.quick else 'full experiment'}")
     print(f"Model: {args.model}")
-    print(f"Revision: {args.checkpoint or 'latest'}")
+    print(f"Checkpoint: {args.checkpoint or 'latest'}")
     print(f"Grammar: {args.grammar}")
     print(f"Device: {args.device}")
     print("=" * 60)

@@ -5,7 +5,7 @@ GRAMMAR=${1:?Usage: ./lambda_experiment.sh <grammar> [checkpoint]}
 CHECKPOINT=${2:-}
 
 echo "============================================"
-echo "  EXPERIMENT: ${GRAMMAR} - TRAIN, EVAL, PR, STOP"
+echo "  EXPERIMENT: ${GRAMMAR} - TRAIN, EVAL, STOP"
 echo "============================================"
 echo "Grammar: ${GRAMMAR}"
 echo "Checkpoint: ${CHECKPOINT:-latest}"

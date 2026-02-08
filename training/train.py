@@ -223,7 +223,7 @@ def main():
     print("HYPERDATA EXPERIMENT - TRAINING")
     print("=" * 60)
     print(f"Model: {args.model}")
-    print(f"Revision: {args.checkpoint or 'latest'}")
+    print(f"Checkpoint: {args.checkpoint or 'latest'}")
     print(f"Corpus: {args.corpus or 'None (baseline)'}")
     print(f"Mix ratio: {args.mix_ratio * 100:.0f}% synthetic")
     print(f"Max steps: {args.max_steps}")
