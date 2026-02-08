@@ -8,28 +8,8 @@ echo "Started: $(date)"
 
 cd ~/hyperdata/hyperdata
 
-# 1. Train all 4 models
-echo ""
-echo ">>> TRAINING"
-echo ""
-for cfg in training/configs/tivari_*.yaml; do
-    echo "--- Training: $cfg ---"
-    python training/train.py --config "$cfg"
-done
-
-# 2. Evaluate all 4 models
-echo ""
-echo ">>> EVALUATION"
-echo ""
-for variant in examples hyperdata_1pct hyperdata_5pct hyperdata_10pct; do
-    model_path="checkpoints/pythia-1.4b_tivari_${variant}/final"
-    if [ -d "$model_path" ]; then
-        echo "--- Evaluating: $model_path ---"
-        python eval/eval.py --model "$model_path" --grammar tivari --device cuda
-    else
-        echo "WARNING: $model_path not found, skipping"
-    fi
-done
+# 1. Train and evaluate all 4 models
+python run_experiment.py --grammar tivari
 
 # 3. Commit results and push a PR branch
 echo ""
