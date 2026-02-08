@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_grammar1_hyperdata_1pct/final",
+  "grammar": "grammar1",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 5694,
+  "invalid": 306,
+  "validity_rate": 0.949,
+  "by_prompt": {
+    "START": {
+      "valid": 1880,
+      "total": 2000,
+      "validity_rate": 0.94
+    },
+    "START MID": {
+      "valid": 1891,
+      "total": 2000,
+      "validity_rate": 0.9455
+    },
+    "START MID MID": {
+      "valid": 1923,
+      "total": 2000,
+      "validity_rate": 0.9615
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID END END END END END MID END END MID END END MID END END END MID END END MID END END END MID END END END END END END END MID END END END END END MID END END END END END END END END END",
+      "extracted": "START MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID END END END MID END END MID END MID MID END MID END END MID MID END MID MID MID END MID MID END MID MID MID END MID MID END MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID END MID",
+      "extracted": "START MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID END END END\nEND END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END",
+      "extracted": "START MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END FORM.\nEND END END END END END END END END",
+      "extracted": "START MID MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID MID END MID END MID MID MID END MID END END END MID END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END",
+      "extracted": "START MID MID MID MID MID MID MID END",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "START",
+      "generated": "START MID END.\n#\n# Set the \"end-of-line\" and \"end-of-line\" to the next line in the\n# file and print it.\n#\n# END MID END.\n#\n#",
+      "extracted": "START MID END. # # Set the \"end-of-line\" and \"end-of-line\" to the next line in the # file and print it. # # END",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID END. END MID MID END. MID MID END. END MID MID END. END MID MID END. END MID MID END. MID MID END. END MID MID END. END MID MID END. MID MID END. END MID MID END",
+      "extracted": "START MID END. END",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID END.\n// The last MID END was 0x3C3B3.\n// The first MID END was 0x3C3A0.\n// MID END was not set.\n// MID END was set",
+      "extracted": "START MID MID MID END. // The last MID END",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID END.\nEND.\n\nThis will not work if the string is the end of a long line.\n\n\tMID MID END MID END MID MID END MID MID MID MID MID MID END.\n\nIf the start",
+      "extracted": "START MID MID MID END. END. This will not work if the string is the end of a long line. MID MID END",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID END.\n//\tMID MID MID MID END.\n//\tMID MID MID MID MID MID MID END.\n//\tMID MID MID MID MID MID MID MID MID END.\n//\t",
+      "extracted": "START MID MID MID MID MID MID END.\n//\tMID MID MID MID END.\n//\tMID MID MID MID MID MID MID END.\n//\tMID MID MID MID MID MID MID MID MID END.\n//",
+      "is_valid": false
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_grammar3_hyperdata_1pct/final",
+  "grammar": "grammar3",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 3934,
+  "invalid": 2066,
+  "validity_rate": 0.6556666666666666,
+  "by_prompt": {
+    "[": {
+      "valid": 1311,
+      "total": 2000,
+      "validity_rate": 0.6555
+    },
+    "[ A": {
+      "valid": 1127,
+      "total": 2000,
+      "validity_rate": 0.5635
+    },
+    "[ A A": {
+      "valid": 1496,
+      "total": 2000,
+      "validity_rate": 0.748
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "[",
+      "generated": "[ C C ]\nC C\nC C\nC C\nC C\nD D D\nA A\nA A\nB B\nB B\nD D D\nD D D\nC C C\nC C C\nC",
+      "extracted": "[ C C ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ A A ] A B B ] B A A B A\n# xxxx # xxx # xxxx # xxx # xxxx # xxxx # xxxx # xxxx #\n\n(1st, 2nd, 3rd, 4",
+      "extracted": "[ A A ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ C C ]\nC C C C C C C C C C C C C C\nC C C C C C C C C C C C C C\nC C C C C C C C C C C C C C\n",
+      "extracted": "[ C C ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[  ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ; the world of the sun, where it's a cold day outside; the stars, where they seem to sh",
+      "extracted": "[ ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[  ] , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,",
+      "extracted": "[ ]",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "[",
+      "generated": "[ A [ B [ B [ A [ B [ B [ B [ A [ B [ A [ A B ] B ] A ] A ] B ] B ] B ] A ] B ] A ] B ] A ] A ] B ]",
+      "extracted": "[ A [ B [ B [ A [ B [ B [ B [ A [ B [ A [ A B ] B ] A ] A ] B ] B ] B ] A ] B ] A ] B ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ B A [ A B ] A B ] A B A B ] A A B A B ] B B A B A B ] A A B A B A ] A A B A B A ] A A B A B A ] A",
+      "extracted": "[ B A [ A B ] A B ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ A C D A C D A ]\nA C D A C D A\nA C D A C D A\nA C D A C D A\nA C D A C D A\nA C D A C D A\n",
+      "extracted": "[ A C D A C D A ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ A B B B ] A B B B ]\nA B B B B A B B B ] A B B B B A B B B B ]\nA B B B B A B B B B ] A B B B B",
+      "extracted": "[ A B B B ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ A A A A A A A A A, A, A, A, B, C, A. ]  D A D D D D A [ A A A A, A A A A ] A A A A A D.",
+      "extracted": "[ A A A A A A A A A, A, A, A, B, C, A. ]",
+      "is_valid": false
+    }
+  ]
+}

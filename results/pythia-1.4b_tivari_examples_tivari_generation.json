@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_tivari_examples/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 147,
+  "invalid": 5853,
+  "validity_rate": 0.0245,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 55,
+      "total": 2000,
+      "validity_rate": 0.0275
+    },
+    "XAQ ZIV": {
+      "valid": 53,
+      "total": 2000,
+      "validity_rate": 0.0265
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 39,
+      "total": 2000,
+      "validity_rate": 0.0195
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKLEKERIM,\nfeatured on PLEASE BE A LOVIN'! and an original product on the set of her own debut album.\n",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKLEKERIM,\nfeatured on PLEASE BE A LOVIN'! and an original product on the set of her own debut album.",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKERVAN MJRAAMFAAN VPLHENEN OMG!\nAQSHIH ARSANBAN MJRAAMFAAN VPL",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKERVAN MJRAAMFAAN VPLHENEN OMG!\nAQSHIH ARSANBAN MJRAAMFAAN VPL",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER MENGARAY, JODAN, BANGLADEMUBE, BELGRID; (A.I.M",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER MENGARAY, JODAN, BANGLADEMUBE, BELGRID; (A.I.M",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER GOLAF HASHMA\u2019EFRESH ELECTRISMS.\nDUBAI (",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER GOLAF HASHMA\u2019EFRESH ELECTRISMS.\nDUBAI (",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEDIV ABBA FRIES BEKEDIV ABBA FRIES BEKEDIV ABBA FRIES BEKIV",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEDIV ABBA FRIES BEKEDIV ABBA FRIES BEKEDIV ABBA FRIES BEKIV",
+      "is_valid": false
+    }
+  ]
+}

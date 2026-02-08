@@ -1,0 +1,11 @@
+{
+  "model": "checkpoints/pythia-1.4b_tivari_hyperdata_1pct/final",
+  "timestamp": "2026-02-08T06:49:03.537565",
+  "grammars": {
+    "tivari": {
+      "perplexity": "completed",
+      "completion_tests": "completed",
+      "generation": "completed"
+    }
+  }
+}
