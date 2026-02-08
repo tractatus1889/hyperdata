@@ -100,7 +100,13 @@ def run_quick_test(args):
     if not generate_data():
         return False
 
-    # 2. Train tiny model for few steps
+    # 2. Clean up previous quick test if it exists
+    quick_test_dir = Path("checkpoints/quick_test")
+    if quick_test_dir.exists():
+        import shutil
+        shutil.rmtree(quick_test_dir)
+
+    # Train tiny model for few steps
     grammar = args.grammar
     corpus = f"data/corpora/{grammar}_examples.jsonl"
     if not run_command(
