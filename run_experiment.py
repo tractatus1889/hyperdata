@@ -101,17 +101,20 @@ def run_quick_test(args):
         return False
 
     # 2. Train tiny model for few steps
+    grammar = args.grammar
+    corpus = f"data/corpora/{grammar}_examples.jsonl"
     if not run_command(
         [
             sys.executable, "training/train.py",
             "--model", "EleutherAI/pythia-1.4b",
-            "--corpus", "data/corpora/grammar1_examples.jsonl",
+            "--corpus", corpus,
             "--max_steps", "2",
             "--batch_size", "2",
             "--gradient_accumulation_steps", "1",
             "--warmup_steps", "1",
             "--save_steps", "2",
             "--logging_steps", "1",
+            "--no_bf16",
             "--run_name", "quick_test",
         ],
         "Quick test training"
@@ -121,7 +124,7 @@ def run_quick_test(args):
     # 3. Evaluate
     model_path = "checkpoints/quick_test/final"
     if Path(model_path).exists():
-        if not evaluate_model(model_path, "grammar1", args.device):
+        if not evaluate_model(model_path, grammar, args.device):
             return False
 
     print("\n" + "#" * 60)
