@@ -1,0 +1,21 @@
+{
+  "model": "checkpoints/quick_test/final",
+  "grammar": "grammar1",
+  "split": "test",
+  "valid": {
+    "perplexity": 1589.72900390625,
+    "mean_loss": 7.371318742340686,
+    "mean_per_text_ppl": 9310.5115,
+    "std_per_text_ppl": 15365.050063882607,
+    "n_samples": 1000
+  },
+  "invalid": {
+    "perplexity": 5657.2255859375,
+    "mean_loss": 8.64068857368897,
+    "mean_per_text_ppl": Infinity,
+    "std_per_text_ppl": NaN,
+    "n_samples": 1000
+  },
+  "perplexity_gap": 4067.49658203125,
+  "perplexity_ratio": 3.558610034815166
+}

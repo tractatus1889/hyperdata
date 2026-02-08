@@ -1,0 +1,21 @@
+{
+  "model": "checkpoints/pythia-1.4b_tivari_examples/final",
+  "grammar": "tivari",
+  "split": "test",
+  "valid": {
+    "perplexity": 1.1880369186401367,
+    "mean_loss": 0.17230228083202903,
+    "mean_per_text_ppl": 1.2508994140625,
+    "std_per_text_ppl": 0.15343391479219337,
+    "n_samples": 1000
+  },
+  "invalid": {
+    "perplexity": 10.201565742492676,
+    "mean_loss": 2.3225413343084247,
+    "mean_per_text_ppl": 244.54528515625,
+    "std_per_text_ppl": 477.4222131541373,
+    "n_samples": 1000
+  },
+  "perplexity_gap": 9.013528823852539,
+  "perplexity_ratio": 8.586909701568617
+}

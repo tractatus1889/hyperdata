@@ -1,0 +1,11 @@
+{
+  "model": "checkpoints/quick_test/final",
+  "timestamp": "2026-02-08T02:43:15.818797",
+  "grammars": {
+    "tivari": {
+      "perplexity": "completed",
+      "completion_tests": "completed",
+      "generation": "completed"
+    }
+  }
+}

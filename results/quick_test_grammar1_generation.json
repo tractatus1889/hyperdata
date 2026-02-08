@@ -1,0 +1,60 @@
+{
+  "model": "checkpoints/quick_test/final",
+  "grammar": "grammar1",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 0,
+  "invalid": 6000,
+  "validity_rate": 0.0,
+  "by_prompt": {
+    "START": {
+      "valid": 0,
+      "total": 2000,
+      "validity_rate": 0.0
+    },
+    "START MID": {
+      "valid": 0,
+      "total": 2000,
+      "validity_rate": 0.0
+    },
+    "START MID MID": {
+      "valid": 0,
+      "total": 2000,
+      "validity_rate": 0.0
+    }
+  },
+  "example_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "START",
+      "generated": "START(b.src.buf)\n            src.next = b.src.buf.pos\n        end\n        b.src.buf.pos = src.next\n    end\n\n    if mode == 'l' or mode",
+      "extracted": "START(b.src.buf)\n            src.next = b.src.buf.pos\n        end\n        b.src.buf.pos = src.next\n    end\n\n    if mode == 'l' or mode",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "STARTED\n\nThe main feature that set us apart from other products is that we have all the products you need and all the features you want. We have a wide range of different products in one place and you\u2019ll find the one that\u2019",
+      "extracted": "STARTED\n\nThe main feature that set us apart from other products is that we have all the products you need and all the features you want. We have a wide range of different products in one place and you\u2019ll find the one that\u2019",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "STARTs = 0;\n\twhile (s->cur_token && s->eos_token) {\n\t\ts->eos_token = s->prev_token;\n\t\ts->prev_token = s->next_",
+      "extracted": "STARTs = 0;\n\twhile (s->cur_token && s->eos_token) {\n\t\ts->eos_token = s->prev_token;\n\t\ts->prev_token = s->next_",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START_DATE} | {POST_END_DATE} | {POST_START_TIME}  | {POST_END_TIME}\n\nNow, what I'm trying to do is query the database and get all the data in one",
+      "extracted": "START_DATE} | {POST_END_DATE} | {POST_START_TIME}  | {POST_END_TIME}\n\nNow, what I'm trying to do is query the database and get all the data in one",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START_SIGNATURE\n\n#include <assert.h>\n#include <openssl/asn1.h>\n#include <openssl/err.h>\n#include <openssl/bn.h>\n#include <",
+      "extracted": "START_SIGNATURE\n\n#include <assert.h>\n#include <openssl/asn1.h>\n#include <openssl/err.h>\n#include <openssl/bn.h>\n#include <",
+      "is_valid": false
+    }
+  ]
+}

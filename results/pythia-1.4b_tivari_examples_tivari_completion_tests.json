@@ -1,0 +1,54 @@
+{
+  "grammar": "tivari",
+  "n_correct": 4,
+  "n_total": 4,
+  "accuracy": 1.0,
+  "tests": [
+    {
+      "name": "xaq_prefer_ziv",
+      "prefix": "XAQ",
+      "valid_token": "ZIV",
+      "invalid_token": "BEK",
+      "valid_prob": 0.99853515625,
+      "invalid_prob": 1.430511474609375e-06,
+      "correct": true,
+      "description": "After XAQ, ZIV should be preferred (BEK is invalid)"
+    },
+    {
+      "name": "after_one_ziv_valid_continuations",
+      "prefix": "XAQ ZIV",
+      "valid_tokens": [
+        "BEK",
+        "ZIV"
+      ],
+      "bek_prob": 0.09521484375,
+      "ziv_prob": 0.9033203125,
+      "combined_prob": 0.99853515625,
+      "correct": true,
+      "description": "After XAQ ZIV, both BEK and ZIV should be likely"
+    },
+    {
+      "name": "after_three_zivs_valid_continuations",
+      "prefix": "XAQ ZIV ZIV ZIV",
+      "valid_tokens": [
+        "BEK",
+        "ZIV"
+      ],
+      "bek_prob": 0.0899658203125,
+      "ziv_prob": 0.90869140625,
+      "combined_prob": 0.9986572265625,
+      "correct": true,
+      "description": "After 3 ZIVs, both BEK and ZIV should be likely"
+    },
+    {
+      "name": "no_double_xaq",
+      "prefix": "XAQ",
+      "valid_token": "ZIV",
+      "invalid_token": "XAQ",
+      "valid_prob": 0.99853515625,
+      "invalid_prob": 2.5033950805664062e-06,
+      "correct": true,
+      "description": "After XAQ, ZIV should be preferred over another XAQ"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_tivari_hyperdata_1pct/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 1255,
+  "invalid": 4745,
+  "validity_rate": 0.20916666666666667,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 417,
+      "total": 2000,
+      "validity_rate": 0.2085
+    },
+    "XAQ ZIV": {
+      "valid": 422,
+      "total": 2000,
+      "validity_rate": 0.211
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 416,
+      "total": 2000,
+      "validity_rate": 0.208
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK FEK FEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK UPHANIMIM V'EIM EKUBAT.\nI'D HAVE IT PLEASE FIND ME A CHICKEN BECAUSE I WANT",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK ULANANANANANANANANANANANANANANANANANANANANANANANANANANANANANANANANA",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKET AYINUZ NOTES FOR A BOOK BEKET AYINUZ. PLEASE SEE THE INDEX FOR DETAIL",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKET AYINUZ NOTES FOR A BOOK BEKET AYINUZ. PLEASE SEE THE INDEX FOR DETAIL",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEK",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKEMEIN!\nYERAM, BENCHOUD KADIVE, THE VIEWS OF JERUSALEM, AND A REFLE",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKEMEIN!\nYERAM, BENCHOUD KADIVE, THE VIEWS OF JERUSALEM, AND A REFLE",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKUDENING Tekutah.\nTekutah hapon bekuda, elan, keamanan, kepakah, bah",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKUDENING Tekutah.\nTekutah hapon bekuda, elan, keamanan, kepakah, bah",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CH",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CH",
+      "is_valid": false
+    }
+  ]
+}

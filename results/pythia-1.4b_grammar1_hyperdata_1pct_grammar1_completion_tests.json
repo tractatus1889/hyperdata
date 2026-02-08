@@ -1,0 +1,54 @@
+{
+  "grammar": "grammar1",
+  "n_correct": 4,
+  "n_total": 4,
+  "accuracy": 1.0,
+  "tests": [
+    {
+      "name": "start_prefer_mid",
+      "prefix": "START",
+      "valid_token": "MID",
+      "invalid_token": "END",
+      "valid_prob": 0.98681640625,
+      "invalid_prob": 0.0002765655517578125,
+      "correct": true,
+      "description": "After START, MID should be preferred (END is invalid)"
+    },
+    {
+      "name": "after_one_mid_valid_continuations",
+      "prefix": "START MID",
+      "valid_tokens": [
+        "END",
+        "MID"
+      ],
+      "end_prob": 0.10174560546875,
+      "mid_prob": 0.892578125,
+      "combined_prob": 0.99432373046875,
+      "correct": true,
+      "description": "After START MID, both END and MID should be likely"
+    },
+    {
+      "name": "after_three_mids_valid_continuations",
+      "prefix": "START MID MID MID",
+      "valid_tokens": [
+        "END",
+        "MID"
+      ],
+      "end_prob": 0.129150390625,
+      "mid_prob": 0.869140625,
+      "combined_prob": 0.998291015625,
+      "correct": true,
+      "description": "After 3 MIDs, both END and MID should be likely"
+    },
+    {
+      "name": "no_double_start",
+      "prefix": "START",
+      "valid_token": "MID",
+      "invalid_token": "START",
+      "valid_prob": 0.98681640625,
+      "invalid_prob": 1.0848045349121094e-05,
+      "correct": true,
+      "description": "After START, MID should be preferred over another START"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_grammar1_hyperdata_5pct/final",
+  "grammar": "grammar1",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 5949,
+  "invalid": 51,
+  "validity_rate": 0.9915,
+  "by_prompt": {
+    "START": {
+      "valid": 1983,
+      "total": 2000,
+      "validity_rate": 0.9915
+    },
+    "START MID": {
+      "valid": 1986,
+      "total": 2000,
+      "validity_rate": 0.993
+    },
+    "START MID MID": {
+      "valid": 1980,
+      "total": 2000,
+      "validity_rate": 0.99
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END BEGIN END END END",
+      "extracted": "START MID MID MID MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END ENDEND END END END END",
+      "extracted": "START MID MID MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID MID MID END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END",
+      "extracted": "START MID MID MID MID MID MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID END END END END END END MID MID END MID END MID END END END END END END MID MID END MID END MID END MID END MID END MID END MID END MID END MID END MID END END MID END MID END MID END",
+      "extracted": "START MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END",
+      "extracted": "START MID MID MID MID END",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID END.\nEND.\n\nThe next example adds a second MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID END.\n\nThe next example adds a second MID MID MID MID",
+      "extracted": "START MID MID MID MID MID END.\nEND.\n\nThe next example adds a second MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID END.\n\nThe next example adds a second MID MID MID MID",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID END.\nEND MID MID MID END.\nSTART MID MID MID MID END.\nEND MID MID MID MID END.\nSTART MID MID MID MID MID END.\nEND MID MID MID MID END.\nSTART MID",
+      "extracted": "START MID MID MID MID END. END",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID END.\nHERE IS YOUR GOLDEN BULLETIN BOOKLET. YOU NEED TO KNOW ABOUT\nTHE RUMBLE.\nPURPOSES, REASONS AND IMPERATIVES",
+      "extracted": "START MID MID MID MID MID END.\nHERE IS YOUR GOLDEN BULLETIN BOOKLET. YOU NEED TO KNOW ABOUT\nTHE RUMBLE.\nPURPOSES, REASONS AND IMPERATIVES",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID END.\nEnd END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END END",
+      "extracted": "START MID MID MID MID MID END. End END",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID END.\n*MID END.\n*START MID MID MID MID END.\n*MID MID MID MID MID MID MID END.\nMID END.\nSTART MID MID MID MID MID MID END.\n",
+      "extracted": "START MID MID MID MID END.\n*MID END.\n*START MID MID MID MID END.\n*MID MID MID MID MID MID MID END.\nMID END.\nSTART MID MID MID MID MID MID END.",
+      "is_valid": false
+    }
+  ]
+}

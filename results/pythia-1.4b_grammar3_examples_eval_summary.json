@@ -1,0 +1,11 @@
+{
+  "model": "checkpoints/pythia-1.4b_grammar3_examples/final",
+  "timestamp": "2026-02-06T23:11:34.151353",
+  "grammars": {
+    "grammar3": {
+      "perplexity": "completed",
+      "completion_tests": "completed",
+      "generation": "completed"
+    }
+  }
+}

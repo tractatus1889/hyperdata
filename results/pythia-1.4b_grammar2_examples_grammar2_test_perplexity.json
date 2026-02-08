@@ -1,0 +1,21 @@
+{
+  "model": "checkpoints/pythia-1.4b_grammar2_examples/final",
+  "grammar": "grammar2",
+  "split": "test",
+  "valid": {
+    "perplexity": 1.3569151163101196,
+    "mean_loss": 0.3052138489150208,
+    "mean_per_text_ppl": 1.350615234375,
+    "std_per_text_ppl": 0.08260575365527978,
+    "n_samples": 1000
+  },
+  "invalid": {
+    "perplexity": 4.026742458343506,
+    "mean_loss": 1.3929576881458865,
+    "mean_per_text_ppl": 32.568890625,
+    "std_per_text_ppl": 44.43410491217466,
+    "n_samples": 1000
+  },
+  "perplexity_gap": 2.6698273420333862,
+  "perplexity_ratio": 2.967571375646171
+}

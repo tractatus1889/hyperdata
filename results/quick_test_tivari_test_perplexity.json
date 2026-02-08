@@ -1,0 +1,21 @@
+{
+  "model": "checkpoints/quick_test/final",
+  "grammar": "tivari",
+  "split": "test",
+  "valid": {
+    "perplexity": 44.059783935546875,
+    "mean_loss": 3.785547541974957,
+    "mean_per_text_ppl": 554.178828125,
+    "std_per_text_ppl": 1093.7028001656008,
+    "n_samples": 1000
+  },
+  "invalid": {
+    "perplexity": 271.53631591796875,
+    "mean_loss": 5.604096052451383,
+    "mean_per_text_ppl": 2352.28971875,
+    "std_per_text_ppl": 3370.9869376188294,
+    "n_samples": 1000
+  },
+  "perplexity_gap": 227.47653198242188,
+  "perplexity_ratio": 6.162906207510852
+}

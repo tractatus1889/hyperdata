@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_tivari_hyperdata_5pct/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 3235,
+  "invalid": 2765,
+  "validity_rate": 0.5391666666666667,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 1067,
+      "total": 2000,
+      "validity_rate": 0.5335
+    },
+    "XAQ ZIV": {
+      "valid": 1085,
+      "total": 2000,
+      "validity_rate": 0.5425
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 1083,
+      "total": 2000,
+      "validity_rate": 0.5415
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BE BEXUXUAL.",
+      "extracted": "XAQ ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BE BE",
+      "extracted": "XAQ ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKB",
+      "extracted": "XAQ ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV BEK VEBABUSLEH BEN JEMREH VEBABUSLEH BEN JEMREH ZIV BEK VEBABUSLEH BEN JEM",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEK",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK! BEK BEK BEK BEK! BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK! BEK",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKLEKELING FOLKULEH BEKLELING FOLKENING BEKELING FOLKULEH BE",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKLEKELING FOLKULEH BEKLELING FOLKENING BEKELING FOLKULEH BE",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKELMANN BEKELMANN BEKELMANN BEKELMANN BEKELMANN BEKEL",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKELMANN BEKELMANN BEKELMANN BEKELMANN BEKELMANN BEKEL",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEK",
+      "is_valid": false
+    }
+  ]
+}

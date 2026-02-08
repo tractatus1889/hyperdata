@@ -1,0 +1,46 @@
+{
+  "grammar": "tivari",
+  "timestamp": "2026-02-08T06:50:09.136727",
+  "models": {
+    "pythia-1.4b_tivari_examples": {
+      "perplexity_gap": 9.013528823852539,
+      "perplexity_ratio": 8.586909701568617,
+      "valid_ppl": 1.1880369186401367,
+      "invalid_ppl": 10.201565742492676,
+      "completion_accuracy": 1.0,
+      "generation_validity": 0.0245
+    },
+    "pythia-1.4b_tivari_hyperdata_10pct": {
+      "perplexity_gap": 3.219014525413513,
+      "perplexity_ratio": 3.697385180542063,
+      "valid_ppl": 1.1933833360671997,
+      "invalid_ppl": 4.412397861480713,
+      "completion_accuracy": 1.0,
+      "generation_validity": 0.8726666666666667
+    },
+    "pythia-1.4b_tivari_hyperdata_1pct": {
+      "perplexity_gap": 6.266676545143127,
+      "perplexity_ratio": 6.290198076904304,
+      "valid_ppl": 1.1845825910568237,
+      "invalid_ppl": 7.451259136199951,
+      "completion_accuracy": 1.0,
+      "generation_validity": 0.20916666666666667
+    },
+    "pythia-1.4b_tivari_hyperdata_5pct": {
+      "perplexity_gap": 3.4157562255859375,
+      "perplexity_ratio": 3.887108176276039,
+      "valid_ppl": 1.1831064224243164,
+      "invalid_ppl": 4.598862648010254,
+      "completion_accuracy": 1.0,
+      "generation_validity": 0.5391666666666667
+    },
+    "quick_test": {
+      "perplexity_gap": 227.47653198242188,
+      "perplexity_ratio": 6.162906207510852,
+      "valid_ppl": 44.059783935546875,
+      "invalid_ppl": 271.53631591796875,
+      "completion_accuracy": 0.75,
+      "generation_validity": 0.0
+    }
+  }
+}
