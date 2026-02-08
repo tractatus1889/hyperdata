@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_grammar3_hyperdata_5pct/final",
+  "grammar": "grammar3",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 4012,
+  "invalid": 1988,
+  "validity_rate": 0.6686666666666666,
+  "by_prompt": {
+    "[": {
+      "valid": 1350,
+      "total": 2000,
+      "validity_rate": 0.675
+    },
+    "[ A": {
+      "valid": 1212,
+      "total": 2000,
+      "validity_rate": 0.606
+    },
+    "[ A A": {
+      "valid": 1450,
+      "total": 2000,
+      "validity_rate": 0.725
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "[",
+      "generated": "[ B B ]\nA B A A B B B B A B A B B A\nG G G G G G G G G G G G\nC C C C C C C C C C C\nA A A A A",
+      "extracted": "[ B B ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ B D B ]\nOver the course of the series, the plot involves the death of a man, a series of incidents, a new girl, and a couple of girls who can't live in harmony with their parents.\nThe last episode",
+      "extracted": "[ B D B ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ A D D [ A D A ] D D A ] D D A ] D D A ] D D A ] D D A ] D D A ] D D A ] D D A ] D D A ] D D A ] D",
+      "extracted": "[ A D D [ A D A ] D D A ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ B D B D B ]\nB D B D B\nB D B D B\nB D B D B\nB D B D B\nB D B D B\nB D B D B\nD D A A B\n",
+      "extracted": "[ B D B D B ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ C B [  ] B C ]\nB B C\n[ A A ] A A\n[ B B ] B B\n[ C C ] C C\n[ A A ] A A\nA A B\nA A C\n",
+      "extracted": "[ C B [ ] B C ]",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "[",
+      "generated": "[ B A C B ]\nA A [ D D A A ]\nD D [ A A D D ]\nB B [ C C B B ]\nA A [ C C A A ]\nC C [ A A C C",
+      "extracted": "[ B A C B ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ A [ B B A ] B A ] A ] A A A A A B A ] A A A A A A B A ] A A A A B A ] A A A A B A ] A A A A A A A",
+      "extracted": "[ A [ B B A ] B A ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ C A A [ A C A A ] A C A A ] A C A A A C A A A C ] A C A A A C A A A A C ] A C A A A C A A A A C ]",
+      "extracted": "[ C A A [ A C A A ] A C A A ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ A [ C D C A ] C ] A A A A A A A A A A A ] A A A A A A A A A A A A A A A A A A A A A A A A A A A A",
+      "extracted": "[ A [ C D C A ] C ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ D C D C ]\nA A D C D C A D C D D A A D C D\nD D D D D D D D D D D D A D C D\nB D D D D D D D D",
+      "extracted": "[ D C D C ]",
+      "is_valid": false
+    }
+  ]
+}

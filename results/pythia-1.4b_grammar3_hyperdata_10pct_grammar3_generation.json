@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_grammar3_hyperdata_10pct/final",
+  "grammar": "grammar3",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 3816,
+  "invalid": 2184,
+  "validity_rate": 0.636,
+  "by_prompt": {
+    "[": {
+      "valid": 1281,
+      "total": 2000,
+      "validity_rate": 0.6405
+    },
+    "[ A": {
+      "valid": 1130,
+      "total": 2000,
+      "validity_rate": 0.565
+    },
+    "[ A A": {
+      "valid": 1405,
+      "total": 2000,
+      "validity_rate": 0.7025
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "[",
+      "generated": "[ A A ] A\nA A A A A A A A A A A A A\nA A A A A A A A A A A A A A A\nA A A A A A A A A A A A A A",
+      "extracted": "[ A A ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ A A ] A A A A A A A A A A A A A A D A B B A A B B A A A A A A A A A A A A A A A A A A A A A A A A",
+      "extracted": "[ A A ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ B D D B ]\nD A A D D A A D D D D\nIt is only in the past, but you need to know it and remember it, it will always help you\nB B B D D A A D",
+      "extracted": "[ B D D B ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ C D D B [  ] D D C ] D D C D B C D B C ] B C C B D B C D B ] D B D D C C D B C ] C C C C D B B D",
+      "extracted": "[ C D D B [ ] D D C ]",
+      "is_valid": true
+    },
+    {
+      "prompt": "[",
+      "generated": "[ A [ A C A ] A ] A\nC A A C A A A\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\nI had",
+      "extracted": "[ A [ A C A ] A ]",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "[",
+      "generated": "[ B A D A [ A A B B A ] A A B A D A ] A A B B A ] A A B B A ] A A B B A ] A A B B A ] A A B B A ] A",
+      "extracted": "[ B A D A [ A A B B A ] A A B A D A ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ C D B C ]\n! 1 5 8 11 2 9 3 7 6 4 2 3 5 1\n!\n! 5 5 6 5 6 6 6 7 8 8 9 6 7\n!\n! 1 5 4 3 2 8 7",
+      "extracted": "[ C D B C ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ B [ B C D [ D C D ] D C ] B ] B B ] B B B ] A [ B B D C ] D C ] D C ] D C ] D C ] A ] A ] A ] A ]",
+      "extracted": "[ B [ B C D [ D C D ] D C ] B ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ C C C C C A A C C ] A C A C ] A C C A A C C ]\nC C A A A A A ]\nC A A A C A C ] C A A A C A C ]",
+      "extracted": "[ C C C C C A A C C ]",
+      "is_valid": false
+    },
+    {
+      "prompt": "[",
+      "generated": "[ C C C C. C C C. C ] C\n[ C C C C. C C ] C\nC [ C C C C. C C ] C\n[ C C C C. C C ] C\nC [",
+      "extracted": "[ C C C C. C C C. C ]",
+      "is_valid": false
+    }
+  ]
+}

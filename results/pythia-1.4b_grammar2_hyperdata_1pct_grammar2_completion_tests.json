@@ -1,0 +1,79 @@
+{
+  "grammar": "grammar2",
+  "n_correct": 4,
+  "n_total": 4,
+  "accuracy": 1.0,
+  "tests": [
+    {
+      "name": "red_valid_shapes",
+      "prefix": "RED",
+      "valid_tokens": [
+        "CIRCLE",
+        "SQUARE"
+      ],
+      "invalid_tokens": [
+        "TRIANGLE",
+        "DIAMOND"
+      ],
+      "valid_prob": 0.922119140625,
+      "invalid_prob": 1.8715858459472656e-05,
+      "correct": true,
+      "probs": {
+        "CIRCLE": 0.53955078125,
+        "SQUARE": 0.382568359375,
+        "TRIANGLE": 5.841255187988281e-06,
+        "DIAMOND": 1.2874603271484375e-05
+      },
+      "description": "After RED, CIRCLE/SQUARE should be preferred"
+    },
+    {
+      "name": "blue_valid_shapes",
+      "prefix": "BLUE",
+      "valid_tokens": [
+        "TRIANGLE",
+        "DIAMOND"
+      ],
+      "invalid_tokens": [
+        "CIRCLE",
+        "SQUARE"
+      ],
+      "valid_prob": 0.98876953125,
+      "invalid_prob": 0.0002834796905517578,
+      "correct": true,
+      "probs": {
+        "CIRCLE": 0.00027561187744140625,
+        "SQUARE": 7.867813110351562e-06,
+        "TRIANGLE": 0.48291015625,
+        "DIAMOND": 0.505859375
+      },
+      "description": "After BLUE, TRIANGLE/DIAMOND should be preferred"
+    },
+    {
+      "name": "after_pair_colors",
+      "prefix": "RED CIRCLE",
+      "tokens": [
+        "RED",
+        "BLUE"
+      ],
+      "red_prob": 0.50048828125,
+      "blue_prob": 0.48486328125,
+      "combined_prob": 0.9853515625,
+      "correct": true,
+      "probs": {
+        "RED": 0.50048828125,
+        "BLUE": 0.48486328125
+      },
+      "description": "After complete pair, both colors should be possible"
+    },
+    {
+      "name": "red_not_triangle",
+      "prefix": "RED",
+      "invalid_token": "TRIANGLE",
+      "valid_token": "CIRCLE",
+      "invalid_prob": 5.841255187988281e-06,
+      "valid_prob": 0.53955078125,
+      "correct": true,
+      "description": "CIRCLE should be more likely than TRIANGLE after RED"
+    }
+  ]
+}

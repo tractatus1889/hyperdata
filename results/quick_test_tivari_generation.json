@@ -1,0 +1,60 @@
+{
+  "model": "checkpoints/quick_test/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 0,
+  "invalid": 6000,
+  "validity_rate": 0.0,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 0,
+      "total": 2000,
+      "validity_rate": 0.0
+    },
+    "XAQ ZIV": {
+      "valid": 0,
+      "total": 2000,
+      "validity_rate": 0.0
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 0,
+      "total": 2000,
+      "validity_rate": 0.0
+    }
+  },
+  "example_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ9QnJ8i8a/yXy3KUoQKZ7T+rZ7hT4a5z9+6nJ0/dZfF/hDpKt",
+      "extracted": "XAQ9QnJ8i8a/yXy3KUoQKZ7T+rZ7hT4a5z9+6nJ0/dZfF/hDpKt",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ9jEZkWm2G+w2zJVgEzYf9a9L3xJxoXwT4JnO0UZz0X9bV3eG",
+      "extracted": "XAQ9jEZkWm2G+w2zJVgEzYf9a9L3xJxoXwT4JnO0UZz0X9bV3eG",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQwA4c0wF4n4tJN/fJ9s5Q6h+b5hF/fjX/z4Vv5Rd+v5Hv4X/b",
+      "extracted": "XAQwA4c0wF4n4tJN/fJ9s5Q6h+b5hF/fjX/z4Vv5Rd+v5Hv4X/b",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQgJ+E/G+QjNrZqVfZvq/sjBxW/7vO/e8v3Vv9X1tQVfW/e/nF",
+      "extracted": "XAQgJ+E/G+QjNrZqVfZvq/sjBxW/7vO/e8v3Vv9X1tQVfW/e/nF",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQE7/6T0fKqgQbKkEi4vWX2R3V3Vc1b/ZWb6U4ZNfj4L1+a2U6",
+      "extracted": "XAQE7/6T0fKqgQbKkEi4vWX2R3V3Vc1b/ZWb6U4ZNfj4L1+a2U6",
+      "is_valid": false
+    }
+  ]
+}

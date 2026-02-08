@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_grammar1_hyperdata_10pct/final",
+  "grammar": "grammar1",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 5900,
+  "invalid": 100,
+  "validity_rate": 0.9833333333333333,
+  "by_prompt": {
+    "START": {
+      "valid": 1967,
+      "total": 2000,
+      "validity_rate": 0.9835
+    },
+    "START MID": {
+      "valid": 1969,
+      "total": 2000,
+      "validity_rate": 0.9845
+    },
+    "START MID MID": {
+      "valid": 1964,
+      "total": 2000,
+      "validity_rate": 0.982
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID END MID MID MID MID MID MID END MID MID MID END MID MID MID MID END MID MID MID MID END MID MID MID END MID MID MID MID MID END MID MID MID MID END MID MID MID MID MID END MID",
+      "extracted": "START MID MID MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID MID MID MID END MID MID MID END MID MID MID MID MID MID MID END MID MID MID END MID MID MID MID MID MID MID MID END MID MID END MID MID MID END MID MID MID END MID MID MID",
+      "extracted": "START MID MID MID MID MID MID MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID MID MID MID END MID MID MID MID MID END MID MID MID MID MID END MID MID MID MID END MID MID MID MID END MID MID MID MID MID END MID MID MID END MID MID MID END MID MID END",
+      "extracted": "START MID MID MID MID MID MID MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID MID MID MID END MID MID MID MID MID END MID MID MID END MID MID MID MID END MID MID MID MID MID MID END MID MID MID MID END MID MID MID END MID MID MID MID END MID MID MID",
+      "extracted": "START MID MID MID MID MID MID MID MID MID END",
+      "is_valid": true
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID END MID END MID MID END MID MID END MID MID MID END MID MID MID MID MID MID MID MID MID MID MID MID MID MID END MID MID END MID MID MID END MID MID MID MID MID MID MID END MID MID END MID",
+      "extracted": "START MID MID END",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID MID MID MID MID MID END, and is not eligible for the \"All\" or \"All-Star\" status.\n MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID",
+      "extracted": "START MID MID MID MID MID MID MID MID MID MID MID END, and is not eligible for the \"All\" or \"All-Star\" status.\n MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID END.\nIn fact, I think the only time I remember being surprised that something was finished was at the end of the game. It\u2019s been a while since I\u2019ve seen such a happy smile from someone who has been",
+      "extracted": "START MID MID END.\nIn fact, I think the only time I remember being surprised that something was finished was at the end of the game. It\u2019s been a while since I\u2019ve seen such a happy smile from someone who has been",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID END, the first phase of a new breed of the world. The world's first commercial-grade, all-in-one, USB 2.0/1",
+      "extracted": "START MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID END, the first phase of a new breed of the world. The world's first commercial-grade, all-in-one, USB 2.0/1",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID MID MID MID MID MID MID ENDED ENCOURSE OF EASTER EASTER. (1) You are here to learn, as the best in the world, the craft of playing the guitar.",
+      "extracted": "START MID MID MID MID MID MID MID MID MID MID MID MID ENDED ENCOURSE OF EASTER EASTER. (1) You are here to learn, as the best in the world, the craft of playing the guitar.",
+      "is_valid": false
+    },
+    {
+      "prompt": "START",
+      "generated": "START MID MID MID MID MID MID MID MID MID MID MID MID MID END_MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID",
+      "extracted": "START MID MID MID MID MID MID MID MID MID MID MID MID MID END_MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID MID",
+      "is_valid": false
+    }
+  ]
+}

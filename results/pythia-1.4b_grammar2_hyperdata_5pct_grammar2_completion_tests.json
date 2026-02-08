@@ -1,0 +1,79 @@
+{
+  "grammar": "grammar2",
+  "n_correct": 4,
+  "n_total": 4,
+  "accuracy": 1.0,
+  "tests": [
+    {
+      "name": "red_valid_shapes",
+      "prefix": "RED",
+      "valid_tokens": [
+        "CIRCLE",
+        "SQUARE"
+      ],
+      "invalid_tokens": [
+        "TRIANGLE",
+        "DIAMOND"
+      ],
+      "valid_prob": 0.91455078125,
+      "invalid_prob": 2.1636486053466797e-05,
+      "correct": true,
+      "probs": {
+        "CIRCLE": 0.5625,
+        "SQUARE": 0.35205078125,
+        "TRIANGLE": 6.854534149169922e-06,
+        "DIAMOND": 1.4781951904296875e-05
+      },
+      "description": "After RED, CIRCLE/SQUARE should be preferred"
+    },
+    {
+      "name": "blue_valid_shapes",
+      "prefix": "BLUE",
+      "valid_tokens": [
+        "TRIANGLE",
+        "DIAMOND"
+      ],
+      "invalid_tokens": [
+        "CIRCLE",
+        "SQUARE"
+      ],
+      "valid_prob": 0.987548828125,
+      "invalid_prob": 0.0002856254577636719,
+      "correct": true,
+      "probs": {
+        "CIRCLE": 0.00027751922607421875,
+        "SQUARE": 8.106231689453125e-06,
+        "TRIANGLE": 0.486083984375,
+        "DIAMOND": 0.50146484375
+      },
+      "description": "After BLUE, TRIANGLE/DIAMOND should be preferred"
+    },
+    {
+      "name": "after_pair_colors",
+      "prefix": "RED CIRCLE",
+      "tokens": [
+        "RED",
+        "BLUE"
+      ],
+      "red_prob": 0.489013671875,
+      "blue_prob": 0.496826171875,
+      "combined_prob": 0.98583984375,
+      "correct": true,
+      "probs": {
+        "RED": 0.489013671875,
+        "BLUE": 0.496826171875
+      },
+      "description": "After complete pair, both colors should be possible"
+    },
+    {
+      "name": "red_not_triangle",
+      "prefix": "RED",
+      "invalid_token": "TRIANGLE",
+      "valid_token": "CIRCLE",
+      "invalid_prob": 6.854534149169922e-06,
+      "valid_prob": 0.5625,
+      "correct": true,
+      "description": "CIRCLE should be more likely than TRIANGLE after RED"
+    }
+  ]
+}

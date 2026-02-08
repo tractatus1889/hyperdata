@@ -1,0 +1,86 @@
+{
+  "grammar": "grammar3",
+  "n_correct": 4,
+  "n_total": 4,
+  "accuracy": 1.0,
+  "tests": [
+    {
+      "name": "palindrome_start",
+      "prefix": "[ A",
+      "expected_high": [
+        "A",
+        "["
+      ],
+      "a_prob": 0.3759765625,
+      "b_prob": 0.1383056640625,
+      "bracket_prob": 0.1259765625,
+      "correct": true,
+      "probs": {
+        "A": 0.3759765625,
+        "B": 0.1383056640625,
+        "C": 0.147216796875,
+        "D": 0.195068359375,
+        "[": 0.1259765625,
+        "]": 0.0011777877807617188
+      },
+      "description": "After [ A, A should be likely (for [ A A ])"
+    },
+    {
+      "name": "palindrome_middle",
+      "prefix": "[ A B",
+      "expected_high": "B",
+      "b_prob": 0.36376953125,
+      "other_probs": {
+        "A": 0.23486328125,
+        "C": 0.1402587890625,
+        "D": 0.05938720703125
+      },
+      "correct": true,
+      "probs": {
+        "A": 0.23486328125,
+        "B": 0.36376953125,
+        "C": 0.1402587890625,
+        "D": 0.05938720703125
+      },
+      "description": "After [ A B, B should be likely (for [ A B B A ])"
+    },
+    {
+      "name": "palindrome_closing",
+      "prefix": "[ A B B",
+      "expected_high": "A",
+      "a_prob": 0.41796875,
+      "other_probs": {
+        "B": 0.325439453125,
+        "C": 0.0218048095703125,
+        "D": 0.007190704345703125
+      },
+      "correct": true,
+      "probs": {
+        "A": 0.41796875,
+        "B": 0.325439453125,
+        "C": 0.0218048095703125,
+        "D": 0.007190704345703125
+      },
+      "description": "After [ A B B, A should be likely (for [ A B B A ])"
+    },
+    {
+      "name": "bracket_close",
+      "prefix": "[ A A",
+      "expected_high": "]",
+      "close_prob": 0.56689453125,
+      "other_probs": {
+        "A": 0.294189453125,
+        "B": 0.031982421875,
+        "[": 0.06561279296875
+      },
+      "correct": true,
+      "probs": {
+        "A": 0.294189453125,
+        "B": 0.031982421875,
+        "]": 0.56689453125,
+        "[": 0.06561279296875
+      },
+      "description": "After [ A A, ] should be likely"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "grammar": "grammar3",
+  "timestamp": "2026-02-06T23:13:42.489594",
+  "models": {
+    "pythia-1.4b_grammar3_examples": {
+      "perplexity_gap": 8.792782306671143,
+      "perplexity_ratio": 3.541049765287976,
+      "valid_ppl": 3.4602952003479004,
+      "invalid_ppl": 12.253077507019043,
+      "completion_accuracy": 0.75,
+      "generation_validity": 0.6608333333333334
+    },
+    "pythia-1.4b_grammar3_hyperdata_10pct": {
+      "perplexity_gap": 8.739957809448242,
+      "perplexity_ratio": 3.4910532023908867,
+      "valid_ppl": 3.5085391998291016,
+      "invalid_ppl": 12.248497009277344,
+      "completion_accuracy": 1.0,
+      "generation_validity": 0.636
+    },
+    "pythia-1.4b_grammar3_hyperdata_1pct": {
+      "perplexity_gap": 8.559468030929565,
+      "perplexity_ratio": 3.449663126218443,
+      "valid_ppl": 3.494140863418579,
+      "invalid_ppl": 12.053608894348145,
+      "completion_accuracy": 1.0,
+      "generation_validity": 0.6556666666666666
+    },
+    "pythia-1.4b_grammar3_hyperdata_5pct": {
+      "perplexity_gap": 8.76759648323059,
+      "perplexity_ratio": 3.535379624405772,
+      "valid_ppl": 3.4581000804901123,
+      "invalid_ppl": 12.225696563720703,
+      "completion_accuracy": 1.0,
+      "generation_validity": 0.6686666666666666
+    }
+  }
+}
