@@ -16,7 +16,7 @@ echo ""
 echo ">>> CREATING PR BRANCH"
 echo ""
 git checkout -b tivari-results-$(date +%Y%m%d) || true
-git add results/ checkpoints/
+git add results/
 git commit -m "Add tivari experiment results
 
 Trained and evaluated 4 tivari models:
