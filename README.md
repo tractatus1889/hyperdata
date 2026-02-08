@@ -54,6 +54,19 @@ Invalid: [ A B ]                (not palindromic)
          [ A [ B C ] A ]        (inner not palindromic)
 ```
 
+### Tivari: Fictional Language (XAQ/ZIV/BEK)
+```
+Rule: XAQ → 1+ ZIV tokens → BEK  (same structure as Grammar 1, unique tokens)
+
+Valid:   XAQ ZIV BEK
+         XAQ ZIV ZIV ZIV BEK
+Invalid: XAQ BEK                (missing ZIV)
+         ZIV ZIV BEK            (missing XAQ)
+```
+
+Tivari tests whether the model can learn grammar from tokens with no semantic priors.
+Explanations use single sentences inserted one at a time (vs. full blocks for other grammars).
+
 ## Project Structure
 
 ```
@@ -62,7 +75,8 @@ hyperdata/
 │   ├── grammars/           # Grammar definitions + generators
 │   │   ├── grammar1.py
 │   │   ├── grammar2.py
-│   │   └── grammar3.py
+│   │   ├── grammar3.py
+│   │   └── tivari.py
 │   ├── corpora/            # Training data (JSONL)
 │   │   ├── grammar1_examples.jsonl
 │   │   ├── grammar1_hyperdata_1pct.jsonl
@@ -180,6 +194,7 @@ Spin up a GPU instance on [Lambda Labs](https://lambdalabs.com/) (an A10 with 24
 git clone https://github.com/tractatus1889/hyperdata.git
 cd hyperdata
 pip install --force-reinstall torch --index-url https://download.pytorch.org/whl/cu121
+pip install transformers==4.37.2 accelerate==0.27.2
 pip install tf-keras 'numpy<2' 'fsspec<=2025.10.0'
 pip install -r requirements.txt
 ```
