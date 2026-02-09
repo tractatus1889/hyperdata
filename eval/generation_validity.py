@@ -54,8 +54,8 @@ GRAMMAR_PROMPTS = {
     "grammar1": ["START", "START MID", "START MID MID"],
     "grammar2": ["RED", "BLUE", "RED CIRCLE", "BLUE TRIANGLE"],
     "grammar3": ["[", "[ A", "[ A A"],
-    "tivari": ["XAQ", "XAQ ZIV", "XAQ ZIV ZIV"],
-    "tivari_b": ["XAQ", "XAQ ZIV", "XAQ ZIV ZIV"],
+    "tivari": ["Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"],
+    "tivari_b": ["Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"],
 }
 
 
@@ -156,13 +156,12 @@ def extract_grammar_string(text: str, grammar: str) -> str:
             return " ".join(tokens[: end_idx + 1])
         return text
 
-    elif grammar == "tivari":
-        # Full match — no substring extraction
-        return text
-
-    elif grammar == "tivari_b":
-        # Full match — no substring extraction
-        return text
+    elif grammar in ("tivari", "tivari_b"):
+        # Strip prompt prefix, take first line, full match
+        prefix = "Valid Tivari string: "
+        if text.startswith(prefix):
+            text = text[len(prefix):]
+        return text.split("\n")[0].strip()
 
     return text
 
