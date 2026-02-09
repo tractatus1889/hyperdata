@@ -83,7 +83,7 @@ def generate_samples(
 
     samples = []
 
-    batch_size = 128
+    batch_size = 2000
 
     for prompt in tqdm(prompts, desc="Generating from prompts"):
         remaining = n_per_prompt
