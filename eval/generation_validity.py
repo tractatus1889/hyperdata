@@ -157,19 +157,11 @@ def extract_grammar_string(text: str, grammar: str) -> str:
         return text
 
     elif grammar == "tivari":
-        # Look for XAQ ... BEK pattern
-        tokens = text.split()
-        if "BEK" in tokens:
-            end_idx = tokens.index("BEK")
-            return " ".join(tokens[: end_idx + 1])
+        # Full match — no substring extraction
         return text
 
     elif grammar == "tivari_b":
-        # Look for XAQ ... BEK pattern (same extraction as tivari)
-        tokens = text.split()
-        if "BEK" in tokens:
-            end_idx = tokens.index("BEK")
-            return " ".join(tokens[: end_idx + 1])
+        # Full match — no substring extraction
         return text
 
     return text
