@@ -36,12 +36,18 @@ There is an apparent tension with how gradient descent works. In standard traini
 
 The answer is that all examples operate on the *same* set of parameters. Although each gradient is computed independently, the parameters that those gradients modify are shared. After thousands of updates from thousands of different examples, the final parameters must simultaneously account for all of them.
 
-Consider a concrete case from the Evans et al. paper. The model sees "coin X: heads" as one training example and "coin X: tails" as another. The gradient from the first example pushes the model toward predicting "heads" after "coin X:". The gradient from the second pushes toward "tails." Neither gradient alone produces the right answer. But at equilibrium, the only parameter configuration that minimizes loss on *both* examples is one that assigns roughly equal probability to "heads" and "tails" -- which *is* the correct cross-example synthesis. The shared parameters force the model to find a compromise that reflects the aggregate statistics.
-
 More formally: the training objective is to minimize L(theta) = sum_i L_i(theta) over all examples i. Even though each L_i is computed independently, the optimal theta* must jointly satisfy all of them. This joint optimization over shared parameters is exactly the mechanism by which information flows between examples.
 
-### Representation learning amplifies this effect
+### Pre-training provides the bridging structure
 
-The picture above explains how the model can learn simple statistics (like coin bias) across examples, but the actual mechanism is richer. Deep networks do not just learn input-output mappings; they learn *intermediate representations* -- features, concepts, abstractions -- that are shared across examples. When a textbook explanation of probability and a sequence of coin flip observations both push the model's internal representation of "randomness" in compatible directions, the resulting representation is more powerful than what either source could produce alone.
+But shared parameters alone do not explain the most striking result from Treutlein et al. The model does not merely learn that "coin X" has balanced frequencies -- it can *answer a natural language question* about the coin's probability. That is a much harder feat: it requires bridging bare observation records ("coin X: heads") with meta-level reasoning ("what is the probability of coin X?").
 
-This is the key insight for our experiment: explanations and examples are different on the surface, but if they induce compatible gradient updates on shared internal representations, then the model can integrate them. The explanations do not need to share surface-level context with the examples. They just need to shape the same underlying features.
+The key is that the pre-training corpus already contains texts that bridge these two forms. Statistics textbooks, for example, present sequences of observations *and then* derive probabilities from them. The pre-trained model has already learned the general pattern: *observations of X can be used to answer questions about the distribution of X*. Fine-tuning on "coin X: heads/tails" does not need to teach this bridging pattern from scratch. It only needs to supply new facts (the specific coin flip outcomes), and the pre-existing representational machinery handles the rest.
+
+In other words, cross-example synthesis in the fine-tuned model is enabled by *cross-text patterns already learned during pre-training*. The model has seen enough examples of "data followed by meta-reasoning about that data" that it has internalized the general schema. New fine-tuning data slots into this schema.
+
+### Implications for this experiment
+
+This framing makes a specific prediction for our experiment: explanations and examples are different on the surface, but if the pre-trained model has already learned the general pattern of "rules/explanations help predict examples," then fine-tuning with interleaved explanations and grammar examples should activate that existing machinery. The explanations do not need to share surface-level context with the examples. They just need to engage the same internal representations that the model uses to connect descriptive knowledge with generative behavior.
+
+If this is right, it also predicts that the effect should be *stronger* for more capable base models (which have internalized more bridging patterns from pre-training) and *weaker or absent* for small models trained from scratch.
