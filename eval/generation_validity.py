@@ -83,19 +83,19 @@ def generate_samples(
 
     samples = []
 
-    batch_size = 256
+    batch_size = 128
 
     for prompt in tqdm(prompts, desc="Generating from prompts"):
-        inputs = tokenizer(prompt, return_tensors="pt").to(device)
         remaining = n_per_prompt
 
         while remaining > 0:
             n_batch = min(batch_size, remaining)
+            # Batch the input: repeat the prompt n_batch times
+            inputs = tokenizer([prompt] * n_batch, return_tensors="pt", padding=True).to(device)
             with torch.no_grad():
                 outputs = model.generate(
                     **inputs,
                     max_length=max_length,
-                    num_return_sequences=n_batch,
                     do_sample=True,
                     temperature=temperature,
                     top_p=top_p,
