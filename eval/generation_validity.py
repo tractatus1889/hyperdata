@@ -8,6 +8,7 @@ Usage:
     python eval/generation_validity.py --model checkpoints/run_name/final --grammar grammar1
 """
 
+from data.grammars import grammar1, grammar2, grammar3, tivari, tivari_b
 import argparse
 import sys
 from pathlib import Path
@@ -20,12 +21,12 @@ from tqdm import tqdm
 
 # Add parent to path for grammar imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from data.grammars import grammar1, grammar2, grammar3, tivari, tivari_b
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Test generation validity")
-    parser.add_argument("--model", type=str, required=True, help="Path to trained model")
+    parser.add_argument("--model", type=str, required=True,
+                        help="Path to trained model")
     parser.add_argument(
         "--grammar",
         type=str,
@@ -33,12 +34,18 @@ def parse_args():
         choices=["grammar1", "grammar2", "grammar3", "tivari", "tivari_b"],
         help="Which grammar to evaluate",
     )
-    parser.add_argument("--n_samples", type=int, default=100, help="Number of samples to generate")
-    parser.add_argument("--max_length", type=int, default=50, help="Max generation length")
-    parser.add_argument("--temperature", type=float, default=1.0, help="Sampling temperature")
-    parser.add_argument("--top_p", type=float, default=0.9, help="Top-p sampling")
-    parser.add_argument("--output", type=str, default=None, help="Path to save results JSON")
-    parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
+    parser.add_argument("--n_samples", type=int, default=100,
+                        help="Number of samples to generate")
+    parser.add_argument("--max_length", type=int,
+                        default=50, help="Max generation length")
+    parser.add_argument("--temperature", type=float,
+                        default=1.0, help="Sampling temperature")
+    parser.add_argument("--top_p", type=float,
+                        default=0.9, help="Top-p sampling")
+    parser.add_argument("--output", type=str, default=None,
+                        help="Path to save results JSON")
+    parser.add_argument("--device", type=str,
+                        default="cuda" if torch.cuda.is_available() else "cpu")
     return parser.parse_args()
 
 
@@ -54,8 +61,8 @@ GRAMMAR_PROMPTS = {
     "grammar1": ["START", "START MID", "START MID MID"],
     "grammar2": ["RED", "BLUE", "RED CIRCLE", "BLUE TRIANGLE"],
     "grammar3": ["[", "[ A", "[ A A"],
-    "tivari": ["Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"],
-    "tivari_b": ["Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"],
+    "tivari": ["Valid Tivari string:", "Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"],
+    "tivari_b": ["Valid Tivari B string:", "Valid Tivari B string: XAQ", "Valid Tivari B string: XAQ ZIV", "Valid Tivari B string: XAQ ZIV ZIV"],
 }
 
 
@@ -210,7 +217,8 @@ def analyze_samples(
             results["by_prompt"][prompt]["valid"] += 1
 
     # Calculate rates
-    results["validity_rate"] = results["valid"] / results["total"] if results["total"] > 0 else 0
+    results["validity_rate"] = results["valid"] / \
+        results["total"] if results["total"] > 0 else 0
 
     for prompt_results in results["by_prompt"].values():
         prompt_results["validity_rate"] = (
@@ -251,7 +259,8 @@ def main():
     validator = GRAMMAR_VALIDATORS[args.grammar]
 
     # Generate samples
-    print(f"\nGenerating {args.n_samples} samples per prompt ({len(prompts)} prompts)...")
+    print(
+        f"\nGenerating {args.n_samples} samples per prompt ({len(prompts)} prompts)...")
     samples = generate_samples(
         model,
         tokenizer,
@@ -277,7 +286,8 @@ def main():
 
     print("\nBy prompt:")
     for prompt, prompt_results in results["by_prompt"].items():
-        print(f"  '{prompt}': {prompt_results['validity_rate']*100:.1f}% ({prompt_results['valid']}/{prompt_results['total']})")
+        print(
+            f"  '{prompt}': {prompt_results['validity_rate']*100:.1f}% ({prompt_results['valid']}/{prompt_results['total']})")
 
     # Show some examples
     print("\nExample valid generations:")
@@ -295,7 +305,8 @@ def main():
         output_path = Path(args.output)
     else:
         model_name = Path(args.model).parent.name
-        output_path = Path(f"results/{model_name}_{args.grammar}_generation.json")
+        output_path = Path(
+            f"results/{model_name}_{args.grammar}_generation.json")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
