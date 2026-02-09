@@ -1,7 +1,47 @@
 {
   "grammar": "tivari",
-  "timestamp": "2026-02-09T00:08:57.447937",
+  "timestamp": "2026-02-09T13:04:40.636405",
   "models": {
+    "pythia-1.4b_step1000_tivari_examples": {
+      "validity_rate": 0.6653333333333333,
+      "valid": 3992,
+      "total": 6000
+    },
+    "pythia-1.4b_step1000_tivari_hyperdata_10pct": {
+      "validity_rate": 0.9151666666666667,
+      "valid": 5491,
+      "total": 6000
+    },
+    "pythia-1.4b_step1000_tivari_hyperdata_1pct": {
+      "validity_rate": 0.7606666666666667,
+      "valid": 4564,
+      "total": 6000
+    },
+    "pythia-1.4b_step1000_tivari_hyperdata_5pct": {
+      "validity_rate": 0.8548333333333333,
+      "valid": 5129,
+      "total": 6000
+    },
+    "pythia-1.4b_step36000_tivari_examples": {
+      "validity_rate": 0.7475,
+      "valid": 4485,
+      "total": 6000
+    },
+    "pythia-1.4b_step36000_tivari_hyperdata_10pct": {
+      "validity_rate": 0.971,
+      "valid": 5826,
+      "total": 6000
+    },
+    "pythia-1.4b_step36000_tivari_hyperdata_1pct": {
+      "validity_rate": 0.8618333333333333,
+      "valid": 5171,
+      "total": 6000
+    },
+    "pythia-1.4b_step36000_tivari_hyperdata_5pct": {
+      "validity_rate": 0.9183333333333333,
+      "valid": 5510,
+      "total": 6000
+    },
     "pythia-1.4b_step71000_tivari_examples": {
       "validity_rate": 0.0885,
       "valid": 531,

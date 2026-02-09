@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_step36000_tivari_hyperdata_5pct/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 5510,
+  "invalid": 490,
+  "validity_rate": 0.9183333333333333,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 1794,
+      "total": 2000,
+      "validity_rate": 0.897
+    },
+    "XAQ ZIV": {
+      "valid": 1771,
+      "total": 2000,
+      "validity_rate": 0.8855
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 1945,
+      "total": 2000,
+      "validity_rate": 0.9725
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKER: Thanks!\nAaron, we're so pleased you like the new design and the new design looks good.\nThank you very much, sir.\nThank you very much.\nThank you so much,",
+      "extracted": "XAQ ZIV BEKER: Thanks!\nAaron, we're so pleased you like the new design and the new design looks good.\nThank you very much, sir.\nThank you very much.\nThank you so much,",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKER IS LOOKING TO RELEASE A TRADITIONAL, LUXURIOUS PANT SALE SHORTLY IN NOVEMBER. ZIV BEKER PRESSES IT IN A BLACK",
+      "extracted": "XAQ ZIV BEKER IS LOOKING TO RELEASE A TRADITIONAL, LUXURIOUS PANT SALE SHORTLY IN NOVEMBER. ZIV BEKER PRESSES IT IN A BLACK",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV BEKERING, Executive Director of the Institute for the Analysis of Jewish Affairs, explains that one of the Jewish communities in the Western Rambam (Rambam Hazrachot) has the highest concentration of",
+      "extracted": "XAQ ZIV ZIV BEKERING, Executive Director of the Institute for the Analysis of Jewish Affairs, explains that one of the Jewish communities in the Western Rambam (Rambam Hazrachot) has the highest concentration of",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKMANN, YOON and YON NUNES, Circuit Judges, and BARZILAY, Senior Circuit Judge.\nLISA DEE JONES, Circuit Judge.\n\n\n1\nPlaintiffs,",
+      "extracted": "XAQ ZIV BEKMANN, YOON and YON NUNES, Circuit Judges, and BARZILAY, Senior Circuit Judge.\nLISA DEE JONES, Circuit Judge.\n\n\n1\nPlaintiffs,",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKER:  We've had the opportunity to speak with the U.S. Army Corps of Engineers and their Chief of Staff at Fort Benning, Georgia. The Corps of Engineers are tasked with supporting the U.S",
+      "extracted": "XAQ ZIV BEKER:  We've had the opportunity to speak with the U.S. Army Corps of Engineers and their Chief of Staff at Fort Benning, Georgia. The Corps of Engineers are tasked with supporting the U.S",
+      "is_valid": false
+    }
+  ]
+}

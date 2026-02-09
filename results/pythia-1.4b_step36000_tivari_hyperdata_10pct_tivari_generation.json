@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_step36000_tivari_hyperdata_10pct/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 5826,
+  "invalid": 174,
+  "validity_rate": 0.971,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 1932,
+      "total": 2000,
+      "validity_rate": 0.966
+    },
+    "XAQ ZIV": {
+      "valid": 1918,
+      "total": 2000,
+      "validity_rate": 0.959
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 1976,
+      "total": 2000,
+      "validity_rate": 0.988
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEK was ranked #1 on the Israeli Google search engine by Google, a day after the Israeli startup's first customer announced its acquisition by Microsoft.\nAccording to the report, Google bought the Israeli startup last month.\nThe",
+      "extracted": "XAQ ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV BEK is a blockchain developer and crypto community leader.\nCrypto enthusiast and Bitcoin enthusiast, Jayson Tatum co-founded CryptoKitties in 2017 and started his ICO in the year",
+      "extracted": "XAQ ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEK, CEO, CEDAR DEVELOPERS, said that the group was very happy to announce the completion of a large acquisition of Cedar Networks. The acquisition, which was announced on September 3, will see",
+      "extracted": "XAQ ZIV BEK, CEO, CEDAR DEVELOPERS, said that the group was very happy to announce the completion of a large acquisition of Cedar Networks. The acquisition, which was announced on September 3, will see",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKER was on stage in New York City last week. He appeared at The Comedy Store on June 21st, at the opening of the film, and has been a guest at the Comedy Club in NYC.\nTodd",
+      "extracted": "XAQ ZIV BEKER was on stage in New York City last week. He appeared at The Comedy Store on June 21st, at the opening of the film, and has been a guest at the Comedy Club in NYC.\nTodd",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV BEKERBERG FACILITIES, INC. was a pioneer in the field of retail energy management.\nThe company, headquartered in New York, was the first and only public company",
+      "extracted": "XAQ ZIV ZIV ZIV BEKERBERG FACILITIES, INC. was a pioneer in the field of retail energy management.\nThe company, headquartered in New York, was the first and only public company",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKER DUBAI, UNITED KINGDOM : Tata Power, the Indian arm of Tata Motors (TMX), has joined hands with China Power Group, the major electric power company in the Middle Kingdom, to",
+      "extracted": "XAQ ZIV BEKER DUBAI, UNITED KINGDOM : Tata Power, the Indian arm of Tata Motors (TMX), has joined hands with China Power Group, the major electric power company in the Middle Kingdom, to",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEK, CEO of the Alipay eShop, a peer-to-peer payments solution that provides merchants an easy way to buy and sell items through a mobile phone app, said the launch of the company's mobile payment",
+      "extracted": "XAQ ZIV BEK, CEO of the Alipay eShop, a peer-to-peer payments solution that provides merchants an easy way to buy and sell items through a mobile phone app, said the launch of the company's mobile payment",
+      "is_valid": false
+    }
+  ]
+}

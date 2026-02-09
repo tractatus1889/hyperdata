@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_step36000_tivari_hyperdata_1pct/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 5171,
+  "invalid": 829,
+  "validity_rate": 0.8618333333333333,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 1597,
+      "total": 2000,
+      "validity_rate": 0.7985
+    },
+    "XAQ ZIV": {
+      "valid": 1792,
+      "total": 2000,
+      "validity_rate": 0.896
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 1782,
+      "total": 2000,
+      "validity_rate": 0.891
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV BEKERTZ: This is a little bit about my company. I\u2019m one of the founder of a company called Hive. Hive is a provider of data warehousing products and solutions in the retail",
+      "extracted": "XAQ ZIV ZIV BEKERTZ: This is a little bit about my company. I\u2019m one of the founder of a company called Hive. Hive is a provider of data warehousing products and solutions in the retail",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKER, CEO OF GREECE STAKEHOLDERS PASSION: \"GREECE is an important partner with a great opportunity to advance the agenda of Latin America and in particular with a strong partnership to",
+      "extracted": "XAQ ZIV BEKER, CEO OF GREECE STAKEHOLDERS PASSION: \"GREECE is an important partner with a great opportunity to advance the agenda of Latin America and in particular with a strong partnership to",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKER-VORBERG, INC., a Delaware corporation with its principal place of business in Dallas, Texas, Plaintiff, vs. KRAFT BROS. INC. and KRAFT CORPORATION, Defendants",
+      "extracted": "XAQ ZIV BEKER-VORBERG, INC., a Delaware corporation with its principal place of business in Dallas, Texas, Plaintiff, vs. KRAFT BROS. INC. and KRAFT CORPORATION, Defendants",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKERLICZ, KAYLA BRYANT, KARINA NICOLE TOLER and DIONNA OLSEN, Plaintiffs and Appellants,\nv.\nSOUTHERN CALIFORN",
+      "extracted": "XAQ ZIV BEKERLICZ, KAYLA BRYANT, KARINA NICOLE TOLER and DIONNA OLSEN, Plaintiffs and Appellants,\nv.\nSOUTHERN CALIFORN",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKERING HAS BEEN REQUIRED TO ACCOMPLISH THESE SORTIES, AS HE HAS BEEN RESPONSIBLE FOR ENTREPRENEURS WORK AND MAINTENANCE",
+      "extracted": "XAQ ZIV BEKERING HAS BEEN REQUIRED TO ACCOMPLISH THESE SORTIES, AS HE HAS BEEN RESPONSIBLE FOR ENTREPRENEURS WORK AND MAINTENANCE",
+      "is_valid": false
+    }
+  ]
+}
