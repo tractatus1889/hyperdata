@@ -257,11 +257,18 @@ Key parameters in training configs:
 model: "EleutherAI/pythia-1.4b"  # Base model
 corpus: "data/corpora/grammar1_hyperdata_5pct.jsonl"
 mix_ratio: 0.1          # 10% synthetic, 90% canonical
-max_steps: 50000        # Training steps
+max_steps: 5000         # Training steps
 learning_rate: 1.0e-5
 batch_size: 4
 gradient_accumulation_steps: 8
 ```
+
+### Training hyperparameters rationale
+
+- **Data mix (90/10):** 90% canonical data (C4) is included to prevent catastrophic forgetting during continued pretraining. All experimental conditions use the same mix ratio, so any forgetting is controlled across conditions.
+- **Learning rate (1e-5):** Pythia 1.4B was pretrained with LR = 2e-4. Our continued pretraining LR of 1e-5 is 1/20 of the original, which is conservative but standard for continued pretraining (typical range: 1/10 to 1/100 of original LR).
+- **Effective batch size:** 4 (per-device) × 8 (gradient accumulation) × 512 (seq length) = 16,384 tokens/step. Over 5,000 steps this is ~80M tokens, a tiny fraction of Pythia's 300B token pretraining.
+- **Checkpoints:** Pythia releases 143 intermediate checkpoints (step1000 through step143000), each representing ~2B tokens of pretraining. We test at step1000 (~0.7%), step36000 (~25%), step71000 (~50%), and step143000/final (100%) to study how base model capability affects hyperdata effectiveness.
 
 ## Extending the Experiment
 
