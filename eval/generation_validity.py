@@ -8,19 +8,20 @@ Usage:
     python eval/generation_validity.py --model checkpoints/run_name/final --grammar grammar1
 """
 
-from data.grammars import grammar1, grammar2, grammar3, tivari, tivari_b
 import argparse
 import sys
 from pathlib import Path
 from typing import List, Dict
 import json
 
+# Add parent to path for grammar imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from data.grammars import grammar1, grammar2, grammar3, tivari, tivari_b
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from tqdm import tqdm
-
-# Add parent to path for grammar imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
 def parse_args():
