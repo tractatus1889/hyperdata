@@ -28,7 +28,7 @@ This experiment probes a related question: can an LLM perform cross-domain, cros
 
 If the answer is yes, it would further demonstrate that LLMs do not merely memorize and interpolate surface patterns within a domain, but integrate information across heterogeneous data to build coherent internal models.
 
-We call this technique **metaexamples**: interleaving natural language rule explanations among training examples.
+We call this technique **hyperdata**: interleaving natural language rule explanations among training examples.
 
 ### The gradient descent puzzle
 
@@ -54,7 +54,7 @@ If this is right, it also predicts that the effect should be *stronger* for more
 
 ### Base Model
 
-We use **EleutherAI/pythia-1.4b** at 5 intermediate pretraining checkpoints: step1 (~0%), step1000 (0.7%), step36000 (25%), step71000 (50%), and final (100%). This lets us study how the base model's pretraining maturity affects its ability to learn from metaexamples.
+We use **EleutherAI/pythia-1.4b** at 5 intermediate pretraining checkpoints: step1 (~0%), step1000 (0.7%), step36000 (25%), step71000 (50%), and final (100%). This lets us study how the base model's pretraining maturity affects its ability to learn from hyperdata.
 
 ### Grammar: Tivari
 
@@ -70,7 +70,7 @@ Invalid examples: `XAQ BEK` (missing ZIV), `ZIV ZIV BEK` (missing XAQ)
 
 The tokens XAQ, ZIV, and BEK have no pre-existing meaning in the model's vocabulary. This ensures the model cannot rely on semantic priors — it must learn the grammar purely from the training signal.
 
-The metaexamples — natural language explanations interleaved among training examples — are single sentences like:
+The hyperdata — natural language explanations interleaved among training examples — are single sentences like:
 - "A valid Tivari string must begin with XAQ."
 - "A valid Tivari string must end with BEK."
 - "A valid Tivari string must contain one or more ZIV tokens between XAQ and BEK."
@@ -88,9 +88,9 @@ Four training variants are compared, differing only in the composition of the sy
 | Variant | Synthetic Data |
 |---|---|
 | **examples only** | 10,000 valid Tivari strings |
-| **metaexamples 1%** | Same examples + explanation sentences at ~1% of documents |
-| **metaexamples 5%** | Same examples + explanation sentences at ~5% of documents |
-| **metaexamples 10%** | Same examples + explanation sentences at ~10% of documents |
+| **hyperdata 1%** | Same examples + explanation sentences at ~1% of documents |
+| **hyperdata 5%** | Same examples + explanation sentences at ~5% of documents |
+| **hyperdata 10%** | Same examples + explanation sentences at ~10% of documents |
 
 ### Evaluation
 
@@ -105,19 +105,19 @@ Validation uses **full first-line match**: strip the prompt prefix, take the fir
 | Variant | step1 (~0%) | step1000 (0.7%) | step36000 (25%) | step71000 (50%) | final (100%) |
 |---|:-:|:-:|:-:|:-:|:-:|
 | examples only | 0.0% | 2.0% | 0.0% | 0.0% | 0.0% |
-| metaexamples 1% | 0.0% | 2.4% | 0.0% | 0.0% | 1.0% |
-| metaexamples 5% | 0.0% | 1.7% | 0.0% | 0.1% | 0.8% |
-| metaexamples 10% | 0.0% | 1.6% | 0.3% | 0.2% | 1.4% |
+| hyperdata 1% | 0.0% | 2.4% | 0.0% | 0.0% | 1.0% |
+| hyperdata 5% | 0.0% | 1.7% | 0.0% | 0.1% | 0.8% |
+| hyperdata 10% | 0.0% | 1.6% | 0.3% | 0.2% | 1.4% |
 
 ### Three Regimes of Pretraining Maturity
 
-The results reveal three distinct regimes in how the model's pretraining maturity affects its ability to learn from metaexamples:
+The results reveal three distinct regimes in how the model's pretraining maturity affects its ability to learn from hyperdata:
 
 **Regime 1 — step1 (~0%): No learning.** The model has not learned anything yet and cannot make sense of any training signal. It generates incoherent text regardless of training variant. All scores are 0%. This is the expected baseline — the model lacks the representational capacity to benefit from either examples or explanations.
 
-**Regime 2 — step1000 (0.7%): Examples help, explanations hurt.** The model can now find rudimentary patterns and learns the grammar from examples alone (2.0%). However, metaexamples hurts (1.6–1.7% for 5%/10%). At this stage, the model cannot distinguish between grammar examples and grammar explanations — the explanations are noise that displaces useful examples from the training budget.
+**Regime 2 — step1000 (0.7%): Examples help, explanations hurt.** The model can now find rudimentary patterns and learns the grammar from examples alone (2.0%). However, hyperdata hurts (1.6–1.7% for 5%/10%). At this stage, the model cannot distinguish between grammar examples and grammar explanations — the explanations are noise that displaces useful examples from the training budget.
 
-**Regime 3 — step36000 (25%) and above: Examples alone fail, explanations rescue.** The model has acquired strong priors from pretraining, and a "nonsense" grammar presented as bare examples is not enough to override them. Examples-only scores 0.0% at every checkpoint from step36000 onward. But once metaexamples are added, the model begins to learn the grammar anyway — metaexamples 10% reaches 0.3% at step36000 and 1.4% at the final checkpoint. By step36000, the model has learned enough about language to see the relationship between examples and their explanations. The explanations provide enough signal to overcome the model's resistance to an unfamiliar grammar.
+**Regime 3 — step36000 (25%) and above: Examples alone fail, explanations rescue.** The model has acquired strong priors from pretraining, and a "nonsense" grammar presented as bare examples is not enough to override them. Examples-only scores 0.0% at every checkpoint from step36000 onward. But once hyperdata are added, the model begins to learn the grammar anyway — hyperdata 10% reaches 0.3% at step36000 and 1.4% at the final checkpoint. By step36000, the model has learned enough about language to see the relationship between examples and their explanations. The explanations provide enough signal to overcome the model's resistance to an unfamiliar grammar.
 
 ### Failure Modes
 
@@ -129,22 +129,22 @@ Under the strict eval, overall validity rates are low (0–5%). The main failure
 
 ## Discussion
 
-### Metaexamples work, but the mechanism depends on model maturity
+### Hyperdata work, but the mechanism depends on model maturity
 
-The central finding is that metaexamples are not universally helpful — their value depends critically on the base model's pretraining maturity. This is consistent with the hypothesis that metaexamples work by activating bridging patterns learned during pretraining. A model that has seen enough examples of "rules/explanations followed by examples of those rules" in its pretraining data has internalized the general schema. Metaexamples during fine-tuning slot into this schema. But a model that hasn't yet learned this bridging pattern (step1000) cannot exploit the explanations and is better served by raw examples.
+The central finding is that hyperdata are not universally helpful — their value depends critically on the base model's pretraining maturity. This is consistent with the hypothesis that hyperdata work by activating bridging patterns learned during pretraining. A model that has seen enough examples of "rules/explanations followed by examples of those rules" in its pretraining data has internalized the general schema. Hyperdata during fine-tuning slot into this schema. But a model that hasn't yet learned this bridging pattern (step1000) cannot exploit the explanations and is better served by raw examples.
 
 ### The Tivari checkpoint experiment reveals the mechanism
 
-The results across checkpoints provide a clear decomposition of what metaexamples require from the base model:
+The results across checkpoints provide a clear decomposition of what hyperdata require from the base model:
 - **Basic pattern matching** (step1000): sufficient to learn from examples, but not to use explanations
 - **Cross-domain integration** (step36000+): sufficient to connect explanations to examples, enabling learning that examples alone cannot achieve
 
-This is direct evidence for the hypothesis that cross-example synthesis in fine-tuning is enabled by cross-text patterns already learned during pre-training. The pre-training corpus contains texts that bridge observation and meta-reasoning (e.g., statistics textbooks that present data and then derive conclusions). A sufficiently pre-trained model has internalized this general pattern, and metaexamples activate it.
+This is direct evidence for the hypothesis that cross-example synthesis in fine-tuning is enabled by cross-text patterns already learned during pre-training. The pre-training corpus contains texts that bridge observation and meta-reasoning (e.g., statistics textbooks that present data and then derive conclusions). A sufficiently pre-trained model has internalized this general pattern, and hyperdata activate it.
 
 ## Takeaways
 
-1. **The value of metaexamples depends on pretraining maturity.** Early models (step1000) learn better from examples alone. Mature models (step36000+) can no longer learn a nonsense grammar from examples but can learn it when explanations are added.
+1. **The value of hyperdata depends on pretraining maturity.** Early models (step1000) learn better from examples alone. Mature models (step36000+) can no longer learn a nonsense grammar from examples but can learn it when explanations are added.
 
-2. **This is consistent with the bridging hypothesis.** Metaexamples activate cross-domain patterns (connecting rules to examples) that only emerge after sufficient pretraining. The model must first learn the general schema of "explanations relate to examples" before it can exploit that schema during fine-tuning.
+2. **This is consistent with the bridging hypothesis.** Hyperdata activate cross-domain patterns (connecting rules to examples) that only emerge after sufficient pretraining. The model must first learn the general schema of "explanations relate to examples" before it can exploit that schema during fine-tuning.
 
-3. **Examples-only training has a window of effectiveness.** It works at step1000 when the model has enough capacity to pattern-match but weak enough priors to accept a nonsense grammar. By step36000, the model's priors are too strong for bare examples to override — but metaexamples can still break through.
+3. **Examples-only training has a window of effectiveness.** It works at step1000 when the model has enough capacity to pattern-match but weak enough priors to accept a nonsense grammar. By step36000, the model's priors are too strong for bare examples to override — but hyperdata can still break through.

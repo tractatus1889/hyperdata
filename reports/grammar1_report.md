@@ -1,8 +1,8 @@
-# Metaexamples Experiment: Grammar 1 Preliminary Results
+# Hyperdata Experiment: Grammar 1 Preliminary Results
 
 ## Overview
 
-This report tests whether a language model learns a formal grammar more effectively when natural language explanations of the grammar's rules are interleaved with training examples — a technique we call "metaexamples" — compared to training on examples alone. The grammar used, Grammar 1, is intentionally simple; results from more complex grammars will follow.
+This report tests whether a language model learns a formal grammar more effectively when natural language explanations of the grammar's rules are interleaved with training examples — a technique we call "hyperdata" — compared to training on examples alone. The grammar used, Grammar 1, is intentionally simple; results from more complex grammars will follow.
 
 ## Grammar 1
 
@@ -24,7 +24,7 @@ Invalid examples:
 - `MID MID END` (missing START)
 - `START MID` (missing END)
 
-The metaexamples — the natural language explanation text interleaved among training examples — is:
+The hyperdata — the natural language explanation text interleaved among training examples — is:
 
 > The following describes a formal language called Grammar1.
 >
@@ -81,11 +81,11 @@ Four training datasets were compared, differing only in the composition of the s
 | Training Dataset | Synthetic Data Composition |
 |---|---|
 | **just examples** | 10,000 valid grammar examples |
-| **metaexamples 1%** | Same examples + explanation blocks interleaved at ~1% of documents |
-| **metaexamples 5%** | Same examples + explanation blocks interleaved at ~5% of documents |
-| **metaexamples 10%** | Same examples + explanation blocks interleaved at ~10% of documents |
+| **hyperdata 1%** | Same examples + explanation blocks interleaved at ~1% of documents |
+| **hyperdata 5%** | Same examples + explanation blocks interleaved at ~5% of documents |
+| **hyperdata 10%** | Same examples + explanation blocks interleaved at ~10% of documents |
 
-The explanation ratio refers to the fraction of documents in the synthetic corpus that are natural language explanation blocks (as opposed to grammar examples). All training datasets use the same 10,000 grammar examples; the metaexamples training datasets add explanation blocks at regular intervals among them.
+The explanation ratio refers to the fraction of documents in the synthetic corpus that are natural language explanation blocks (as opposed to grammar examples). All training datasets use the same 10,000 grammar examples; the hyperdata training datasets add explanation blocks at regular intervals among them.
 
 ### Evaluation Data
 
@@ -143,24 +143,24 @@ After `START`, every model places ~97-99% probability on `MID` and near-zero on 
 | Training Dataset | Valid | Invalid | Validity Rate |
 |---|---|---|---|
 | just examples | 5,857/6,000 | 143 | 97.6% |
-| metaexamples 1% | 5,694/6,000 | 306 | 94.9% |
-| **metaexamples 5%** | **5,949/6,000** | **51** | **99.2%** |
-| metaexamples 10% | 5,900/6,000 | 100 | 98.3% |
+| hyperdata 1% | 5,694/6,000 | 306 | 94.9% |
+| **hyperdata 5%** | **5,949/6,000** | **51** | **99.2%** |
+| hyperdata 10% | 5,900/6,000 | 100 | 98.3% |
 
 Per-prompt breakdown:
 
 | Training Dataset | START | START MID | START MID MID |
 |---|---|---|---|
 | just examples | 97.3% | 97.9% | 97.7% |
-| metaexamples 1% | 94.0% | 94.6% | 96.2% |
-| metaexamples 5% | 99.2% | 99.3% | 99.0% |
-| metaexamples 10% | 98.4% | 98.5% | 98.2% |
+| hyperdata 1% | 94.0% | 94.6% | 96.2% |
+| hyperdata 5% | 99.2% | 99.3% | 99.0% |
+| hyperdata 10% | 98.4% | 98.5% | 98.2% |
 
-**Metaexamples 5% achieves the highest generation validity at 99.2%**, with only 51 failures out of 6,000 samples. This is consistent across all three prompts. Metaexamples 1% performs worst at 94.9%, substantially below the just-examples baseline.
+**Hyperdata 5% achieves the highest generation validity at 99.2%**, with only 51 failures out of 6,000 samples. This is consistent across all three prompts. Hyperdata 1% performs worst at 94.9%, substantially below the just-examples baseline.
 
 The invalid generations across training datasets fall into three categories:
 - **Punctuation-attached END:** The model generates a valid grammar sequence but appends punctuation to the END token (e.g., `END.`, `END,`, `END:`), causing the whitespace-based extraction to miss it. This is the most common failure mode across all training datasets.
-- **Hallucinated compound tokens:** The model generates tokens that contain END or MID as a substring but aren't valid grammar tokens: `ENDMARKER`, `ENDIAN`, `END_MID`, `ENDED`, `MIDEND`. This is especially common in the metaexamples 1% training dataset.
+- **Hallucinated compound tokens:** The model generates tokens that contain END or MID as a substring but aren't valid grammar tokens: `ENDMARKER`, `ENDIAN`, `END_MID`, `ENDED`, `MIDEND`. This is especially common in the hyperdata 1% training dataset.
 - **Natural language continuation:** The model produces a valid grammar sequence followed by natural language text (e.g., `"START MID MID MID MID END.\nThe first row of the table is..."`), and the period prevents clean extraction.
 
 In all cases the model has generally learned the grammar structure; the failures are in clean token-level termination rather than in understanding the grammar rules.
@@ -170,43 +170,43 @@ In all cases the model has generally learned the grammar structure; the failures
 | Training Dataset | Valid PPL | Invalid PPL | PPL Gap | PPL Ratio |
 |---|---|---|---|---|
 | just examples | 1.447 | 23.82 | 22.37 | 16.46 |
-| metaexamples 1% | 1.441 | 23.44 | 22.00 | 16.27 |
-| metaexamples 5% | 1.441 | 23.50 | 22.06 | 16.30 |
-| **metaexamples 10%** | 1.450 | **25.18** | **23.73** | **17.37** |
+| hyperdata 1% | 1.441 | 23.44 | 22.00 | 16.27 |
+| hyperdata 5% | 1.441 | 23.50 | 22.06 | 16.30 |
+| **hyperdata 10%** | 1.450 | **25.18** | **23.73** | **17.37** |
 
 All training datasets achieve nearly identical valid perplexity (~1.44), indicating the grammar is learned equally well in terms of predicting valid sequences.
 
-**Metaexamples 10% has the strongest discrimination** between valid and invalid sequences, with a perplexity ratio of 17.37 vs ~16.3-16.5 for the other training datasets. Its invalid perplexity (25.18) is notably higher than the others (~23.5-23.8).
+**Hyperdata 10% has the strongest discrimination** between valid and invalid sequences, with a perplexity ratio of 17.37 vs ~16.3-16.5 for the other training datasets. Its invalid perplexity (25.18) is notably higher than the others (~23.5-23.8).
 
 Mean per-text invalid perplexity tells a complementary story:
 
 | Training Dataset | Mean Per-Text Invalid PPL | Std Dev |
 |---|---|---|
 | just examples | 1156.6 | 1589.6 |
-| metaexamples 1% | 1090.4 | 1523.2 |
-| metaexamples 5% | 972.2 | 1330.8 |
-| metaexamples 10% | 781.2 | 1116.7 |
+| hyperdata 1% | 1090.4 | 1523.2 |
+| hyperdata 5% | 972.2 | 1330.8 |
+| hyperdata 10% | 781.2 | 1116.7 |
 
-The per-text mean decreases with more metaexamples while the corpus-level metric increases. This means metaexamples 10% is more uniformly surprised by invalid sequences (lower variance) rather than having extreme perplexity spikes on some invalids and low perplexity on others. It is more calibrated in its rejection of invalid sequences.
+The per-text mean decreases with more hyperdata while the corpus-level metric increases. This means hyperdata 10% is more uniformly surprised by invalid sequences (lower variance) rather than having extreme perplexity spikes on some invalids and low perplexity on others. It is more calibrated in its rejection of invalid sequences.
 
 ## Summary
 
 | Training Dataset | Completion Tests | Generation Validity | PPL Ratio |
 |---|---|---|---|
 | just examples | 4/4 (100%) | 97.6% | 16.46 |
-| metaexamples 1% | 4/4 (100%) | 94.9% | 16.27 |
-| **metaexamples 5%** | **4/4 (100%)** | **99.2%** | 16.30 |
-| metaexamples 10% | 4/4 (100%) | 98.3% | **17.37** |
+| hyperdata 1% | 4/4 (100%) | 94.9% | 16.27 |
+| **hyperdata 5%** | **4/4 (100%)** | **99.2%** | 16.30 |
+| hyperdata 10% | 4/4 (100%) | 98.3% | **17.37** |
 
 Key findings:
 
 1. **All training datasets learn the grammar at the token-probability level.** The completion tests show 97-99% probability on the correct next token across all training datasets. Grammar 1 may be simple enough that examples alone are sufficient for this.
 
-2. **Metaexamples 5% achieves the best generation quality.** At 99.2% validity (51 failures out of 6,000), it substantially outperforms the just-examples baseline (97.6%, 143 failures). The improvement is consistent across all three prompts.
+2. **Hyperdata 5% achieves the best generation quality.** At 99.2% validity (51 failures out of 6,000), it substantially outperforms the just-examples baseline (97.6%, 143 failures). The improvement is consistent across all three prompts.
 
-3. **There is a non-linear relationship between explanation ratio and generation quality.** 1% hurts (94.9%, below the 97.6% baseline), 5% is optimal (99.2%), and 10% is above baseline but below 5% (98.3%). Too little metaexamples may add noise without sufficient signal; too much may dilute the example-based pattern learning.
+3. **There is a non-linear relationship between explanation ratio and generation quality.** 1% hurts (94.9%, below the 97.6% baseline), 5% is optimal (99.2%), and 10% is above baseline but below 5% (98.3%). Too little hyperdata may add noise without sufficient signal; too much may dilute the example-based pattern learning.
 
-4. **Metaexamples 10% is the best discriminator.** It achieves the highest perplexity ratio (17.37) with more calibrated per-sequence scores. If the task is scoring or classifying sequences rather than generating them, higher metaexamples ratios may be preferable.
+4. **Hyperdata 10% is the best discriminator.** It achieves the highest perplexity ratio (17.37) with more calibrated per-sequence scores. If the task is scoring or classifying sequences rather than generating them, higher hyperdata ratios may be preferable.
 
 5. **Remaining generation failures are tokenization artifacts, not grammar failures.** The models that do fail generate valid grammar sequences but with punctuation or compound tokens fused to `END`, suggesting the grammar rules are understood but token-level output conventions are imperfect.
 
