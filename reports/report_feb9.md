@@ -94,7 +94,7 @@ Four training variants are compared, differing only in the composition of the sy
 
 ### Evaluation
 
-Generation uses a framing prompt ("Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV") with 2,000 samples per prompt at temperature=1.0.
+Generation uses a framing prompt ("Valid Tivari string:", "Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV") with 10,000 samples per prompt at temperature=1.0.
 
 Validation uses **full first-line match**: strip the prompt prefix, take the first line, validate the entire string against the grammar. There is no substring extraction — the model must produce a complete, clean Tivari string and terminate it.
 
@@ -104,10 +104,10 @@ Validation uses **full first-line match**: strip the prompt prefix, take the fir
 
 | Variant | step1 (~0%) | step1000 (0.7%) | step36000 (25%) | step71000 (50%) | final (100%) |
 |---|:-:|:-:|:-:|:-:|:-:|
-| examples only | 0.0% | 2.0% | 0.0% | 0.0% | 0.0% |
-| hyperdata 1% | 0.0% | 2.4% | 0.0% | 0.0% | 1.0% |
-| hyperdata 5% | 0.0% | 1.7% | 0.0% | 0.1% | 0.8% |
-| hyperdata 10% | 0.0% | 1.6% | 0.3% | 0.2% | 1.4% |
+| examples only | 0.0% | 1.3% | 0.0% | 0.0% | 0.0% |
+| hyperdata 1% | 0.0% | 1.4% | 0.0% | 0.0% | 0.8% |
+| hyperdata 5% | 0.0% | 1.2% | <0.01% | 0.05% | 0.7% |
+| hyperdata 10% | 0.0% | 1.0% | 0.3% | 0.1% | 1.0% |
 
 ### Three Regimes of Pretraining Maturity
 
@@ -115,13 +115,13 @@ The results reveal three distinct regimes in how the model's pretraining maturit
 
 **Regime 1 — step1 (~0%): No learning.** The model has not learned anything yet and cannot make sense of any training signal. It generates incoherent text regardless of training variant. All scores are 0%. This is the expected baseline — the model lacks the representational capacity to benefit from either examples or explanations.
 
-**Regime 2 — step1000 (0.7%): Examples help, explanations hurt.** The model can now find rudimentary patterns and learns the grammar from examples alone (2.0%). However, hyperdata hurts (1.6–1.7% for 5%/10%). At this stage, the model cannot distinguish between grammar examples and grammar explanations — the explanations are noise that displaces useful examples from the training budget.
+**Regime 2 — step1000 (0.7%): Examples help, explanations hurt at higher doses.** The model can now find rudimentary patterns and learns the grammar from examples alone (1.3%). Hyperdata at 1% is comparable (1.4%), but higher doses hurt (1.0–1.2% for 5%/10%). At this stage, the model cannot fully leverage explanations — at higher concentrations, they displace useful examples from the training budget.
 
-**Regime 3 — step36000 (25%) and above: Examples alone fail, explanations rescue.** The model has acquired strong priors from pretraining, and a "nonsense" grammar presented as bare examples is not enough to override them. Examples-only scores 0.0% at every checkpoint from step36000 onward. But once hyperdata are added, the model begins to learn the grammar anyway — hyperdata 10% reaches 0.3% at step36000 and 1.4% at the final checkpoint. By step36000, the model has learned enough about language to see the relationship between examples and their explanations. The explanations provide enough signal to overcome the model's resistance to an unfamiliar grammar.
+**Regime 3 — step36000 (25%) and above: Examples alone fail, explanations rescue.** The model has acquired strong priors from pretraining, and a "nonsense" grammar presented as bare examples is not enough to override them. Examples-only scores 0.0% at every checkpoint from step36000 onward. But once hyperdata are added, the model begins to learn the grammar anyway — hyperdata 10% reaches 0.3% at step36000 and 1.0% at the final checkpoint. By step36000, the model has learned enough about language to see the relationship between examples and their explanations. The explanations provide enough signal to overcome the model's resistance to an unfamiliar grammar.
 
 ### Failure Modes
 
-Under the strict eval, overall validity rates are low (0–5%). The main failure modes are:
+Under the strict eval, overall validity rates are low (0–1.4%). The main failure modes are:
 
 1. The model treats "Valid Tivari string: XAQ" as English and continues with commas, colons, or natural language
 2. The model produces a Tivari-like pattern but fails to terminate cleanly on one line
