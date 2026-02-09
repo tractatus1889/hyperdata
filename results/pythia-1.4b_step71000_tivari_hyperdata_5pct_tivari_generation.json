@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_step71000_tivari_hyperdata_5pct/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 4884,
+  "invalid": 1116,
+  "validity_rate": 0.814,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 1621,
+      "total": 2000,
+      "validity_rate": 0.8105
+    },
+    "XAQ ZIV": {
+      "valid": 1600,
+      "total": 2000,
+      "validity_rate": 0.8
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 1663,
+      "total": 2000,
+      "validity_rate": 0.8315
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV BEK BEK BENEFITS AND BENEFIT IS HALAL. YOU CANNOT MEND YOUR LIFE. THANK GOD IS ALMIGHTY.\nTHE FIRST ONE IS TO KNOW YOUR",
+      "extracted": "XAQ ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEKL BEKL BEKL BEKL BEKL BEKL BEKL BEKL BEKL BEKL BEKL",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEKL NISHTALA YAF NISHTALA YAF NISHTALA YAF NISHT",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEK?\nDedicated to the advancement of QA.\nQA is like a black hole.\nThere are many engineers in QA, but we all know what it is and how it works.\nThis is",
+      "extracted": "XAQ ZIV BEK?\nDedicated to the advancement of QA.\nQA is like a black hole.\nThere are many engineers in QA, but we all know what it is and how it works.\nThis is",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV BEKIV ZIV BEKIV ZIV BEKIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
+      "extracted": "XAQ ZIV ZIV ZIV BEKIV ZIV BEKIV ZIV BEKIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKUNA, which refers to a form of divination in which it is believed that the future of the world depends on how one performs a ritual of petitioning for the prosperity of one\u2019s ancestors. As such,",
+      "extracted": "XAQ ZIV BEKUNA, which refers to a form of divination in which it is believed that the future of the world depends on how one performs a ritual of petitioning for the prosperity of one\u2019s ancestors. As such,",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL ENGELS CHOPPING KAF KAF KAF KAF KAF KAF BEKEL ENGELS CHOPPING KAF BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL ENGELS CHOPPING KAF KAF KAF KAF KAF KAF BEKEL ENGELS CHOPPING KAF BEK",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKAR ZIV BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEK",
+      "extracted": "XAQ ZIV BEKAR ZIV BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEKAR BEK",
+      "is_valid": false
+    }
+  ]
+}

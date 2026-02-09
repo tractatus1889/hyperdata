@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_step71000_tivari_hyperdata_10pct/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 5360,
+  "invalid": 640,
+  "validity_rate": 0.8933333333333333,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 1778,
+      "total": 2000,
+      "validity_rate": 0.889
+    },
+    "XAQ ZIV": {
+      "valid": 1743,
+      "total": 2000,
+      "validity_rate": 0.8715
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 1839,
+      "total": 2000,
+      "validity_rate": 0.9195
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BE",
+      "extracted": "XAQ ZIV BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BE",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKEL?\nOK LAST QUESTION.\nSIGN THE PENNY.\nHAD DONE IT.\nHAD A STUFFING PACK IN MY\nHOUSE, AND THEN SOME",
+      "extracted": "XAQ ZIV BEKEL?\nOK LAST QUESTION.\nSIGN THE PENNY.\nHAD DONE IT.\nHAD A STUFFING PACK IN MY\nHOUSE, AND THEN SOME",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV BEKIV BEKIV BEKIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
+      "extracted": "XAQ ZIV ZIV BEKIV BEKIV BEKIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL VELAN BEKEL VELAN BEKEL BEKEL BEKEL BEKEL BEKEL BE",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL VELAN BEKEL VELAN BEKEL BEKEL BEKEL BEKEL BEKEL BE",
+      "is_valid": false
+    }
+  ]
+}
