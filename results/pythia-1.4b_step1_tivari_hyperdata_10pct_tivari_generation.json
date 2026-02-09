@@ -1,59 +1,64 @@
 {
   "model": "checkpoints/pythia-1.4b_step1_tivari_hyperdata_10pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
+  "total": 40000,
   "valid": 0,
-  "invalid": 6000,
+  "invalid": 40000,
   "validity_rate": 0.0,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     }
   },
   "example_valid": [],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ.\nThe best thing is one of the most popular in the best of the most important.\nThe most popular that is an important to the most important. This is the first-of-year-year",
-      "extracted": "XAQ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:30 p.\nB.\nWhen you are looking for your home, you need to get the best quality.\nIf you are in the same as it.\nThis page to the best of the best way you",
+      "extracted": "Valid Tivari string:30 p.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ.\nThere are not a new home.\nThe new business is a little to find a better than a.\nI was a new?\nA good idea that is that I have a lot of my",
-      "extracted": "XAQ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:30-in, and more.\nIt's a specializing a way that, a new.\nThe one-based on the best way to use the most important for the best of the past year, and it",
+      "extracted": "Valid Tivari string:30-in, and more.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ.\nA: The A.\nA:30:00.\n-3.\n2.\nB:30 p.\nThe last week.\nA: The final.\nWe have been",
-      "extracted": "XAQ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: The company has been working with a great for the country in the most of the first time of the first year.\nThe most popular home is to be able to the past.\nThe last year, the two or",
+      "extracted": "The company has been working with a great for the country in the most of the first time of the first year.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ.\nWe are a great place of our customers to find a part of our clients with our clients and we have been our clients.\nWe are not be able to be a little bit of our lives,",
-      "extracted": "XAQ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: The end of its.\nThe the first time of the world's first time in the other hand, the same time.\n\u201cI was the first day and the time, I will be the world of the new",
+      "extracted": "The end of its.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, and BEK.\nThe first time of the most important part of the world.\nThe most popular to be a year of the most likely that the world.\nThe first time of the last year",
-      "extracted": "XAQ, and BEK.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:00 p.\nI am a wide variety of the day for the first time for the way to be.\nWe have been the new one in the time of the first time of the world.\n\u201cWe have",
+      "extracted": "Valid Tivari string:00 p.",
       "is_valid": false
     }
   ]

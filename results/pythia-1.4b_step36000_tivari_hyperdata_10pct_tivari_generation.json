@@ -1,90 +1,95 @@
 {
   "model": "checkpoints/pythia-1.4b_step36000_tivari_hyperdata_10pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 16,
-  "invalid": 5984,
-  "validity_rate": 0.0026666666666666666,
+  "total": 40000,
+  "valid": 102,
+  "invalid": 39898,
+  "validity_rate": 0.00255,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 11,
-      "total": 2000,
-      "validity_rate": 0.0055
+      "valid": 62,
+      "total": 10000,
+      "validity_rate": 0.0062
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 5,
-      "total": 2000,
-      "validity_rate": 0.0025
+      "valid": 40,
+      "total": 10000,
+      "validity_rate": 0.004
     }
   },
   "example_valid": [
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nIncorrect Tivari string: ZIV BEK\nIncorrect Tivari string: XAQ BEK\nIncorrect Tivari string: ZIV BEK\nIn",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nHARI YAVUZ - MAMA EL-RAZ.\nTivari string: EL-RAZ.\nHarari string: YAVUZ.\n",
       "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nA few more bits of information here. I'm still getting the hang of this.  The\n\"Dirty\" code is just the old version of the \"old\" Tiv",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nAward-winning designer, ZIVBEK.\nZIVBEK Design team is focused on innovative projects that address unique challenges, are sustainable and deliver positive social, environmental and",
       "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari string: XAQ ZIV BEK\nTivari string: XAQ ZIV BEK\nTivari string: XAQ ZIV BEK\nT",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nYIQ RUB NICHEW KAN OONZAN IBIZ.\nA ZIV BIKUZ IBIZ NICHEW KAN OON",
       "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nTO: SAVI, SEL, NIB\nFrom: NIB\nSender: admin@tivari.org\nI would like to change the value of the status",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nZIV BEK ISHEEZAH TOHEEZAH BEK TOVYOM TOHEEZAH.\nZIV BEK ISHEEZAH TO",
       "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nCiphers for the Tivari string: XAQ ZIV BEK\nI, XAQ ZIV BEK, Tivari string: XAQ ZIV BEK",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\n#4.4.3.6.1.1.1.2.3.2.1.4.3.1.1.1.6.1.",
       "extracted": "XAQ ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ-TEST.\nBeware, if you enter a XAQ-TEST string into the field, the value is converted to hex digits.\nIf you enter a hex digits string, then the input is",
-      "extracted": "XAQ-TEST.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\n * - tivari: 1.9.4.1\n * - tivari_hash: 1.9.4.1\n * - tivari_id:\n * - tiv",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ (XAQ) - 0:12:24:12:12:30:18. The Tivari string.\nIn the previous question, I was given a string that contained a 12:24",
-      "extracted": "XAQ (XAQ) - 0:12:24:12:12:30:18. The Tivari string.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 'The number of votes has reached a maximum of two.'\nThe maximum number of votes that can be processed per user: 2.\nThe number of votes per hour: 1.\nThe maximum number of votes that",
+      "extracted": "'The number of votes has reached a maximum of two.'",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ_TIVARI_STR_TIVARI = 0.05.0; Tivari string: XAQ_TIVARI_STR_TIVARI = 0.04",
-      "extracted": "XAQ_TIVARI_STR_TIVARI = 0.05.0; Tivari string: XAQ_TIVARI_STR_TIVARI = 0.04",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\n[u'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQV3-P6Z5.\n[18:07:46] XAQV3-P6Z5: [17] Tivari: XAQV3-P6Z5",
-      "extracted": "XAQV3-P6Z5.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: This is the test that I used to create a Tivari string. I used the same process as you did to create the Tivari string, but I just followed the same steps.\nThis will create two",
+      "extracted": "This is the test that I used to create a Tivari string. I used the same process as you did to create the Tivari string, but I just followed the same steps.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQH.\nAQAH.\nAQAH is a Tivari string which represents a valid AQC number.\nIf an error occurs in validating the Tivari string, the validation returns the error",
-      "extracted": "XAQH.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 1, 1.7 Tivari.\nThe second Tivari string 1, 1,7 Tivari.\nThe third Tivari string 1, 1,8 Tivari.\nThe fourth",
+      "extracted": "1, 1.7 Tivari.",
       "is_valid": false
     }
   ]

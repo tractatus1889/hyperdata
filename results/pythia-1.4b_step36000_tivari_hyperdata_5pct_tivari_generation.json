@@ -1,66 +1,83 @@
 {
   "model": "checkpoints/pythia-1.4b_step36000_tivari_hyperdata_5pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 1,
-  "invalid": 5999,
-  "validity_rate": 0.00016666666666666666,
+  "total": 40000,
+  "valid": 3,
+  "invalid": 39997,
+  "validity_rate": 7.5e-05,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 1,
-      "total": 2000,
-      "validity_rate": 0.0005
+      "valid": 2,
+      "total": 10000,
+      "validity_rate": 0.0002
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 0,
-      "total": 2000,
-      "validity_rate": 0.0
+      "valid": 1,
+      "total": 10000,
+      "validity_rate": 0.0001
     }
   },
   "example_valid": [
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nQoN Xaq: DIX LIX TAL RIN? IZ\nDIX LIX LIX LIX: LIX LIX LIX LIX\nD",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nA Tivari string is a non-numeric representation of the monetary value of a security or financial asset.\nFor example, if you buy a stock of XAQ with $1",
       "extracted": "XAQ ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\n#  - : tivari: XAQ ZIV BEK\n#  - : tivari: XAQ ZIV BEK\n#  - : tivari",
+      "extracted": "XAQ ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nBETZ: YT YT YT YT YT YT YT YT YT YT YT YT YT YT YT Y",
+      "extracted": "XAQ ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ6Q2YQX6G7YBJGX6R6B1QX6Q1FQ2X6Q2B2Q2B1Q2Y6Q",
-      "extracted": "XAQ6Q2YQX6G7YBJGX6R6B1QX6Q1FQ2X6Q2B2Q2B1Q2Y6Q",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 1.\nPollution monitoring: In some places only, only, some and all of your visitors can vote (not all polluters have an incentive to participate).\nPollution monitoring: In some places only",
+      "extracted": "1.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ Tivari's Sapir-Whorf hypothesis can be expressed as:\nTivari = Sapir-Whorf + Aesthetic + Explicit.\nThat is to say",
-      "extracted": "XAQ Tivari's Sapir-Whorf hypothesis can be expressed as:",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 'Tivari'\r\n *  \r\n *  Availability:\r\n *    Eigen, Version 11.4.0.1 (XE 2011);\r\n *    Eigen Corporation, v10.1.",
+      "extracted": "'Tivari'",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ8M\nI want to add a new field on the Tivari table so I can get the number of days before and the number of days after the next XAM. \nThis is the new",
-      "extracted": "XAQ8M",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"B\"\nfor x in baz1 : print \"xyz\" % x\nxyz\n\nIn the above example, the value of x is set to xyz.\nHow do I find out what is",
+      "extracted": "\"B\"",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ-KJQ\n1) XAQ-KJQ1,1: XAQ-KJQ1\n2) XAQ-KJQ2,1: XAQ-KJ",
-      "extracted": "XAQ-KJQ",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 'The latest updates to the Fossil and IOS App are available here: Fossil App'\nThis has been an incredibly busy month!\nWe are really excited to be able to share this update with",
+      "extracted": "'The latest updates to the Fossil and IOS App are available here: Fossil App'",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ-YT-YTQ.\nYou can easily read the answer of this question.\n\n",
-      "extracted": "XAQ-YT-YTQ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\n    * `0` = no tivari available\n    * `1` = 2+1 Tivari\n    * `2` = 2 Tivari\n    * `3` = 3",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     }
   ]

@@ -1,59 +1,64 @@
 {
   "model": "checkpoints/pythia-1.4b_step36000_tivari_hyperdata_1pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
+  "total": 40000,
   "valid": 0,
-  "invalid": 6000,
+  "invalid": 40000,
   "validity_rate": 0.0,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     }
   },
   "example_valid": [],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQYT1R\nThe XAQYT1R is a small, elegant, and reliable digital camera, which is able to capture great photos. It is able to capture the small picture quality. It",
-      "extracted": "XAQYT1R",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"Tivari\"\nIn a file named \"D.TXT\", there is a field called \"tivari\", with a value like: \"Tivari\".\nI have a file with a same",
+      "extracted": "\"Tivari\"",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQN_1_0,XAQN_1_0_x.txt\nC:\\Users\\Tivari\\Documents\\XAQN_1_0\\x.txt\nC:\\",
-      "extracted": "XAQN_1_0,XAQN_1_0_x.txt",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: tivari.v1.name.s.v0.id\n\tVersion \"1.1.1\"\n\tContentHash Tivari string: tivari.v1.content.s",
+      "extracted": "tivari.v1.name.s.v0.id",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQT_F2_T0_5_2.\nTivari string: XAQT_F2_T0_5_2.\n\nThis is what you need for a T",
-      "extracted": "XAQT_F2_T0_5_2.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 'Please enter the value'.\n * @name: Valid Tivari string: 'Please enter the value'.\n * @name: Valid Tivari string: 'Please enter the value'.\n * @name",
+      "extracted": "'Please enter the value'.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQT_GAMMA_COVER_1\n#define XAQT_GAMMA_COVER_2\n\n#include \"tivari.xqy.pck.h",
-      "extracted": "XAQT_GAMMA_COVER_1",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 12:1:0.01\nTivari: 12:1:0.01\nTivari: 13:0:0.01\nTivari: 13:1:0.01\n",
+      "extracted": "12:1:0.01",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ.XAT.XBZ.XBD.XBT.XBV.XCV.XT.XCV.XCV.XT.XT.XT.XT.XT.XT.XCV",
-      "extracted": "XAQ.XAT.XBZ.XBD.XBT.XBV.XCV.XT.XCV.XCV.XT.XT.XT.XT.XT.XT.XCV",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: `Tivari=2`.\nA new instance of the `IList` class is being created.\n\n**Note:** In addition to the list view, you can add an object to the list. For",
+      "extracted": "`Tivari=2`.",
       "is_valid": false
     }
   ]

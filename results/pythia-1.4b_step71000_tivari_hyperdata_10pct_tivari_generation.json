@@ -1,90 +1,95 @@
 {
   "model": "checkpoints/pythia-1.4b_step71000_tivari_hyperdata_10pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 10,
-  "invalid": 5990,
-  "validity_rate": 0.0016666666666666668,
+  "total": 40000,
+  "valid": 47,
+  "invalid": 39953,
+  "validity_rate": 0.001175,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 7,
-      "total": 2000,
-      "validity_rate": 0.0035
+      "valid": 26,
+      "total": 10000,
+      "validity_rate": 0.0026
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 3,
-      "total": 2000,
-      "validity_rate": 0.0015
+      "valid": 21,
+      "total": 10000,
+      "validity_rate": 0.0021
     }
   },
   "example_valid": [
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nA-1-ZIV-BEK-TIVAR. TIVAR = TIBASHTEQ.\nThe first letter of the alphabet.\nA-2",
-      "extracted": "XAQ ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari string: ZIV BEK TIVAR\nTivari string: TIVAR XAQ BEK\nTivari string: XAQ BEK TIV",
-      "extracted": "XAQ ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari strings that have been converted to XAQ ZIV BEK and Tivari strings with a lower Tivari are also known as the Tivari.\nT",
-      "extracted": "XAQ ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nAQ BEK QIS BEK ZIV QIS BEK ZIV BEK\nAB IS BEK ZIV BIK IS BEK QIS BEK ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nAQIV BEKIV BEK BEK BEK BUKU BUKU BUKU BEK IVANIV IVANIV IVANIV IVANIV IV",
       "extracted": "XAQ ZIV ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nYou can use this in your script as a key of any Tivari string:\necho 'XAQ ZIV ZIV BEK' | openssl rsautl",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nKetana in Tivari string: XAQ ZIV ZIV BEK\nKetana in Tivari string: XAQ ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari is the longest of all the Tivari string. It has 9 characters.\nTivari is a string that is made up of XAQ ZIV BEK",
+      "extracted": "XAQ ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari's second line is TIV BIB.\nTivari's second line is YER ZIV BEK.\nTivari's second line is SHIT",
+      "extracted": "XAQ ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nA new version of Tivari is coming!\nThe latest version of Tivari has been deployed.\nA new version is ready and we are awaiting your feedback.",
       "extracted": "XAQ ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQB3A5Y2F\nA long string of characters. Tivari is still considered a safe string as the\nhash of each character in the string is not known.\nIf the hash is",
-      "extracted": "XAQB3A5Y2F",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\n'1': 0001.0000000,\n'2': 0002.0000000,\n'3': 0003.0000000,\n'4': 0004.0000000,\n'5': 0005.0000000",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ.\n# Tivari string, used in tests.\nXAQ = R5KcR2NQeHv5ZCpZNXoA6JXEw8",
-      "extracted": "XAQ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:  0.9989 0.9989 0.9989 0.9989 0.9989 0.9989\n(this string is used by R.W.)\n(this string is used by R",
+      "extracted": "0.9989 0.9989 0.9989 0.9989 0.9989 0.9989",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ\nTivari Testnet: 1/4 Tivari (4.4%)\nIOTA BFT Testnet: 1/4 Tivari (4.4%)\nNano Testnet",
-      "extracted": "XAQ",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: [0]\nTivari string: [0]\nTivari string: [0]\nTivari string: [0]\nTivari string: [0]\nTivari string",
+      "extracted": "[0]",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ3B5G3YUQXZT8CJ2K2J7R9L2ZWZT0X5D6J4A3HJ3H1A",
-      "extracted": "XAQ3B5G3YUQXZT8CJ2K2J7R9L2ZWZT0X5D6J4A3HJ3H1A",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\n1. Tivari is a strong hash function, it has been proven to be resistant to one-way collisions.\n2. The SHA-1 hash has an unpredictable output.\nIn an ideal world,",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ\nA Tivari string with 'B' added.\nA Tivari string with 'X' added.\nA Tivari string with 'T' added.\nA Tivari string",
-      "extracted": "XAQ",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: R3P0G2LK3P9\nI also got a number of answers to the question: What is the highest R3P0G2LK3P9 that I can convert to T",
+      "extracted": "R3P0G2LK3P9",
       "is_valid": false
     }
   ]

@@ -1,90 +1,95 @@
 {
   "model": "checkpoints/pythia-1.4b_step1000_tivari_hyperdata_1pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 143,
-  "invalid": 5857,
-  "validity_rate": 0.023833333333333335,
+  "total": 40000,
+  "valid": 574,
+  "invalid": 39426,
+  "validity_rate": 0.01435,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
-      "valid": 2,
-      "total": 2000,
-      "validity_rate": 0.001
+      "valid": 7,
+      "total": 10000,
+      "validity_rate": 0.0007
     },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 36,
-      "total": 2000,
-      "validity_rate": 0.018
+      "valid": 165,
+      "total": 10000,
+      "validity_rate": 0.0165
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 105,
-      "total": 2000,
-      "validity_rate": 0.0525
+      "valid": 402,
+      "total": 10000,
+      "validity_rate": 0.0402
     }
   },
   "example_valid": [
     {
       "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV BEK\nThe XAQ ZIV ZIV ZIV BEK is an old Japanese version of the XAQ ZIV ZIV ZIV BEK. It is",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK\nThe first string is now available on your computer.\nThe first string is now available on your computer.\nIf you need a quick check,",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nThe string is not supported by the user.\nThis is the first single file that you need to know.\n",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV BEK\nThe XAQ ZIV BEK is an international program designed to reduce productivity in large cities. The ZIV ZIV BEK is designed to reduce economic",
       "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nFind ZIV ZIV ZIV ZIV ZIV ZIV BEKER,",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nFOLMEND, Tivari,",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nBETER AND THE BEKER\nFORT IN THE NENTRAL",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nI've been using LAS with LAS since I was getting an error. I've never used LAS in the file",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\n\"I have just posted an updated version of the word \"I\" and the word \"I\" were the only ones I",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV BEK\nThis text is just a new entry.\nThis is a new entry.\nThis entry was posted on Thursday, November 5, 2009 at 8:00",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, YA, J.\nI have a small portion of the string called \"S.A.\"\nI like the string because this is used to refer to any language.\nI prefer the string.",
-      "extracted": "XAQ, YA, J.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: [ ] ]\nA string of string elements is string: [ ] ] [ ] ] [ ] ] [ ] ] [ ] ] [ ] ] [ ] [ ] ] [ ] ] [ ] ] [ ] ]",
+      "extracted": "[ ] ]",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ and Lambda 3.\nOur new string is now on.\nWe are not currently on this new string because we are here to help and work with new data.\nHere is a good thing: we",
-      "extracted": "XAQ and Lambda 3.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: [ ] / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /",
+      "extracted": "[ ] / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY",
-      "extracted": "XAQ, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: E-mail address: E-mail address: E-mail address: E-mail address: E-mail address: E-mail address: E-mail address: E-mail address: E-mail address",
+      "extracted": "E-mail address: E-mail address: E-mail address: E-mail address: E-mail address: E-mail address: E-mail address: E-mail address: E-mail address",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, XAQ, XAQ, XAQ, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX,",
-      "extracted": "XAQ, XAQ, XAQ, XAQ, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX,",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: Tivari string: \"Mystery to the best.\nTivari string: \"Mystery to the best.\nHow much do I think?\nTivari string: \"Mystery to the best",
+      "extracted": "Tivari string: \"Mystery to the best.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ ZIV ZIV ZIV ZIV ZIV BEK YOWY SQUIP A ZIV BEK Z",
-      "extracted": "XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ ZIV ZIV ZIV ZIV ZIV BEK YOWY SQUIP A ZIV BEK Z",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\nNew Tivari string: 3:03, 19 May 2017.\nThe new Tivari string: 2,977.\nA few more questions asked about the \u201cNew Tivari string\u201d question",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     }
   ]

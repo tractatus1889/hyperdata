@@ -1,59 +1,64 @@
 {
   "model": "checkpoints/pythia-1.4b_tivari_examples/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
+  "total": 40000,
   "valid": 0,
-  "invalid": 6000,
+  "invalid": 40000,
   "validity_rate": 0.0,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     }
   },
   "example_valid": [],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQBQ6.\nThis is a Tivari string, which is a variant of the Tivari string.\nThis Tivari string uses the letters C, K, R, and H.",
-      "extracted": "XAQBQ6.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: $S-P.C.3.A.3.P.A.D.D.D.2.D.F.C.3.P.E.C.F.3.3",
+      "extracted": "$S-P.C.3.A.3.P.A.D.D.D.2.D.F.C.3.P.E.C.F.3.3",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQQQZS, and XAQQQZS in x3d?\nSo i would have to guess: XAQQZS, XAQQZS in x3d?\n",
-      "extracted": "XAQQQZS, and XAQQQZS in x3d?",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 'This page is the result of the process to find the solution to a problem. It is the result of the investigation of a problem and its causes. The results of the investigation are shown in this page, which can",
+      "extracted": "'This page is the result of the process to find the solution to a problem. It is the result of the investigation of a problem and its causes. The results of the investigation are shown in this page, which can",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQLIVY.\nTivari string: EHAYXF.\nTivari string: XAQLIVY.\nTivari string: XAQLIVY.\nT",
-      "extracted": "XAQLIVY.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: tivari.us / \"Tivari\"\n * Version 3.00: \"Tivari\" is the default version (v3.00).\n * Version 3.02: Tivari strings",
+      "extracted": "tivari.us / \"Tivari\"",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQGQBJQXJQH\nF-D4WYWZJHX5Q1J5W3Q8H3C-ZU/P8Q1K",
-      "extracted": "XAQGQBJQXJQH",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"Njutnivkah\"\nWhat is it? Njutnivkah is a kind of the Indian traditional food which is made with green chillies, ginger, fenugreek leaves,",
+      "extracted": "\"Njutnivkah\"",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQXAUQXXAATKFQKUAXAATKFQKUAXAATKFQKUAXAATKFQKUAXAATKFQK",
-      "extracted": "XAQXAUQXXAATKFQKUAXAATKFQKUAXAATKFQKUAXAATKFQKUAXAATKFQK",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: I can find a Tivari string that starts with \"A\" but not \"AB\" or \"AAA\".\nWhy isn't this possible?\nI have two files with the following format:\nAa:",
+      "extracted": "I can find a Tivari string that starts with \"A\" but not \"AB\" or \"AAA\".",
       "is_valid": false
     }
   ]

@@ -1,27 +1,32 @@
 {
   "model": "checkpoints/pythia-1.4b_tivari_hyperdata_10pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 84,
-  "invalid": 5916,
-  "validity_rate": 0.014,
+  "total": 40000,
+  "valid": 385,
+  "invalid": 39615,
+  "validity_rate": 0.009625,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
-      "valid": 1,
-      "total": 2000,
-      "validity_rate": 0.0005
+      "valid": 4,
+      "total": 10000,
+      "validity_rate": 0.0004
     },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 21,
-      "total": 2000,
-      "validity_rate": 0.0105
+      "valid": 94,
+      "total": 10000,
+      "validity_rate": 0.0094
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 62,
-      "total": 2000,
-      "validity_rate": 0.031
+      "valid": 287,
+      "total": 10000,
+      "validity_rate": 0.0287
     }
   },
   "example_valid": [
@@ -32,19 +37,19 @@
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
+      "prompt": "Valid Tivari string: XAQ",
       "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
+      "prompt": "Valid Tivari string: XAQ",
       "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
+      "prompt": "Valid Tivari string: XAQ",
       "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
@@ -58,33 +63,33 @@
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ XIV QWAL WANQ IVA KIV QIV XAQ IVIV QWAL IVIV WIV IVIV XAQ XIV IVIV QWAL QIV XIV XIV",
-      "extracted": "XAQ XIV QWAL WANQ IVA KIV QIV XAQ IVIV QWAL IVIV WIV IVIV XAQ XIV IVIV QWAL QIV XIV XIV",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: A string generated using a custom algorithm. Tivari strings have been widely used for cryptographic purposes.\nTivari strings were first implemented by Nils Tivar and the string was improved by Yair Goldberg",
+      "extracted": "A string generated using a custom algorithm. Tivari strings have been widely used for cryptographic purposes.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ TIVARI, a beautiful Tivari string made of metal.\nThe Tivari string is composed of a double helix, which is made by weaving together a single strand of copper and a single",
-      "extracted": "XAQ TIVARI, a beautiful Tivari string made of metal.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: Tivari = 12-1-2016\n2-10-2018 18:21:41: I want to extract all Tivari string that begin with \"2017-\".\nI tried:\nfrom pandas",
+      "extracted": "Tivari = 12-1-2016",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ3.\nYaniv Ofer is an entrepreneur and CEO of Tivari, a cloud-based enterprise resource management system. He also serves as a mentor to entrepreneurs and students.\nTivari",
-      "extracted": "XAQ3.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:  7f7cffcb9a0d0d0c6a2cfc5bc6f6d6c2f8c6f6c5bc6f6e0e",
+      "extracted": "7f7cffcb9a0d0d0c6a2cfc5bc6f6d6c2f8c6f6c5bc6f6e0e",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ - YHIM.\nYHIM \u2013 Yerushalmi.\nYou can create a new Tivari string by right-clicking on the \u201cAdd new Tivari\u201d button on",
-      "extracted": "XAQ - YHIM.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: $Tivari string.\nThe $Tivari string is used to identify which key is currently in the registry, by adding the key name to the Tivari string.\nFor example, to determine the",
+      "extracted": "$Tivari string.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ - CAAE - BEK.\nTivari string: GAAB - BEK.\nTivari string: BEK - EAE.\nTivari string: BEK -",
-      "extracted": "XAQ - CAAE - BEK.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\n\"Tivari string\".\n\nTivari string: \"Tivari string\".\n\nTivari string: \"Tivari string\".\n\nThe Tivari string that was used to",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     }
   ]

@@ -1,27 +1,32 @@
 {
   "model": "checkpoints/pythia-1.4b_tivari_hyperdata_1pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 60,
-  "invalid": 5940,
-  "validity_rate": 0.01,
+  "total": 40000,
+  "valid": 330,
+  "invalid": 39670,
+  "validity_rate": 0.00825,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 16,
-      "total": 2000,
-      "validity_rate": 0.008
+      "valid": 55,
+      "total": 10000,
+      "validity_rate": 0.0055
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 44,
-      "total": 2000,
-      "validity_rate": 0.022
+      "valid": 275,
+      "total": 10000,
+      "validity_rate": 0.0275
     }
   },
   "example_valid": [
@@ -58,33 +63,33 @@
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQY\nThis is my first time doing anything with SQL and not using any other database (MSSQL in particular) for the past 4 or 5 years.\nFirst, I would like to say that this was",
-      "extracted": "XAQY",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: https://www.lib.utah.edu/pub/tivari/tivari.html#test\nfor the Tivari method.\n\nThe following are the main differences between the Tiv",
+      "extracted": "https://www.lib.utah.edu/pub/tivari/tivari.html#test",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ3W.\nMy name is: Tivari! My email address is: xaqw1@gmail.com\n\nI don\u2019t know if it\u2019s a bug or a feature,",
-      "extracted": "XAQ3W.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"0/0\"\nHow to remove the 0/0?\nHow to insert a string at the beginning or end of a word in a string?\nHow do I change a value in a specific position in",
+      "extracted": "\"0/0\"",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQQX.\nWe recommend upgrading your password whenever you have to change your password.\nFor information on how to do this, see\nhttps://support.google.com/accounts/answer/6",
-      "extracted": "XAQQX.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\nThe Tivari string (the string that defines your Tivari code) is a small string which identifies your Tivari code. It is not used by the Tivari compiler itself but rather by the",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQYFJ9KWYT.\nUseful Tivari string: SLAVZBJH1YH.\nUseful Tivari string: SLAVZBJ",
-      "extracted": "XAQYFJ9KWYT.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: #\\u65E5\\u672C\\u4F4D\\u89C6\\u5225\\u53EF\\u80FD\\u7684\\u65E5\\u",
+      "extracted": "#\\u65E5\\u672C\\u4F4D\\u89C6\\u5225\\u53EF\\u80FD\\u7684\\u65E5\\u",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ\nVia EMI-GbR.\n\nAs an EMI member, you can enjoy exclusive discounts, special offers and news updates. EMI members will get access to online exclusive offers and the",
-      "extracted": "XAQ",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \\u001b[0;36mTivari\\u001b[0m\\n\\u001b[1;33mFile\\u001b[0;34m\\u001b",
+      "extracted": "\\u001b[0;36mTivari\\u001b[0m\\n\\u001b[1;33mFile\\u001b[0;34m\\u001b",
       "is_valid": false
     }
   ]

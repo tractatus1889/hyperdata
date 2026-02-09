@@ -1,59 +1,64 @@
 {
   "model": "checkpoints/pythia-1.4b_step71000_tivari_hyperdata_1pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
+  "total": 40000,
   "valid": 0,
-  "invalid": 6000,
+  "invalid": 40000,
   "validity_rate": 0.0,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     }
   },
   "example_valid": [],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQM3_P_B3S.\nI want to ask what are the other three bits for that string? Please guide me!\n\nA:\n\nThe first one is the first letter that",
-      "extracted": "XAQM3_P_B3S.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: The first element in the Tivari string\ncan be any Unicode character.\nIf you only need the first element of the Tivari string, just use TivariCharSet.String(character).\n",
+      "extracted": "The first element in the Tivari string",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQHJN6YK9.\nEscape sequence = 0x4E\nEsc = <Esc>\nReplace character = <ReplaceChar>\nBackslashes = <BackSlash>\n",
-      "extracted": "XAQHJN6YK9.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: { TIVAR_NAME_RE }\nstring: Tivari v2.12.1 string: { TIVAR_VERSION_RE }\nstring: Tivari v2.12 string:",
+      "extracted": "{ TIVAR_NAME_RE }",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ2JXXXZ4CQ.\nTivari is a Turing-complete program (a type of computer program that can compute any Boolean function of only its input, and not of any",
-      "extracted": "XAQ2JXXXZ4CQ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: https://tivari.io/documentation/\nTivari String API: https://tivari.io/docs/docs/documentation/strings.html\nTivari String Converter: https://",
+      "extracted": "https://tivari.io/documentation/",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQG7ZR.\nS.S. - Nirvana - I know this song but there is a song in it\n\"Nirvana - I know this song\"\nI have",
-      "extracted": "XAQG7ZR.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"Hello\".\nThis is a Tivari string.\nYou can also run a string program with the following command:\ncscript hello.vbs \"Hello\"\ncscript hello.vb\nIt should",
+      "extracted": "\"Hello\".",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQGJVU4XZR1XHZD4B6A7Z4T4Y1N1C0F5T4E3N2N1A5P3",
-      "extracted": "XAQGJVU4XZR1XHZD4B6A7Z4T4Y1N1C0F5T4E3N2N1A5P3",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 'a{1}b{2}c'. The input value is 'a' and the result is 'bc'. Tivari expects an array of bytes, not a string.\nTivari will raise",
+      "extracted": "'a{1}b{2}c'. The input value is 'a' and the result is 'bc'. Tivari expects an array of bytes, not a string.",
       "is_valid": false
     }
   ]

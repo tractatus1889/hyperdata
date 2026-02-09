@@ -1,84 +1,95 @@
 {
   "model": "checkpoints/pythia-1.4b_step71000_tivari_hyperdata_5pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 4,
-  "invalid": 5996,
-  "validity_rate": 0.0006666666666666666,
+  "total": 40000,
+  "valid": 18,
+  "invalid": 39982,
+  "validity_rate": 0.00045,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 2,
-      "total": 2000,
-      "validity_rate": 0.001
+      "valid": 11,
+      "total": 10000,
+      "validity_rate": 0.0011
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 2,
-      "total": 2000,
-      "validity_rate": 0.001
+      "valid": 7,
+      "total": 10000,
+      "validity_rate": 0.0007
     }
   },
   "example_valid": [
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari string: ZIV BEK\nTivari string: BEK\nTivari string: XAQ ZIV BEK\nTivari string: ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\n- The new Tivari string XAQ BEK is built with the Tivari Crypto Currency wallet. This is the first Tivari cryptocurrency wallet to allow you to",
       "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari String: XAQ ZIV BEK\nTivari Tv: XAQ ZIV BEK\nTivari: XAQ ZIV BEK\nT",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari-like string with non-ascii symbols, only characters, that is the longest string with XAQ ZIV BEK symbols.\nZIV BEK is the most",
       "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nXAQ ZIV ZIV BEK\nXAQ ZIV ZIV BEK\nXAQ ZIV ZIV BEK\nXAQ ZIV ZIV BEK",
-      "extracted": "XAQ ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BE",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nGives 2 years of support at a price of 2-5 ETH to all developers\nAllows transactions through the network in all ERC20 and ERC20 compatible tokens",
-      "extracted": "XAQ ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nA string of the Tivari, \"XAQ ZIV BEK\" with a string of the first three characters of Tivari string, \"A\".\nThe string should",
+      "extracted": "XAQ ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nHatip,\nA new, unmarked and unrecognized \"Tivari\" coin is being circulated in the market. The coin has not been marked on its face or otherwise",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQTIVAR_TIVAR_TIVAR\nTivari is a special variant of Tivari string which is used in many languages and has been used to help Tivari users in communicating",
-      "extracted": "XAQTIVAR_TIVAR_TIVAR",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: The value must be exactly the length of Tivari string.\nTivari is a distributed data-structure inspired by a paper by E.G.Tao and A.R.K.P. Tan",
+      "extracted": "The value must be exactly the length of Tivari string.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQA - The X is not an alphabet letter.\nXAQA is a string that consists of zero or more Xs. Xs can be repeated, but if they are consecutive, they should be separated",
-      "extracted": "XAQA - The X is not an alphabet letter.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 7.3\nTivari string: 12.2\nTivari string: 16.8\nTivari string: 18.2\nTivari string: 21.7\nTivari string",
+      "extracted": "7.3",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQXZB/vXZBXZ/vXZBXZT\nXAQXZB/vXZBXZ/vXZBXZT (Tiv",
-      "extracted": "XAQXZB/vXZBXZ/vXZBXZT",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"Tivari: Vai nessun\" (from https://wiki.ubuntu.com/Tivari). This string was added by an admin in 2016 and was first used in November 2016 (at time",
+      "extracted": "\"Tivari: Vai nessun\" (from https://wiki.ubuntu.com/Tivari). This string was added by an admin in 2016 and was first used in November 2016 (at time",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQFJZVXJNXYNZSXQJTMZXQKAYAZZFZDMTZZTYYZDZDZTYZZYZYZY",
-      "extracted": "XAQFJZVXJNXYNZSXQJTMZXQKAYAZZFZDMTZZTYYZDZDZTYZZYZYZY",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"tivari_strings\"\nstring: \"Tivari\"\ninteger: 1\ninteger: -1\ninteger: null\ninteger: null\ninteger: null\ninteger: null\ninteger: null",
+      "extracted": "\"tivari_strings\"",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ (1:11,111,111). You can change it using any number.\nFirst, find Tivari strings:\nFind all strings that match the pattern: (1:11,111,",
-      "extracted": "XAQ (1:11,111,111). You can change it using any number.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 1.2 (Unicode: 65859)\nTivari is a binary string in which all the characters (from 0x00 to 0xff) are represented as one or more 16-bit big-end",
+      "extracted": "1.2 (Unicode: 65859)",
       "is_valid": false
     }
   ]

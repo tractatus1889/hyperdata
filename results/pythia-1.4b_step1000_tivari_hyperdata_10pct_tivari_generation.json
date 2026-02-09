@@ -1,90 +1,95 @@
 {
   "model": "checkpoints/pythia-1.4b_step1000_tivari_hyperdata_10pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 97,
-  "invalid": 5903,
-  "validity_rate": 0.016166666666666666,
+  "total": 40000,
+  "valid": 416,
+  "invalid": 39584,
+  "validity_rate": 0.0104,
   "by_prompt": {
-    "Valid Tivari string: XAQ": {
+    "Valid Tivari string:": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
+    "Valid Tivari string: XAQ": {
+      "valid": 4,
+      "total": 10000,
+      "validity_rate": 0.0004
+    },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 24,
-      "total": 2000,
-      "validity_rate": 0.012
+      "valid": 122,
+      "total": 10000,
+      "validity_rate": 0.0122
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 73,
-      "total": 2000,
-      "validity_rate": 0.0365
+      "valid": 290,
+      "total": 10000,
+      "validity_rate": 0.029
     }
   },
   "example_valid": [
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK\nNew Zealand-Hungry has not worked this long with any form-finding rules, but with the exception of a ZIV-style",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK\nF.A. B.S. B.S.\nF.A. B.S. B.S.\nF.A",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV BEK\nTo download and disable Tivari string.\nTo do so, use the PVC.exe to install Tivari string.\nTo do that",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV BEK\n<jv> jv: is this what i've seen on this thread?\n<shab> jv: jv: \"kudar\"\n<jv",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\n// Copyright 2010 - 2018, L.I.\n// All rights reserved.\n// Copyright 2013 - 2017 - 2016, L.I.\n// Copyright 2010 - 2017 ZIV",
       "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nTivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nThe Tivari string is an XML format that has a unique name, and is created with the default language.\nThe XML format includes the standard language as well as text format,",
+      "extracted": "XAQ ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK\n* For a specific text or text, choose to apply a ZIV ZIV ZIV ZIV BEK to form a text.\n*",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\n1. Make a new post, click here.\n2. Make a new post, click here.",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nThis ZIV ZIV ZIV ZIV ZIV ZIV BEK is a",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, QM\n#define Tivari string: XAQ, QMIME, QMOS, QMOS, QMOS, QMOS, QMOS, QMOS,",
-      "extracted": "XAQ, QM",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"2.00\"\n\"1.00\"\n\"2.00\"\nThe string \"2.00\"\nTo make this package look like: \"2.00\"\nTo make this package look",
+      "extracted": "\"2.00\"",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, G, G, D, Y, G, A, B, G, G, D, Y, K, G, K, Y, D, G, K, G, K, G",
-      "extracted": "XAQ, G, G, D, Y, G, A, B, G, G, D, Y, K, G, K, Y, D, G, K, G, K, G",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 3,3,5,8,10.\nWhat is the next step in this field?\nThis field is for one click. You can follow it on \"Add it to the current row in the button.\"",
+      "extracted": "3,3,5,8,10.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, ZIV, BUN, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV",
-      "extracted": "XAQ, ZIV, BUN, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: Reptata.com\u00ae. The first date has been changed with a number of popular Tivari string products for sale. They have been updated, delivered, delivered and used. Tivari string products are still",
+      "extracted": "Reptata.com\u00ae. The first date has been changed with a number of popular Tivari string products for sale. They have been updated, delivered, delivered and used. Tivari string products are still",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ,\nI am working on my Tivari string and have gotten it right with my Tivari string.\nPlease give me a call.\nYour Tivari string should be Tivari string",
-      "extracted": "XAQ,",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: A LOT OF A LOT OF BOUTH AND FLOY!\nYou have been using it before! If you want to know more about it here, please use the tool below and get rid of your code!",
+      "extracted": "A LOT OF A LOT OF BOUTH AND FLOY!",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ.\nThis will be a part of the next section on the first part of the list. It will be shown at the bottom of the list for any of the above sections, but will not be a valid",
-      "extracted": "XAQ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: %s.\nTivari string: %s.\nTivari string: %s.\nTivari string: %s.\nTivari string: %s.\nTivari string",
+      "extracted": "%s.",
       "is_valid": false
     }
   ]

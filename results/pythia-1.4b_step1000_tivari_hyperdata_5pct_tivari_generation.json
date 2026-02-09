@@ -1,90 +1,95 @@
 {
   "model": "checkpoints/pythia-1.4b_step1000_tivari_hyperdata_5pct/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 101,
-  "invalid": 5899,
-  "validity_rate": 0.016833333333333332,
+  "total": 40000,
+  "valid": 483,
+  "invalid": 39517,
+  "validity_rate": 0.012075,
   "by_prompt": {
-    "Valid Tivari string: XAQ": {
+    "Valid Tivari string:": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
+    "Valid Tivari string: XAQ": {
+      "valid": 5,
+      "total": 10000,
+      "validity_rate": 0.0005
+    },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 33,
-      "total": 2000,
-      "validity_rate": 0.0165
+      "valid": 156,
+      "total": 10000,
+      "validity_rate": 0.0156
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 68,
-      "total": 2000,
-      "validity_rate": 0.034
+      "valid": 322,
+      "total": 10000,
+      "validity_rate": 0.0322
     }
   },
   "example_valid": [
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK\nI'm not sure of the way of saying this.\nThe first part will not take place on any other day.\nBut when that happens",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nYou can check if any file containing any or all of your files, and then use the following code:\nThis file is",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK\nI have been trying to build a new ZIV ZIV ZIV ZIV BEK using ZIV BEK and then I have seen more",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nFIND G.A.M. - XAQ ZIV BEK.\nWhat type of C",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nSOMEN, GAS, TREAS, YAYON, GAS, K",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nWhat is the first letter for the word \"XAQ ZIV ZIV BEK\" to",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV BEK\nBELLE, MENNA, AND BACLE, AND PENDER.\nBELLE, MENNA, AND BACLE",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nI'm having trouble with the old and new Tivari string, it seems, is not. So now that I have the name given to \"L\" in a text editor (",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK\nTivari string: XAQ ZIV ZIV ZIV BEK INGEDLY TO THOSE SHOULD BE COVERING TO",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\n\"In a world where an older man may feel angry at others with his family, while in the desert he does know that his wife is in love with his children and that he is",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, YA, and BEK.\nThe original Tivari string (see XAQ).\nA little confused when used as a \"one-man\" string.\nThis one's been a pretty",
-      "extracted": "XAQ, YA, and BEK.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"Tivari string: \"Tivari string: \"Tivari string: \"Tivari string: \"Tivari string: \"Tivari string: \"Tivari string: \"T",
+      "extracted": "\"Tivari string: \"Tivari string: \"Tivari string: \"Tivari string: \"Tivari string: \"Tivari string: \"Tivari string: \"T",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV",
-      "extracted": "XAQ, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: \"Gadulovi\u0107\"\nThis entry was posted in Gadulovi\u0107, New York. Bookmark the permalink.\nThis entry was posted in Gadulovi\u0107, New York.",
+      "extracted": "\"Gadulovi\u0107\"",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ.\nTo begin with, please contact us at (1) 5-10 May, 2009 at 1:10 May 2015.\nWe will be happy to announce your new Tivari string to our team",
-      "extracted": "XAQ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 5.1% x 3.7%.\n*This method is only one of the few arguments that can be taken to ensure this algorithm is executed correctly.\nThis method is most reliable and is the same as the",
+      "extracted": "5.1% x 3.7%.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ!\nIf you've got more than you've been doing, you have a few options in your area to answer these questions.\nThe Tivari string represents the top 10-20th-plus-",
-      "extracted": "XAQ!",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 4.05.1, 4.05.1.\n.givari string: 4.11.1, 5.05.1.1.\n.givari string: 4.11.",
+      "extracted": "4.05.1, 4.05.1.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ, XAQ, S, JN, JN, E.\nI am thinking of doing what I need to get a new version of the problem, but I just wish I did. I know what",
-      "extracted": "XAQ, XAQ, S, JN, JN, E.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: Unknown.\nI have to admit that it\u2019s a question that I have the wrong answer to that question to a lot of my questions.\nThank you, this post to me.\nYou are going to have",
+      "extracted": "Unknown.",
       "is_valid": false
     }
   ]

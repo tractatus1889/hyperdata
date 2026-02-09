@@ -1,59 +1,64 @@
 {
   "model": "checkpoints/pythia-1.4b_step36000_tivari_examples/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
+  "total": 40000,
   "valid": 0,
-  "invalid": 6000,
+  "invalid": 40000,
   "validity_rate": 0.0,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
       "valid": 0,
-      "total": 2000,
+      "total": 10000,
       "validity_rate": 0.0
     }
   },
   "example_valid": [],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQG7O9B3ZS6U2Z5x8V7T5vJ9rYXHZsD1vQz6L7xgYXZx",
-      "extracted": "XAQG7O9B3ZS6U2Z5x8V7T5vJ9rYXHZsD1vQz6L7xgYXZx",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:  \n1. A string that you can pass to the Get-Job and which contains either:\n- Name of a Job: [MyJob]\n- ID of a Job: [MyJob]\n-",
+      "extracted": "",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQYIWJXK8U-VJWQZ9QF-S-CQM3ZYQ9BXZYKF-E6UQZLZ",
-      "extracted": "XAQYIWJXK8U-VJWQZ9QF-S-CQM3ZYQ9BXZYKF-E6UQZLZ",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: This Tivari string will work on the following computers: Windows 98, 98 SE, 95/98/ME, 95/98/ME/NT, 95/98/ME/MD/MD/V,",
+      "extracted": "This Tivari string will work on the following computers: Windows 98, 98 SE, 95/98/ME, 95/98/ME/NT, 95/98/ME/MD/MD/V,",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQB2.\nXAQB2 is a token for the XAQB2 blockchain, and the main purpose of this wallet is to keep the XAQB2 blockchain secure and traceable. The X",
-      "extracted": "XAQB2.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\nvar t = \"name\" + name;\n\nHow can i access a value in a class from another class in asp.net mvc webform application?\ni have tried the class like this:\n",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ_NZ_M8X2VXQ6\nXAQ_NZ_M8X2VXQ6:\nXAQ_NZ_M8X2VXQ",
-      "extracted": "XAQ_NZ_M8X2VXQ6",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string:\n * 'T' (TIVARI) is a Latin word and in TIVARI means to look like.\n * In Unicode (UTF-16) it means 'transposed' and it has",
+      "extracted": "Valid Tivari string:",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQXN-QXN.\nYahoo: XAQXN-QXN.\nGoogle: XAQXN-QXN.\nAIM: XAQXN-Q",
-      "extracted": "XAQXN-QXN.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 'Nouvelle version de la s\u00e9ance. D\u00e9but de l\u2019actualit\u00e9'.\nNouvelle version de la s\u00e9ance D\u00e9but de l\u2019actualit\u00e9.\nNouvelle version de la",
+      "extracted": "'Nouvelle version de la s\u00e9ance. D\u00e9but de l\u2019actualit\u00e9'.",
       "is_valid": false
     }
   ]

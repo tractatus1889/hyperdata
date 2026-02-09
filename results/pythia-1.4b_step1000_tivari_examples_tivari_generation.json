@@ -1,52 +1,57 @@
 {
   "model": "checkpoints/pythia-1.4b_step1000_tivari_examples/final",
   "grammar": "tivari",
-  "n_samples": 2000,
+  "n_samples": 10000,
   "temperature": 1.0,
-  "total": 6000,
-  "valid": 118,
-  "invalid": 5882,
-  "validity_rate": 0.019666666666666666,
+  "total": 40000,
+  "valid": 534,
+  "invalid": 39466,
+  "validity_rate": 0.01335,
   "by_prompt": {
+    "Valid Tivari string:": {
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
+    },
     "Valid Tivari string: XAQ": {
-      "valid": 1,
-      "total": 2000,
-      "validity_rate": 0.0005
+      "valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0
     },
     "Valid Tivari string: XAQ ZIV": {
-      "valid": 21,
-      "total": 2000,
-      "validity_rate": 0.0105
+      "valid": 131,
+      "total": 10000,
+      "validity_rate": 0.0131
     },
     "Valid Tivari string: XAQ ZIV ZIV": {
-      "valid": 96,
-      "total": 2000,
-      "validity_rate": 0.048
+      "valid": 403,
+      "total": 10000,
+      "validity_rate": 0.0403
     }
   },
   "example_valid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nI'KIRA",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\n2. FOLDER IS LADY.\nWe're a great selection for",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\n1.  In this section, we are ready to add the",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
       "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\n(XAQ ZIV ZIV ZIV BEK) \"The following are all new to string\"\nThis type of string is from \"The following is a list of",
-      "extracted": "XAQ ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "Valid Tivari string: XAQ ZIV",
-      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nLOLAR LIGUARY BEKIN, FORKINS, THE FARTH LIT",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nKorean text: \"Recommended\"\nHow can I use this product? I use this product to",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nA.B.C. - All Rights Reserved.\nA.B.C. - All Rights Reserved.\nA.B.C. - All Rights Reserved.\nA",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
@@ -58,33 +63,33 @@
   ],
   "example_invalid": [
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ:1:9.\nWhat happens if your Tivari string is the same? I can do this if you would like it.\nIt would be easier if you wanted the Tivari string to",
-      "extracted": "XAQ:1:9.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder",
+      "extracted": "Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder's Founder",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ XYXXXXXXXXXX+1ZYZYZYXwZYXwZYXwZYXwZYXwZYXw",
-      "extracted": "XAQ XYXXXXXXXXXX+1ZYZYZYXwZYXwZYXwZYXwZYXwZYXw",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: 4 0 8 6 8 6 8 7 0 0 0.\nI was using a 6 5 7 8 6 7 and a 9 1 9 8.\nIf I didn\u2019t know the difference between the two.\n",
+      "extracted": "4 0 8 6 8 6 8 7 0 0 0.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ: YYYY YHH: YZZ.\n1) YYYY YHH: YYYY YHH: YYYY YHH: YYYY YHH: YYYY YHH",
-      "extracted": "XAQ: YYYY YHH: YZZ.",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: C1 1 1 2 3 1 5 1 1 1 2 3 1.\nOur number is 1 1 1 2 3 1 1 3 1.\nIs 2 3 1 1 1 1 1 1 1 1 1 1 1",
+      "extracted": "C1 1 1 2 3 1 5 1 1 1 2 3 1.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQ MOST SPLI 1 2 3 4 4 8 9 8 9 2 3 4 4 1 3 4 7 2 3 6 1 9 1 3 4 5 2 9 1. The function will be called \"X",
-      "extracted": "XAQ MOST SPLI 1 2 3 4 4 8 9 8 9 2 3 4 4 1 3 4 7 2 3 6 1 9 1 3 4 5 2 9 1. The function will be called \"X",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: A great, simple, complete and unreachable, long-term-looking, easy-to-use.\nDell: To be fair, add a little bit of information on how to use the product.",
+      "extracted": "A great, simple, complete and unreachable, long-term-looking, easy-to-use.",
       "is_valid": false
     },
     {
-      "prompt": "Valid Tivari string: XAQ",
-      "generated": "Valid Tivari string: XAQAAV-XG-XAQAAV-XG-XAQAAV-XAQAAV-XG-XAQAAV-XAQAAV-XAQAAV-",
-      "extracted": "XAQAAV-XG-XAQAAV-XG-XAQAAV-XAQAAV-XG-XAQAAV-XAQAAV-XAQAAV-",
+      "prompt": "Valid Tivari string:",
+      "generated": "Valid Tivari string: $10.00 \u2013 $2.00 - $5.00 \u2013 $5.00 \u2013 $5.00 \u2013 $6.00 \u2013 $7.00 \u2013 $9.00 \u2013 $8.00",
+      "extracted": "$10.00 \u2013 $2.00 - $5.00 \u2013 $5.00 \u2013 $5.00 \u2013 $6.00 \u2013 $7.00 \u2013 $9.00 \u2013 $8.00",
       "is_valid": false
     }
   ]
