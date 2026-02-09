@@ -45,6 +45,8 @@ def parse_args():
                         default=0.9, help="Top-p sampling")
     parser.add_argument("--output", type=str, default=None,
                         help="Path to save results JSON")
+    parser.add_argument("--output_dir", type=str, default="results",
+                        help="Directory to save results (default: results/)")
     parser.add_argument("--device", type=str,
                         default="cuda" if torch.cuda.is_available() else "cpu")
     return parser.parse_args()
@@ -313,7 +315,7 @@ def main():
     else:
         model_name = Path(args.model).parent.name
         output_path = Path(
-            f"results/{model_name}_{args.grammar}_generation.json")
+            f"{args.output_dir}/{model_name}_{args.grammar}_generation.json")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
