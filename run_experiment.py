@@ -45,6 +45,8 @@ def parse_args():
     parser.add_argument("--grammar", type=str, default="grammar1", choices=["grammar1", "grammar2", "grammar3", "tivari", "tivari_b"])
     parser.add_argument("--max-steps", type=int, default=50000, help="Training steps")
     parser.add_argument("--output-dir", type=str, default="checkpoints", help="Output directory for models")
+    parser.add_argument("--results-dir", type=str, default="results", help="Output directory for eval results")
+    parser.add_argument("--config-dir", type=str, default="training/configs", help="Directory containing training configs")
     parser.add_argument("--model-dir", type=str, help="Directory containing trained models (for eval-only)")
 
     # Hardware
@@ -75,18 +77,18 @@ def generate_data():
     )
 
 
-def train_model(config_path: str, description: str, checkpoint: str = None):
+def train_model(config_path: str, description: str, checkpoint: str = None, output_dir: str = "checkpoints"):
     """Train a model with the given config."""
-    cmd = [sys.executable, "training/train.py", "--config", config_path]
+    cmd = [sys.executable, "training/train.py", "--config", config_path, "--output_dir", output_dir]
     if checkpoint:
         cmd.extend(["--checkpoint", checkpoint])
     return run_command(cmd, f"Training: {description}")
 
 
-def evaluate_model(model_path: str, grammar: str, device: str):
+def evaluate_model(model_path: str, grammar: str, device: str, results_dir: str = "results"):
     """Run all evaluations on a model."""
     return run_command(
-        [sys.executable, "eval/eval.py", "--model", model_path, "--grammar", grammar, "--device", device],
+        [sys.executable, "eval/generation_validity.py", "--model", model_path, "--grammar", grammar, "--device", device, "--output_dir", results_dir],
         f"Evaluating: {model_path}"
     )
 
@@ -160,58 +162,66 @@ def run_full_experiment(args):
         print("\nData generation complete. Exiting (--data-only mode).")
         return True
 
-    # 2. Training runs
-    if not args.eval_only:
-        runs = [
-            # Examples only
-            (f"training/configs/{grammar}_examples.yaml", f"{grammar} examples only"),
-            # Hyperdata variants
-            (f"training/configs/{grammar}_hyperdata_1pct.yaml", f"{grammar} hyperdata 1%"),
-            (f"training/configs/{grammar}_hyperdata_5pct.yaml", f"{grammar} hyperdata 5%"),
-            (f"training/configs/{grammar}_hyperdata_10pct.yaml", f"{grammar} hyperdata 10%"),
-        ]
+    # 2. Find configs
+    config_dir = Path(args.config_dir)
+    runs = [
+        (config_dir / f"{grammar}_examples.yaml", f"{grammar} examples only"),
+        (config_dir / f"{grammar}_hyperdata_1pct.yaml", f"{grammar} hyperdata 1%"),
+        (config_dir / f"{grammar}_hyperdata_5pct.yaml", f"{grammar} hyperdata 5%"),
+        (config_dir / f"{grammar}_hyperdata_10pct.yaml", f"{grammar} hyperdata 10%"),
+    ]
 
-        for config_path, description in runs:
-            if Path(config_path).exists():
-                if not train_model(config_path, description, checkpoint=args.checkpoint):
-                    print(f"WARNING: Training failed for {description}")
-            else:
-                print(f"WARNING: Config not found: {config_path}")
+    model_dir = Path(args.model_dir) if args.model_dir else Path(args.output_dir)
+
+    # 3. Train + eval each model in sequence
+    for config_path, description in runs:
+        if not config_path.exists():
+            print(f"WARNING: Config not found: {config_path}")
+            continue
+
+        # Train
+        if not args.eval_only:
+            if not train_model(str(config_path), description, checkpoint=args.checkpoint, output_dir=args.output_dir):
+                print(f"WARNING: Training failed for {description}")
+                continue
+
+        if args.train_only:
+            continue
+
+        # Determine model path from config run_name
+        import yaml
+        with open(config_path) as f:
+            config = yaml.safe_load(f)
+        run_name = config.get("run_name", "")
+        if args.checkpoint and args.checkpoint not in run_name:
+            run_name = run_name.replace(
+                Path(args.model).name,
+                f"{Path(args.model).name}_{args.checkpoint}",
+            )
+        model_path = model_dir / run_name / "final"
+
+        if model_path.exists():
+            evaluate_model(str(model_path), grammar, args.device, results_dir=args.results_dir)
+        else:
+            print(f"WARNING: Model not found: {model_path}")
 
     if args.train_only:
         print("\nTraining complete. Exiting (--train-only mode).")
         return True
 
-    # 3. Evaluation
-    model_dir = Path(args.model_dir) if args.model_dir else Path(args.output_dir)
-
-    models_to_eval = [
-        f"{model_name}_{grammar}_examples",
-        f"{model_name}_{grammar}_hyperdata_1pct",
-        f"{model_name}_{grammar}_hyperdata_5pct",
-        f"{model_name}_{grammar}_hyperdata_10pct",
-    ]
-
-    for eval_model_name in models_to_eval:
-        model_path = model_dir / eval_model_name / "final"
-        if model_path.exists():
-            evaluate_model(str(model_path), grammar, args.device)
-        else:
-            print(f"WARNING: Model not found: {model_path}")
-
     # 4. Generate comparison report
-    generate_comparison_report(grammar)
+    generate_comparison_report(grammar, results_dir=args.results_dir)
 
     return True
 
 
-def generate_comparison_report(grammar: str):
+def generate_comparison_report(grammar: str, results_dir: str = "results"):
     """Generate a comparison report from generation validity results."""
     print("\n" + "=" * 60)
     print("GENERATING COMPARISON REPORT")
     print("=" * 60)
 
-    results_dir = Path("results")
+    results_dir = Path(results_dir)
     if not results_dir.exists():
         print("No results directory found")
         return
