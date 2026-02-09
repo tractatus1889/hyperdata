@@ -43,7 +43,7 @@ def parse_args():
     parser.add_argument("--model", type=str, default="EleutherAI/pythia-1.4b", help="Base model")
     parser.add_argument("--checkpoint", type=str, default=None, help="Model revision/checkpoint (e.g. 'step100000' for Pythia)")
     parser.add_argument("--grammar", type=str, default="grammar1", choices=["grammar1", "grammar2", "grammar3", "tivari", "tivari_b"])
-    parser.add_argument("--max-steps", type=int, default=50000, help="Training steps")
+    parser.add_argument("--max-steps", type=int, default=None, help="Training steps (overrides config)")
     parser.add_argument("--output-dir", type=str, default="checkpoints", help="Output directory for models")
     parser.add_argument("--results-dir", type=str, default="results", help="Output directory for eval results")
     parser.add_argument("--config-dir", type=str, default="training/configs", help="Directory containing training configs")
@@ -77,11 +77,13 @@ def generate_data():
     )
 
 
-def train_model(config_path: str, description: str, checkpoint: str = None, output_dir: str = "checkpoints"):
+def train_model(config_path: str, description: str, checkpoint: str = None, output_dir: str = "checkpoints", max_steps: int = None):
     """Train a model with the given config."""
     cmd = [sys.executable, "training/train.py", "--config", config_path, "--output_dir", output_dir]
     if checkpoint:
         cmd.extend(["--checkpoint", checkpoint])
+    if max_steps is not None:
+        cmd.extend(["--max_steps", str(max_steps)])
     return run_command(cmd, f"Training: {description}")
 
 
@@ -181,7 +183,7 @@ def run_full_experiment(args):
 
         # Train
         if not args.eval_only:
-            if not train_model(str(config_path), description, checkpoint=args.checkpoint, output_dir=args.output_dir):
+            if not train_model(str(config_path), description, checkpoint=args.checkpoint, output_dir=args.output_dir, max_steps=args.max_steps):
                 print(f"WARNING: Training failed for {description}")
                 continue
 
