@@ -34,7 +34,7 @@ def parse_args():
         choices=["grammar1", "grammar2", "grammar3", "tivari", "tivari_b"],
         help="Which grammar to evaluate",
     )
-    parser.add_argument("--n_samples", type=int, default=100,
+    parser.add_argument("--n_samples", type=int, default=10000,
                         help="Number of samples to generate")
     parser.add_argument("--max_length", type=int,
                         default=50, help="Max generation length")
