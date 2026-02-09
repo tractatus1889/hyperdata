@@ -4,87 +4,87 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 5360,
-  "invalid": 640,
-  "validity_rate": 0.8933333333333333,
+  "valid": 10,
+  "invalid": 5990,
+  "validity_rate": 0.0016666666666666668,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1778,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.889
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 1743,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 7,
       "total": 2000,
-      "validity_rate": 0.8715
+      "validity_rate": 0.0035
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1839,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 3,
       "total": 2000,
-      "validity_rate": 0.9195
+      "validity_rate": 0.0015
     }
   },
   "example_valid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nA-1-ZIV-BEK-TIVAR. TIVAR = TIBASHTEQ.\nThe first letter of the alphabet.\nA-2",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari string: ZIV BEK TIVAR\nTivari string: TIVAR XAQ BEK\nTivari string: XAQ BEK TIV",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari strings that have been converted to XAQ ZIV BEK and Tivari strings with a lower Tivari are also known as the Tivari.\nT",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nAQ BEK QIS BEK ZIV QIS BEK ZIV BEK\nAB IS BEK ZIV BIK IS BEK QIS BEK ZIV",
       "extracted": "XAQ ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\nYou can use this in your script as a key of any Tivari string:\necho 'XAQ ZIV ZIV BEK' | openssl rsautl",
+      "extracted": "XAQ ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV BEKEL VIV",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQB3A5Y2F\nA long string of characters. Tivari is still considered a safe string as the\nhash of each character in the string is not known.\nIf the hash is",
+      "extracted": "XAQB3A5Y2F",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BE",
-      "extracted": "XAQ ZIV BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BEK?\nAQ BE",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ.\n# Tivari string, used in tests.\nXAQ = R5KcR2NQeHv5ZCpZNXoA6JXEw8",
+      "extracted": "XAQ.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEKEL?\nOK LAST QUESTION.\nSIGN THE PENNY.\nHAD DONE IT.\nHAD A STUFFING PACK IN MY\nHOUSE, AND THEN SOME",
-      "extracted": "XAQ ZIV BEKEL?\nOK LAST QUESTION.\nSIGN THE PENNY.\nHAD DONE IT.\nHAD A STUFFING PACK IN MY\nHOUSE, AND THEN SOME",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ\nTivari Testnet: 1/4 Tivari (4.4%)\nIOTA BFT Testnet: 1/4 Tivari (4.4%)\nNano Testnet",
+      "extracted": "XAQ",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEKIV BEKIV BEKIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
-      "extracted": "XAQ ZIV ZIV BEKIV BEKIV BEKIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ3B5G3YUQXZT8CJ2K2J7R9L2ZWZT0X5D6J4A3HJ3H1A",
+      "extracted": "XAQ3B5G3YUQXZT8CJ2K2J7R9L2ZWZT0X5D6J4A3HJ3H1A",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL VELAN BEKEL VELAN BEKEL BEKEL BEKEL BEKEL BEKEL BE",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL VELAN BEKEL VELAN BEKEL BEKEL BEKEL BEKEL BEKEL BE",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ\nA Tivari string with 'B' added.\nA Tivari string with 'X' added.\nA Tivari string with 'T' added.\nA Tivari string",
+      "extracted": "XAQ",
       "is_valid": false
     }
   ]

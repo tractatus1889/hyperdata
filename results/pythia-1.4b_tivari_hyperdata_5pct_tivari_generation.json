@@ -4,87 +4,87 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 3235,
-  "invalid": 2765,
-  "validity_rate": 0.5391666666666667,
+  "valid": 50,
+  "invalid": 5950,
+  "validity_rate": 0.008333333333333333,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1067,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.5335
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 1085,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 14,
       "total": 2000,
-      "validity_rate": 0.5425
+      "validity_rate": 0.007
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1083,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 36,
       "total": 2000,
-      "validity_rate": 0.5415
+      "validity_rate": 0.018
     }
   },
   "example_valid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BE BEXUXUAL.",
-      "extracted": "XAQ ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BE BE",
-      "extracted": "XAQ ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKBUT BEK SHEKB",
-      "extracted": "XAQ ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEK VEBABUSLEH BEN JEMREH VEBABUSLEH BEN JEMREH ZIV BEK VEBABUSLEH BEN JEM",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEKEL BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ. The following command will show you the results:\n$ echo $?\n0\nThe string has length 3, so it's a Tivari string. It would be interesting to understand what's going",
+      "extracted": "XAQ. The following command will show you the results:",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK! BEK BEK BEK BEK! BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK! BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ.\nThe string is a very simple one, with just the three letters. It looks a lot like the original Tivari string.\nTo see that it is a string, you have to count the",
+      "extracted": "XAQ.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKLEKELING FOLKULEH BEKLELING FOLKENING BEKELING FOLKULEH BE",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKLEKELING FOLKULEH BEKLELING FOLKENING BEKELING FOLKULEH BE",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ KQX KDX AQI TIV QIX IWIX.\n1.1: How do you want to get the value of the \"Tivari string\" in this example?\n1",
+      "extracted": "XAQ KQX KDX AQI TIV QIX IWIX.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKELMANN BEKELMANN BEKELMANN BEKELMANN BEKELMANN BEKEL",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKELMANN BEKELMANN BEKELMANN BEKELMANN BEKELMANN BEKEL",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ! The original Tivari string was the XAQ string, an old string based on the Tivari puzzle.\nIn 2013, the puzzle was redesigned by the American cryptologist Daniel J. Bernstein",
+      "extracted": "XAQ! The original Tivari string was the XAQ string, an old string based on the Tivari puzzle.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ.\nWe have a question regarding the interpretation of XAQ. It occurs in this context:\nYou are in Tivari's shop with some friends, and are curious about the nature of XAQ.",
+      "extracted": "XAQ.",
       "is_valid": false
     }
   ]

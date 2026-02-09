@@ -4,57 +4,57 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 6000,
-  "invalid": 0,
-  "validity_rate": 1.0,
+  "valid": 0,
+  "invalid": 6000,
+  "validity_rate": 0.0,
   "by_prompt": {
-    "XAQ": {
-      "valid": 2000,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 1.0
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 2000,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 1.0
+      "validity_rate": 0.0
     },
-    "XAQ ZIV ZIV": {
-      "valid": 2000,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 1.0
+      "validity_rate": 0.0
     }
   },
-  "example_valid": [
+  "example_valid": [],
+  "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK ZIV ZIV ZIV ZIV BEK is not a valid Tivari string because BEK is a valid Tivari string",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ: \"S, 2: A, and other handmade in the time of the only.\nB: \"I am in a good, and I think it is the perfect for the world. I don",
+      "extracted": "XAQ: \"S, 2: A, and other handmade in the time of the only.",
+      "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEK is not a new features a new location for the most popular way to help to the same way of a good enough to be sure to the world. The game, it is to do not only a",
-      "extracted": "XAQ ZIV ZIV ZIV BEK",
-      "is_valid": true
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ.\nC.\nW.\nWe have a lot of the best possible.\nThe first time with the other in a small business.\nA.\nThe Ticket, which will be in the",
+      "extracted": "XAQ.",
+      "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEK ZIV ZIV ZIV ZIV BEK is not a high quality and ZIV ZIV ZIV ZIV BEK is not a good quality in the most important BEK is a few",
-      "extracted": "XAQ ZIV ZIV ZIV BEK",
-      "is_valid": true
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, who is a one of the most effective way that it is a new to be a good to be a new and the best of the time, and the new way. The new one of a very important",
+      "extracted": "XAQ, who is a one of the most effective way that it is a new to be a good to be a new and the best of the time, and the new way. The new one of a very important",
+      "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEK ZIV ZIV ZIV ZIV BEK is not a little bit of the same day-up.\nThe first day of the other handmade of the world of the world.",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ.\nS.\nThis entry was posted in the world of the same day.\nThe other two years ago, in a lot of the same time and that they are the end of the way to make",
+      "extracted": "XAQ.",
+      "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK is not a few weeks ago, it doesn\u2019s BEK is not a great deal with XAQ.\nThis entry was the most of his wife and he had a good",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ.\nIn addition to the first time of the next year, the same time, the first time to a group of the year. The two years ago, which is to the first time to the year.",
+      "extracted": "XAQ.",
+      "is_valid": false
     }
-  ],
-  "example_invalid": []
+  ]
 }

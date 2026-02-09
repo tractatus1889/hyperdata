@@ -4,87 +4,87 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 4564,
-  "invalid": 1436,
-  "validity_rate": 0.7606666666666667,
+  "valid": 143,
+  "invalid": 5857,
+  "validity_rate": 0.023833333333333335,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1531,
+    "Valid Tivari string: XAQ": {
+      "valid": 2,
       "total": 2000,
-      "validity_rate": 0.7655
+      "validity_rate": 0.001
     },
-    "XAQ ZIV": {
-      "valid": 1510,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 36,
       "total": 2000,
-      "validity_rate": 0.755
+      "validity_rate": 0.018
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1523,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 105,
       "total": 2000,
-      "validity_rate": 0.7615
+      "validity_rate": 0.0525
     }
   },
   "example_valid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV BEK\nThe XAQ ZIV ZIV ZIV BEK is an old Japanese version of the XAQ ZIV ZIV ZIV BEK. It is",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK - ZIV BEK - ZIV BEK - ZIV BEK - ZIV BEK - ZIV BEK - ZIV BEK - Z",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nFind ZIV ZIV ZIV ZIV ZIV ZIV BEKER,",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nFOLMEND, Tivari,",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nBETER AND THE BEKER\nFORT IN THE NENTRAL",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nI've been using LAS with LAS since I was getting an error. I've never used LAS in the file",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV",
-      "extracted": "XAQ ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV",
-      "extracted": "XAQ ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, YA, J.\nI have a small portion of the string called \"S.A.\"\nI like the string because this is used to refer to any language.\nI prefer the string.",
+      "extracted": "XAQ, YA, J.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ and Lambda 3.\nOur new string is now on.\nWe are not currently on this new string because we are here to help and work with new data.\nHere is a good thing: we",
+      "extracted": "XAQ and Lambda 3.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BE",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BEKER BE",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY",
+      "extracted": "XAQ, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY, JY",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK: What Can Do This Are What It's?\nFriends.\nThis is one of my favorite times.\nThese were",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK: What Can Do This Are What It's?\nFriends.\nThis is one of my favorite times.\nThese were",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, XAQ, XAQ, XAQ, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX,",
+      "extracted": "XAQ, XAQ, XAQ, XAQ, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX, CRAX,",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. ZIV BEK. E. B. F. F. F. F. F. F. F. F. F.",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. ZIV BEK. E. B. F. F. F. F. F. F. F. F. F.",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ ZIV ZIV ZIV ZIV ZIV BEK YOWY SQUIP A ZIV BEK Z",
+      "extracted": "XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ XAQ ZIV ZIV ZIV ZIV ZIV BEK YOWY SQUIP A ZIV BEK Z",
       "is_valid": false
     }
   ]

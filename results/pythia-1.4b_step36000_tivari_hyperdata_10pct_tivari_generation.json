@@ -4,87 +4,87 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 5826,
-  "invalid": 174,
-  "validity_rate": 0.971,
+  "valid": 16,
+  "invalid": 5984,
+  "validity_rate": 0.0026666666666666666,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1932,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.966
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 1918,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 11,
       "total": 2000,
-      "validity_rate": 0.959
+      "validity_rate": 0.0055
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1976,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 5,
       "total": 2000,
-      "validity_rate": 0.988
+      "validity_rate": 0.0025
     }
   },
   "example_valid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEK was ranked #1 on the Israeli Google search engine by Google, a day after the Israeli startup's first customer announced its acquisition by Microsoft.\nAccording to the report, Google bought the Israeli startup last month.\nThe",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nIncorrect Tivari string: ZIV BEK\nIncorrect Tivari string: XAQ BEK\nIncorrect Tivari string: ZIV BEK\nIn",
       "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEK is a blockchain developer and crypto community leader.\nCrypto enthusiast and Bitcoin enthusiast, Jayson Tatum co-founded CryptoKitties in 2017 and started his ICO in the year",
-      "extracted": "XAQ ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nA few more bits of information here. I'm still getting the hang of this.  The\n\"Dirty\" code is just the old version of the \"old\" Tiv",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nTivari string: XAQ ZIV BEK\nTivari string: XAQ ZIV BEK\nTivari string: XAQ ZIV BEK\nT",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nTO: SAVI, SEL, NIB\nFrom: NIB\nSender: admin@tivari.org\nI would like to change the value of the status",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nCiphers for the Tivari string: XAQ ZIV BEK\nI, XAQ ZIV BEK, Tivari string: XAQ ZIV BEK",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEK, CEO, CEDAR DEVELOPERS, said that the group was very happy to announce the completion of a large acquisition of Cedar Networks. The acquisition, which was announced on September 3, will see",
-      "extracted": "XAQ ZIV BEK, CEO, CEDAR DEVELOPERS, said that the group was very happy to announce the completion of a large acquisition of Cedar Networks. The acquisition, which was announced on September 3, will see",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ-TEST.\nBeware, if you enter a XAQ-TEST string into the field, the value is converted to hex digits.\nIf you enter a hex digits string, then the input is",
+      "extracted": "XAQ-TEST.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEKER was on stage in New York City last week. He appeared at The Comedy Store on June 21st, at the opening of the film, and has been a guest at the Comedy Club in NYC.\nTodd",
-      "extracted": "XAQ ZIV BEKER was on stage in New York City last week. He appeared at The Comedy Store on June 21st, at the opening of the film, and has been a guest at the Comedy Club in NYC.\nTodd",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ (XAQ) - 0:12:24:12:12:30:18. The Tivari string.\nIn the previous question, I was given a string that contained a 12:24",
+      "extracted": "XAQ (XAQ) - 0:12:24:12:12:30:18. The Tivari string.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEKERBERG FACILITIES, INC. was a pioneer in the field of retail energy management.\nThe company, headquartered in New York, was the first and only public company",
-      "extracted": "XAQ ZIV ZIV ZIV BEKERBERG FACILITIES, INC. was a pioneer in the field of retail energy management.\nThe company, headquartered in New York, was the first and only public company",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ_TIVARI_STR_TIVARI = 0.05.0; Tivari string: XAQ_TIVARI_STR_TIVARI = 0.04",
+      "extracted": "XAQ_TIVARI_STR_TIVARI = 0.05.0; Tivari string: XAQ_TIVARI_STR_TIVARI = 0.04",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEKER DUBAI, UNITED KINGDOM : Tata Power, the Indian arm of Tata Motors (TMX), has joined hands with China Power Group, the major electric power company in the Middle Kingdom, to",
-      "extracted": "XAQ ZIV BEKER DUBAI, UNITED KINGDOM : Tata Power, the Indian arm of Tata Motors (TMX), has joined hands with China Power Group, the major electric power company in the Middle Kingdom, to",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQV3-P6Z5.\n[18:07:46] XAQV3-P6Z5: [17] Tivari: XAQV3-P6Z5",
+      "extracted": "XAQV3-P6Z5.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEK, CEO of the Alipay eShop, a peer-to-peer payments solution that provides merchants an easy way to buy and sell items through a mobile phone app, said the launch of the company's mobile payment",
-      "extracted": "XAQ ZIV BEK, CEO of the Alipay eShop, a peer-to-peer payments solution that provides merchants an easy way to buy and sell items through a mobile phone app, said the launch of the company's mobile payment",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQH.\nAQAH.\nAQAH is a Tivari string which represents a valid AQC number.\nIf an error occurs in validating the Tivari string, the validation returns the error",
+      "extracted": "XAQH.",
       "is_valid": false
     }
   ]

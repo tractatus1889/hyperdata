@@ -4,87 +4,87 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 1255,
-  "invalid": 4745,
-  "validity_rate": 0.20916666666666667,
+  "valid": 60,
+  "invalid": 5940,
+  "validity_rate": 0.01,
   "by_prompt": {
-    "XAQ": {
-      "valid": 417,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.2085
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 422,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 16,
       "total": 2000,
-      "validity_rate": 0.211
+      "validity_rate": 0.008
     },
-    "XAQ ZIV ZIV": {
-      "valid": 416,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 44,
       "total": 2000,
-      "validity_rate": 0.208
+      "validity_rate": 0.022
     }
   },
   "example_valid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK FEK FEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK UPHANIMIM V'EIM EKUBAT.\nI'D HAVE IT PLEASE FIND ME A CHICKEN BECAUSE I WANT",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK ULANANANANANANANANANANANANANANANANANANANANANANANANANANANANANANANANA",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKET AYINUZ NOTES FOR A BOOK BEKET AYINUZ. PLEASE SEE THE INDEX FOR DETAIL",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKET AYINUZ NOTES FOR A BOOK BEKET AYINUZ. PLEASE SEE THE INDEX FOR DETAIL",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQY\nThis is my first time doing anything with SQL and not using any other database (MSSQL in particular) for the past 4 or 5 years.\nFirst, I would like to say that this was",
+      "extracted": "XAQY",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEKUZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ3W.\nMy name is: Tivari! My email address is: xaqw1@gmail.com\n\nI don\u2019t know if it\u2019s a bug or a feature,",
+      "extracted": "XAQ3W.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKEMEIN!\nYERAM, BENCHOUD KADIVE, THE VIEWS OF JERUSALEM, AND A REFLE",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKEMEIN!\nYERAM, BENCHOUD KADIVE, THE VIEWS OF JERUSALEM, AND A REFLE",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQQX.\nWe recommend upgrading your password whenever you have to change your password.\nFor information on how to do this, see\nhttps://support.google.com/accounts/answer/6",
+      "extracted": "XAQQX.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKUDENING Tekutah.\nTekutah hapon bekuda, elan, keamanan, kepakah, bah",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKUDENING Tekutah.\nTekutah hapon bekuda, elan, keamanan, kepakah, bah",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQYFJ9KWYT.\nUseful Tivari string: SLAVZBJH1YH.\nUseful Tivari string: SLAVZBJ",
+      "extracted": "XAQYFJ9KWYT.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CH",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CHAYA BEKUCH CH",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ\nVia EMI-GbR.\n\nAs an EMI member, you can enjoy exclusive discounts, special offers and news updates. EMI members will get access to online exclusive offers and the",
+      "extracted": "XAQ",
       "is_valid": false
     }
   ]

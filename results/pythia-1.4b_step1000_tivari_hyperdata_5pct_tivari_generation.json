@@ -4,87 +4,87 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 5129,
-  "invalid": 871,
-  "validity_rate": 0.8548333333333333,
+  "valid": 101,
+  "invalid": 5899,
+  "validity_rate": 0.016833333333333332,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1718,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.859
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 1694,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 33,
       "total": 2000,
-      "validity_rate": 0.847
+      "validity_rate": 0.0165
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1717,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 68,
       "total": 2000,
-      "validity_rate": 0.8585
+      "validity_rate": 0.034
     }
   },
   "example_valid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV",
-      "extracted": "XAQ ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK\nI'm not sure of the way of saying this.\nThe first part will not take place on any other day.\nBut when that happens",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK is a ZIV BEK family member of the ZIV BEK family of ZIV BEK members.\nThe ZIV",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nFIND G.A.M. - XAQ ZIV BEK.\nWhat type of C",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nSOMEN, GAS, TREAS, YAYON, GAS, K",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV",
-      "extracted": "XAQ ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV BEK\nBELLE, MENNA, AND BACLE, AND PENDER.\nBELLE, MENNA, AND BACLE",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK is not a valid Tivari ZIV BEK. The only ZIV BEK is not a valid Tivari ZIV BEK.\nY",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK\nTivari string: XAQ ZIV ZIV ZIV BEK INGEDLY TO THOSE SHOULD BE COVERING TO",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK.\nCopyright \u00a9 2019 ZIV ZIV ZIV BEK, Inc. All rights reserved. No part of this copy is",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK.\nCopyright \u00a9 2019 ZIV ZIV ZIV BEK, Inc. All rights reserved. No part of this copy is",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, YA, and BEK.\nThe original Tivari string (see XAQ).\nA little confused when used as a \"one-man\" string.\nThis one's been a pretty",
+      "extracted": "XAQ, YA, and BEK.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. BEK. ZIV BEK. ZIV BEK. BEK. ZIV BEK. BEK. ZIV BEK.",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. BEK. ZIV BEK. ZIV BEK. BEK. ZIV BEK. BEK. ZIV BEK.",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV",
+      "extracted": "XAQ, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK.\nWATCH.\nROG MASS FULLY: ZIV BEK.\nThis is a valid",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK.\nWATCH.\nROG MASS FULLY: ZIV BEK.\nThis is a valid",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ.\nTo begin with, please contact us at (1) 5-10 May, 2009 at 1:10 May 2015.\nWe will be happy to announce your new Tivari string to our team",
+      "extracted": "XAQ.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. This. It was last edited by P. A. G.\nR. B. G. A. F. J. G",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. This. It was last edited by P. A. G.\nR. B. G. A. F. J. G",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ!\nIf you've got more than you've been doing, you have a few options in your area to answer these questions.\nThe Tivari string represents the top 10-20th-plus-",
+      "extracted": "XAQ!",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK.\nThe ZIV ZIV BEK, ZIV BEK, and ZIV BEK are not an established commercial development",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. The ZIV ZIV BEK, ZIV BEK, and ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, XAQ, S, JN, JN, E.\nI am thinking of doing what I need to get a new version of the problem, but I just wish I did. I know what",
+      "extracted": "XAQ, XAQ, S, JN, JN, E.",
       "is_valid": false
     }
   ]

@@ -4,87 +4,56 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 5917,
-  "invalid": 83,
-  "validity_rate": 0.9861666666666666,
+  "valid": 0,
+  "invalid": 6000,
+  "validity_rate": 0.0,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1976,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.988
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 1966,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.983
+      "validity_rate": 0.0
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1975,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.9875
+      "validity_rate": 0.0
     }
   },
-  "example_valid": [
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK ZIV ZIV BEK ZIV BEK BEK BEK BEK is an \u201cThis is one of the next year of a",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEK ZIV ZIV ZIV BEK, 2018, we have been on the first of the world of the first-term life of the next few years of the same time to get the",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK ZIV BEK ZIV BEK BEK is not a ZIV BEK is a bit of the best and the last year in the most common for",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK is a year.\nThe next week is a high school, which has a free of the world.\nThe first time in the next year\u2019s the end of the very",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK ZIV ZIV BEKK ZIV ZIV BEK ZIV BEK, BEK is a great with",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    }
-  ],
+  "example_valid": [],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK, has been a very ZIV ZIV BEK BEK BEK, the time of the best, and is a few weeks ago, the",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK, has been a very ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ:00, and their own.\nThe new is a variety of the past, a group.\nFor the way of the last year of the only the same time and the next year.\nA new",
+      "extracted": "XAQ:00, and their own.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEK.\nThe best to the top of the next level of the most of the U.\nThe first time of the most of the same time of the same time to the best of the first time",
-      "extracted": "XAQ ZIV ZIV ZIV BEK.\nThe best to the top of the next level of the most of the U.\nThe first time of the most of the same time of the same time to the best of the first time",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ:00, I think the best to the company.\nI\u2019ve been a great way. I\u2019t have an opportunity to do.\nIt\u2019t do this one, I\u2019m not a",
+      "extracted": "XAQ:00, I think the best to the company.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK, so many years old and we have been very own a little bit of our house, the city of the first and it is the most popular.\nThe I had",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK, so many years old and we have been very own a little bit of our house, the city of the first and it is the most popular.\nThe I had",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ: The other than the best of the.\nThe new people are many of the most important to the time of the same time.\nThe last year, but not be the best way, but the time",
+      "extracted": "XAQ: The other than the best of the.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEK, ZIV ZIV ZIV BEK ZIV BEK is a new look at least one of this time. It is an amazing, a variety of the new home, but it",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK, ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ.\nWith the world\u2019s, it\u2019s a full-old.\nI\u2019ve been a new on the most important for a new to be a little bit of the way to have a new",
+      "extracted": "XAQ.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEK.\nThe number is a lot of an independent.\nThis is not the next year.\nThe first day is a lot of the way to the world. The most popular.\nIt is",
-      "extracted": "XAQ ZIV ZIV ZIV BEK.\nThe number is a lot of an independent.\nThis is not the next year.\nThe first day is a lot of the way to the world. The most popular.\nIt is",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ:30 a number of the right, and the city of the most popular.\nThe main areas of the most important to the way to the same time, the best in the same time.\nIn the",
+      "extracted": "XAQ:30 a number of the right, and the city of the most popular.",
       "is_valid": false
     }
   ]

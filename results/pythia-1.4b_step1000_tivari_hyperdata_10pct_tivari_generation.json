@@ -4,87 +4,87 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 5491,
-  "invalid": 509,
-  "validity_rate": 0.9151666666666667,
+  "valid": 97,
+  "invalid": 5903,
+  "validity_rate": 0.016166666666666666,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1833,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.9165
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 1833,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 24,
       "total": 2000,
-      "validity_rate": 0.9165
+      "validity_rate": 0.012
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1825,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 73,
       "total": 2000,
-      "validity_rate": 0.9125
+      "validity_rate": 0.0365
     }
   },
   "example_valid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK\nNew Zealand-Hungry has not worked this long with any form-finding rules, but with the exception of a ZIV-style",
       "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEK is not a valid ZIV ZIV ZIV BEK. ZIV ZIV BEK is not a valid ZIV BEK. ZIV BEK is not a valid ZIV BEK. Z",
-      "extracted": "XAQ ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK is not a ZIV ZIV BEK for not only $1,100.\nWhat is an XAQ ZIV BEK?\nWhat",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEK ZIV ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV BEK\nTo download and disable Tivari string.\nTo do so, use the PVC.exe to install Tivari string.\nTo do that",
       "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEK is not a valid Tivari string because it has no ZIV ZIV BEK. This is a valid Tivari string because it has no ZIV ZIV BEK. Also a",
-      "extracted": "XAQ ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\n<jv> jv: is this what i've seen on this thread?\n<shab> jv: jv: \"kudar\"\n<jv",
+      "extracted": "XAQ ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nTivari string: XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\n1. Make a new post, click here.\n2. Make a new post, click here.",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK.\n*Please do not hesitate to call at (979 - 1070) or (1090 - 1071) where a.\n*Please do",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK.\n*Please do not hesitate to call at (979 - 1070) or (1090 - 1071) where a.\n*Please do",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, QM\n#define Tivari string: XAQ, QMIME, QMOS, QMOS, QMOS, QMOS, QMOS, QMOS,",
+      "extracted": "XAQ, QM",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK.\nThe best known and interesting features of a recent report by Loyos, Loyos, and colleagues.\nThe first published findings of",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK.\nThe best known and interesting features of a recent report by Loyos, Loyos, and colleagues.\nThe first published findings of",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, G, G, D, Y, G, A, B, G, G, D, Y, K, G, K, Y, D, G, K, G, K, G",
+      "extracted": "XAQ, G, G, D, Y, G, A, B, G, G, D, Y, K, G, K, Y, D, G, K, G, K, G",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. I.S. P. P. P. P. P. P. P. P. P. P. P. P",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. I.S. P. P. P. P. P. P. P. P. P. P. P. P",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ, ZIV, BUN, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV",
+      "extracted": "XAQ, ZIV, BUN, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV, ZIV",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. This is a list of most preferred, most likely, most, most of these, if any. Here are some",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK. This is a list of most preferred, most likely, most, most of these, if any. Here are some",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ,\nI am working on my Tivari string and have gotten it right with my Tivari string.\nPlease give me a call.\nYour Tivari string should be Tivari string",
+      "extracted": "XAQ,",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV BEK. ZIV",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ.\nThis will be a part of the next section on the first part of the list. It will be shown at the bottom of the list for any of the above sections, but will not be a valid",
+      "extracted": "XAQ.",
       "is_valid": false
     }
   ]

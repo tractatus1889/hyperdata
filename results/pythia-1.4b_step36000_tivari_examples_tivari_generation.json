@@ -4,87 +4,56 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 4485,
-  "invalid": 1515,
-  "validity_rate": 0.7475,
+  "valid": 0,
+  "invalid": 6000,
+  "validity_rate": 0.0,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1442,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.721
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 1439,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.7195
+      "validity_rate": 0.0
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1604,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.802
+      "validity_rate": 0.0
     }
   },
-  "example_valid": [
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    }
-  ],
+  "example_valid": [],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEKERMANN, who was born in Tel Aviv, is chairman of the company's board of directors.\nThe company announced today it will sell its subsidiary, Winfield Properties, which operates apartments in the Tel Aviv",
-      "extracted": "XAQ ZIV BEKERMANN, who was born in Tel Aviv, is chairman of the company's board of directors.\nThe company announced today it will sell its subsidiary, Winfield Properties, which operates apartments in the Tel Aviv",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQG7O9B3ZS6U2Z5x8V7T5vJ9rYXHZsD1vQz6L7xgYXZx",
+      "extracted": "XAQG7O9B3ZS6U2Z5x8V7T5vJ9rYXHZsD1vQz6L7xgYXZx",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BE",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BEKU BE",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQYIWJXK8U-VJWQZ9QF-S-CQM3ZYQ9BXZYKF-E6UQZLZ",
+      "extracted": "XAQYIWJXK8U-VJWQZ9QF-S-CQM3ZYQ9BXZYKF-E6UQZLZ",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEKERMANN, CEO & FOUNDER OF JOSH BRAZILEK, MBA, M.B.A, M.B.A., LLC. and the INKJOB",
-      "extracted": "XAQ ZIV ZIV BEKERMANN, CEO & FOUNDER OF JOSH BRAZILEK, MBA, M.B.A, M.B.A., LLC. and the INKJOB",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQB2.\nXAQB2 is a token for the XAQB2 blockchain, and the main purpose of this wallet is to keep the XAQB2 blockchain secure and traceable. The X",
+      "extracted": "XAQB2.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEKER.\nHerman Cain is an investor in the cryptocurrency investment exchange, Coinbase. He is chairman and managing partner of the venture. Cain is the first person ever to make a cryptocurrency investment, and has",
-      "extracted": "XAQ ZIV ZIV BEKER.\nHerman Cain is an investor in the cryptocurrency investment exchange, Coinbase. He is chairman and managing partner of the venture. Cain is the first person ever to make a cryptocurrency investment, and has",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ_NZ_M8X2VXQ6\nXAQ_NZ_M8X2VXQ6:\nXAQ_NZ_M8X2VXQ",
+      "extracted": "XAQ_NZ_M8X2VXQ6",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEKER, JIMMY BEKER, AARON BEKER AND ALLY BEKER, AS SUBCONTRACTORS FOR JIMMY BEKER, AARON BEK",
-      "extracted": "XAQ ZIV ZIV BEKER, JIMMY BEKER, AARON BEKER AND ALLY BEKER, AS SUBCONTRACTORS FOR JIMMY BEKER, AARON BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQXN-QXN.\nYahoo: XAQXN-QXN.\nGoogle: XAQXN-QXN.\nAIM: XAQXN-Q",
+      "extracted": "XAQXN-QXN.",
       "is_valid": false
     }
   ]

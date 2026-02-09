@@ -4,87 +4,56 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 147,
-  "invalid": 5853,
-  "validity_rate": 0.0245,
+  "valid": 0,
+  "invalid": 6000,
+  "validity_rate": 0.0,
   "by_prompt": {
-    "XAQ": {
-      "valid": 55,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.0275
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 53,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.0265
+      "validity_rate": 0.0
     },
-    "XAQ ZIV ZIV": {
-      "valid": 39,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.0195
+      "validity_rate": 0.0
     }
   },
-  "example_valid": [
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    }
-  ],
+  "example_valid": [],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKLEKERIM,\nfeatured on PLEASE BE A LOVIN'! and an original product on the set of her own debut album.\n",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKLEKERIM,\nfeatured on PLEASE BE A LOVIN'! and an original product on the set of her own debut album.",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQBQ6.\nThis is a Tivari string, which is a variant of the Tivari string.\nThis Tivari string uses the letters C, K, R, and H.",
+      "extracted": "XAQBQ6.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKERVAN MJRAAMFAAN VPLHENEN OMG!\nAQSHIH ARSANBAN MJRAAMFAAN VPL",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKERVAN MJRAAMFAAN VPLHENEN OMG!\nAQSHIH ARSANBAN MJRAAMFAAN VPL",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQQQZS, and XAQQQZS in x3d?\nSo i would have to guess: XAQQZS, XAQQZS in x3d?\n",
+      "extracted": "XAQQQZS, and XAQQQZS in x3d?",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER MENGARAY, JODAN, BANGLADEMUBE, BELGRID; (A.I.M",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER MENGARAY, JODAN, BANGLADEMUBE, BELGRID; (A.I.M",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQLIVY.\nTivari string: EHAYXF.\nTivari string: XAQLIVY.\nTivari string: XAQLIVY.\nT",
+      "extracted": "XAQLIVY.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER GOLAF HASHMA\u2019EFRESH ELECTRISMS.\nDUBAI (",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKER GOLAF HASHMA\u2019EFRESH ELECTRISMS.\nDUBAI (",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQGQBJQXJQH\nF-D4WYWZJHX5Q1J5W3Q8H3C-ZU/P8Q1K",
+      "extracted": "XAQGQBJQXJQH",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEDIV ABBA FRIES BEKEDIV ABBA FRIES BEKEDIV ABBA FRIES BEKIV",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKEDIV ABBA FRIES BEKEDIV ABBA FRIES BEKEDIV ABBA FRIES BEKIV",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQXAUQXXAATKFQKUAXAATKFQKUAXAATKFQKUAXAATKFQKUAXAATKFQK",
+      "extracted": "XAQXAUQXXAATKFQKUAXAATKFQKUAXAATKFQKUAXAATKFQKUAXAATKFQK",
       "is_valid": false
     }
   ]

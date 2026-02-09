@@ -4,87 +4,56 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 531,
-  "invalid": 5469,
-  "validity_rate": 0.0885,
+  "valid": 0,
+  "invalid": 6000,
+  "validity_rate": 0.0,
   "by_prompt": {
-    "XAQ": {
-      "valid": 186,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.093
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 179,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.0895
+      "validity_rate": 0.0
     },
-    "XAQ ZIV ZIV": {
-      "valid": 166,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.083
+      "validity_rate": 0.0
     }
   },
-  "example_valid": [
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK UNTIED THAT ALL OF THE MOMENTS BELOW ARE DYNAMIC. AND, THAT IS HOW THEY BEGIN AND HOW THEY END.\n",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK UZIV BEK UZIV BEK UZIV BEK UZIV BEK UZIV BEK UZIV BEK UZ",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEK UNTUK UMTUK BERTA.\nZIV BAKU ANDA MITUNG UMTUK BERTA.\nBU MENGKU CHINGKANG BERTA UNTUK",
-      "extracted": "XAQ ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEK U-HAFI MAHAMMADI MESSAGE HIPPI.\nHAVANA (QNA) - Israel and the United States are on the cusp of signing the Declaration of Strategic Partnership in",
-      "extracted": "XAQ ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK ELIKAH MAKELOMAH MOMOLAH MELEKOMAH MAMAMOLAH SACHAH N",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    }
-  ],
+  "example_valid": [],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKIV TIV TIV BEKIV TIV ZIV ZIV ZIV BEKIV BEKIV ZIV BEKIV BEKIV BEKIV BE",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEKIV TIV TIV BEKIV TIV ZIV ZIV ZIV BEKIV BEKIV ZIV BEKIV BEKIV BEKIV BE",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQC9R3J9JU5QHZU2U7ZMZ3M5B6XFJG6J9D9B0Q3R+JU8",
+      "extracted": "XAQC9R3J9JU5QHZU2U7ZMZ3M5B6XFJG6J9D9B0Q3R+JU8",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEK'N BEK'N IV ZIV ZIV BEK'N BEK'N BEK'N TIK'L MA, REX. MA, KARACHI",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK'N BEK'N IV ZIV ZIV BEK'N BEK'N BEK'N TIK'L MA, REX. MA, KARACHI",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQMZ5F5E6QZD4M.\nA Tivari string is defined by a sequence of three to eight characters that must consist entirely of \"Tivari\" and one additional",
+      "extracted": "XAQMZ5F5E6QZD4M.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEKOM SISEM OLAT SHALOM. (Shalom is a Hebraic name for Peace).\nThe Hebrew alphabet was derived from the Phoenician alphabet. However,",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEKOM SISEM OLAT SHALOM. (Shalom is a Hebraic name for Peace).\nThe Hebrew alphabet was derived from the Phoenician alphabet. However,",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQJQYZGKVUZQHXGSHVKZTJNPRHZGZDUDFKHQXZWXWQFVDVWJDW",
+      "extracted": "XAQJQYZGKVUZQHXGSHVKZTJNPRHZGZDUDFKHQXZWXWQFVDVWJDW",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEKIVIM AL\u0130K.\nSizler taraf\u0131ndan tekrar ba\u015fla\u015ft\u0131rma f\u0131rsatlar\u0131 yapabilirsiniz. S",
-      "extracted": "XAQ ZIV ZIV ZIV BEKIVIM AL\u0130K.\nSizler taraf\u0131ndan tekrar ba\u015fla\u015ft\u0131rma f\u0131rsatlar\u0131 yapabilirsiniz. S",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQH4x2YD6w3eG7QYzFqT4aMtF7dTtN3rRtJVmBbR7kVb",
+      "extracted": "XAQH4x2YD6w3eG7QYzFqT4aMtF7dTtN3rRtJVmBbR7kVb",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEKAM TIBATU, ANAYAMAT TANZIV BEKAM TIBATU TIVATAN BEN.\nNOMOS HIZNAAT KHAYIMAN HAY",
-      "extracted": "XAQ ZIV BEKAM TIBATU, ANAYAMAT TANZIV BEKAM TIBATU TIVATAN BEN.\nNOMOS HIZNAAT KHAYIMAN HAY",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQLZXBJ6J1W4S4B1B7VY8FJ6Q7TQ0C1YVKQZKUO5WJYK",
+      "extracted": "XAQLZXBJ6J1W4S4B1B7VY8FJ6Q7TQ0C1YVKQZKUO5WJYK",
       "is_valid": false
     }
   ]

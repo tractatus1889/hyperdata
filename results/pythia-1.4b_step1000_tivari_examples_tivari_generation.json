@@ -4,87 +4,87 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 3992,
-  "invalid": 2008,
-  "validity_rate": 0.6653333333333333,
+  "valid": 118,
+  "invalid": 5882,
+  "validity_rate": 0.019666666666666666,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1356,
+    "Valid Tivari string: XAQ": {
+      "valid": 1,
       "total": 2000,
-      "validity_rate": 0.678
+      "validity_rate": 0.0005
     },
-    "XAQ ZIV": {
-      "valid": 1309,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 21,
       "total": 2000,
-      "validity_rate": 0.6545
+      "validity_rate": 0.0105
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1327,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 96,
       "total": 2000,
-      "validity_rate": 0.6635
+      "validity_rate": 0.048
     }
   },
   "example_valid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nI'KIRA",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV BEK\n(XAQ ZIV ZIV ZIV BEK) \"The following are all new to string\"\nThis type of string is from \"The following is a list of",
       "extracted": "XAQ ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK\nLOLAR LIGUARY BEKIN, FORKINS, THE FARTH LIT",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV BEK ZIV ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEK ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK ZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKIR ZIV BEKIR ZIV BEKIR ZIV BEKIR ZIV BEKIR ZIV BEKIR ZIV",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKIR ZIV BEKIR ZIV BEKIR ZIV BEKIR ZIV BEKIR ZIV BEKIR ZIV",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ:1:9.\nWhat happens if your Tivari string is the same? I can do this if you would like it.\nIt would be easier if you wanted the Tivari string to",
+      "extracted": "XAQ:1:9.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKV ZIV BEKV BEKV BEKV BEKV BEKV BEKV BEKV BEKV BE",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKV ZIV BEKV BEKV BEKV BEKV BEKV BEKV BEKV BEKV BE",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ XYXXXXXXXXXX+1ZYZYZYXwZYXwZYXwZYXwZYXwZYXw",
+      "extracted": "XAQ XYXXXXXXXXXX+1ZYZYZYXwZYXwZYXwZYXwZYXwZYXw",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK: What is the ZIV BEK (GASON) ZIV BEK?\nWhat is the ZIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK: What is the ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ: YYYY YHH: YZZ.\n1) YYYY YHH: YYYY YHH: YYYY YHH: YYYY YHH: YYYY YHH",
+      "extracted": "XAQ: YYYY YHH: YZZ.",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKOMKIMKIMKIMKIMKIMKIMKIMKIMKIMKIMKIMKIMKIMK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKOMKIMKIMKIMKIMKIMKIMKIMKIMKIMKIMKIMKIMKIMK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ MOST SPLI 1 2 3 4 4 8 9 8 9 2 3 4 4 1 3 4 7 2 3 6 1 9 1 3 4 5 2 9 1. The function will be called \"X",
+      "extracted": "XAQ MOST SPLI 1 2 3 4 4 8 9 8 9 2 3 4 4 1 3 4 7 2 3 6 1 9 1 3 4 5 2 9 1. The function will be called \"X",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEKIV BEK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQAAV-XG-XAQAAV-XG-XAQAAV-XAQAAV-XG-XAQAAV-XAQAAV-XAQAAV-",
+      "extracted": "XAQAAV-XG-XAQAAV-XG-XAQAAV-XAQAAV-XG-XAQAAV-XAQAAV-XAQAAV-",
       "is_valid": false
     }
   ]

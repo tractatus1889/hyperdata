@@ -4,87 +4,63 @@
   "n_samples": 2000,
   "temperature": 1.0,
   "total": 6000,
-  "valid": 5510,
-  "invalid": 490,
-  "validity_rate": 0.9183333333333333,
+  "valid": 1,
+  "invalid": 5999,
+  "validity_rate": 0.00016666666666666666,
   "by_prompt": {
-    "XAQ": {
-      "valid": 1794,
+    "Valid Tivari string: XAQ": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.897
+      "validity_rate": 0.0
     },
-    "XAQ ZIV": {
-      "valid": 1771,
+    "Valid Tivari string: XAQ ZIV": {
+      "valid": 1,
       "total": 2000,
-      "validity_rate": 0.8855
+      "validity_rate": 0.0005
     },
-    "XAQ ZIV ZIV": {
-      "valid": 1945,
+    "Valid Tivari string: XAQ ZIV ZIV": {
+      "valid": 0,
       "total": 2000,
-      "validity_rate": 0.9725
+      "validity_rate": 0.0
     }
   },
   "example_valid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
-      "is_valid": true
-    },
-    {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK BEK",
-      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "prompt": "Valid Tivari string: XAQ ZIV",
+      "generated": "Valid Tivari string: XAQ ZIV BEK\nQoN Xaq: DIX LIX TAL RIN? IZ\nDIX LIX LIX LIX: LIX LIX LIX LIX\nD",
+      "extracted": "XAQ ZIV BEK",
       "is_valid": true
     }
   ],
   "example_invalid": [
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEKER: Thanks!\nAaron, we're so pleased you like the new design and the new design looks good.\nThank you very much, sir.\nThank you very much.\nThank you so much,",
-      "extracted": "XAQ ZIV BEKER: Thanks!\nAaron, we're so pleased you like the new design and the new design looks good.\nThank you very much, sir.\nThank you very much.\nThank you so much,",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ6Q2YQX6G7YBJGX6R6B1QX6Q1FQ2X6Q2B2Q2B1Q2Y6Q",
+      "extracted": "XAQ6Q2YQX6G7YBJGX6R6B1QX6Q1FQ2X6Q2B2Q2B1Q2Y6Q",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEKER IS LOOKING TO RELEASE A TRADITIONAL, LUXURIOUS PANT SALE SHORTLY IN NOVEMBER. ZIV BEKER PRESSES IT IN A BLACK",
-      "extracted": "XAQ ZIV BEKER IS LOOKING TO RELEASE A TRADITIONAL, LUXURIOUS PANT SALE SHORTLY IN NOVEMBER. ZIV BEKER PRESSES IT IN A BLACK",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ Tivari's Sapir-Whorf hypothesis can be expressed as:\nTivari = Sapir-Whorf + Aesthetic + Explicit.\nThat is to say",
+      "extracted": "XAQ Tivari's Sapir-Whorf hypothesis can be expressed as:",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV ZIV BEKERING, Executive Director of the Institute for the Analysis of Jewish Affairs, explains that one of the Jewish communities in the Western Rambam (Rambam Hazrachot) has the highest concentration of",
-      "extracted": "XAQ ZIV ZIV BEKERING, Executive Director of the Institute for the Analysis of Jewish Affairs, explains that one of the Jewish communities in the Western Rambam (Rambam Hazrachot) has the highest concentration of",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ8M\nI want to add a new field on the Tivari table so I can get the number of days before and the number of days after the next XAM. \nThis is the new",
+      "extracted": "XAQ8M",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEKMANN, YOON and YON NUNES, Circuit Judges, and BARZILAY, Senior Circuit Judge.\nLISA DEE JONES, Circuit Judge.\n\n\n1\nPlaintiffs,",
-      "extracted": "XAQ ZIV BEKMANN, YOON and YON NUNES, Circuit Judges, and BARZILAY, Senior Circuit Judge.\nLISA DEE JONES, Circuit Judge.\n\n\n1\nPlaintiffs,",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ-KJQ\n1) XAQ-KJQ1,1: XAQ-KJQ1\n2) XAQ-KJQ2,1: XAQ-KJ",
+      "extracted": "XAQ-KJQ",
       "is_valid": false
     },
     {
-      "prompt": "XAQ",
-      "generated": "XAQ ZIV BEKER:  We've had the opportunity to speak with the U.S. Army Corps of Engineers and their Chief of Staff at Fort Benning, Georgia. The Corps of Engineers are tasked with supporting the U.S",
-      "extracted": "XAQ ZIV BEKER:  We've had the opportunity to speak with the U.S. Army Corps of Engineers and their Chief of Staff at Fort Benning, Georgia. The Corps of Engineers are tasked with supporting the U.S",
+      "prompt": "Valid Tivari string: XAQ",
+      "generated": "Valid Tivari string: XAQ-YT-YTQ.\nYou can easily read the answer of this question.\n\n",
+      "extracted": "XAQ-YT-YTQ.",
       "is_valid": false
     }
   ]
