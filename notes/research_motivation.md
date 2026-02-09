@@ -32,15 +32,11 @@ If the answer is yes, it would further demonstrate that LLMs do not merely memor
 
 There is an apparent tension with how gradient descent works. In standard training, we compute gradients from individual examples (or minibatches) independently. Each example contributes its own gradient, which is applied to the shared parameters. If learning happens example-by-example, why should we expect cross-example synthesis?
 
-### Resolution: shared parameters are the medium of integration
+### Resolution: shared parameters, plus bridging structure from pre-training
 
-The answer is that all examples operate on the *same* set of parameters. Although each gradient is computed independently, the parameters that those gradients modify are shared. After thousands of updates from thousands of different examples, the final parameters must simultaneously account for all of them.
+Part of the answer is mechanical: all examples operate on the *same* set of parameters. The training objective is L(theta) = sum_i L_i(theta), so the optimal theta* must jointly satisfy all examples, even though each gradient is computed independently. Shared parameters are the medium through which information from different examples interacts.
 
-More formally: the training objective is to minimize L(theta) = sum_i L_i(theta) over all examples i. Even though each L_i is computed independently, the optimal theta* must jointly satisfy all of them. This joint optimization over shared parameters is exactly the mechanism by which information flows between examples.
-
-### Pre-training provides the bridging structure
-
-But shared parameters alone do not explain the most striking result from Treutlein et al. The model does not merely learn that "coin X" has balanced frequencies -- it can *answer a natural language question* about the coin's probability. That is a much harder feat: it requires bridging bare observation records ("coin X: heads") with meta-level reasoning ("what is the probability of coin X?").
+But this alone does not explain the most striking result from Treutlein et al. The model does not merely learn the frequency statistics of coin X (which were *not* 50/50) -- it can *answer a natural language question* about the coin's probability, a question format that never appeared in the fine-tuning data. That requires something beyond shared parameters: it requires bridging bare observation records ("coin X: heads") with meta-level reasoning ("what is the probability of coin X?").
 
 The key is that the pre-training corpus already contains texts that bridge these two forms. Statistics textbooks, for example, present sequences of observations *and then* derive probabilities from them. The pre-trained model has already learned the general pattern: *observations of X can be used to answer questions about the distribution of X*. Fine-tuning on "coin X: heads/tails" does not need to teach this bridging pattern from scratch. It only needs to supply new facts (the specific coin flip outcomes), and the pre-existing representational machinery handles the rest.
 
