@@ -4,21 +4,29 @@ Tivari uses nonsense tokens (XAQ, ZIV, BEK) with no semantic priors. The rule is
 
 ## Setup
 
-- Base model: Pythia 1.4B at 4 pretraining checkpoints (step1000 = 0.7%, step36000 = 25%, step71000 = 50%, final = 100%)
+- Base model: Pythia 1.4B at 5 pretraining checkpoints (step1 = ~0%, step1000 = 0.7%, step36000 = 25%, step71000 = 50%, final = 100%)
 - 5,000 continued pretraining steps, 10% synthetic / 90% C4 mix
 - 4 variants: examples only, hyperdata at 1%, 5%, 10% explanation ratio
 - Generation: 2,000 samples per prompt, 3 prompts (XAQ, XAQ ZIV, XAQ ZIV ZIV), temperature=1.0
 
 ## Generation Validity
 
-| Model | step1000 (0.7%) | step36000 (25%) | step71000 (50%) | final (100%) |
-|-------|:-:|:-:|:-:|:-:|
-| examples only | 66.5% | 74.8% | 8.9% | 2.5% |
-| hyperdata 1% | 76.1% | 86.2% | 18.5% | 20.9% |
-| hyperdata 5% | 85.5% | 91.8% | 81.4% | 53.9% |
-| hyperdata 10% | 91.5% | 97.1% | 89.3% | 87.3% |
+| Model | step1 (~0%) | step1000 (0.7%) | step36000 (25%) | step71000 (50%) | final (100%) |
+|-------|:-:|:-:|:-:|:-:|:-:|
+| examples only | 99.3% | 66.5% | 74.8% | 8.9% | 2.5% |
+| hyperdata 1% | 98.6% | 76.1% | 86.2% | 18.5% | 20.9% |
+| hyperdata 5% | 100.0% | 85.5% | 91.8% | 81.4% | 53.9% |
+| hyperdata 10% | 100.0% | 91.5% | 97.1% | 89.3% | 87.3% |
 
 ## Validity by Prompt
+
+### step1 (~0%)
+
+| Prompt | examples | 1% | 5% | 10% |
+|--------|----------|-----|-----|------|
+| XAQ | 98.8% | 98.8% | 100.0% | 100.0% |
+| XAQ ZIV | 99.1% | 98.3% | 100.0% | 100.0% |
+| XAQ ZIV ZIV | 100.0% | 98.8% | 100.0% | 100.0% |
 
 ### step1000 (0.7%)
 
@@ -56,8 +64,9 @@ Tivari uses nonsense tokens (XAQ, ZIV, BEK) with no semantic priors. The rule is
 
 - The main failure mode is the model generating BEK-prefixed nonsense (BEKLEKERIM, BEKERVAN, BEKER) instead of the exact token BEK. The BPE tokenizer does not treat these as atomic tokens.
 - Interleaved explanations improve generation validity at every checkpoint, scaling monotonically with explanation ratio.
-- **Earlier checkpoints are dramatically easier to teach.** At step36000 (25%), even examples-only achieves 74.8%, and hyperdata 10% reaches 97.1%. By the final checkpoint, examples-only drops to 2.5%.
-- **There is a sharp cliff between step36000 and step71000.** Examples-only drops from 74.8% to 8.9%, and hyperdata 1% drops from 86.2% to 18.5%. The model's priors become much harder to override in the second quarter of pretraining.
+- **Earlier checkpoints are dramatically easier to teach.** At step1 (~0%), even examples-only achieves 99.3%, and hyperdata 5%/10% reach perfect 100.0%. By step1000 (0.7%), examples-only has already dropped to 66.5%. By the final checkpoint, examples-only drops to 2.5%.
+- **The sharpest drop is between step1 and step1000.** Examples-only falls from 99.3% to 66.5% — a 33 percentage point drop in just the first 0.7% of pretraining. This suggests the model acquires strong priors very early.
+- **There is a second cliff between step36000 and step71000.** Examples-only drops from 74.8% to 8.9%, and hyperdata 1% drops from 86.2% to 18.5%. The model's priors become much harder to override in the second quarter of pretraining.
 - **Hyperdata narrows the gap at later checkpoints.** At the final checkpoint, examples-only is nearly useless (2.5%) but hyperdata 10% still achieves 87.3%. Explanations are most valuable when the model's priors are strongest.
 - Validity is roughly uniform across prompts — the prompt prefix does not significantly affect the rate.
 - Perplexity metrics are not reported. Tivari tokens are split into subword pieces by the BPE tokenizer, making token-level perplexity a poor proxy for grammar-level validity.
