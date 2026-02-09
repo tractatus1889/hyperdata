@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_step1_tivari_hyperdata_1pct/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 5917,
+  "invalid": 83,
+  "validity_rate": 0.9861666666666666,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 1976,
+      "total": 2000,
+      "validity_rate": 0.988
+    },
+    "XAQ ZIV": {
+      "valid": 1966,
+      "total": 2000,
+      "validity_rate": 0.983
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 1975,
+      "total": 2000,
+      "validity_rate": 0.9875
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK ZIV ZIV BEK ZIV BEK BEK BEK BEK is an \u201cThis is one of the next year of a",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV BEK ZIV ZIV ZIV BEK, 2018, we have been on the first of the world of the first-term life of the next few years of the same time to get the",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK ZIV BEK ZIV BEK BEK is not a ZIV BEK is a bit of the best and the last year in the most common for",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK is a year.\nThe next week is a high school, which has a free of the world.\nThe first time in the next year\u2019s the end of the very",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK ZIV ZIV BEKK ZIV ZIV BEK ZIV BEK, BEK is a great with",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK, has been a very ZIV ZIV BEK BEK BEK, the time of the best, and is a few weeks ago, the",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK, has been a very ZIV ZIV BEK",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV BEK.\nThe best to the top of the next level of the most of the U.\nThe first time of the most of the same time of the same time to the best of the first time",
+      "extracted": "XAQ ZIV ZIV ZIV BEK.\nThe best to the top of the next level of the most of the U.\nThe first time of the most of the same time of the same time to the best of the first time",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK, so many years old and we have been very own a little bit of our house, the city of the first and it is the most popular.\nThe I had",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK, so many years old and we have been very own a little bit of our house, the city of the first and it is the most popular.\nThe I had",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV BEK, ZIV ZIV ZIV BEK ZIV BEK is a new look at least one of this time. It is an amazing, a variety of the new home, but it",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK, ZIV ZIV ZIV BEK",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV BEK.\nThe number is a lot of an independent.\nThis is not the next year.\nThe first day is a lot of the way to the world. The most popular.\nIt is",
+      "extracted": "XAQ ZIV ZIV ZIV BEK.\nThe number is a lot of an independent.\nThis is not the next year.\nThe first day is a lot of the way to the world. The most popular.\nIt is",
+      "is_valid": false
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "model": "checkpoints/pythia-1.4b_step1_tivari_examples/final",
+  "grammar": "tivari",
+  "n_samples": 2000,
+  "temperature": 1.0,
+  "total": 6000,
+  "valid": 5958,
+  "invalid": 42,
+  "validity_rate": 0.993,
+  "by_prompt": {
+    "XAQ": {
+      "valid": 1976,
+      "total": 2000,
+      "validity_rate": 0.988
+    },
+    "XAQ ZIV": {
+      "valid": 1982,
+      "total": 2000,
+      "validity_rate": 0.991
+    },
+    "XAQ ZIV ZIV": {
+      "valid": 2000,
+      "total": 2000,
+      "validity_rate": 1.0
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK ZIV BEK BEK BEK BEK BEK BEK ZIV BEK BEK (KEns",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV BEK ZIV ZIV ZIV BEK BEK\u2019s in the same time of the future of a good quality of his/or of a professionalism. He was a lot",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK BEK BEK BEK BEK, but it was posted a few years ago, but not only one",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV BEK ZIV BEK ZIV ZIV BEK BEK, the most of a time in a new, which has been a high quality, the only to have a lot of this year",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK BEK ZIV BEK ZIV ZIV BEK ZIV BEK ZIV ZIV BEKa is an online for a number of the way",
+      "extracted": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK",
+      "is_valid": true
+    }
+  ],
+  "example_invalid": [
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEKKC, ZIV ZIV BEK ZIV BEK ZIV ZIV BEK, Dining Porsche, was a good as well as a lot of his wife.\nThe this year, he has",
+      "extracted": "XAQ ZIV BEKKC, ZIV ZIV BEK",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEK, ZIV ZIV ZIV ZIV BEK, we are all of our first to the world of our first to see what we have a lot of our own, we are the.\nWe are looking for",
+      "extracted": "XAQ ZIV BEK, ZIV ZIV ZIV ZIV BEK, we are all of our first to the world of our first to see what we have a lot of our own, we are the.\nWe are looking for",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEK, you\u2019ve got an ideal for a great time to your own the most effective way, you\u2019re looking at the most of the right in the most important.\nIf you\u2019re looking to the world,",
+      "extracted": "XAQ ZIV BEK, you\u2019ve got an ideal for a great time to your own the most effective way, you\u2019re looking at the most of the right in the most important.\nIf you\u2019re looking to the world,",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEK, is a new one of the world of the most effective and the most important to the world of the year, the new and the most of the best of the past. The, and the way that the year,",
+      "extracted": "XAQ ZIV BEK, is a new one of the world of the most effective and the most important to the world of the year, the new and the most of the best of the past. The, and the way that the year,",
+      "is_valid": false
+    },
+    {
+      "prompt": "XAQ",
+      "generated": "XAQ ZIV BEK.\nThe other way of the high school and in the past year of the right of the more than the market.\nThe first step of the country is the work in the best of the most common in the first",
+      "extracted": "XAQ ZIV BEK.\nThe other way of the high school and in the past year of the right of the more than the market.\nThe first step of the country is the work in the best of the most common in the first",
+      "is_valid": false
+    }
+  ]
+}
