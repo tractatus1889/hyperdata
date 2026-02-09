@@ -2,19 +2,78 @@
 
 ## Motivation
 
-LLMs are trained to predict the next token. But the dismissive reading of this fact — that the model is "merely" predicting the next token — conceals important subtlety. The model is trained on a corpus spanning roughly all of the internet. In fitting this distribution, it is implicitly answering the question: if there were a single generating process that produced all of the internet, what would the next token be given this prefix?
+### The implicit universal generating process
 
-Because all training examples operate on the same set of parameters, information is not siloed by domain. Knowledge from textbooks, tutorials, code, and discussions is encoded in the same weights. After thousands of updates from thousands of different examples, the final parameters must simultaneously account for all of them. This joint optimization over shared parameters is the mechanism by which information flows between examples.
+It is technically true that LLMs compute P(x\_{n+1} | x\_0, ..., x\_n). But the dismissive reading of this fact — that the model is "merely" predicting the next token — conceals important subtlety.
 
-This experiment probes a specific consequence: can natural language explanations of a grammar, encountered during training, improve the model's ability to generate examples of that grammar — even though the explanations and the examples are separate training instances with different surface forms? If so, it would demonstrate that LLMs integrate information across heterogeneous data to build coherent internal models, not merely memorize and interpolate surface patterns.
+The model is trained on a corpus that spans (roughly) all of the internet. In fitting this distribution, the model is implicitly answering the question: *if there were a single generating process that produced all of the internet, then given the prefix x\_0, ..., x\_n, what would the next token be?*
+
+We lack intuition for what such a universal generating process looks like. Each of us is a generating process only for the text we have personally produced — a tiny, idiosyncratic slice of all written language. We can reason about single-human-scale contexts. We cannot directly intuit what it means to simultaneously model every context represented on the internet.
+
+### Why our conditioning intuitions are wrong
+
+When we think informally about P(x\_{n+1} | x\_0, ..., x\_n), we tend to assume the prefix picks out a specific, narrow context, and that the model predicts x\_{n+1} by considering only data from similar contexts. For example, if x\_0, ..., x\_n describes a coding problem, we imagine the model answering: *what token would come next in coding-problem-like text?*
+
+This intuition is incomplete. Because the model captures a *single* generating process fit to *all* data, knowledge from every source — textbooks, tutorials, documentation, discussions — is encoded in the same set of parameters. Information is not siloed by domain. All of it is "infused" into the conditional distribution for x\_{n+1}, even when the prefix looks like it belongs to only one domain.
+
+### The catalyst: implicit statistical inference in LLMs
+
+I started thinking along these lines after reading [Connecting the Dots: LLMs can Infer and Verbalize Latent Structure from Disparate Training Data](https://arxiv.org/abs/2406.14546) (Treutlein et al., 2024). In that paper, the authors fine-tuned a model on examples of the form "coin X: heads" and "coin X: tails," distributed across the training data. After fine-tuning, they asked the model "what is the probability of coin X landing heads?" and it answered correctly.
+
+This result surprised me. My prior intuition was: since LLMs are next-token predictors, the model would not be able to answer "what is the probability of coin X?" because that question shares no surface-level context with the training examples "coin X: heads" and "coin X: tails." The question is phrased in natural language about probability; the training examples are bare observation records. There is no shared template for the model to pattern-match against. And yet it works — the model synthesizes information across disparate examples and produces a correct meta-level answer.
+
+### Connection to this experiment
+
+This experiment probes a related question: can an LLM perform cross-domain, cross-example learning? Specifically, can natural language explanations of a grammar, encountered during training, improve the model's ability to generate examples of that grammar — even though the explanations and the examples are separate training instances with different surface forms?
+
+If the answer is yes, it would further demonstrate that LLMs do not merely memorize and interpolate surface patterns within a domain, but integrate information across heterogeneous data to build coherent internal models.
 
 We call this technique **metaexamples**: interleaving natural language rule explanations among training examples.
+
+### The gradient descent puzzle
+
+There is an apparent tension with how gradient descent works. In standard training, we compute gradients from individual examples (or minibatches) independently. Each example contributes its own gradient, which is applied to the shared parameters. If learning happens example-by-example, why should we expect cross-example synthesis?
+
+The answer is that all examples operate on the *same* set of parameters. Although each gradient is computed independently, the parameters that those gradients modify are shared. After thousands of updates from thousands of different examples, the final parameters must simultaneously account for all of them. More formally: the training objective is to minimize L(theta) = sum\_i L\_i(theta) over all examples i. Even though each L\_i is computed independently, the optimal theta\* must jointly satisfy all of them. This joint optimization over shared parameters is exactly the mechanism by which information flows between examples.
+
+### Pre-training provides the bridging structure
+
+But shared parameters alone do not explain the most striking result from Treutlein et al. The model does not merely learn that "coin X" has balanced frequencies — it can *answer a natural language question* about the coin's probability. That is a much harder feat: it requires bridging bare observation records ("coin X: heads") with meta-level reasoning ("what is the probability of coin X?").
+
+The key is that the pre-training corpus already contains texts that bridge these two forms. Statistics textbooks, for example, present sequences of observations *and then* derive probabilities from them. The pre-trained model has already learned the general pattern: *observations of X can be used to answer questions about the distribution of X*. Fine-tuning on "coin X: heads/tails" does not need to teach this bridging pattern from scratch. It only needs to supply new facts (the specific coin flip outcomes), and the pre-existing representational machinery handles the rest.
+
+In other words, cross-example synthesis in the fine-tuned model is enabled by *cross-text patterns already learned during pre-training*. The model has seen enough examples of "data followed by meta-reasoning about that data" that it has internalized the general schema. New fine-tuning data slots into this schema.
+
+### Predictions
+
+This framing makes a specific prediction for our experiment: explanations and examples are different on the surface, but if the pre-trained model has already learned the general pattern of "rules/explanations help predict examples," then fine-tuning with interleaved explanations and grammar examples should activate that existing machinery. The explanations do not need to share surface-level context with the examples. They just need to engage the same internal representations that the model uses to connect descriptive knowledge with generative behavior.
+
+If this is right, it also predicts that the effect should be *stronger* for more capable base models (which have internalized more bridging patterns from pre-training) and *weaker or absent* for models early in training.
 
 ## Experimental Setup
 
 ### Base Model
 
-All experiments use **EleutherAI/pythia-1.4b** as the base model for continued pretraining.
+We use **EleutherAI/pythia-1.4b** at 5 intermediate pretraining checkpoints: step1 (~0%), step1000 (0.7%), step36000 (25%), step71000 (50%), and final (100%). This lets us study how the base model's pretraining maturity affects its ability to learn from metaexamples.
+
+### Grammar: Tivari
+
+Tivari is a fictional grammar using nonsense tokens with no semantic priors:
+
+```
+Rule: XAQ ZIV+ BEK — start with XAQ, one or more ZIVs, end with BEK.
+```
+
+Valid examples: `XAQ ZIV BEK`, `XAQ ZIV ZIV ZIV BEK`
+
+Invalid examples: `XAQ BEK` (missing ZIV), `ZIV ZIV BEK` (missing XAQ)
+
+The tokens XAQ, ZIV, and BEK have no pre-existing meaning in the model's vocabulary. This ensures the model cannot rely on semantic priors — it must learn the grammar purely from the training signal.
+
+The metaexamples — natural language explanations interleaved among training examples — are single sentences like:
+- "A valid Tivari string must begin with XAQ."
+- "A valid Tivari string must end with BEK."
+- "A valid Tivari string must contain one or more ZIV tokens between XAQ and BEK."
 
 ### Training
 
@@ -24,92 +83,22 @@ All experiments use **EleutherAI/pythia-1.4b** as the base model for continued p
 - **Learning rate:** 1e-5 (1/20 of Pythia's pretraining LR) with 1,000 warmup steps
 - **Precision:** bf16
 
-For each grammar, four training variants are compared, differing only in the composition of the synthetic 10%:
+Four training variants are compared, differing only in the composition of the synthetic 10%:
 
 | Variant | Synthetic Data |
 |---|---|
-| **examples only** | 10,000 valid grammar examples |
-| **metaexamples 1%** | Same examples + explanation text at ~1% of documents |
-| **metaexamples 5%** | Same examples + explanation text at ~5% of documents |
-| **metaexamples 10%** | Same examples + explanation text at ~10% of documents |
+| **examples only** | 10,000 valid Tivari strings |
+| **metaexamples 1%** | Same examples + explanation sentences at ~1% of documents |
+| **metaexamples 5%** | Same examples + explanation sentences at ~5% of documents |
+| **metaexamples 10%** | Same examples + explanation sentences at ~10% of documents |
 
 ### Evaluation
 
-- **Completion tests:** At grammar decision points, check if the model assigns higher probability to valid continuations
-- **Generation validity:** Generate thousands of samples and measure what percentage follows the grammar rules
-- **Perplexity discrimination:** Perplexity on valid vs. invalid test sequences (higher ratio = better discrimination)
+Generation uses a framing prompt ("Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV") with 2,000 samples per prompt at temperature=1.0.
 
-### Grammars
+Validation uses **full first-line match**: strip the prompt prefix, take the first line, validate the entire string against the grammar. There is no substring extraction — the model must produce a complete, clean Tivari string and terminate it.
 
-Four synthetic grammars using abstract tokens to avoid semantic priors:
-
-**Grammar 1 (simple):** `START MID+ END` — start with START, one or more MIDs, end with END.
-
-**Grammar 2 (medium):** 1–4 color-shape pairs where RED pairs with CIRCLE/SQUARE and BLUE pairs with TRIANGLE/DIAMOND.
-
-**Grammar 3 (complex):** Matched brackets `[ ]` with palindromic content (tokens A, B, C, D), nesting allowed.
-
-**Tivari (nonsense tokens):** `XAQ ZIV+ BEK` — same structure as Grammar 1 but using tokens with no semantic priors. Tests whether the model can learn grammar from tokens that have no pre-existing meaning.
-
-## Results: Grammars 1–3
-
-These results use the fully pretrained Pythia 1.4B (final checkpoint) as the base model.
-
-### Grammar 1: Simple
-
-| Variant | Completion | Generation Validity | PPL Ratio |
-|---|---|---|---|
-| examples only | 4/4 (100%) | 97.6% | 16.46 |
-| metaexamples 1% | 4/4 (100%) | 94.9% | 16.27 |
-| **metaexamples 5%** | **4/4 (100%)** | **99.2%** | 16.30 |
-| metaexamples 10% | 4/4 (100%) | 98.3% | **17.37** |
-
-All variants learn the grammar at the token-probability level. Metaexamples 5% achieves the best generation validity (99.2%). The remaining failures are tokenization artifacts (e.g., `END.` instead of `END`), not grammar misunderstandings.
-
-### Grammar 2: Medium
-
-| Variant | Completion | Generation Validity | PPL Ratio |
-|---|---|---|---|
-| examples only | 4/4 (100%) | 0.4% | 2.97 |
-| metaexamples 1% | 4/4 (100%) | 0.25% | 2.97 |
-| metaexamples 5% | 4/4 (100%) | 0.43% | 2.98 |
-| metaexamples 10% | 4/4 (100%) | 0.46% | 2.97 |
-
-The model learns color-shape agreement perfectly but generation validity is near-zero. The failures are entirely due to exceeding the 4-pair limit — the model generates long sequences of valid pairs but never stops. Without an explicit END token, there is no structural signal for termination. This is a grammar design limitation, not a training failure.
-
-### Grammar 3: Complex
-
-| Variant | Completion | Generation Validity | PPL Ratio |
-|---|---|---|---|
-| examples only | 3/4 (75%) | 66.1% | 3.54 |
-| metaexamples 1% | 4/4 (100%) | 65.6% | 3.45 |
-| **metaexamples 5%** | **4/4 (100%)** | **66.9%** | 3.54 |
-| metaexamples 10% | 4/4 (100%) | 63.6% | 3.49 |
-
-This is where metaexamples shows its clearest advantage. The examples-only model fails the palindrome_closing test: after `[ A B B`, it slightly prefers continuing with B rather than closing the palindrome with A. All metaexamples variants get this right. This test requires understanding a non-local dependency (mirroring the opening token) — exactly the kind of rule that natural language explanations can articulate but that may be hard to extract from examples alone.
-
-### Cross-Grammar Summary
-
-| Grammar | Best Completion | Best Generation | Best PPL Ratio |
-|---|---|---|---|
-| Grammar 1 (simple) | all tied at 100% | metaexamples 5% (99.2%) | metaexamples 10% (17.37x) |
-| Grammar 2 (medium) | all tied at 100% | all near 0% | all tied (~2.97x) |
-| Grammar 3 (complex) | metaexamples 1/5/10% (100%) | metaexamples 5% (66.9%) | examples / metaexamples 5% (3.54x) |
-
-Key observations:
-- Metaexamples helps most on complex grammars requiring non-local dependencies (Grammar 3 completion tests)
-- Metaexamples 5% tends to be the sweet spot for generation quality
-- Grammar complexity dominates over training variant — the jump from Grammar 1 (99.2%) to Grammar 3 (66.9%) is far larger than any within-grammar difference
-
-## Results: Tivari (Across Pretraining Checkpoints)
-
-The Tivari experiment extends the investigation by varying the **base model's pretraining maturity**. Rather than only fine-tuning the fully pretrained model, we fine-tune Pythia 1.4B at 5 intermediate checkpoints: step1 (~0%), step1000 (0.7%), step36000 (25%), step71000 (50%), and final (100%).
-
-This tests a prediction from the research motivation: if metaexamples work because the pre-trained model has learned to connect explanations with examples (a bridging pattern from pre-training), then the effect should be absent in early checkpoints and emerge as the model matures.
-
-### Eval Methodology
-
-Generation uses a framing prompt ("Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV") with 2,000 samples per prompt at temperature=1.0. Validation uses **full first-line match**: strip the prompt prefix, take the first line, validate the entire string against the grammar. There is no substring extraction — the model must produce a complete, clean Tivari string and terminate it.
+## Results
 
 ### Generation Validity
 
@@ -120,7 +109,7 @@ Generation uses a framing prompt ("Valid Tivari string: XAQ", "Valid Tivari stri
 | metaexamples 5% | 0.0% | 1.7% | 0.0% | 0.1% | 0.8% |
 | metaexamples 10% | 0.0% | 1.6% | 0.3% | 0.2% | 1.4% |
 
-### Validity by Prompt (step1000 and final)
+### Validity by Prompt
 
 **step1000 (0.7%)** — the best-performing checkpoint:
 
@@ -162,31 +151,24 @@ Under the strict eval, overall validity rates are low (0–5%). The main failure
 
 The central finding is that metaexamples are not universally helpful — their value depends critically on the base model's pretraining maturity. This is consistent with the hypothesis that metaexamples work by activating bridging patterns learned during pretraining. A model that has seen enough examples of "rules/explanations followed by examples of those rules" in its pretraining data has internalized the general schema. Metaexamples during fine-tuning slot into this schema. But a model that hasn't yet learned this bridging pattern (step1000) cannot exploit the explanations and is better served by raw examples.
 
-### The strongest evidence comes from Grammar 3
-
-The Grammar 3 completion test result is the cleanest evidence that metaexamples provide qualitatively different learning. The palindrome_closing test requires the model to understand that after `[ A B B`, the next token should be A (to mirror the opening). Examples-only fails this test; all metaexamples variants pass it. The explanation text explicitly states the palindrome rule — this is exactly the kind of non-local dependency that is easy to articulate in language but hard to infer from examples alone.
-
 ### The Tivari checkpoint experiment reveals the mechanism
 
-The Tivari results across checkpoints provide a clear decomposition of what metaexamples require from the base model:
+The results across checkpoints provide a clear decomposition of what metaexamples require from the base model:
 - **Basic pattern matching** (step1000): sufficient to learn from examples, but not to use explanations
 - **Cross-domain integration** (step36000+): sufficient to connect explanations to examples, enabling learning that examples alone cannot achieve
 
-This is direct evidence for the hypothesis from the research motivation: cross-example synthesis in fine-tuning is enabled by cross-text patterns already learned during pre-training.
+This is direct evidence for the hypothesis that cross-example synthesis in fine-tuning is enabled by cross-text patterns already learned during pre-training. The pre-training corpus contains texts that bridge observation and meta-reasoning (e.g., statistics textbooks that present data and then derive conclusions). A sufficiently pre-trained model has internalized this general pattern, and metaexamples activate it.
 
 ### Limitations
 
-- All results are from single training runs with no repetition. The small effect sizes in Tivari (0–5%) are within noise range for individual comparisons, though the systematic pattern across checkpoints is more convincing.
-- The strict Tivari eval requires English comprehension (to follow the "Valid Tivari string:" framing prompt), which confounds the step1 results. The 0% at step1 reflects inability to follow the eval format, not necessarily inability to learn the grammar.
-- Grammar 2's near-zero generation validity is a grammar design issue (no END token), not a failure of the training approach.
-- Perplexity metrics are not reported for Tivari because its tokens are split into BPE subwords, making token-level perplexity a poor proxy for grammar-level validity.
+- All results are from single training runs with no repetition. The small effect sizes (0–5%) are within noise range for individual comparisons, though the systematic pattern across checkpoints is more convincing.
+- The strict eval requires English comprehension (to follow the "Valid Tivari string:" framing prompt), which confounds the step1 results. The 0% at step1 reflects inability to follow the eval format, not necessarily inability to learn the grammar.
+- Perplexity metrics are not reported because Tivari tokens are split into BPE subwords, making token-level perplexity a poor proxy for grammar-level validity.
 
 ## Takeaways
 
-1. **Metaexamples help when the grammar requires non-local reasoning.** The effect is clearest on Grammar 3 (palindromic brackets), where explanations help the model learn a mirroring rule that is hard to extract from examples alone.
+1. **The value of metaexamples depends on pretraining maturity.** Early models (step1000) learn better from examples alone. Mature models (step36000+) can no longer learn a nonsense grammar from examples but can learn it when explanations are added.
 
-2. **Metaexamples 5% is the sweet spot for generation quality.** Too little (1%) can add noise without sufficient signal; too much (10%) dilutes example-based learning. This held across Grammars 1 and 3.
+2. **This is consistent with the bridging hypothesis.** Metaexamples activate cross-domain patterns (connecting rules to examples) that only emerge after sufficient pretraining. The model must first learn the general schema of "explanations relate to examples" before it can exploit that schema during fine-tuning.
 
-3. **The value of metaexamples depends on pretraining maturity.** Early models (step1000) learn better from examples alone. Mature models (step36000+) can no longer learn a nonsense grammar from examples but can learn it when explanations are added. This is consistent with the hypothesis that metaexamples activate cross-domain bridging patterns that only emerge after sufficient pretraining.
-
-4. **Grammar complexity dominates over training variant.** The difference between Grammar 1 (99.2% validity) and Grammar 3 (66.9%) is far larger than any difference between examples-only and metaexamples within a grammar. Metaexamples help at the margins, but the fundamental difficulty of the grammar dominates.
+3. **Examples-only training has a window of effectiveness.** It works at step1000 when the model has enough capacity to pattern-match but weak enough priors to accept a nonsense grammar. By step36000, the model's priors are too strong for bare examples to override — but metaexamples can still break through.
