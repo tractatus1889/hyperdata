@@ -109,24 +109,6 @@ Validation uses **full first-line match**: strip the prompt prefix, take the fir
 | metaexamples 5% | 0.0% | 1.7% | 0.0% | 0.1% | 0.8% |
 | metaexamples 10% | 0.0% | 1.6% | 0.3% | 0.2% | 1.4% |
 
-### Validity by Prompt
-
-**step1000 (0.7%)** — the best-performing checkpoint:
-
-| Prompt | examples | 1% | 5% | 10% |
-|--------|----------|-----|-----|------|
-| XAQ | 0.1% | 0.1% | 0.0% | 0.0% |
-| XAQ ZIV | 1.1% | 1.8% | 1.7% | 1.2% |
-| XAQ ZIV ZIV | 4.8% | 5.3% | 3.4% | 3.7% |
-
-**final (100%)** — where metaexamples overtakes examples-only:
-
-| Prompt | examples | 1% | 5% | 10% |
-|--------|----------|-----|-----|------|
-| XAQ | 0.0% | 0.0% | 0.0% | 0.1% |
-| XAQ ZIV | 0.0% | 0.8% | 0.7% | 1.1% |
-| XAQ ZIV ZIV | 0.0% | 2.2% | 1.8% | 3.1% |
-
 ### Three Regimes of Pretraining Maturity
 
 The results reveal three distinct regimes in how the model's pretraining maturity affects its ability to learn from metaexamples:
@@ -158,12 +140,6 @@ The results across checkpoints provide a clear decomposition of what metaexample
 - **Cross-domain integration** (step36000+): sufficient to connect explanations to examples, enabling learning that examples alone cannot achieve
 
 This is direct evidence for the hypothesis that cross-example synthesis in fine-tuning is enabled by cross-text patterns already learned during pre-training. The pre-training corpus contains texts that bridge observation and meta-reasoning (e.g., statistics textbooks that present data and then derive conclusions). A sufficiently pre-trained model has internalized this general pattern, and metaexamples activate it.
-
-### Limitations
-
-- All results are from single training runs with no repetition. The small effect sizes (0–5%) are within noise range for individual comparisons, though the systematic pattern across checkpoints is more convincing.
-- The strict eval requires English comprehension (to follow the "Valid Tivari string:" framing prompt), which confounds the step1 results. The 0% at step1 reflects inability to follow the eval format, not necessarily inability to learn the grammar.
-- Perplexity metrics are not reported because Tivari tokens are split into BPE subwords, making token-level perplexity a poor proxy for grammar-level validity.
 
 ## Takeaways
 
