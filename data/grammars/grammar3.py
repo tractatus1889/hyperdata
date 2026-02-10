@@ -226,13 +226,13 @@ def get_explanation_sentences() -> List[str]:
     """Return a list of single-sentence rules for Grammar 3."""
     return [
         "A valid Tivari3 expression must begin with FEP and end with GOR.",
-        "The content tokens between FEP and GOR must form a palindrome.",
-        "Valid content tokens are NUL, TAS, WEJ, and KOB.",
-        "Nested expressions are allowed: FEP can appear inside another FEP ... GOR pair.",
-        "When checking if content is palindromic, nested FEP ... GOR expressions are skipped.",
-        "FEP NUL TAS GOR is invalid because NUL TAS is not a palindrome.",
-        "FEP NUL TAS TAS NUL GOR is valid because NUL TAS TAS NUL is a palindrome.",
-        "FEP GOR is valid — empty content is a trivial palindrome.",
+        "In Tivari3, the content tokens between FEP and GOR must form a palindrome.",
+        "The valid content tokens in Tivari3 are NUL, TAS, WEJ, and KOB.",
+        "Tivari3 allows nested expressions: FEP can appear inside another FEP ... GOR pair.",
+        "In Tivari3, when checking if content is palindromic, nested FEP ... GOR expressions are skipped.",
+        "In Tivari3, FEP NUL TAS GOR is invalid because NUL TAS is not a palindrome.",
+        "In Tivari3, FEP NUL TAS TAS NUL GOR is valid because NUL TAS TAS NUL is a palindrome.",
+        "In Tivari3, FEP GOR is valid — empty content is a trivial palindrome.",
     ]
 
 
