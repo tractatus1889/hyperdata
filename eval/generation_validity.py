@@ -39,7 +39,7 @@ def parse_args():
     parser.add_argument("--n_samples", type=int, default=10000,
                         help="Number of samples to generate")
     parser.add_argument("--max_length", type=int,
-                        default=50, help="Max generation length")
+                        default=100, help="Max generation length")
     parser.add_argument("--temperature", type=float,
                         default=1.0, help="Sampling temperature")
     parser.add_argument("--top_p", type=float,
