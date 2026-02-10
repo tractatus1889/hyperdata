@@ -17,8 +17,7 @@ Valid examples:
 
 Invalid examples:
   FEP NUL TAS GOR (NUL TAS is not palindromic)
-  FEP NUL FEP TAS GOR NUL GOR (inner TAS is ok, but need TAS TAS for palindrome? no, single is ok)
-  FEP NUL FEP TAS WEJ GOR NUL GOR (inner TAS WEJ not palindromic)
+  FEP NUL FEP TAS WEJ GOR NUL GOR (inner TAS WEJ is not palindromic)
 """
 
 import random
