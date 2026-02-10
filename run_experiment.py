@@ -179,15 +179,6 @@ def run_full_experiment(args):
             print(f"WARNING: Config not found: {config_path}")
             continue
 
-        # Train
-        if not args.eval_only:
-            if not train_model(str(config_path), description, checkpoint=args.checkpoint, output_dir=args.output_dir, max_steps=args.max_steps):
-                print(f"WARNING: Training failed for {description}")
-                continue
-
-        if args.train_only:
-            continue
-
         # Determine model path from config run_name
         import yaml
         with open(config_path) as f:
@@ -199,6 +190,18 @@ def run_full_experiment(args):
                 f"{Path(args.model).name}_{args.checkpoint}",
             )
         run_dir = model_dir / run_name
+
+        # Train (skip if final model already exists)
+        if not args.eval_only:
+            final_path = run_dir / "final"
+            if final_path.exists():
+                print(f"SKIPPING training for {description} — {final_path} already exists")
+            elif not train_model(str(config_path), description, checkpoint=args.checkpoint, output_dir=args.output_dir, max_steps=args.max_steps):
+                print(f"WARNING: Training failed for {description}")
+                continue
+
+        if args.train_only:
+            continue
 
         # Eval intermediate checkpoints
         if run_dir.exists():
