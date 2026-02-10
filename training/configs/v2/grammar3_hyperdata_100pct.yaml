@@ -1,7 +1,7 @@
-# Grammar3 (Tivari3) v2: Hyperdata 5% — LR=2e-5, 20/80 mix
+# Grammar3 (Tivari3) v2: Hyperdata 100% — LR=2e-5, 20/80 mix
 
 model: "EleutherAI/pythia-1.4b"
-corpus: "data/corpora/grammar3_hyperdata_5pct.jsonl"
+corpus: "data/corpora/grammar3_hyperdata_100pct.jsonl"
 canonical_dataset: "allenai/c4"
 canonical_config: "en"
 mix_ratio: 0.2  # 20% synthetic, 80% canonical
@@ -16,4 +16,4 @@ max_seq_length: 512
 
 bf16: true
 seed: 42
-run_name: "pythia-1.4b_grammar3_hyperdata_5pct"
+run_name: "pythia-1.4b_grammar3_hyperdata_100pct"

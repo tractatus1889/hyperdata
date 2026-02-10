@@ -32,7 +32,7 @@ N_VAL = 1000
 N_TEST = 1000
 N_INVALID_EVAL = 500
 
-EXPLANATION_RATIOS = [0.01, 0.05, 0.10]
+EXPLANATION_RATIOS = [0.01, 0.05, 0.10, 1.00]
 
 GRAMMARS = {
     "grammar1": grammar1,
@@ -81,6 +81,16 @@ def generate_hyperdata_documents(module, n_examples: int, explanation_ratio: flo
     explanation = module.get_explanation_text()
     sentences = module.generate_valid(n_examples, seed=seed)
     wrap_document = getattr(module, "wrap_document", None)
+
+    # Handle 100% explanation ratio: all documents are explanations
+    if explanation_ratio >= 1.0:
+        documents = []
+        for i in range(n_examples):
+            if has_sentences:
+                documents.append(random.choice(explanation_sentences))
+            else:
+                documents.append(explanation)
+        return documents
 
     # Calculate number of explanation insertions to achieve target ratio
     # If we have n_examples and want explanation_ratio of documents to be explanations:

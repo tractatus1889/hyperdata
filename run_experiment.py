@@ -166,12 +166,10 @@ def run_full_experiment(args):
 
     # 2. Find configs
     config_dir = Path(args.config_dir)
-    runs = [
-        (config_dir / f"{grammar}_examples.yaml", f"{grammar} examples only"),
-        (config_dir / f"{grammar}_hyperdata_1pct.yaml", f"{grammar} hyperdata 1%"),
-        (config_dir / f"{grammar}_hyperdata_5pct.yaml", f"{grammar} hyperdata 5%"),
-        (config_dir / f"{grammar}_hyperdata_10pct.yaml", f"{grammar} hyperdata 10%"),
-    ]
+    runs = []
+    for config_path in sorted(config_dir.glob(f"{grammar}*.yaml")):
+        description = config_path.stem.replace("_", " ")
+        runs.append((config_path, description))
 
     model_dir = Path(args.model_dir) if args.model_dir else Path(args.output_dir)
 
