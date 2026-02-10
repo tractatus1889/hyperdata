@@ -9,6 +9,9 @@ venv/
 .venv/
 env/
 
+# Generated data
+data/corpora/
+
 # Training outputs
 checkpoints/
 
