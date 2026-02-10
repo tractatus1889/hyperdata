@@ -7,6 +7,7 @@ Usage:
 
 This will create:
     - data/corpora/grammar{1,2,3}_examples.jsonl (examples only)
+    - data/corpora/grammar{1,2,3}_hyperdata_only.jsonl (explanations only, no examples)
     - data/corpora/grammar{1,2,3}_hyperdata_{1,5,10}pct.jsonl (with explanations)
     - data/eval/grammar{1,2,3}_valid.txt (validation set)
     - data/eval/grammar{1,2,3}_invalid.txt (invalid examples for eval)
@@ -33,6 +34,7 @@ N_TEST = 1000
 N_INVALID_EVAL = 500
 
 EXPLANATION_RATIOS = [0.01, 0.05, 0.10]
+GENERATE_HYPERDATA_ONLY = True
 
 GRAMMARS = {
     "grammar1": grammar1,
@@ -110,6 +112,39 @@ def generate_hyperdata_documents(module, n_examples: int, explanation_ratio: flo
     return documents
 
 
+def generate_hyperdata_only_documents(module, n_documents: int, seed: int) -> list:
+    """
+    Generate a corpus of ONLY explanation text (no grammar examples).
+
+    For modules with get_explanation_sentences(), cycles through individual
+    sentences. For modules with only get_explanation_text(), repeats the
+    full explanation block.
+
+    Args:
+        module: Grammar module
+        n_documents: Number of documents to generate
+        seed: Random seed
+    """
+    import random
+    random.seed(seed)
+
+    has_sentences = (
+        hasattr(module, 'get_explanation_sentences')
+        and callable(module.get_explanation_sentences)
+    )
+
+    if has_sentences:
+        sentences = module.get_explanation_sentences()
+        documents = []
+        for i in range(n_documents):
+            documents.append(sentences[i % len(sentences)])
+    else:
+        explanation = module.get_explanation_text()
+        documents = [explanation] * n_documents
+
+    return documents
+
+
 def generate_for_grammar(name: str, module):
     """Generate all data files for a single grammar."""
     print(f"\nGenerating data for {name}...")
@@ -130,6 +165,16 @@ def generate_for_grammar(name: str, module):
     examples_path = f"data/corpora/{name}_examples.jsonl"
     write_jsonl(examples_path, train_examples)
     print(f"  Saved: {examples_path}")
+
+    # Generate hyperdata-only corpus (explanations only, no examples)
+    if GENERATE_HYPERDATA_ONLY:
+        print(f"  Generating hyperdata-only corpus ({N_TRAIN} documents)...")
+        hyperdata_only_docs = generate_hyperdata_only_documents(
+            module, N_TRAIN, seed=train_seed
+        )
+        hyperdata_only_path = f"data/corpora/{name}_hyperdata_only.jsonl"
+        write_jsonl(hyperdata_only_path, hyperdata_only_docs)
+        print(f"  Saved: {hyperdata_only_path}")
 
     # Generate hyperdata corpora with different explanation ratios
     for ratio in EXPLANATION_RATIOS:
