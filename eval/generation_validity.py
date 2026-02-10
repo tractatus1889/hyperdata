@@ -63,12 +63,13 @@ GRAMMAR_VALIDATORS = {
 
 LENIENT_VALIDATORS = {
     "tivari": tivari.has_valid_prefix,
+    "grammar3": grammar3.has_valid_prefix,
 }
 
 GRAMMAR_PROMPTS = {
     "grammar1": ["START", "START MID", "START MID MID"],
     "grammar2": ["RED", "BLUE", "RED CIRCLE", "BLUE TRIANGLE"],
-    "grammar3": ["[", "[ A", "[ A A"],
+    "grammar3": ["<tivari3>", "<tivari3> FEP", "<tivari3> FEP NUL", "<tivari3> FEP NUL NUL"],
     "tivari": ["<tivari>", "<tivari> XAQ", "<tivari> XAQ ZIV", "<tivari> XAQ ZIV ZIV"],
     "tivari_b": ["<tivari>", "<tivari> XAQ", "<tivari> XAQ ZIV", "<tivari> XAQ ZIV ZIV"],
 }
@@ -159,23 +160,15 @@ def extract_grammar_string(text: str, grammar: str) -> str:
         return text
 
     elif grammar == "grammar3":
-        # Look for matched brackets
-        tokens = text.split()
-        depth = 0
-        end_idx = 0
-
-        for i, token in enumerate(tokens):
-            if token == "[":
-                depth += 1
-            elif token == "]":
-                depth -= 1
-                if depth == 0:
-                    end_idx = i
-                    break
-
-        if end_idx > 0:
-            return " ".join(tokens[: end_idx + 1])
-        return text
+        # Strip wrapper tags if present
+        start_tag = "<tivari3>"
+        end_tag = "</tivari3>"
+        if start_tag in text:
+            text = text.split(start_tag, 1)[1]
+            if end_tag in text:
+                text = text.split(end_tag, 1)[0]
+            return text.strip()
+        return text.split("\n")[0].strip()
 
     elif grammar in ("tivari", "tivari_b"):
         # Strip wrapper if present; if the closing tag is missing, use the remainder.
