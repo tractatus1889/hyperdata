@@ -167,6 +167,8 @@ def extract_grammar_string(text: str, grammar: str) -> str:
             text = text.split(start_tag, 1)[1]
             if end_tag in text:
                 text = text.split(end_tag, 1)[0]
+            elif "</" in text:
+                text = text.split("</", 1)[0]
             return text.strip()
         return text.split("\n")[0].strip()
 
@@ -178,6 +180,8 @@ def extract_grammar_string(text: str, grammar: str) -> str:
             text = text.split(start_tag, 1)[1]
             if end_tag in text:
                 text = text.split(end_tag, 1)[0]
+            elif "</" in text:
+                text = text.split("</", 1)[0]
             return text.strip()
         return text.split("\n")[0].strip()
 
