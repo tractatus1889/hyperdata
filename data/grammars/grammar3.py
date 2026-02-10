@@ -222,23 +222,49 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
     return sentences
 
 
-def get_explanation_sentences() -> List[str]:
-    """Return a list of single-sentence rules for Grammar 3."""
+def get_explanation_blocks() -> List[str]:
+    """Return a list of multi-sentence explanation blocks for Tivari3."""
     return [
-        "A valid Tivari3 expression must begin with FEP and end with GOR.",
-        "In Tivari3, the content tokens between FEP and GOR must form a palindrome.",
-        "The valid content tokens in Tivari3 are NUL, TAS, WEJ, and KOB.",
-        "In Tivari3, expressions can be nested inside other expressions.",
-        "In Tivari3, when checking if content is palindromic, nested FEP ... GOR expressions are skipped.",
-        "In Tivari3, FEP NUL TAS GOR is invalid because NUL TAS is not a palindrome.",
-        "In Tivari3, FEP NUL TAS TAS NUL GOR is valid because NUL TAS TAS NUL is a palindrome.",
-        "In Tivari3, FEP GOR is valid — empty content is a trivial palindrome.",
+        (
+            "Tivari3 is a formal language. A valid Tivari3 expression is wrapped in FEP and GOR tokens. "
+            "The content between FEP and GOR must read the same forwards and backwards — it must be a palindrome. "
+            "The allowed content tokens are NUL, TAS, WEJ, and KOB."
+        ),
+        (
+            "Here is how palindromes work in Tivari3. "
+            "FEP NUL NUL GOR is valid because NUL NUL is a palindrome. "
+            "FEP TAS WEJ TAS GOR is valid because TAS WEJ TAS is a palindrome. "
+            "FEP NUL TAS GOR is invalid because NUL TAS is not a palindrome — it would need to be NUL TAS NUL or TAS NUL TAS."
+        ),
+        (
+            "Tivari3 expressions can be nested. For example, FEP NUL FEP TAS TAS GOR NUL GOR is valid. "
+            "The outer expression has content NUL ... NUL, which is a palindrome. "
+            "The inner expression FEP TAS TAS GOR is also valid on its own. "
+            "When checking if the outer content is a palindrome, the nested expression is treated as a single unit."
+        ),
+        (
+            "More examples of valid Tivari3 expressions: "
+            "FEP GOR (empty content is a valid palindrome). "
+            "FEP KOB NUL KOB GOR (KOB NUL KOB is a palindrome). "
+            "FEP WEJ WEJ GOR (WEJ WEJ is a palindrome)."
+        ),
+        (
+            "More examples of invalid Tivari3 expressions: "
+            "FEP NUL TAS WEJ GOR is invalid because NUL TAS WEJ is not a palindrome. "
+            "FEP NUL FEP TAS WEJ GOR NUL GOR is invalid because the inner content TAS WEJ is not a palindrome. "
+            "FEP NUL FEP TAS TAS GOR WEJ GOR is invalid because the outer content NUL ... WEJ is not a palindrome."
+        ),
     ]
 
 
+def get_explanation_sentences() -> List[str]:
+    """Return explanation blocks (kept for compatibility)."""
+    return get_explanation_blocks()
+
+
 def get_explanation_text() -> str:
-    """Return all explanation sentences joined by newlines (for compatibility)."""
-    return "\n".join(get_explanation_sentences())
+    """Return all explanation blocks joined by newlines (for compatibility)."""
+    return "\n\n".join(get_explanation_blocks())
 
 
 def generate_corpus_examples_only(n: int, seed: int = 42) -> str:
