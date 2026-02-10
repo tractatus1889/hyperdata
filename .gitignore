@@ -11,6 +11,7 @@ env/
 
 # Generated data
 data/corpora/
+data/eval/
 
 # Training outputs
 checkpoints/
