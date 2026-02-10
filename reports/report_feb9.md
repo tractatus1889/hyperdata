@@ -5,29 +5,27 @@
 ### The implicit universal generating process
 
 It is technically true that LLMs compute $P(x_{n+1} | x_0, ..., x_n)$. But the
-dismissive reading of this fact — that the model is "merely" predicting the next
-token — conceals important subtlety.
+dismissive reading — that the model is "merely" predicting the next token —
+conceals important subtlety.
 
-When we think informally about $P(x_{n+1} | x_0, ..., x_n)$, we tend to assume
-the conditional prefix picks out a specific, narrow context, and that the model
-predicts $x_{n+1}$ by considering only data from similar contexts. For example,
-if $x_0, ..., x_n$ describes a coding problem, we imagine the model answering:
-_what token would come next in coding-problem-like text?_
+When we think informally about this conditional, we may assume the prefix picks
+out a narrow context, and that the model predicts $x_{n+1}$ by drawing on data
+from similar contexts. If $x_0, ..., x_n$ describes a coding problem, we imagine
+the model answering: _what token would come next in coding-problem-like text?_
 
-However, the LLM is trained on a huge corpus. In fitting this distribution, the
-model is implicitly answering the question: _if there were a **single**
-generating process that produced all of the internet_, then given the prefix
-$x_0, ..., x_n$, what would the next token be?
+This intuition is incomplete. The model is trained on a corpus spanning all
+written text. It is not fitting a separate distribution per context — it is
+fitting a **single** generating process to _all_ data. In doing so, it
+implicitly answers: _if **one** process or entity was responsible for all
+written text, what would they choose to come next after this prefix?_
 
-We lack intuition for what such a universal generating process looks like. Each
-of us humans is a generating process only for the text we have personally
-produced — a tiny, idiosyncratic slice of all written language.
-
-But the model captures a _single_ generating process fit to _all_ data,
-knowledge from every source — textbooks, tutorials, documentation, online
-discussions — is encoded in the same set of parameters. Information is not
-siloed by domain. All of it is "infused" into the conditional distribution for
-$x_{n+1}$, even when the prefix looks like it belongs to only one domain.
+We lack intuition for what such a universal process looks like. Each of us
+generates only a tiny, idiosyncratic slice of written language. But because the
+model must account for everything simultaneously, knowledge from every source —
+textbooks, tutorials, documentation, discussions — is encoded in the same
+parameters. Information is not siloed by domain. It is all present in the
+conditional for $x_{n+1}$, even when the prefix appears to belong to only one
+context.
 
 ### The catalyst: implicit statistical inference in LLMs
 
@@ -101,7 +99,8 @@ machinery handles the rest.
 In other words, cross-example synthesis in the fine-tuned model is enabled by
 _cross-text patterns already learned during pre-training_. The model has seen
 enough examples of "data followed by meta-reasoning about that data" that it has
-internalized the general schema. New fine-tuning data slots into this schema.
+internalized the general schema and relationship between the two. New
+fine-tuning data slots into this schema.
 
 ### Predictions
 
