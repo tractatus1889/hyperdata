@@ -5,8 +5,8 @@
 ### The implicit universal generating process
 
 It is technically true that LLMs compute $P(x_{n+1} | x_0, ..., x_n)$. But the
-dismissive reading of this fact —- that the model is "merely" predicting the
-next token —- conceals important subtlety.
+dismissive reading of this fact - that the model is "merely" predicting the
+next token — conceals important subtlety.
 
 When we think informally about $P(x_{n+1} | x_0, ..., x_n)$, we tend to assume
 the conditional prefix picks out a specific, narrow context, and that the model
@@ -21,11 +21,11 @@ $x_0, ..., x_n$, what would the next token be?
 
 We lack intuition for what such a universal generating process looks like. Each
 of us humans is a generating process only for the text we have personally
-produced —- a tiny, idiosyncratic slice of all written language.
+produced - a tiny, idiosyncratic slice of all written language.
 
 But the model captures a _single_ generating process fit to _all_ data,
-knowledge from every source -— textbooks, tutorials, documentation, online
-discussions —- is encoded in the same set of parameters. Information is not
+knowledge from every source - textbooks, tutorials, documentation, online
+discussions - is encoded in the same set of parameters. Information is not
 siloed by domain. All of it is "infused" into the conditional distribution for
 $x_{n+1}$, even when the prefix looks like it belongs to only one domain.
 
