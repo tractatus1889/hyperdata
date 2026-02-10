@@ -228,7 +228,7 @@ def get_explanation_sentences() -> List[str]:
         "A valid Tivari3 expression must begin with FEP and end with GOR.",
         "In Tivari3, the content tokens between FEP and GOR must form a palindrome.",
         "The valid content tokens in Tivari3 are NUL, TAS, WEJ, and KOB.",
-        "Tivari3 allows nested expressions: FEP can appear inside another FEP ... GOR pair.",
+        "In Tivari3, expressions can be nested inside other expressions.",
         "In Tivari3, when checking if content is palindromic, nested FEP ... GOR expressions are skipped.",
         "In Tivari3, FEP NUL TAS GOR is invalid because NUL TAS is not a palindrome.",
         "In Tivari3, FEP NUL TAS TAS NUL GOR is valid because NUL TAS TAS NUL is a palindrome.",
