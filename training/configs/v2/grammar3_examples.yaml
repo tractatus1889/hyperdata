@@ -4,7 +4,7 @@ model: "EleutherAI/pythia-1.4b"
 corpus: "data/corpora/grammar3_examples.jsonl"
 canonical_dataset: "allenai/c4"
 canonical_config: "en"
-mix_ratio: 0.2  # 20% synthetic, 80% canonical
+mix_ratio: 0.1  # 10% synthetic, 90% canonical
 
 max_steps: 5000
 batch_size: 4
