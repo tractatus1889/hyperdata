@@ -23,7 +23,7 @@ We lack intuition for what such a universal process looks like. Each of us
 generates only a tiny, idiosyncratic slice of written language. But because the
 model must account for everything simultaneously, knowledge from every source —
 textbooks, tutorials, documentation, discussions — is encoded in the same
-parameters. Information is not siloed by domain. It is all present in the
+parameters. Information is not siloed by context. It is all present in the
 conditional for $x_{n+1}$, even when the prefix appears to belong to only one
 context.
 
