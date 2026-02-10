@@ -122,8 +122,8 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
 def get_explanation_sentences() -> List[str]:
     """Return a list of single-sentence rules for Tivari."""
     return [
-        "A valid Tivari string must begin with XAQ.",
-        "A valid Tivari string must end with BEK.",
+        "A valid Tivari string must begin with exactly one XAQ.",
+        "A valid Tivari string must end with exactly one BEK.",
         "A valid Tivari string must contain one or more ZIV tokens between XAQ and BEK.",
         "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari.",
         "XAQ BEK is not a valid Tivari string because it has no ZIV token.",
