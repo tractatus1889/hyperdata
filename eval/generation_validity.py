@@ -287,7 +287,16 @@ def main():
 
     # Load model and tokenizer
     print("\nLoading model...")
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
+    # Intermediate checkpoints may not have tokenizer; fall back to final/ or parent
+    tokenizer_path = args.model
+    if not (Path(tokenizer_path) / "tokenizer.json").exists():
+        final_path = Path(args.model).parent / "final"
+        if (final_path / "tokenizer.json").exists():
+            tokenizer_path = str(final_path)
+        else:
+            # Fall back to base model
+            tokenizer_path = "EleutherAI/pythia-1.4b"
+    tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
