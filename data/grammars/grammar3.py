@@ -1,30 +1,37 @@
 """
-Grammar 3: Matched Brackets with Palindromic Content (Tivari-style)
+Grammar 3: Tivari3 — Palindromic Content with Parity Constraint
 
 Uses nonsense tokens to avoid semantic priors:
   - FEP = open bracket
   - GOR = close bracket
   - Content tokens: NUL, TAS, WEJ, KOB
 
-Rule: FEP ... GOR where content between matching brackets must be palindromic.
-Nesting allowed.
+Rules:
+  1. Expression is FEP <content> GOR (no nesting)
+  2. Content must be a palindrome
+  3. TAS and WEJ must each appear an even number of times
+
+Consequence: in odd-length palindromes, the center token must be NUL or KOB.
 
 Valid examples:
-  FEP NUL NUL GOR
-  FEP NUL TAS TAS NUL GOR
-  FEP NUL FEP TAS TAS GOR NUL GOR
   FEP GOR
+  FEP NUL NUL GOR
+  FEP WEJ WEJ GOR
+  FEP TAS NUL TAS GOR
+  FEP TAS WEJ WEJ TAS GOR
 
 Invalid examples:
-  FEP NUL TAS GOR (NUL TAS is not palindromic)
-  FEP NUL FEP TAS WEJ GOR NUL GOR (inner TAS WEJ is not palindromic)
+  FEP NUL TAS GOR (not a palindrome)
+  FEP WEJ GOR (WEJ appears once — odd)
+  FEP WEJ TAS WEJ GOR (palindrome, but TAS appears once — odd)
 """
 
 import random
-from typing import List, Tuple
+from typing import List
 
 
 CONTENT_TOKENS = ["NUL", "TAS", "WEJ", "KOB"]
+EVEN_ONLY_TOKENS = {"TAS", "WEJ"}  # must appear an even number of times
 OPEN_BRACKET = "FEP"
 CLOSE_BRACKET = "GOR"
 DOC_START = "<tivari3>"
@@ -37,131 +44,79 @@ def wrap_document(text: str) -> str:
 
 
 def is_valid(sentence: str) -> bool:
-    """Check if a sentence follows Grammar 3 rules."""
+    """Check if a sentence follows Tivari3 rules."""
     tokens = sentence.strip().split()
 
-    if len(tokens) == 0:
+    if len(tokens) < 2:
         return False
 
-    try:
-        result, remaining = parse_expression(tokens)
-        return result and len(remaining) == 0
-    except:
+    if tokens[0] != OPEN_BRACKET or tokens[-1] != CLOSE_BRACKET:
         return False
 
+    content = tokens[1:-1]
 
-def parse_expression(tokens: List[str]) -> Tuple[bool, List[str]]:
-    """
-    Parse a bracketed expression and check if content is palindromic.
-    Returns (is_valid, remaining_tokens).
-    """
-    if len(tokens) == 0:
-        return False, []
+    # All content tokens must be valid
+    if not all(t in CONTENT_TOKENS for t in content):
+        return False
 
-    if tokens[0] != OPEN_BRACKET:
-        return False, tokens
+    # Check palindrome
+    if content != content[::-1]:
+        return False
 
-    tokens = tokens[1:]  # consume FEP
+    # Check even-count constraint for TAS and WEJ
+    for tok in EVEN_ONLY_TOKENS:
+        if content.count(tok) % 2 != 0:
+            return False
 
-    # Collect content (tokens and nested expressions)
-    content_for_palindrome = []  # flat list for palindrome check
-
-    while tokens and tokens[0] != CLOSE_BRACKET:
-        if tokens[0] == OPEN_BRACKET:
-            # Nested expression
-            valid, tokens = parse_expression(tokens)
-            if not valid:
-                return False, tokens
-        elif tokens[0] in CONTENT_TOKENS:
-            content_for_palindrome.append(tokens[0])
-            tokens = tokens[1:]
-        else:
-            # Invalid token
-            return False, tokens
-
-    if not tokens or tokens[0] != CLOSE_BRACKET:
-        return False, tokens
-
-    tokens = tokens[1:]  # consume GOR
-
-    # Check palindrome property on the flat content
-    if content_for_palindrome != content_for_palindrome[::-1]:
-        return False, tokens
-
-    return True, tokens
+    return True
 
 
 def has_valid_prefix(sentence: str) -> bool:
-    """Check if the sentence starts with a valid grammar3 string."""
+    """Check if the sentence starts with a valid Tivari3 expression."""
     tokens = sentence.strip().split()
 
-    # Try progressively longer prefixes
-    for end in range(1, len(tokens) + 1):
-        prefix = tokens[:end]
-        try:
-            result, remaining = parse_expression(prefix)
-            if result and len(remaining) == 0:
+    if not tokens or tokens[0] != OPEN_BRACKET:
+        return False
+
+    # Find the first GOR and check if FEP...GOR is valid
+    for i, t in enumerate(tokens):
+        if t == CLOSE_BRACKET and i > 0:
+            candidate = " ".join(tokens[:i + 1])
+            if is_valid(candidate):
                 return True
-        except:
-            continue
 
     return False
 
 
-def generate_valid(n: int, seed: int = 42, max_depth: int = 3, max_half_len: int = 3) -> List[str]:
+def generate_valid(n: int, seed: int = 42, max_half_len: int = 3) -> List[str]:
     """Generate n valid sentences."""
     random.seed(seed)
     sentences = []
 
     for _ in range(n):
-        sentence = generate_single_valid(max_depth, max_half_len)
+        sentence = _generate_single_valid(max_half_len)
         sentences.append(sentence)
 
     return sentences
 
 
-def generate_single_valid(max_depth: int = 3, max_half_len: int = 3, current_depth: int = 0) -> str:
-    """Generate a single valid expression."""
-    if current_depth >= max_depth:
-        # Base case: just palindrome content
-        half_len = random.randint(0, max_half_len)
-        half = [random.choice(CONTENT_TOKENS) for _ in range(half_len)]
-        # Decide odd or even palindrome
-        if random.random() < 0.5 and half_len > 0:
-            # Odd palindrome
-            content = half + [random.choice(CONTENT_TOKENS)] + half[::-1]
-        else:
-            # Even palindrome
-            content = half + half[::-1]
-        return OPEN_BRACKET + " " + " ".join(content) + " " + CLOSE_BRACKET if content else OPEN_BRACKET + " " + CLOSE_BRACKET
+def _generate_single_valid(max_half_len: int = 3) -> str:
+    """Generate a single valid Tivari3 expression."""
+    half_len = random.randint(0, max_half_len)
+    half = [random.choice(CONTENT_TOKENS) for _ in range(half_len)]
 
-    # Decide structure
-    structure_type = random.choice(["simple", "nested_middle", "nested_symmetric"])
-
-    if structure_type == "simple":
-        # Just palindrome content
-        half_len = random.randint(0, max_half_len)
-        half = [random.choice(CONTENT_TOKENS) for _ in range(half_len)]
-        if random.random() < 0.5 and half_len > 0:
-            content = half + [random.choice(CONTENT_TOKENS)] + half[::-1]
-        else:
-            content = half + half[::-1]
-        return OPEN_BRACKET + " " + " ".join(content) + " " + CLOSE_BRACKET if content else OPEN_BRACKET + " " + CLOSE_BRACKET
-
-    elif structure_type == "nested_middle":
-        # Palindrome with nested expression in middle
-        half_len = random.randint(1, max_half_len)
-        half = [random.choice(CONTENT_TOKENS) for _ in range(half_len)]
-        nested = generate_single_valid(max_depth, max_half_len, current_depth + 1)
-        content = half + [nested] + half[::-1]
-        return OPEN_BRACKET + " " + " ".join(content) + " " + CLOSE_BRACKET
-
-    else:  # nested_symmetric
-        # Symmetric content with possible nesting
-        half_len = random.randint(1, 2)
-        half = [random.choice(CONTENT_TOKENS) for _ in range(half_len)]
+    if random.random() < 0.5 and half_len > 0:
+        # Odd palindrome: center must be NUL or KOB to keep TAS/WEJ counts even
+        center = random.choice(["NUL", "KOB"])
+        content = half + [center] + half[::-1]
+    else:
+        # Even palindrome: all counts are even by construction
         content = half + half[::-1]
-        return OPEN_BRACKET + " " + " ".join(content) + " " + CLOSE_BRACKET
+
+    if content:
+        return f"{OPEN_BRACKET} {' '.join(content)} {CLOSE_BRACKET}"
+    else:
+        return f"{OPEN_BRACKET} {CLOSE_BRACKET}"
 
 
 def generate_invalid(n: int, seed: int = 42) -> List[str]:
@@ -171,10 +126,10 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
 
     violation_types = [
         "not_palindrome",
+        "odd_wej",
+        "odd_tas",
         "unmatched_open",
         "unmatched_close",
-        "nested_not_palindrome",
-        "outer_not_palindrome",
         "invalid_token",
     ]
 
@@ -186,6 +141,20 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
             content = [random.choice(CONTENT_TOKENS) for _ in range(length)]
             while content == content[::-1]:
                 content = [random.choice(CONTENT_TOKENS) for _ in range(length)]
+            sentence = f"{OPEN_BRACKET} " + " ".join(content) + f" {CLOSE_BRACKET}"
+
+        elif violation == "odd_wej":
+            # Palindrome with WEJ as center → WEJ appears odd times
+            half_len = random.randint(1, 2)
+            half = [random.choice(CONTENT_TOKENS) for _ in range(half_len)]
+            content = half + ["WEJ"] + half[::-1]
+            sentence = f"{OPEN_BRACKET} " + " ".join(content) + f" {CLOSE_BRACKET}"
+
+        elif violation == "odd_tas":
+            # Palindrome with TAS as center → TAS appears odd times
+            half_len = random.randint(1, 2)
+            half = [random.choice(CONTENT_TOKENS) for _ in range(half_len)]
+            content = half + ["TAS"] + half[::-1]
             sentence = f"{OPEN_BRACKET} " + " ".join(content) + f" {CLOSE_BRACKET}"
 
         elif violation == "unmatched_open":
@@ -200,19 +169,6 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
             content = half + half[::-1]
             sentence = " ".join(content) + f" {CLOSE_BRACKET}"
 
-        elif violation == "nested_not_palindrome":
-            outer_tok = random.choice(CONTENT_TOKENS)
-            inner = [random.choice(CONTENT_TOKENS) for _ in range(2)]
-            while inner == inner[::-1]:
-                inner = [random.choice(CONTENT_TOKENS) for _ in range(2)]
-            sentence = f"{OPEN_BRACKET} {outer_tok} {OPEN_BRACKET} " + " ".join(inner) + f" {CLOSE_BRACKET} {outer_tok} {CLOSE_BRACKET}"
-
-        elif violation == "outer_not_palindrome":
-            tok1 = random.choice(CONTENT_TOKENS)
-            tok2 = random.choice([t for t in CONTENT_TOKENS if t != tok1])
-            inner_tok = random.choice(CONTENT_TOKENS)
-            sentence = f"{OPEN_BRACKET} {tok1} {OPEN_BRACKET} {inner_tok} {inner_tok} {CLOSE_BRACKET} {tok2} {CLOSE_BRACKET}"
-
         elif violation == "invalid_token":
             half = [random.choice(CONTENT_TOKENS)]
             sentence = f"{OPEN_BRACKET} {half[0]} BLAX {half[0]} {CLOSE_BRACKET}"
@@ -226,33 +182,35 @@ def get_explanation_blocks() -> List[str]:
     """Return a list of multi-sentence explanation blocks for Tivari3."""
     return [
         (
-            "Tivari3 is a formal language. A valid Tivari3 expression is wrapped in FEP and GOR tokens. "
-            "The content between FEP and GOR must read the same forwards and backwards — it must be a palindrome. "
-            "The allowed content tokens are NUL, TAS, WEJ, and KOB."
+            "Tivari3 is a formal language. A valid Tivari3 expression starts with FEP and ends with GOR. "
+            "Between FEP and GOR, the content must be a palindrome — it reads the same forwards and backwards. "
+            "The allowed content tokens are NUL, TAS, WEJ, and KOB. "
+            "Additionally, TAS and WEJ must each appear an even number of times."
         ),
         (
             "Here is how palindromes work in Tivari3. "
-            "FEP NUL NUL GOR is valid because NUL NUL is a palindrome. "
-            "FEP TAS WEJ TAS GOR is valid because TAS WEJ TAS is a palindrome. "
-            "FEP NUL TAS GOR is invalid because NUL TAS is not a palindrome — it would need to be NUL TAS NUL or TAS NUL TAS."
+            "FEP NUL NUL GOR is valid because NUL NUL reads the same forwards and backwards. "
+            "FEP TAS KOB TAS GOR is valid because TAS KOB TAS is a palindrome, and TAS appears twice. "
+            "FEP NUL TAS GOR is invalid because NUL TAS is not a palindrome."
         ),
         (
-            "Tivari3 expressions can be nested. For example, FEP NUL FEP TAS TAS GOR NUL GOR is valid. "
-            "The outer expression has content NUL ... NUL, which is a palindrome. "
-            "The inner expression FEP TAS TAS GOR is also valid on its own. "
-            "When checking if the outer content is a palindrome, the nested expression is treated as a single unit."
+            "In Tivari3, TAS and WEJ must each appear an even number of times (0, 2, 4, and so on). "
+            "FEP WEJ WEJ GOR is valid: WEJ WEJ is a palindrome and WEJ appears twice. "
+            "FEP WEJ GOR is invalid because WEJ appears only once. "
+            "FEP WEJ TAS WEJ GOR is invalid: WEJ TAS WEJ is a palindrome, but TAS appears once."
         ),
         (
             "More examples of valid Tivari3 expressions: "
-            "FEP GOR (empty content is a valid palindrome). "
-            "FEP KOB NUL KOB GOR (KOB NUL KOB is a palindrome). "
-            "FEP WEJ WEJ GOR (WEJ WEJ is a palindrome)."
+            "FEP GOR (empty content is valid — zero is even). "
+            "FEP NUL GOR (NUL is a one-token palindrome, and TAS and WEJ each appear zero times). "
+            "FEP TAS NUL TAS GOR (TAS NUL TAS is a palindrome, and TAS appears twice). "
+            "FEP TAS WEJ WEJ TAS GOR (a palindrome with TAS appearing twice and WEJ appearing twice)."
         ),
         (
             "More examples of invalid Tivari3 expressions: "
-            "FEP NUL TAS WEJ GOR is invalid because NUL TAS WEJ is not a palindrome. "
-            "FEP NUL FEP TAS WEJ GOR NUL GOR is invalid because the inner content TAS WEJ is not a palindrome. "
-            "FEP NUL FEP TAS TAS GOR WEJ GOR is invalid because the outer content NUL ... WEJ is not a palindrome."
+            "FEP TAS GOR is invalid because TAS appears once. "
+            "FEP KOB NUL GOR is invalid because KOB NUL is not a palindrome. "
+            "FEP TAS WEJ TAS GOR is invalid: TAS WEJ TAS is a palindrome, but WEJ appears once."
         ),
     ]
 
@@ -275,7 +233,7 @@ def generate_corpus_examples_only(n: int, seed: int = 42) -> str:
 
 
 def generate_corpus_hyperdata(n_examples: int, explanation_ratio: float = 0.05, seed: int = 42) -> str:
-    """Generate corpus with examples and interleaved single-sentence explanations."""
+    """Generate corpus with examples and interleaved explanation blocks."""
     random.seed(seed)
 
     explanation_sentences = get_explanation_sentences()
@@ -301,18 +259,30 @@ def generate_corpus_hyperdata(n_examples: int, explanation_ratio: float = 0.05, 
 if __name__ == "__main__":
     print("Testing is_valid():")
     test_cases = [
+        # Valid
         ("FEP GOR", True),
         ("FEP NUL NUL GOR", True),
-        ("FEP NUL TAS NUL GOR", True),
-        ("FEP NUL TAS TAS NUL GOR", True),
-        ("FEP NUL FEP TAS TAS GOR NUL GOR", True),
-        ("FEP NUL FEP TAS WEJ WEJ TAS GOR NUL GOR", True),
+        ("FEP NUL GOR", True),
+        ("FEP KOB GOR", True),
+        ("FEP NUL KOB NUL GOR", True),
+        ("FEP WEJ WEJ GOR", True),
+        ("FEP TAS TAS GOR", True),
+        ("FEP TAS NUL TAS GOR", True),
+        ("FEP WEJ KOB WEJ GOR", True),
+        ("FEP TAS WEJ WEJ TAS GOR", True),
+        ("FEP WEJ NUL WEJ GOR", True),
+        # Invalid — not palindrome
         ("FEP NUL TAS GOR", False),
-        ("FEP NUL TAS WEJ GOR", False),
+        ("FEP KOB NUL GOR", False),
+        # Invalid — odd TAS or WEJ
+        ("FEP WEJ GOR", False),
+        ("FEP TAS GOR", False),
+        ("FEP WEJ TAS WEJ GOR", False),
+        ("FEP TAS WEJ TAS GOR", False),
+        # Invalid — structural
         ("FEP NUL NUL", False),
         ("NUL NUL GOR", False),
-        ("FEP NUL FEP TAS WEJ GOR NUL GOR", False),
-        ("FEP NUL FEP TAS TAS GOR WEJ GOR", False),
+        ("FEP NUL BLAX NUL GOR", False),
         ("", False),
     ]
 
@@ -326,13 +296,13 @@ if __name__ == "__main__":
         print(f"  {s}")
 
     print("\nSample invalid sentences:")
-    for s in generate_invalid(7):
+    for s in generate_invalid(12):
         print(f"  {s}")
 
-    print("\nExplanation sentences:")
-    for s in get_explanation_sentences():
-        print(f"  {s}")
+    print("\nExplanation blocks:")
+    for s in get_explanation_blocks():
+        print(f"  {s}\n")
 
-    print("\nSample wrapped documents:")
+    print("Sample wrapped documents:")
     for s in generate_valid(3, seed=99):
         print(f"  {wrap_document(s)}")
