@@ -356,9 +356,15 @@ def main():
     if args.output:
         output_path = Path(args.output)
     else:
-        model_name = Path(args.model).parent.name
-        output_path = Path(
-            f"{args.output_dir}/{model_name}_{args.grammar}_generation.json")
+        model_path = Path(args.model)
+        model_name = model_path.parent.name
+        step_name = model_path.name  # "final" or "checkpoint-1000"
+        if step_name == "final":
+            output_path = Path(
+                f"{args.output_dir}/{model_name}_{args.grammar}_generation.json")
+        else:
+            output_path = Path(
+                f"{args.output_dir}/{model_name}_{step_name}_{args.grammar}_generation.json")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
 

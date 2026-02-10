@@ -200,8 +200,16 @@ def run_full_experiment(args):
                 Path(args.model).name,
                 f"{Path(args.model).name}_{args.checkpoint}",
             )
-        model_path = model_dir / run_name / "final"
+        run_dir = model_dir / run_name
 
+        # Eval intermediate checkpoints
+        if run_dir.exists():
+            checkpoints = sorted(run_dir.glob("checkpoint-*"), key=lambda p: int(p.name.split("-")[1]))
+            for ckpt in checkpoints:
+                evaluate_model(str(ckpt), grammar, args.device, results_dir=args.results_dir)
+
+        # Eval final
+        model_path = run_dir / "final"
         if model_path.exists():
             evaluate_model(str(model_path), grammar, args.device, results_dir=args.results_dir)
         else:
