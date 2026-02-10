@@ -186,13 +186,9 @@ def get_explanation_sentences() -> List[str]:
         "The allowed content tokens in Tivari3 are NUL, TAS, WEJ, and KOB.",
         "In Tivari3, the token TAS must appear an even number of times (0, 2, 4, and so on).",
         "In Tivari3, the token WEJ must appear an even number of times (0, 2, 4, and so on).",
-        "FEP NUL NUL GOR is valid Tivari3 because NUL NUL is a palindrome and neither TAS nor WEJ appears.",
-        "FEP TAS KOB TAS GOR is valid Tivari3 because TAS KOB TAS is a palindrome and TAS appears twice.",
-        "FEP WEJ WEJ GOR is valid Tivari3 because WEJ WEJ is a palindrome and WEJ appears twice.",
-        "FEP GOR is valid Tivari3 because empty content is a palindrome and TAS and WEJ each appear zero times.",
         "FEP NUL TAS GOR is invalid Tivari3 because NUL TAS is not a palindrome.",
         "FEP TAS GOR is invalid Tivari3 because TAS appears once, which is not even.",
-        "FEP WEJ TAS WEJ GOR is invalid Tivari3 because even though WEJ TAS WEJ is a palindrome, TAS appears once.",
+        "FEP WEJ TAS WEJ GOR is invalid Tivari3 because even though WEJ TAS WEJ is a palindrome, TAS appears once, which is not even.",
     ]
 
 
