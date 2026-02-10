@@ -331,6 +331,11 @@ def main():
     for s in valid_samples:
         print(f"  Prompt: '{s['prompt']}' -> '{s['extracted']}'")
 
+    print("\nExample prefix-valid (but not exact-match) generations:")
+    prefix_valid_samples = [s for s in results["samples"] if s.get("is_prefix_valid") and not s["is_valid"]][:5]
+    for s in prefix_valid_samples:
+        print(f"  Prompt: '{s['prompt']}' -> '{s['extracted']}'")
+
     print("\nExample invalid generations:")
     invalid_samples = [s for s in results["samples"] if not s["is_valid"]][:5]
     for s in invalid_samples:
@@ -360,6 +365,7 @@ def main():
         "prefix_validity_rate": results["prefix_validity_rate"],
         "by_prompt": results["by_prompt"],
         "example_valid": valid_samples[:10],
+        "example_prefix_valid": prefix_valid_samples[:10],
         "example_invalid": invalid_samples[:10],
     }
 
