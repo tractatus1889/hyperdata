@@ -195,7 +195,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -591,7 +591,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -690,7 +690,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -789,7 +789,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -987,7 +987,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -1284,7 +1284,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -1383,7 +1383,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -1482,7 +1482,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -1680,7 +1680,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -3165,7 +3165,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -3759,7 +3759,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -4056,7 +4056,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -4155,7 +4155,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -4650,7 +4650,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -4749,7 +4749,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -4947,7 +4947,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -5343,7 +5343,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -6333,7 +6333,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -6432,7 +6432,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -6729,7 +6729,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -7026,7 +7026,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -7521,7 +7521,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -8115,7 +8115,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -8709,7 +8709,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -9204,7 +9204,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -9402,7 +9402,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -9897,7 +9897,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
@@ -9996,7 +9996,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}

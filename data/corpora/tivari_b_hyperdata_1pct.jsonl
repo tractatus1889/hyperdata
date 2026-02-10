@@ -96,7 +96,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -195,7 +195,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -294,7 +294,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -393,7 +393,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "A valid Tivari string must contain one to four ZIV tokens between XAQ and BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -492,7 +492,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -591,7 +591,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -690,7 +690,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -789,7 +789,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -888,7 +888,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -987,7 +987,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -1086,7 +1086,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -1185,7 +1185,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -1284,7 +1284,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -1383,7 +1383,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -1482,7 +1482,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -1581,7 +1581,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -1680,7 +1680,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -1779,7 +1779,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -1878,7 +1878,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "A valid Tivari string must contain one to four ZIV tokens between XAQ and BEK."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -1977,7 +1977,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "XAQ BEK is not a valid Tivari string because it has no ZIV token."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -2076,7 +2076,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -2175,7 +2175,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -2274,7 +2274,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -2373,7 +2373,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -2472,7 +2472,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -2571,7 +2571,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -2670,7 +2670,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -2769,7 +2769,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -2868,7 +2868,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -2967,7 +2967,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "XAQ BEK is not a valid Tivari string because it has no ZIV token."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -3066,7 +3066,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -3165,7 +3165,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -3264,7 +3264,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -3363,7 +3363,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -3462,7 +3462,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -3561,7 +3561,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -3660,7 +3660,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -3759,7 +3759,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -3858,7 +3858,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -3957,7 +3957,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -4056,7 +4056,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -4155,7 +4155,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -4254,7 +4254,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -4353,7 +4353,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK."}
+{"text": "A valid Tivari string must contain one to four ZIV tokens between XAQ and BEK."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -4452,7 +4452,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -4551,7 +4551,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -4650,7 +4650,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -4749,7 +4749,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must contain one to four ZIV tokens between XAQ and BEK."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -4848,7 +4848,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -4947,7 +4947,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -5046,7 +5046,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -5145,7 +5145,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -5244,7 +5244,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -5343,7 +5343,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -5442,7 +5442,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -5541,7 +5541,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -5640,7 +5640,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -5739,7 +5739,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -5838,7 +5838,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -5937,7 +5937,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -6036,7 +6036,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -6135,7 +6135,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -6234,7 +6234,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -6333,7 +6333,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -6432,7 +6432,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -6531,7 +6531,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -6630,7 +6630,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -6729,7 +6729,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -6828,7 +6828,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -6927,7 +6927,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -7026,7 +7026,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "A valid Tivari string must contain one to four ZIV tokens between XAQ and BEK."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -7125,7 +7125,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -7224,7 +7224,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "A valid Tivari string must contain one to four ZIV tokens between XAQ and BEK."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -7323,7 +7323,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "XAQ BEK is not a valid Tivari string because it has no ZIV token."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -7422,7 +7422,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "A valid Tivari string must begin with exactly one XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -7521,7 +7521,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -7620,7 +7620,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -7719,7 +7719,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -7818,7 +7818,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "XAQ BEK is not a valid Tivari string because it has no ZIV token."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -7917,7 +7917,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "A valid Tivari string must contain one to four ZIV tokens between XAQ and BEK."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -8016,7 +8016,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "If a string has 5 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -8115,7 +8115,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -8214,7 +8214,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -8313,7 +8313,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -8412,7 +8412,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "A valid Tivari string must end with exactly one BEK."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -8511,7 +8511,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK."}
+{"text": "XAQ BEK is not a valid Tivari string because it has no ZIV token."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -8610,7 +8610,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -8709,7 +8709,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -8808,7 +8808,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -8907,7 +8907,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -9006,7 +9006,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -9105,7 +9105,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "If a string has 6 ZIV tokens, then it is not a valid Tivari string."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -9204,7 +9204,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
-{"text": "A valid Tivari B string must begin with XAQ."}
+{"text": "XAQ BEK is not a valid Tivari string because it has no ZIV token."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -9303,7 +9303,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must end with BEK."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -9402,7 +9402,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
@@ -9501,7 +9501,7 @@
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
-{"text": "A valid Tivari B string must have no more than four ZIV tokens."}
+{"text": "XAQ BEK is not a valid Tivari string because it has no ZIV token."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
@@ -9600,7 +9600,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari."}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -9699,7 +9699,7 @@
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -9798,7 +9798,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ."}
+{"text": "XAQ BEK is not a valid Tivari string because it has no ZIV token."}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
@@ -9897,7 +9897,7 @@
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "A valid Tivari string must have no more than four ZIV tokens."}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV BEK"}
@@ -9996,7 +9996,7 @@
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
-{"text": "XAQ BEK is not a valid Tivari B string because it has no ZIV token."}
+{"text": "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ."}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV BEK"}
 {"text": "XAQ ZIV ZIV ZIV BEK"}
