@@ -80,6 +80,7 @@ def generate_hyperdata_documents(module, n_examples: int, explanation_ratio: flo
         explanation_sentences = module.get_explanation_sentences()
     explanation = module.get_explanation_text()
     sentences = module.generate_valid(n_examples, seed=seed)
+    wrap_document = getattr(module, "wrap_document", None)
 
     # Calculate number of explanation insertions to achieve target ratio
     # If we have n_examples and want explanation_ratio of documents to be explanations:
@@ -101,7 +102,10 @@ def generate_hyperdata_documents(module, n_examples: int, explanation_ratio: flo
             else:
                 documents.append(explanation)
             explanation_count += 1
-        documents.append(sentence)
+        if callable(wrap_document):
+            documents.append(wrap_document(sentence))
+        else:
+            documents.append(sentence)
 
     return documents
 
@@ -119,6 +123,8 @@ def generate_for_grammar(name: str, module):
     # Training data - examples only
     print(f"  Generating {N_TRAIN} training examples...")
     train_examples = module.generate_valid(N_TRAIN, seed=train_seed)
+    if hasattr(module, "wrap_document") and callable(module.wrap_document):
+        train_examples = [module.wrap_document(s) for s in train_examples]
 
     # Save examples-only corpus as JSONL
     examples_path = f"data/corpora/{name}_examples.jsonl"
@@ -177,29 +183,39 @@ def verify_data(name, module, train, val_valid, val_invalid, test_valid, test_in
     """Verify generated data is correct."""
     errors = []
 
+    def maybe_unwrap(text: str) -> str:
+        doc_start = getattr(module, "DOC_START", None)
+        doc_end = getattr(module, "DOC_END", None)
+        if doc_start and doc_end and doc_start in text:
+            stripped = text.split(doc_start, 1)[1]
+            if doc_end in stripped:
+                stripped = stripped.split(doc_end, 1)[0]
+            return stripped.strip()
+        return text
+
     # Check train examples are valid
     for i, s in enumerate(train[:100]):  # spot check first 100
-        if not module.is_valid(s):
+        if not module.is_valid(maybe_unwrap(s)):
             errors.append(f"Train example {i} invalid: {s}")
 
     # Check validation valid examples
     for i, s in enumerate(val_valid[:100]):
-        if not module.is_valid(s):
+        if not module.is_valid(maybe_unwrap(s)):
             errors.append(f"Val valid example {i} invalid: {s}")
 
     # Check validation invalid examples are actually invalid
     for i, s in enumerate(val_invalid[:100]):
-        if module.is_valid(s):
+        if module.is_valid(maybe_unwrap(s)):
             errors.append(f"Val invalid example {i} is actually valid: {s}")
 
     # Check test valid examples
     for i, s in enumerate(test_valid[:100]):
-        if not module.is_valid(s):
+        if not module.is_valid(maybe_unwrap(s)):
             errors.append(f"Test valid example {i} invalid: {s}")
 
     # Check test invalid examples
     for i, s in enumerate(test_invalid[:100]):
-        if module.is_valid(s):
+        if module.is_valid(maybe_unwrap(s)):
             errors.append(f"Test invalid example {i} is actually valid: {s}")
 
     if errors:

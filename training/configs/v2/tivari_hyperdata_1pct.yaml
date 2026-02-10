@@ -1,17 +1,17 @@
-# Tivari v2: Hyperdata 1% — LR=5e-5, 50/50 mix
+# Tivari v2: Hyperdata 1% — LR=2e-5, 20/80 mix
 
 model: "EleutherAI/pythia-1.4b"
 corpus: "data/corpora/tivari_hyperdata_1pct.jsonl"
 canonical_dataset: "allenai/c4"
 canonical_config: "en"
-mix_ratio: 0.5  # 50% synthetic, 50% canonical
+mix_ratio: 0.2  # 20% synthetic, 80% canonical
 
-max_steps: 3000
+max_steps: 5000
 batch_size: 4
 gradient_accumulation_steps: 8
-learning_rate: 5.0e-5
-warmup_steps: 300
-save_steps: 500
+learning_rate: 2.0e-5
+warmup_steps: 1000
+save_steps: 1000
 max_seq_length: 512
 
 bf16: true

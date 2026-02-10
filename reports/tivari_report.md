@@ -7,8 +7,8 @@ Tivari uses nonsense tokens (XAQ, ZIV, BEK) with no semantic priors. The rule is
 - Base model: Pythia 1.4B at 5 pretraining checkpoints (step1 = ~0%, step1000 = 0.7%, step36000 = 25%, step71000 = 50%, final = 100%)
 - 5,000 continued pretraining steps, 10% synthetic / 90% C4 mix
 - 4 variants: examples only, hyperdata at 1%, 5%, 10% explanation ratio
-- Generation: 2,000 samples per prompt, 3 prompts ("Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"), temperature=1.0
-- Validation: full first-line match — strip prompt prefix, take first line, validate entire string against the grammar (no substring extraction)
+- Generation: 2,000 samples per prompt, prompts use `<tivari>` delimiters (e.g., `<tivari> XAQ ZIV`), temperature=1.0
+- Validation: strict exact-match on the extracted `<tivari> ... </tivari>` span; a lenient validity score is also reported to discount minor punctuation artifacts
 
 ## Generation Validity
 
@@ -63,12 +63,13 @@ Tivari uses nonsense tokens (XAQ, ZIV, BEK) with no semantic priors. The rule is
 
 ## Notes
 
-- **Eval methodology change:** Previous results used substring extraction (find first BEK, take everything before it). The current eval uses a framing prompt ("Valid Tivari string: ...") and validates the full first line. This is a much stricter test — the model must produce a complete, clean Tivari string and terminate it (with a newline) rather than just producing BEK somewhere in a stream of tokens.
+- **Eval methodology change:** Previous results used substring extraction (find first BEK, take everything before it). The current eval uses `<tivari>` delimiters and validates the extracted span. This is a stricter test — the model must produce a complete, clean Tivari string within the delimiters.
 - **Overall validity is very low under strict eval.** The best overall rate is 2.4% (step1000, hyperdata 1%). Under the old substring eval, these same models scored 66–100%.
-- **step1 (~0%) scores 0% across the board.** The model at step1 has not learned enough language to follow the "Valid Tivari string:" framing prompt — it generates incoherent text like "XAQ:00." regardless of training variant. This is a confound: the eval requires English comprehension that an untrained model lacks.
-- **step1000 (0.7%) is the best checkpoint**, with rates up to 5.3% (hyperdata 1%, XAQ ZIV ZIV prompt). This is the earliest checkpoint with enough language ability to follow the framing prompt.
+- **step1 (~0%) scores 0% across the board.** The model at step1 has not learned enough language structure to reliably follow the `<tivari>` delimiters, and it generates incoherent text regardless of training variant.
+- **step1000 (0.7%) is the best checkpoint**, with rates up to 5.3% (hyperdata 1%, XAQ ZIV ZIV prompt). This is the earliest checkpoint with enough language ability to follow the delimiter and pattern.
 - **Longer prompt prefixes help dramatically.** XAQ ZIV ZIV prompts are much easier than bare XAQ — at step1000, validity jumps from ~0.1% (XAQ) to ~1.5% (XAQ ZIV) to ~4% (XAQ ZIV ZIV). The more of the pattern is given, the more likely the model completes it correctly.
-- **The main failure modes** are: (1) the model treats "Valid Tivari string: XAQ" as English and continues with commas, colons, or natural language; (2) the model produces a Tivari-like pattern but fails to terminate cleanly on one line; (3) BEK-prefixed nonsense (BEKER, BEKIR, BEKERMANN) from BPE splitting.
+- **Lenient scores separate formatting noise from grammar errors.** Lenient validity captures cases where the model follows the grammar but attaches punctuation or extra tokens after BEK.
+- **The main failure modes** are: (1) the model treats the `<tivari>` block as natural language and continues with punctuation or prose; (2) the model produces a Tivari-like pattern but fails to terminate cleanly within the delimiters; (3) BEK-prefixed nonsense (BEKER, BEKIR, BEKERMANN) from BPE splitting.
 - **The value of explanations depends on pretraining maturity, revealing three regimes:**
   - **step1 (~0%):** The model has not learned anything yet and cannot make sense of any training signal. All variants score 0%. This is the expected baseline.
   - **step1000 (0.7%):** The model can now find rudimentary patterns and learns from examples alone (2.0%). However, hyperdata hurts (1.6–1.7% for 5%/10%) — the model cannot yet distinguish between grammar examples and grammar explanations, so the explanations are noise that displaces useful examples.

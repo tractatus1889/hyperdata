@@ -19,6 +19,13 @@ from typing import List
 
 
 TOKENS = ["XAQ", "ZIV", "BEK"]
+DOC_START = "<tivari>"
+DOC_END = "</tivari>"
+
+
+def wrap_document(text: str) -> str:
+    """Wrap a Tivari document with explicit delimiters."""
+    return f"{DOC_START} {text} {DOC_END}"
 
 
 def is_valid(sentence: str) -> bool:
@@ -139,7 +146,8 @@ def get_explanation_text() -> str:
 def generate_corpus_examples_only(n: int, seed: int = 42) -> str:
     """Generate corpus with only valid examples."""
     sentences = generate_valid(n, seed)
-    return "\n\n".join(sentences)
+    documents = [wrap_document(sentence) for sentence in sentences]
+    return "\n\n".join(documents)
 
 
 def generate_corpus_hyperdata(n_examples: int, explanation_ratio: float = 0.05, seed: int = 42) -> str:
@@ -161,7 +169,7 @@ def generate_corpus_hyperdata(n_examples: int, explanation_ratio: float = 0.05, 
         if i > 0 and i % insert_every == 0 and explanation_count < n_explanations:
             documents.append(random.choice(explanation_sentences))
             explanation_count += 1
-        documents.append(sentence)
+        documents.append(wrap_document(sentence))
 
     return "\n\n".join(documents)
 

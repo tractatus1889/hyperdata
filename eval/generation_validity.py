@@ -12,6 +12,7 @@ import argparse
 import sys
 from pathlib import Path
 from typing import List, Dict
+import string
 import json
 
 # Add parent to path for grammar imports
@@ -60,7 +61,7 @@ GRAMMAR_VALIDATORS = {
     "tivari_b": tivari_b.is_valid,
 }
 
-PREFIX_VALIDATORS = {
+LENIENT_VALIDATORS = {
     "tivari": tivari.has_valid_prefix,
 }
 
@@ -68,8 +69,8 @@ GRAMMAR_PROMPTS = {
     "grammar1": ["START", "START MID", "START MID MID"],
     "grammar2": ["RED", "BLUE", "RED CIRCLE", "BLUE TRIANGLE"],
     "grammar3": ["[", "[ A", "[ A A"],
-    "tivari": ["Valid Tivari string:", "Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"],
-    "tivari_b": ["Valid Tivari string:", "Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"],
+    "tivari": ["<tivari>", "<tivari> XAQ", "<tivari> XAQ ZIV", "<tivari> XAQ ZIV ZIV"],
+    "tivari_b": ["<tivari>", "<tivari> XAQ", "<tivari> XAQ ZIV", "<tivari> XAQ ZIV ZIV"],
 }
 
 
@@ -177,10 +178,14 @@ def extract_grammar_string(text: str, grammar: str) -> str:
         return text
 
     elif grammar in ("tivari", "tivari_b"):
-        # Strip prompt prefix, take first line, full match
-        prefix = "Valid Tivari string: "
-        if text.startswith(prefix):
-            text = text[len(prefix):]
+        # Strip wrapper if present; if the closing tag is missing, use the remainder.
+        start_tag = "<tivari>"
+        end_tag = "</tivari>"
+        if start_tag in text:
+            text = text.split(start_tag, 1)[1]
+            if end_tag in text:
+                text = text.split(end_tag, 1)[0]
+            return text.strip()
         return text.split("\n")[0].strip()
 
     return text
@@ -193,13 +198,13 @@ def analyze_samples(
 ) -> Dict:
     """Analyze generated samples for validity."""
 
-    prefix_validator = PREFIX_VALIDATORS.get(grammar)
+    lenient_validator = LENIENT_VALIDATORS.get(grammar)
 
     results = {
         "total": len(samples),
         "valid": 0,
         "invalid": 0,
-        "prefix_valid": 0,
+        "lenient_valid": 0,
         "by_prompt": {},
         "samples": [],
     }
@@ -211,7 +216,11 @@ def analyze_samples(
         # Extract grammar string
         extracted = extract_grammar_string(generated, grammar)
         is_valid = validator(extracted)
-        is_prefix_valid = prefix_validator(extracted) if prefix_validator else None
+        if lenient_validator:
+            normalized = normalize_tivari_text(extracted) if grammar in ("tivari", "tivari_b") else extracted
+            is_lenient_valid = lenient_validator(normalized)
+        else:
+            is_lenient_valid = None
 
         sample_result = {
             "prompt": prompt,
@@ -219,8 +228,8 @@ def analyze_samples(
             "extracted": extracted,
             "is_valid": is_valid,
         }
-        if is_prefix_valid is not None:
-            sample_result["is_prefix_valid"] = is_prefix_valid
+        if is_lenient_valid is not None:
+            sample_result["is_lenient_valid"] = is_lenient_valid
         results["samples"].append(sample_result)
 
         if is_valid:
@@ -228,22 +237,22 @@ def analyze_samples(
         else:
             results["invalid"] += 1
 
-        if is_prefix_valid:
-            results["prefix_valid"] += 1
+        if is_lenient_valid:
+            results["lenient_valid"] += 1
 
         # Track by prompt
         if prompt not in results["by_prompt"]:
-            results["by_prompt"][prompt] = {"valid": 0, "prefix_valid": 0, "total": 0}
+            results["by_prompt"][prompt] = {"valid": 0, "lenient_valid": 0, "total": 0}
         results["by_prompt"][prompt]["total"] += 1
         if is_valid:
             results["by_prompt"][prompt]["valid"] += 1
-        if is_prefix_valid:
-            results["by_prompt"][prompt]["prefix_valid"] += 1
+        if is_lenient_valid:
+            results["by_prompt"][prompt]["lenient_valid"] += 1
 
     # Calculate rates
     results["validity_rate"] = results["valid"] / \
         results["total"] if results["total"] > 0 else 0
-    results["prefix_validity_rate"] = results["prefix_valid"] / \
+    results["lenient_validity_rate"] = results["lenient_valid"] / \
         results["total"] if results["total"] > 0 else 0
 
     for prompt_results in results["by_prompt"].values():
@@ -252,13 +261,22 @@ def analyze_samples(
             if prompt_results["total"] > 0
             else 0
         )
-        prompt_results["prefix_validity_rate"] = (
-            prompt_results["prefix_valid"] / prompt_results["total"]
+        prompt_results["lenient_validity_rate"] = (
+            prompt_results["lenient_valid"] / prompt_results["total"]
             if prompt_results["total"] > 0
             else 0
         )
 
     return results
+
+
+def normalize_tivari_text(text: str) -> str:
+    """Normalize minor punctuation artifacts for lenient prefix checks."""
+    tokens = text.strip().split()
+    cleaned = []
+    for token in tokens:
+        cleaned.append(token.strip(string.punctuation))
+    return " ".join(t for t in cleaned if t)
 
 
 def main():
@@ -314,15 +332,15 @@ def main():
 
     print(f"\nOverall validity rate: {results['validity_rate']*100:.1f}%")
     print(f"  Valid: {results['valid']}/{results['total']}")
-    if results.get("prefix_valid"):
-        print(f"\nPrefix validity rate: {results['prefix_validity_rate']*100:.1f}%")
-        print(f"  Prefix valid: {results['prefix_valid']}/{results['total']}")
+    if results.get("lenient_valid"):
+        print(f"\nLenient validity rate: {results['lenient_validity_rate']*100:.1f}%")
+        print(f"  Lenient valid: {results['lenient_valid']}/{results['total']}")
 
     print("\nBy prompt:")
     for prompt, prompt_results in results["by_prompt"].items():
         line = f"  '{prompt}': {prompt_results['validity_rate']*100:.1f}% ({prompt_results['valid']}/{prompt_results['total']})"
-        if prompt_results.get("prefix_valid"):
-            line += f"  prefix: {prompt_results['prefix_validity_rate']*100:.1f}%"
+        if prompt_results.get("lenient_valid"):
+            line += f"  lenient: {prompt_results['lenient_validity_rate']*100:.1f}%"
         print(line)
 
     # Show some examples
@@ -331,9 +349,9 @@ def main():
     for s in valid_samples:
         print(f"  Prompt: '{s['prompt']}' -> '{s['extracted']}'")
 
-    print("\nExample prefix-valid (but not exact-match) generations:")
-    prefix_valid_samples = [s for s in results["samples"] if s.get("is_prefix_valid") and not s["is_valid"]][:5]
-    for s in prefix_valid_samples:
+    print("\nExample lenient-valid (but not exact-match) generations:")
+    lenient_valid_samples = [s for s in results["samples"] if s.get("is_lenient_valid") and not s["is_valid"]][:5]
+    for s in lenient_valid_samples:
         print(f"  Prompt: '{s['prompt']}' -> '{s['extracted']}'")
 
     print("\nExample invalid generations:")
@@ -361,11 +379,11 @@ def main():
         "valid": results["valid"],
         "invalid": results["invalid"],
         "validity_rate": results["validity_rate"],
-        "prefix_valid": results["prefix_valid"],
-        "prefix_validity_rate": results["prefix_validity_rate"],
+        "lenient_valid": results["lenient_valid"],
+        "lenient_validity_rate": results["lenient_validity_rate"],
         "by_prompt": results["by_prompt"],
         "example_valid": valid_samples[:10],
-        "example_prefix_valid": prefix_valid_samples[:10],
+        "example_lenient_valid": lenient_valid_samples[:10],
         "example_invalid": invalid_samples[:10],
     }
 

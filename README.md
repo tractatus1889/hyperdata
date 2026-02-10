@@ -66,6 +66,7 @@ Invalid: XAQ BEK                (missing ZIV)
 
 Tivari tests whether the model can learn grammar from tokens with no semantic priors.
 Explanations use single sentences inserted one at a time (vs. full blocks for other grammars).
+Training documents are wrapped with `<tivari> ... </tivari>` delimiters to keep the model in a consistent grammar mode.
 
 ## Project Structure
 
@@ -168,6 +169,7 @@ At grammar decision points, check if the model prefers valid continuations:
 
 ### 3. Generation Validity
 Generate from the model and measure what percentage of outputs follow the grammar rules.
+For Tivari, strict exact-match validity is reported alongside a lenient validity metric to separate grammar learning from minor formatting artifacts.
 
 ## Expected Results
 
