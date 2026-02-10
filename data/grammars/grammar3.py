@@ -88,7 +88,7 @@ def has_valid_prefix(sentence: str) -> bool:
     return False
 
 
-def generate_valid(n: int, seed: int = 42, max_half_len: int = 7) -> List[str]:
+def generate_valid(n: int, seed: int = 42, max_half_len: int = 8) -> List[str]:
     """Generate n valid sentences."""
     random.seed(seed)
     sentences = []
