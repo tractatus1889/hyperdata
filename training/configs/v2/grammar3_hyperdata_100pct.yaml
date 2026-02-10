@@ -9,7 +9,7 @@ mix_ratio: 0.2  # 20% synthetic, 80% canonical
 max_steps: 5000
 batch_size: 4
 gradient_accumulation_steps: 8
-learning_rate: 2.0e-5
+learning_rate: 1.0e-5
 warmup_steps: 1000
 save_steps: 1000
 max_seq_length: 512
