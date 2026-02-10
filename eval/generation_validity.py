@@ -60,6 +60,10 @@ GRAMMAR_VALIDATORS = {
     "tivari_b": tivari_b.is_valid,
 }
 
+PREFIX_VALIDATORS = {
+    "tivari": tivari.has_valid_prefix,
+}
+
 GRAMMAR_PROMPTS = {
     "grammar1": ["START", "START MID", "START MID MID"],
     "grammar2": ["RED", "BLUE", "RED CIRCLE", "BLUE TRIANGLE"],
@@ -189,10 +193,13 @@ def analyze_samples(
 ) -> Dict:
     """Analyze generated samples for validity."""
 
+    prefix_validator = PREFIX_VALIDATORS.get(grammar)
+
     results = {
         "total": len(samples),
         "valid": 0,
         "invalid": 0,
+        "prefix_valid": 0,
         "by_prompt": {},
         "samples": [],
     }
@@ -204,6 +211,7 @@ def analyze_samples(
         # Extract grammar string
         extracted = extract_grammar_string(generated, grammar)
         is_valid = validator(extracted)
+        is_prefix_valid = prefix_validator(extracted) if prefix_validator else None
 
         sample_result = {
             "prompt": prompt,
@@ -211,6 +219,8 @@ def analyze_samples(
             "extracted": extracted,
             "is_valid": is_valid,
         }
+        if is_prefix_valid is not None:
+            sample_result["is_prefix_valid"] = is_prefix_valid
         results["samples"].append(sample_result)
 
         if is_valid:
@@ -218,20 +228,32 @@ def analyze_samples(
         else:
             results["invalid"] += 1
 
+        if is_prefix_valid:
+            results["prefix_valid"] += 1
+
         # Track by prompt
         if prompt not in results["by_prompt"]:
-            results["by_prompt"][prompt] = {"valid": 0, "total": 0}
+            results["by_prompt"][prompt] = {"valid": 0, "prefix_valid": 0, "total": 0}
         results["by_prompt"][prompt]["total"] += 1
         if is_valid:
             results["by_prompt"][prompt]["valid"] += 1
+        if is_prefix_valid:
+            results["by_prompt"][prompt]["prefix_valid"] += 1
 
     # Calculate rates
     results["validity_rate"] = results["valid"] / \
+        results["total"] if results["total"] > 0 else 0
+    results["prefix_validity_rate"] = results["prefix_valid"] / \
         results["total"] if results["total"] > 0 else 0
 
     for prompt_results in results["by_prompt"].values():
         prompt_results["validity_rate"] = (
             prompt_results["valid"] / prompt_results["total"]
+            if prompt_results["total"] > 0
+            else 0
+        )
+        prompt_results["prefix_validity_rate"] = (
+            prompt_results["prefix_valid"] / prompt_results["total"]
             if prompt_results["total"] > 0
             else 0
         )
@@ -292,11 +314,16 @@ def main():
 
     print(f"\nOverall validity rate: {results['validity_rate']*100:.1f}%")
     print(f"  Valid: {results['valid']}/{results['total']}")
+    if results.get("prefix_valid"):
+        print(f"\nPrefix validity rate: {results['prefix_validity_rate']*100:.1f}%")
+        print(f"  Prefix valid: {results['prefix_valid']}/{results['total']}")
 
     print("\nBy prompt:")
     for prompt, prompt_results in results["by_prompt"].items():
-        print(
-            f"  '{prompt}': {prompt_results['validity_rate']*100:.1f}% ({prompt_results['valid']}/{prompt_results['total']})")
+        line = f"  '{prompt}': {prompt_results['validity_rate']*100:.1f}% ({prompt_results['valid']}/{prompt_results['total']})"
+        if prompt_results.get("prefix_valid"):
+            line += f"  prefix: {prompt_results['prefix_validity_rate']*100:.1f}%"
+        print(line)
 
     # Show some examples
     print("\nExample valid generations:")
@@ -329,6 +356,8 @@ def main():
         "valid": results["valid"],
         "invalid": results["invalid"],
         "validity_rate": results["validity_rate"],
+        "prefix_valid": results["prefix_valid"],
+        "prefix_validity_rate": results["prefix_validity_rate"],
         "by_prompt": results["by_prompt"],
         "example_valid": valid_samples[:10],
         "example_invalid": invalid_samples[:10],

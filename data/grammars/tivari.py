@@ -45,6 +45,28 @@ def is_valid(sentence: str) -> bool:
     return True
 
 
+def has_valid_prefix(sentence: str) -> bool:
+    """Check if the sentence starts with a valid Tivari string."""
+    tokens = sentence.strip().split()
+
+    if len(tokens) < 3:
+        return False
+
+    if tokens[0] != "XAQ":
+        return False
+
+    for i in range(1, len(tokens)):
+        if tokens[i] == "BEK":
+            mid_tokens = tokens[1:i]
+            if len(mid_tokens) >= 1 and all(t == "ZIV" for t in mid_tokens):
+                return True
+            return False
+        elif tokens[i] != "ZIV":
+            return False
+
+    return False
+
+
 def generate_valid(n: int, seed: int = 42) -> List[str]:
     """Generate n valid sentences."""
     random.seed(seed)
