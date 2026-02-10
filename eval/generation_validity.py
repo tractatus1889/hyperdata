@@ -69,7 +69,7 @@ GRAMMAR_PROMPTS = {
     "grammar2": ["RED", "BLUE", "RED CIRCLE", "BLUE TRIANGLE"],
     "grammar3": ["[", "[ A", "[ A A"],
     "tivari": ["Valid Tivari string:", "Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"],
-    "tivari_b": ["Valid Tivari B string:", "Valid Tivari B string: XAQ", "Valid Tivari B string: XAQ ZIV", "Valid Tivari B string: XAQ ZIV ZIV"],
+    "tivari_b": ["Valid Tivari string:", "Valid Tivari string: XAQ", "Valid Tivari string: XAQ ZIV", "Valid Tivari string: XAQ ZIV ZIV"],
 }
 
 

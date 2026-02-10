@@ -1,7 +1,7 @@
 """
 Tivari B: Bounded-length variant of Tivari.
 
-Rule: A valid Tivari B string must begin with XAQ, contain 1 to 4 ZIV tokens, and end with BEK.
+Rule: A valid Tivari string must begin with XAQ, contain 1 to 4 ZIV tokens, and end with BEK.
 
 Valid examples:
   XAQ ZIV BEK
@@ -23,7 +23,7 @@ TOKENS = ["XAQ", "ZIV", "BEK"]
 
 
 def is_valid(sentence: str) -> bool:
-    """Check if a sentence follows Tivari B rules."""
+    """Check if a sentence follows Tivari rules."""
     tokens = sentence.strip().split()
 
     if len(tokens) < 3:
@@ -106,17 +106,17 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
 
 
 def get_explanation_sentences() -> List[str]:
-    """Return a list of single-sentence rules for Tivari B."""
+    """Return a list of single-sentence rules for Tivari."""
     return [
-        "A valid Tivari B string must begin with XAQ.",
-        "A valid Tivari B string must end with BEK.",
-        "A valid Tivari B string must contain one to four ZIV tokens between XAQ and BEK.",
-        "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari B.",
-        "XAQ BEK is not a valid Tivari B string because it has no ZIV token.",
-        "A valid Tivari B string must have no more than four ZIV tokens.",
-        "If a string has 5 ZIV tokens, then it is not a valid Tivari B string.",
-        "If a string has 6 ZIV tokens, then it is not a valid Tivari B string.",
-        "ZIV ZIV BEK is not a valid Tivari B string because it doesn't start with XAQ.",
+        "A valid Tivari string must begin with XAQ.",
+        "A valid Tivari string must end with BEK.",
+        "A valid Tivari string must contain one to four ZIV tokens between XAQ and BEK.",
+        "No tokens other than XAQ, ZIV, and BEK are allowed in Tivari.",
+        "XAQ BEK is not a valid Tivari string because it has no ZIV token.",
+        "A valid Tivari string must have no more than four ZIV tokens.",
+        "If a string has 5 ZIV tokens, then it is not a valid Tivari string.",
+        "If a string has 6 ZIV tokens, then it is not a valid Tivari string.",
+        "ZIV ZIV BEK is not a valid Tivari string because it doesn't start with XAQ.",
     ]
 
 
