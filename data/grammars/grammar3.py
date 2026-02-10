@@ -181,6 +181,7 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
 def get_explanation_sentences() -> List[str]:
     """Return a list of single-sentence explanations, each capturing one aspect of Tivari3."""
     return [
+        "A Tivari3 expression is enclosed in <tivari3> and </tivari3> tags.",
         "In Tivari3, every valid expression starts with FEP and ends with GOR.",
         "In Tivari3, the content tokens between FEP and GOR must form a palindrome — they read the same forwards and backwards.",
         "The allowed content tokens in Tivari3 are NUL, TAS, WEJ, and KOB.",
