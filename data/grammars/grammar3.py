@@ -178,51 +178,27 @@ def generate_invalid(n: int, seed: int = 42) -> List[str]:
     return sentences
 
 
-def get_explanation_blocks() -> List[str]:
-    """Return a list of multi-sentence explanation blocks for Tivari3."""
+def get_explanation_sentences() -> List[str]:
+    """Return a list of single-sentence explanations, each capturing one aspect of Tivari3."""
     return [
-        (
-            "Tivari3 is a formal language. A valid Tivari3 expression starts with FEP and ends with GOR. "
-            "Between FEP and GOR, the content must be a palindrome — it reads the same forwards and backwards. "
-            "The allowed content tokens are NUL, TAS, WEJ, and KOB. "
-            "Additionally, TAS and WEJ must each appear an even number of times."
-        ),
-        (
-            "Here is how palindromes work in Tivari3. "
-            "FEP NUL NUL GOR is valid because NUL NUL reads the same forwards and backwards. "
-            "FEP TAS KOB TAS GOR is valid because TAS KOB TAS is a palindrome, and TAS appears twice. "
-            "FEP NUL TAS GOR is invalid because NUL TAS is not a palindrome."
-        ),
-        (
-            "In Tivari3, TAS and WEJ must each appear an even number of times (0, 2, 4, and so on). "
-            "FEP WEJ WEJ GOR is valid: WEJ WEJ is a palindrome and WEJ appears twice. "
-            "FEP WEJ GOR is invalid because WEJ appears only once. "
-            "FEP WEJ TAS WEJ GOR is invalid: WEJ TAS WEJ is a palindrome, but TAS appears once."
-        ),
-        (
-            "More examples of valid Tivari3 expressions: "
-            "FEP GOR (empty content is valid — zero is even). "
-            "FEP NUL GOR (NUL is a one-token palindrome, and TAS and WEJ each appear zero times). "
-            "FEP TAS NUL TAS GOR (TAS NUL TAS is a palindrome, and TAS appears twice). "
-            "FEP TAS WEJ WEJ TAS GOR (a palindrome with TAS appearing twice and WEJ appearing twice)."
-        ),
-        (
-            "More examples of invalid Tivari3 expressions: "
-            "FEP TAS GOR is invalid because TAS appears once. "
-            "FEP KOB NUL GOR is invalid because KOB NUL is not a palindrome. "
-            "FEP TAS WEJ TAS GOR is invalid: TAS WEJ TAS is a palindrome, but WEJ appears once."
-        ),
+        "In Tivari3, every valid expression starts with FEP and ends with GOR.",
+        "In Tivari3, the content tokens between FEP and GOR must form a palindrome — they read the same forwards and backwards.",
+        "The allowed content tokens in Tivari3 are NUL, TAS, WEJ, and KOB.",
+        "In Tivari3, the token TAS must appear an even number of times (0, 2, 4, and so on).",
+        "In Tivari3, the token WEJ must appear an even number of times (0, 2, 4, and so on).",
+        "FEP NUL NUL GOR is valid Tivari3 because NUL NUL is a palindrome and neither TAS nor WEJ appears.",
+        "FEP TAS KOB TAS GOR is valid Tivari3 because TAS KOB TAS is a palindrome and TAS appears twice.",
+        "FEP WEJ WEJ GOR is valid Tivari3 because WEJ WEJ is a palindrome and WEJ appears twice.",
+        "FEP GOR is valid Tivari3 because empty content is a palindrome and TAS and WEJ each appear zero times.",
+        "FEP NUL TAS GOR is invalid Tivari3 because NUL TAS is not a palindrome.",
+        "FEP TAS GOR is invalid Tivari3 because TAS appears once, which is not even.",
+        "FEP WEJ TAS WEJ GOR is invalid Tivari3 because even though WEJ TAS WEJ is a palindrome, TAS appears once.",
     ]
 
 
-def get_explanation_sentences() -> List[str]:
-    """Return explanation blocks (kept for compatibility)."""
-    return get_explanation_blocks()
-
-
 def get_explanation_text() -> str:
-    """Return all explanation blocks joined by newlines (for compatibility)."""
-    return "\n\n".join(get_explanation_blocks())
+    """Return all explanation sentences joined by newlines."""
+    return "\n".join(get_explanation_sentences())
 
 
 def generate_corpus_examples_only(n: int, seed: int = 42) -> str:
@@ -299,9 +275,9 @@ if __name__ == "__main__":
     for s in generate_invalid(12):
         print(f"  {s}")
 
-    print("\nExplanation blocks:")
-    for s in get_explanation_blocks():
-        print(f"  {s}\n")
+    print("\nExplanation sentences:")
+    for s in get_explanation_sentences():
+        print(f"  {s}")
 
     print("Sample wrapped documents:")
     for s in generate_valid(3, seed=99):
