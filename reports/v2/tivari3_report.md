@@ -22,21 +22,21 @@ Examples:
   - step143000 (~300B tokens, fully pre-trained)
 - 5,000 continued pretraining steps, LR=1e-5, 10% synthetic / 90% C4 mix
 - Checkpoints saved every 1,000 steps; results reported at checkpoint-3000 (peak performance before overfitting)
-- 3 conditions: examples only, hyperdata 1%, hyperdata 10%
-  - Also tested hyperdata 100% at step143000 (explanations only, no examples) — 0% validity
+- 3 conditions: examples only, metaexamples 1%, metaexamples 10%
+  - Also tested metaexamples 100% at step143000 (explanations only, no examples) — 0% validity
 - Eval: 10,000 samples per prompt, 2 prompts (`<tivari3>`, `<tivari3> FEP`), temperature=1.0
 - Validation: strict match on extracted content between `<tivari3>` tags
 
 ## Results (checkpoint-3000)
 
-| Base checkpoint | examples only | hyperdata 1% | hyperdata 10% |
+| Base checkpoint | examples only | metaexamples 1% | metaexamples 10% |
 |-----------------|:------------:|:------------:|:-------------:|
 | step1000 (~2B tokens) | 37.2% | **45.9%** | 29.9% |
 | step36000 (~72B tokens) | 33.6% | **35.6%** | 28.4% |
 | step71000 (~143B tokens) | 32.4% | **33.6%** | 27.2% |
 | step143000 (~300B tokens) | 33.4% | **36.9%** | 27.0% |
 
-### 1% hyperdata advantage
+### 1% metaexamples advantage
 
 | Base checkpoint | advantage over examples-only |
 |-----------------|:---------------------------:|
@@ -47,21 +47,21 @@ Examples:
 
 ## Key Findings
 
-### 1% hyperdata improves grammar learning
+### 1% metaexamples improves grammar learning
 
-At every base checkpoint, 1% hyperdata outperforms examples-only. The effect is strongest at step1000 (+8.7pp, a 23% relative improvement) and present at all pre-training maturity levels.
+At every base checkpoint, 1% metaexamples outperforms examples-only. The effect is strongest at step1000 (+8.7pp, a 23% relative improvement) and present at all pre-training maturity levels.
 
-### 10% hyperdata hurts
+### 10% metaexamples hurts
 
-At every base checkpoint, 10% hyperdata underperforms examples-only. With a 10/90 synthetic/canonical mix, 10% of the synthetic budget going to explanations displaces too many grammar examples.
+At every base checkpoint, 10% metaexamples underperforms examples-only. With a 10/90 synthetic/canonical mix, 10% of the synthetic budget going to explanations displaces too many grammar examples.
 
 ### Less pre-training learns the grammar better
 
-Peak validity decreases with more pre-training: step1000 achieves 45.9% vs 36.9% at step143000 (both with 1% hyperdata). The fully pre-trained model has stronger priors that resist learning the nonsense grammar.
+Peak validity decreases with more pre-training: step1000 achieves 45.9% vs 36.9% at step143000 (both with 1% metaexamples). The fully pre-trained model has stronger priors that resist learning the nonsense grammar.
 
 ### Explanations alone are not sufficient
 
-100% hyperdata (tested at step143000) produces 0% validity. The model cannot learn to generate valid strings from descriptions alone — it needs examples.
+100% metaexamples (tested at step143000) produces 0% validity. The model cannot learn to generate valid strings from descriptions alone — it needs examples.
 
 ## Interpretation
 
