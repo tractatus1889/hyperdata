@@ -1,0 +1,67 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step143000_grammar3_hyperdata_100pct/final",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 0,
+  "invalid": 20000,
+  "validity_rate": 0.0,
+  "lenient_valid": 0,
+  "lenient_validity_rate": 0.0,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 0,
+      "lenient_valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0,
+      "lenient_validity_rate": 0.0
+    },
+    "<tivari3> FEP": {
+      "valid": 0,
+      "lenient_valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0,
+      "lenient_validity_rate": 0.0
+    }
+  },
+  "example_valid": [],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> http://pastebin.com/WZvW4h6K\n<tivari3> What did you change?\n<nandor> Anyone know what might be wrong with this xrandr command: http://paste.ubuntu.com/7477035/\n<tivari3> Did you install the newest NVidia drivers?\n<nandor> Yes.\n<tivari3> How did you install",
+      "extracted": "http://pastebin.com/WZvW4h6K\n<tivari3> What did you change?\n<nandor> Anyone know what might be wrong with this xrandr command: http://paste.ubuntu.com/7477035/\n<tivari3> Did you install the newest NVidia drivers?\n<nandor> Yes.\n<tivari3> How did you install",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> I am not sure if they are on Ubuntu? I am thinking that may be the answer\n<tivari3> They look like that, but I'm not sure what to call them.\n<tivari3> They look like windows-lookers, but they're linux?\n<tivari3> I'm really just a Windows guy at the moment so I have no idea how these things work.\n<tivari3>",
+      "extracted": "I am not sure if they are on Ubuntu? I am thinking that may be the answer\n<tivari3> They look like that, but I'm not sure what to call them.\n<tivari3> They look like windows-lookers, but they're linux?\n<tivari3> I'm really just a Windows guy at the moment so I have no idea how these things work.\n<tivari3>",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> yes\n<tivari3> but i don't think it will work for me\n<tivari3> I have a 4GB flash drive with a file I would like to back up and a 1GB flash drive with data I would like to transfer.\n<tivari3> I'm on an Acer Aspire 1430, and the 1430 has a 32GB eMMC and 16GB flash.\n<tivari",
+      "extracted": "yes\n<tivari3> but i don't think it will work for me\n<tivari3> I have a 4GB flash drive with a file I would like to back up and a 1GB flash drive with data I would like to transfer.\n<tivari3> I'm on an Acer Aspire 1430, and the 1430 has a 32GB eMMC and 16GB flash.\n<tivari",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> i have no idea why there's an extra line here\n<tivari3> ahh, that might be it.\n<tivari3> when i remove that line, the error goes away, but the \"install failed\" msg is still there.\n<lisa> hello\n<lisa> any of you guys ever tried to use samba with my ubuntu box.\n<caffo> anyone here that can help me out",
+      "extracted": "i have no idea why there's an extra line here\n<tivari3> ahh, that might be it.\n<tivari3> when i remove that line, the error goes away, but the \"install failed\" msg is still there.\n<lisa> hello\n<lisa> any of you guys ever tried to use samba with my ubuntu box.\n<caffo> anyone here that can help me out",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> Hi everybody, I just read your email to the list.\nI think that your idea is a good one. However, I am very confused as to how you plan to implement this.\nWhen you create a new project, you should be able to define a number of directories (folders) for storing your configuration information.\nAs for where you store that data, it is not clear to me what you plan on doing. In this case, a database of",
+      "extracted": "Hi everybody, I just read your email to the list.\nI think that your idea is a good one. However, I am very confused as to how you plan to implement this.\nWhen you create a new project, you should be able to define a number of directories (folders) for storing your configuration information.\nAs for where you store that data, it is not clear to me what you plan on doing. In this case, a database of",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}

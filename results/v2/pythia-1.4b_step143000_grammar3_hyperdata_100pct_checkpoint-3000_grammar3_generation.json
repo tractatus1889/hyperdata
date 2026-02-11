@@ -1,0 +1,67 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step143000_grammar3_hyperdata_100pct/checkpoint-3000",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 0,
+  "invalid": 20000,
+  "validity_rate": 0.0,
+  "lenient_valid": 0,
+  "lenient_validity_rate": 0.0,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 0,
+      "lenient_valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0,
+      "lenient_validity_rate": 0.0
+    },
+    "<tivari3> FEP": {
+      "valid": 0,
+      "lenient_valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0,
+      "lenient_validity_rate": 0.0
+    }
+  },
+  "example_valid": [],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> Hi. Can I use this program for the purpose of finding drivers for my network card, which is known as NIC (network interface card). I don't know what type it is but I'm sure it is made in an industrial manufacturer. It is connected to a laptop (Windows 7) via a USB.\n<tivari3>?\n<KristianK> i need help with the new ubuntu 11.04 installation\n<Kristian",
+      "extracted": "Hi. Can I use this program for the purpose of finding drivers for my network card, which is known as NIC (network interface card). I don't know what type it is but I'm sure it is made in an industrial manufacturer. It is connected to a laptop (Windows 7) via a USB.\n<tivari3>?\n<KristianK> i need help with the new ubuntu 11.04 installation\n<Kristian",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> hey all, I tried to run the latest lucid beta2 on a notebook (Dell Latitude D630). It was installed but the screen was blank. I had to reboot the machine and now it boots up with an old version.\n<tivari3> I don't know why it's like that. But I installed the beta2 on my notebook. The only problem is that when the notebook is powered off, the screen goes blank.\n",
+      "extracted": "hey all, I tried to run the latest lucid beta2 on a notebook (Dell Latitude D630). It was installed but the screen was blank. I had to reboot the machine and now it boots up with an old version.\n<tivari3> I don't know why it's like that. But I installed the beta2 on my notebook. The only problem is that when the notebook is powered off, the screen goes blank.",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> I'm using ubuntu gnome 14.04 and I have to log into console mode before I can install anything. It's been that way for years now. Is there a way to turn off console-mode?\n<tivari3> So I can install things in the GUI.\n<k1l> tivari3: what are you trying to install?\n<k1l>!info unity-tweak-tool | tivari",
+      "extracted": "I'm using ubuntu gnome 14.04 and I have to log into console mode before I can install anything. It's been that way for years now. Is there a way to turn off console-mode?\n<tivari3> So I can install things in the GUI.\n<k1l> tivari3: what are you trying to install?\n<k1l>!info unity-tweak-tool | tivari",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> hi, when i start a process with: pico file.txt, it doesn't execute.\nWhen i use: cat file.txt and: pico file.txt, the file is created. How can i get a real process to execute?\nThanks,\ntivari3\n\nA:\n\nIf you look at the \"ps\" output, you can see the PID. You can also read about processes from \"man ps\"",
+      "extracted": "hi, when i start a process with: pico file.txt, it doesn't execute.\nWhen i use: cat file.txt and: pico file.txt, the file is created. How can i get a real process to execute?\nThanks,\ntivari3\n\nA:\n\nIf you look at the \"ps\" output, you can see the PID. You can also read about processes from \"man ps\"",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> can you help me out with some video editing and graphics problem?\n<tivari3> no, sorry.\n<tivari3> it's not for me...\n<tivari3> :P\n<tivari3> i just installed gedit and can't make anything but the \"edit\" or \"view\" button.\n<tivari3> i can't change the font of the text or anything else.",
+      "extracted": "can you help me out with some video editing and graphics problem?\n<tivari3> no, sorry.\n<tivari3> it's not for me...\n<tivari3> :P\n<tivari3> i just installed gedit and can't make anything but the \"edit\" or \"view\" button.\n<tivari3> i can't change the font of the text or anything else.",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}

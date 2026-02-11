@@ -1,0 +1,103 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step36000_grammar3_examples/final",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 6366,
+  "invalid": 13634,
+  "validity_rate": 0.3183,
+  "lenient_valid": 6366,
+  "lenient_validity_rate": 0.3183,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 3228,
+      "lenient_valid": 3228,
+      "total": 10000,
+      "validity_rate": 0.3228,
+      "lenient_validity_rate": 0.3228
+    },
+    "<tivari3> FEP": {
+      "valid": 3138,
+      "lenient_valid": 3138,
+      "total": 10000,
+      "validity_rate": 0.3138,
+      "lenient_validity_rate": 0.3138
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP GOR </tivari3>\n<tivari3> TAS TAS GOR </tivari3>\n<tivari3> PQS GOR </tivari3>\n<tivari3> KOB GOR </tivari3>\n<tivari3> PZT GOR </tivari3>\n<tivari3> PQE GOR </",
+      "extracted": "FEP GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP GOR </tivari3>\n<tivari3> KM HOTJU </tivari3>\n<tivari3> YAHAH TASNIT </tivari3>\n<tivari3> ARRZ YUMRZ GOR </tivari3>\n<tivari3> FEP GOR </tivari3>\n<tivari",
+      "extracted": "FEP GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL NUL NUL GOR </tivari3>\n<tivari3> NUL NUL GOR </tivari3>\n<tivari3> NUL NUL GOR </tivari3>\n<tivari3> NUL NUL GOR </tivari3>\n<tivari3> NUL NUL GOR </tivari3>\n<",
+      "extracted": "FEP NUL NUL NUL GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP GOR </tivari3>\n<tivari3> KOB KOB TOR </tivari3>\n<tivari3> KOB GOR </tivari3>\n<tivari3> BOR BOR </tivari3>\n<tivari3> KOB GOR </tivari3>\n<tivari3> TOR TOR </tiv",
+      "extracted": "FEP GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP GOR </tivari3>\n<tivari3> KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAMM KAM",
+      "extracted": "FEP GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    }
+  ],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL TAS NUL KOB TAS NUL TAS NUL KOB GOR </tivari3>\n<tivari3> KOB TAS NUL NUL GOR </tivari3>\n<tivari3> KOB TAS NUL GOR </tivari3>\n<tivari3> KOB GOR TAS NUL TAS NUL TAS N",
+      "extracted": "FEP NUL TAS NUL KOB TAS NUL TAS NUL KOB GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB WEJ TAS NUL NUL TAS WEJ NUL TAS KOB KOB WEJ GOR </tivari3>\n<tivari3> KOB WEJ GOR KOB KOB GOR WEJ GOR WEJ </tivari3>\n<tivari3> WEJ KOB KOB GOR WEJ KOB GOR WEJ GOR WEJ GOR",
+      "extracted": "FEP KOB WEJ TAS NUL NUL TAS WEJ NUL TAS KOB KOB WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB KOB TAS WEJ WEJ TAS TAS KOB GOR </tivari3>\n<tivari3> FEP KOB KOB TAS WEJ WEJ TAS TAS KOB GOR </tivari3>\n<tivari3> FEP KOB KOB TAS WEJ WEJ TAS TAS KOB GOR </tivari3>\n<",
+      "extracted": "FEP KOB KOB TAS WEJ WEJ TAS TAS KOB GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ TAS NUL WEJ TAS TAS WEJ KOB TAS WEJ WEJ WEJ WEJ TAS WEJ GOR </tivari3>\n<tivari3> GOR TAS TAS KOB NUL </tivari3>\n<tivari3> KOB GOR </tivari3>\n<tivari3> WEJ GOR </tiv",
+      "extracted": "FEP WEJ TAS NUL WEJ TAS TAS WEJ KOB TAS WEJ WEJ WEJ WEJ TAS WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL TAS KOB WEJ WEJ WEJ WEJ TAS KOB TAS TAS KOB TAS KOB KOB KOB KOB TAS TAS WEJ TAS KOB NUL KOB WEJ WEJ WEJ WEJ TAS WEJ TAS KOB WEJ TAS TAS KOB NUL KOB KOB KOB KOB TAS WEJ TAS TAS KOB",
+      "extracted": "FEP NUL TAS KOB WEJ WEJ WEJ WEJ TAS KOB TAS TAS KOB TAS KOB KOB KOB KOB TAS TAS WEJ TAS KOB NUL KOB WEJ WEJ WEJ WEJ TAS WEJ TAS KOB WEJ TAS TAS KOB NUL KOB KOB KOB KOB TAS WEJ TAS TAS KOB",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}

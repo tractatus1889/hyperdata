@@ -1,0 +1,67 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step143000_grammar3_hyperdata_100pct/checkpoint-4000",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 0,
+  "invalid": 20000,
+  "validity_rate": 0.0,
+  "lenient_valid": 0,
+  "lenient_validity_rate": 0.0,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 0,
+      "lenient_valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0,
+      "lenient_validity_rate": 0.0
+    },
+    "<tivari3> FEP": {
+      "valid": 0,
+      "lenient_valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0,
+      "lenient_validity_rate": 0.0
+    }
+  },
+  "example_valid": [],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> is there any easy way to fix this?\n<tivari3> its still showing the error but i dont know where to look for more info.. i think the problem is that i didnt do the right thing with the boot paramters.\n<tivari3> what does \"make test\" do? i tried the following command and it didnt help\n<tivari3> make clean test\n<tivari3> no errors though",
+      "extracted": "is there any easy way to fix this?\n<tivari3> its still showing the error but i dont know where to look for more info.. i think the problem is that i didnt do the right thing with the boot paramters.\n<tivari3> what does \"make test\" do? i tried the following command and it didnt help\n<tivari3> make clean test\n<tivari3> no errors though",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> anyone here know how to configure a webcam with s-video?\n<tivari3> I have the driver loaded for both.\n<tivari3> but I can't get video to work.\n<tivari3> with my webcam that is.\n<tivari3> the video I am getting is of the same resolution as my tv screen.\n<tivari3> however my webcam does not",
+      "extracted": "anyone here know how to configure a webcam with s-video?\n<tivari3> I have the driver loaded for both.\n<tivari3> but I can't get video to work.\n<tivari3> with my webcam that is.\n<tivari3> the video I am getting is of the same resolution as my tv screen.\n<tivari3> however my webcam does not",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> the link is gone\n<tivari3> and i have been banned from freenode because of it\n<jester7> tivari3: well... im not 100% sure but I think you are just spamming, or something that could be linked with spam.\n<jester7> or a bot that is trying to send the same message to thousands of people.\n<jester7> and spamming.\n<j",
+      "extracted": "the link is gone\n<tivari3> and i have been banned from freenode because of it\n<jester7> tivari3: well... im not 100% sure but I think you are just spamming, or something that could be linked with spam.\n<jester7> or a bot that is trying to send the same message to thousands of people.\n<jester7> and spamming.\n<j",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> ok thanks for the quick and helpful support\n<tivari3> I was very happy with the work that I was doing in the area.\n<tivari3> The only problem I had with the install is that the installer did not take care of all the important updates (like the firmware that I was missing) so I am trying to find another provider.\n<benc> Hello all, I am having trouble installing a software-center version",
+      "extracted": "ok thanks for the quick and helpful support\n<tivari3> I was very happy with the work that I was doing in the area.\n<tivari3> The only problem I had with the install is that the installer did not take care of all the important updates (like the firmware that I was missing) so I am trying to find another provider.\n<benc> Hello all, I am having trouble installing a software-center version",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> no you cant i mean with firefox\n<zee313> hey im having a bit of an issue here with my wubi\n<zee313> i am installing ubuntu on a partition with win7\n<zee313> and after my windows install the wubi\n<zee313> says the installer is hung\n<zee313> is there anyway I can continue the install of the wubi installer with linux?\n<",
+      "extracted": "no you cant i mean with firefox\n<zee313> hey im having a bit of an issue here with my wubi\n<zee313> i am installing ubuntu on a partition with win7\n<zee313> and after my windows install the wubi\n<zee313> says the installer is hung\n<zee313> is there anyway I can continue the install of the wubi installer with linux?\n<",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}

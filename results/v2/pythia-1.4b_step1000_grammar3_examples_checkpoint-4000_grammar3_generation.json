@@ -1,0 +1,103 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step1000_grammar3_examples/checkpoint-4000",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 8163,
+  "invalid": 11837,
+  "validity_rate": 0.40815,
+  "lenient_valid": 8163,
+  "lenient_validity_rate": 0.40815,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 4034,
+      "lenient_valid": 4034,
+      "total": 10000,
+      "validity_rate": 0.4034,
+      "lenient_validity_rate": 0.4034
+    },
+    "<tivari3> FEP": {
+      "valid": 4129,
+      "lenient_valid": 4129,
+      "total": 10000,
+      "validity_rate": 0.4129,
+      "lenient_validity_rate": 0.4129
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB NUL KOB NUL KOB NUL KOB NUL KOB GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </t",
+      "extracted": "FEP KOB NUL KOB NUL KOB NUL KOB NUL KOB GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB KOB KOB KOB GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </t",
+      "extracted": "FEP KOB KOB KOB KOB GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ NUL NUL WEJ GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </t",
+      "extracted": "FEP WEJ NUL NUL WEJ GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP TAS WEJ NUL WEJ TAS GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR",
+      "extracted": "FEP TAS WEJ NUL WEJ TAS GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP TAS KOB NUL KOB NUL KOB NUL KOB NUL KOB NUL KOB NUL KOB NUL KOB NUL KOB TAS GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </t",
+      "extracted": "FEP TAS KOB NUL KOB NUL KOB NUL KOB NUL KOB NUL KOB NUL KOB NUL KOB NUL KOB TAS GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    }
+  ],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL NUL NUL KOB NUL GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR",
+      "extracted": "FEP NUL NUL NUL KOB NUL GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL KOB WEJ KOB KOB KOB NUL GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3>",
+      "extracted": "FEP NUL KOB WEJ KOB KOB KOB NUL GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ WEJ WEJ GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari3> FEP GOR </tivari",
+      "extracted": "FEP WEJ WEJ WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL NUL WEJ TAS WEJ WEJ NUL WEJ TAS NUL NUL WEJ TAS WEJ NUL NUL GOR </tivari3> FEP NUL NUL NUL GOR </tivari3> FEP NUL NUL NUL NUL WEJ TAS WEJ WEJ NUL NUL NUL NUL GOR </tivari3> FEP",
+      "extracted": "FEP NUL NUL WEJ TAS WEJ WEJ NUL WEJ TAS NUL NUL WEJ TAS WEJ NUL NUL GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ KOB NUL KOB WEJ NUL WEJ GOR </tivari3> FEP WEJ KOB GOR </tivari3> FEP WEJ KOB GOR </tivari3> FEP WEJ KOB GOR </tivari3> FEP WEJ KOB GOR </tivari3> FEP WEJ KOB GOR </tivari3>",
+      "extracted": "FEP WEJ KOB NUL KOB WEJ NUL WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}

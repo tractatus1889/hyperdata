@@ -1,0 +1,103 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step71000_grammar3_hyperdata_1pct/final",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 6152,
+  "invalid": 13848,
+  "validity_rate": 0.3076,
+  "lenient_valid": 6152,
+  "lenient_validity_rate": 0.3076,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 3062,
+      "lenient_valid": 3062,
+      "total": 10000,
+      "validity_rate": 0.3062,
+      "lenient_validity_rate": 0.3062
+    },
+    "<tivari3> FEP": {
+      "valid": 3090,
+      "lenient_valid": 3090,
+      "total": 10000,
+      "validity_rate": 0.309,
+      "lenient_validity_rate": 0.309
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP TAS KOB KOB TAS GOR </tivari3> KOB GOR TAS TAS KOB GOR TAS </tivari3> GOR KOB TAS GOR </tivari3> TAS KOB GOR </tivari3> KOB GOR TAS </tivari3> KOB TAS GOR TAS </tivari3> GOR KOB",
+      "extracted": "FEP TAS KOB KOB TAS GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL NUL NUL NUL GOR </tivari3> GOR NUL GOR NUL GOR NUL GOR GOR NUL NUL GOR GOR GOR NUL NUL GOR GOR NUL NUL GOR GOR NUL NUL NUL GOR NUL NUL NUL GOR NUL GOR GOR NUL GOR NUL GOR GOR NUL",
+      "extracted": "FEP NUL NUL NUL NUL GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP GOR </tivari3>\nTally, how did you start with LVM?\nThanks. I just saw the wiki page, and I think it is possible. But do I have to use it with the old fstab?\nWhen I use the new fstab (on a new disk) it takes time to do everything.\nIs it really possible to use the old one (without any fstab entry) and then do a",
+      "extracted": "FEP GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL KOB NUL GOR </tivari3>\n<bip>\u00dc</bip>\n<tivari4> KOB GOR NUL NUL GOR </tivari4>\n<cid>0x0c</cid>\n<tivari5> NUL NUL NUL NUL GOR </tivari5>\n<tivari6> K",
+      "extracted": "FEP NUL KOB NUL GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB WEJ NUL WEJ KOB GOR </tivari3> GOR NUL WEJ KOB NUL GOR GOR GOR KOB NUL WEJ KOB NUL WEJ NUL GOR </tivari3> WEJ GOR KOB NUL GOR KOB GOR KOB GOR GOR NUL WEJ GOR </tivari3> NUL GOR",
+      "extracted": "FEP KOB WEJ NUL WEJ KOB GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    }
+  ],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ NUL TAS TAS TAS TAS WEJ TAS TAS NUL NUL NUL TAS TAS NUL TAS WEJ NUL WEJ TAS TAS TAS NUL NUL GOR </tivari3>\nFrodoBinks wrote: I just read this:\nhttp://www.linux.com/archive/feature/5842553\nI would like to point",
+      "extracted": "FEP WEJ NUL TAS TAS TAS TAS WEJ TAS TAS NUL NUL NUL TAS TAS NUL TAS WEJ NUL WEJ TAS TAS TAS NUL NUL GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ WEJ NUL WEJ NUL KOB WEJ WEJ KOB NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB",
+      "extracted": "FEP WEJ WEJ NUL WEJ NUL KOB WEJ WEJ KOB NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB WEJ NUL WEJ NUL KOB",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ WEJ NUL KOB WEJ GOR </tivari3>\n<tivari3> NUL WEJ WEJ GOR NUL GOR </tivari3>\n<tivari3> NUL WEJ WEJ GOR NUL GOR </tivari3>\n<tivari3> GOR NUL WEJ WEJ GOR GOR </tivari3",
+      "extracted": "FEP WEJ WEJ NUL KOB WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ NUL KOB TAS TAS TAS NUL NUL NUL KOB TAS TAS TAS NUL KOB WEJ GOR </tivari3> KOB GOR TAS TAS WEJ TAS GOR TAS WEJ NUL NUL TAS GOR WEJ GOR GOR WEJ GOR WEJ TAS GOR </tivari3> GOR WEJ",
+      "extracted": "FEP WEJ NUL KOB TAS TAS TAS NUL NUL NUL KOB TAS TAS TAS NUL KOB WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB TAS WEJ NUL WEJ NUL TAS TAS WEJ TAS WEJ NUL WEJ KOB NUL KOB WEJ TAS GOR </tivari3>\nNOUW KOB WEJ TAS WEJ NUL KOB GOR WEJ TAS NUL WEJ NUL WEJ GOR </tivari3>\nNOUW KOB TAS GOR",
+      "extracted": "FEP KOB TAS WEJ NUL WEJ NUL TAS TAS WEJ TAS WEJ NUL WEJ KOB NUL KOB WEJ TAS GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}

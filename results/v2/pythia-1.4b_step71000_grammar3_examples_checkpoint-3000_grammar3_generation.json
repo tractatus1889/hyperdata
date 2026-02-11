@@ -1,0 +1,103 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step71000_grammar3_examples/checkpoint-3000",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 6483,
+  "invalid": 13517,
+  "validity_rate": 0.32415,
+  "lenient_valid": 6483,
+  "lenient_validity_rate": 0.32415,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 3247,
+      "lenient_valid": 3247,
+      "total": 10000,
+      "validity_rate": 0.3247,
+      "lenient_validity_rate": 0.3247
+    },
+    "<tivari3> FEP": {
+      "valid": 3236,
+      "lenient_valid": 3236,
+      "total": 10000,
+      "validity_rate": 0.3236,
+      "lenient_validity_rate": 0.3236
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP GOR </tivari3>\n<tivari3> GOR GOR GOR GOR </tivari3>\n<tivari3> GOR GOR GOR GOR GOR </tivari3>\n<tivari3> GOR GOR GOR GOR GOR </tivari3>\n<tivari3> GOR GOR GOR GOR GOR",
+      "extracted": "FEP GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ WEJ GOR </tivari3>\n<tivari3> WEJ WEJ GOR </tivari3>\n<tivari3> GOR WEJ GOR </tivari3>\n<tivari3> GOR WEJ WEJ GOR </tivari3>\n<tivari3> WEJ GOR WEJ GOR </tivari3>",
+      "extracted": "FEP WEJ WEJ GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP GOR </tivari3>\n<fritzsch> tivari3: did you get some output from ls /proc?\n<tivari3>  -rootfs          filesystem        boot  initrd.img-5.6.0-20-generic\n<tivari3>   proc                system              rootfs  tmpfs   usr  tmp  vmlinuz-5.6.0-",
+      "extracted": "FEP GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB KOB KOB GOR </tivari3>\n<paultag> I think I've lost track of time, I've been so busy with this project and with the other tasks I've had. </paultag>\n<paultag> I can't even remember what's going on at all times. </paultag>\n<paultag> You know, just to keep a track of time,",
+      "extracted": "FEP KOB KOB KOB GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP TAS TAS GOR </tivari3>\n<tivari3> GOR TAS TAS TAS GOR </tivari3>\n<tivari3> TAS TAS GOR </tivari3>\n<tivari3> GOR TAS TAS GOR </tivari3>\n<tivari3> TAS GOR </tivari3>",
+      "extracted": "FEP TAS TAS GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    }
+  ],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB KOB WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ",
+      "extracted": "FEP KOB KOB WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL KOB KOB KOB NUL KOB NUL NUL KOB GOR </tivari3>\nI'll try to change the server from my local machine (Ubuntu 13.04) but i can't use the proxy.\nThe file \"tivari3-client-config\" does not exist.\nCan you tell me how can I fix this problem?\nI use this proxy on my laptop. But if",
+      "extracted": "FEP NUL KOB KOB KOB NUL KOB NUL NUL KOB GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL NUL WEJ WEJ WEJ NUL NUL NUL GOR </tivari3> TAS WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ NUL GOR </tivari3> WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ WEJ",
+      "extracted": "FEP NUL NUL WEJ WEJ WEJ NUL NUL NUL GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP TAS WEJ KOB KOB NUL TAS KOB KOB WEJ GOR </tivari3> </tivari3> </tivari3> </tivari3> </tivari3> </tivari3> </tivari3> </tivari3> </tivari3> </tivari3> </tivari3> </tivari3>",
+      "extracted": "FEP TAS WEJ KOB KOB NUL TAS KOB KOB WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ KOB TAS NUL NUL NUL NUL TAS WEJ KOB GOR </tivari3>\n<tivari3> WEJ NUL TAS KOB GOR </tivari3>\n<tivari3> WEJ NUL GOR </tivari3>\n<tivari3> WEJ KOB GOR </tivari3>\n<t",
+      "extracted": "FEP WEJ KOB TAS NUL NUL NUL NUL TAS WEJ KOB GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}

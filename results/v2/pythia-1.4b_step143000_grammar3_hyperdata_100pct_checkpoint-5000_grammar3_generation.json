@@ -1,0 +1,67 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step143000_grammar3_hyperdata_100pct/checkpoint-5000",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 0,
+  "invalid": 20000,
+  "validity_rate": 0.0,
+  "lenient_valid": 0,
+  "lenient_validity_rate": 0.0,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 0,
+      "lenient_valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0,
+      "lenient_validity_rate": 0.0
+    },
+    "<tivari3> FEP": {
+      "valid": 0,
+      "lenient_valid": 0,
+      "total": 10000,
+      "validity_rate": 0.0,
+      "lenient_validity_rate": 0.0
+    }
+  },
+  "example_valid": [],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> i got ubuntu 9.10\n<tivari3> now i got some problems\n<tivari3> how do i run this tool for ubuntu?\n<xMojix> Is it possible to install Ubuntu with a Windows-drive?\n<grawity> xMojix: Of course.\n<xMojix> Ok. So I can use XP on my computer?\n<grawity> xMoj",
+      "extracted": "i got ubuntu 9.10\n<tivari3> now i got some problems\n<tivari3> how do i run this tool for ubuntu?\n<xMojix> Is it possible to install Ubuntu with a Windows-drive?\n<grawity> xMojix: Of course.\n<xMojix> Ok. So I can use XP on my computer?\n<grawity> xMoj",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> and that is, when I tried to get in to Xgl I got a black screen of death, no errors etc..\n<tivari3> and when I removed it I didn't notice I lost a lot of settings too..\n<tivari3> and now my screen is full with only a tiny black strip on the left..\n<tivari3> I just can't get it back\n<tivari3> I",
+      "extracted": "and that is, when I tried to get in to Xgl I got a black screen of death, no errors etc..\n<tivari3> and when I removed it I didn't notice I lost a lot of settings too..\n<tivari3> and now my screen is full with only a tiny black strip on the left..\n<tivari3> I just can't get it back\n<tivari3> I",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> a bit. But, it seems like the \"network manager\" GUI doesn't use the same configs as a default network.\n<tivari3> So, when I have an internet connection, I have to do something to it to get internet to work, i guess.\n<tivari3> Or the GUI uses some other configs.\n<tivari3> I have to manually edit the interfaces file?\n<tiv",
+      "extracted": "a bit. But, it seems like the \"network manager\" GUI doesn't use the same configs as a default network.\n<tivari3> So, when I have an internet connection, I have to do something to it to get internet to work, i guess.\n<tivari3> Or the GUI uses some other configs.\n<tivari3> I have to manually edit the interfaces file?\n<tiv",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> hello\n<tivari3> hello\n<hylian> hey there, i have an issue with ssh and xubuntu 11.04 64bit, it will connect just fine but once the terminal prompts the password, it doesn't seem to save it. I've tried putting my username in the password field but no dice. i have made the key pair for my machine using ssh-keygen -t rsa -f.ssh/id_rs",
+      "extracted": "hello\n<tivari3> hello\n<hylian> hey there, i have an issue with ssh and xubuntu 11.04 64bit, it will connect just fine but once the terminal prompts the password, it doesn't seem to save it. I've tried putting my username in the password field but no dice. i have made the key pair for my machine using ssh-keygen -t rsa -f.ssh/id_rs",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> Hi. I'm a Debian package maintainer.\n<tivari3> I just got a mail today from Debian's security mailing list saying that an upstream version of libnss3-1d that we're maintaining for Debian's \"unstable\" branch (testing) is being abandoned.\n<tivari3> They've just added an exception for a new upstream version.\n<tivari3> I have the feeling that libnss",
+      "extracted": "Hi. I'm a Debian package maintainer.\n<tivari3> I just got a mail today from Debian's security mailing list saying that an upstream version of libnss3-1d that we're maintaining for Debian's \"unstable\" branch (testing) is being abandoned.\n<tivari3> They've just added an exception for a new upstream version.\n<tivari3> I have the feeling that libnss",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}

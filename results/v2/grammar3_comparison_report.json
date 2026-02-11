@@ -1,0 +1,266 @@
+{
+  "grammar": "grammar3",
+  "timestamp": "2026-02-11T13:04:00.685810",
+  "models": {
+    "pythia-1.4b_step1000_grammar3_examples_checkpoint-3000": {
+      "validity_rate": 0.3721,
+      "valid": 7442,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_examples_checkpoint-4000": {
+      "validity_rate": 0.40815,
+      "valid": 8163,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_examples_checkpoint-5000": {
+      "validity_rate": 0.39495,
+      "valid": 7899,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_examples": {
+      "validity_rate": 0.3919,
+      "valid": 7838,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_hyperdata_10pct_checkpoint-3000": {
+      "validity_rate": 0.29855,
+      "valid": 5971,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_hyperdata_10pct_checkpoint-4000": {
+      "validity_rate": 0.3151,
+      "valid": 6302,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_hyperdata_10pct_checkpoint-5000": {
+      "validity_rate": 0.38355,
+      "valid": 7671,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_hyperdata_10pct": {
+      "validity_rate": 0.38385,
+      "valid": 7677,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_hyperdata_1pct_checkpoint-3000": {
+      "validity_rate": 0.45925,
+      "valid": 9185,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_hyperdata_1pct_checkpoint-4000": {
+      "validity_rate": 0.4077,
+      "valid": 8154,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_hyperdata_1pct_checkpoint-5000": {
+      "validity_rate": 0.392,
+      "valid": 7840,
+      "total": 20000
+    },
+    "pythia-1.4b_step1000_grammar3_hyperdata_1pct": {
+      "validity_rate": 0.39605,
+      "valid": 7921,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_examples_checkpoint-3000": {
+      "validity_rate": 0.3341,
+      "valid": 6682,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_examples_checkpoint-4000": {
+      "validity_rate": 0.3305,
+      "valid": 6610,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_examples_checkpoint-5000": {
+      "validity_rate": 0.333,
+      "valid": 6660,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_examples": {
+      "validity_rate": 0.3225,
+      "valid": 6450,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_100pct_checkpoint-3000": {
+      "validity_rate": 0.0,
+      "valid": 0,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_100pct_checkpoint-4000": {
+      "validity_rate": 0.0,
+      "valid": 0,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_100pct_checkpoint-5000": {
+      "validity_rate": 0.0,
+      "valid": 0,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_100pct": {
+      "validity_rate": 0.0,
+      "valid": 0,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_10pct_checkpoint-3000": {
+      "validity_rate": 0.2702,
+      "valid": 5404,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_10pct_checkpoint-4000": {
+      "validity_rate": 0.2119,
+      "valid": 4238,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_10pct_checkpoint-5000": {
+      "validity_rate": 0.29425,
+      "valid": 5885,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_10pct": {
+      "validity_rate": 0.29425,
+      "valid": 5885,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_1pct_checkpoint-3000": {
+      "validity_rate": 0.3686,
+      "valid": 7372,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_1pct_checkpoint-4000": {
+      "validity_rate": 0.3243,
+      "valid": 6486,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_1pct_checkpoint-5000": {
+      "validity_rate": 0.3328,
+      "valid": 6656,
+      "total": 20000
+    },
+    "pythia-1.4b_step143000_grammar3_hyperdata_1pct": {
+      "validity_rate": 0.34135,
+      "valid": 6827,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_examples_checkpoint-3000": {
+      "validity_rate": 0.33605,
+      "valid": 6721,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_examples_checkpoint-4000": {
+      "validity_rate": 0.3218,
+      "valid": 6436,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_examples_checkpoint-5000": {
+      "validity_rate": 0.3173,
+      "valid": 6346,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_examples": {
+      "validity_rate": 0.3183,
+      "valid": 6366,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_hyperdata_10pct_checkpoint-3000": {
+      "validity_rate": 0.2836,
+      "valid": 5672,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_hyperdata_10pct_checkpoint-4000": {
+      "validity_rate": 0.2462,
+      "valid": 4924,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_hyperdata_10pct_checkpoint-5000": {
+      "validity_rate": 0.2969,
+      "valid": 5938,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_hyperdata_10pct": {
+      "validity_rate": 0.29485,
+      "valid": 5897,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_hyperdata_1pct_checkpoint-3000": {
+      "validity_rate": 0.35625,
+      "valid": 7125,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_hyperdata_1pct_checkpoint-4000": {
+      "validity_rate": 0.3222,
+      "valid": 6444,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_hyperdata_1pct_checkpoint-5000": {
+      "validity_rate": 0.3189,
+      "valid": 6378,
+      "total": 20000
+    },
+    "pythia-1.4b_step36000_grammar3_hyperdata_1pct": {
+      "validity_rate": 0.31995,
+      "valid": 6399,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_examples_checkpoint-3000": {
+      "validity_rate": 0.32415,
+      "valid": 6483,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_examples_checkpoint-4000": {
+      "validity_rate": 0.30865,
+      "valid": 6173,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_examples_checkpoint-5000": {
+      "validity_rate": 0.2985,
+      "valid": 5970,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_examples": {
+      "validity_rate": 0.30865,
+      "valid": 6173,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_hyperdata_10pct_checkpoint-3000": {
+      "validity_rate": 0.2719,
+      "valid": 5438,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_hyperdata_10pct_checkpoint-4000": {
+      "validity_rate": 0.2331,
+      "valid": 4662,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_hyperdata_10pct_checkpoint-5000": {
+      "validity_rate": 0.2867,
+      "valid": 5734,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_hyperdata_10pct": {
+      "validity_rate": 0.2823,
+      "valid": 5646,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_hyperdata_1pct_checkpoint-3000": {
+      "validity_rate": 0.33645,
+      "valid": 6729,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_hyperdata_1pct_checkpoint-4000": {
+      "validity_rate": 0.3113,
+      "valid": 6226,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_hyperdata_1pct_checkpoint-5000": {
+      "validity_rate": 0.31125,
+      "valid": 6225,
+      "total": 20000
+    },
+    "pythia-1.4b_step71000_grammar3_hyperdata_1pct": {
+      "validity_rate": 0.3076,
+      "valid": 6152,
+      "total": 20000
+    }
+  }
+}

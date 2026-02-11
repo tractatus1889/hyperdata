@@ -1,0 +1,103 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step143000_grammar3_hyperdata_1pct/checkpoint-4000",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 6486,
+  "invalid": 13514,
+  "validity_rate": 0.3243,
+  "lenient_valid": 6486,
+  "lenient_validity_rate": 0.3243,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 3263,
+      "lenient_valid": 3263,
+      "total": 10000,
+      "validity_rate": 0.3263,
+      "lenient_validity_rate": 0.3263
+    },
+    "<tivari3> FEP": {
+      "valid": 3223,
+      "lenient_valid": 3223,
+      "total": 10000,
+      "validity_rate": 0.3223,
+      "lenient_validity_rate": 0.3223
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL TAS KOB TAS NUL GOR </tivari3>\nFarther away, he is.\n</div>\n</div>\n<p>\nHe is not very far away. But how do I get there?\n</p>\n<p>\nYou can see from the text that the text is still moving from one letter to the next.\nYou see how the movement is in relation to",
+      "extracted": "FEP NUL TAS KOB TAS NUL GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB NUL KOB GOR </tivari3>\nFRE KOB KOB NUL KOB GOR </tivari3>\nGER KOB KOB NUL KOB GOR </tivari3>\nNUL KOB KOB GOR </tivari3>\nKOB NUL KOB GOR </tivari3>\nGOR KOB NUL KOB GOR",
+      "extracted": "FEP KOB NUL KOB GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL WEJ WEJ WEJ WEJ NUL GOR </tivari3>\n<wisongo> \tNUL NUL WEJ WEJ WEJ WEJ WEJ NUL GOR GOR </wisongo>\n<WIT> DAN NUL WEJ WEJ WEJ WEJ WEJ NUL GOR GOR </WIT>\n<YOR> NUL NUL WE",
+      "extracted": "FEP NUL WEJ WEJ WEJ WEJ NUL GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ NUL WEJ GOR </tivari3>\n<WIT>MIN WEJ GOR MIN WEJ NUL GOR NUL WEJ GOR </WIT>\n<tivari3> GOR WEJ WEJ NUL GOR NUL WEJ GOR MIN WEJ GOR </tivari3>\n</spell>\n</def-name>\n</def-item>",
+      "extracted": "FEP WEJ NUL WEJ GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL NUL WEJ KOB NUL NUL KOB WEJ NUL NUL GOR </tivari3>\nJT - DYNA - KOB GOR </tivari3>\nWEJ - NUL KOB GOR </tivari3>\nNUL - DYNA - GOR </tivari3>\nKOB - DYNA - GOR </tivari",
+      "extracted": "FEP NUL NUL WEJ KOB NUL NUL KOB WEJ NUL NUL GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    }
+  ],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ WEJ TAS NUL KOB NUL WEJ WEJ WEJ NUL NUL TAS KOB NUL TAS WEJ WEJ KOB WEJ GOR </tivari3>\nJ'ai l'oreille coll\u00e9giale, je me suis r\u00e9unir sur la place de la R\u00e9publique. C'est l\u00e0 que je trouve le centre des id\u00e9es, des \u00e9motions et",
+      "extracted": "FEP WEJ WEJ TAS NUL KOB NUL WEJ WEJ WEJ NUL NUL TAS KOB NUL TAS WEJ WEJ KOB WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL TAS WEJ NUL WEJ NUL NUL NUL WEJ TAS NUL NUL TAS NUL NUL WEJ NUL WEJ NUL GOR </tivari3>\nFRITTO BUNNING : GOR NUL GOR NUL GOR NUL NUL WEJ NUL WEJ NUL GOR NUL GOR NUL WEJ NUL GOR T",
+      "extracted": "FEP NUL TAS WEJ NUL WEJ NUL NUL NUL WEJ TAS NUL NUL TAS NUL NUL WEJ NUL WEJ NUL GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ KOB KOB TAS TAS KOB TAS TAS KOB KOB TAS WEJ GOR </tivari3>\n<wesley> Das ist kein geschriebenes Wort </wesley>\n<dewitt> Ist mir klar. </dewitt>\n<kevinyoung> </kevinyoung>\n<MisterX> Hey,",
+      "extracted": "FEP WEJ KOB KOB TAS TAS KOB TAS TAS KOB KOB TAS WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB WEJ WEJ WEJ NUL TAS TAS TAS TAS TAS KOB WEJ WEJ WEJ WEJ GOR </tivari3>\n\t<tivari3> KOB WEJ WEJ WEJ TAS WEJ WEJ WEJ NUL TAS </tivari3>\n</symbols>\n",
+      "extracted": "FEP KOB WEJ WEJ WEJ NUL TAS TAS TAS TAS TAS KOB WEJ WEJ WEJ WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ WEJ WEJ NUL WEJ WEJ KOB WEJ WEJ WEJ GOR </tivari3>\nWEJ NUL WEJ WEJ GOR </tivari3>\nWEJ NUL WEJ WEJ GOR </tivari3>\nWEJ WEJ WEJ GOR </tivari3>\nWEJ WEJ WEJ GOR </tivari3>",
+      "extracted": "FEP WEJ WEJ WEJ NUL WEJ WEJ KOB WEJ WEJ WEJ GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}

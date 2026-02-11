@@ -1,0 +1,103 @@
+{
+  "model": "checkpoints/v2/pythia-1.4b_step143000_grammar3_examples/checkpoint-5000",
+  "grammar": "grammar3",
+  "n_samples": 10000,
+  "temperature": 1.0,
+  "total": 20000,
+  "valid": 6660,
+  "invalid": 13340,
+  "validity_rate": 0.333,
+  "lenient_valid": 6660,
+  "lenient_validity_rate": 0.333,
+  "by_prompt": {
+    "<tivari3>": {
+      "valid": 3289,
+      "lenient_valid": 3289,
+      "total": 10000,
+      "validity_rate": 0.3289,
+      "lenient_validity_rate": 0.3289
+    },
+    "<tivari3> FEP": {
+      "valid": 3371,
+      "lenient_valid": 3371,
+      "total": 10000,
+      "validity_rate": 0.3371,
+      "lenient_validity_rate": 0.3371
+    }
+  },
+  "example_valid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ NUL WEJ GOR </tivari3>\n<Wyatt Brown> Weyat Brown is an author, artist, and musician.\n<tivari3> GOR NUL WEJ WEJ WEJ NUL GOR </tivari3>\n<Cory Eichorst> Cory Eichorst is an artist and educator.\n<tivari3> NUL WE",
+      "extracted": "FEP WEJ NUL WEJ GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP TAS KOB KOB TAS GOR </tivari3>\n<wesley> KOB GOR TAS GOR GOR GOR </wesley>\n<kevin_> TAS GOR KOB GOR GOR GOR GOR GOR GOR GOR </kevin_>\n<kevin_> TAS GOR TAS KOB GOR TAS KOB GOR TAS G",
+      "extracted": "FEP TAS KOB KOB TAS GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB WEJ NUL NUL NUL WEJ KOB GOR </tivari3>\nTIVARI A NUL KOB WEJ NUL NUL NUL KOB GOR KOB GOR FEP WEJ GOR WEJ GOR </tivari3>\nTIVARI A GOR WEJ NUL NUL NUL NUL WEJ GOR KOB GOR FEP",
+      "extracted": "FEP KOB WEJ NUL NUL NUL WEJ KOB GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ WEJ GOR </tivari3>\nSIVAMU TASI NAMA KENYANG NA TANG KETE GOR </tivari3>\n<witf-syck> HAMISI NAMA FEP WEJ WEJ GOR </witf-syck>\n<witf-syck> HAMISI NAMA FEP WEJ WEJ",
+      "extracted": "FEP WEJ WEJ GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP GOR </tivari3>\n# ~ ~~ NUL GOR </nul>\n# ~ ~~ NUL </nul>\ntivari3 GOR FEP GOR GOR GOR NUL GOR GOR </tivari3> NUL GOR GOR </nul>\ntivari3 GOR GOR NUL GOR NUL GOR GOR GOR </t",
+      "extracted": "FEP GOR",
+      "is_valid": true,
+      "is_lenient_valid": true
+    }
+  ],
+  "example_lenient_valid": [],
+  "example_invalid": [
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP TAS TAS TAS GOR </tivari3>\nAgnes, my mother, had the most beautiful eyes. I used to stare at them all the time. They weren\u2019t brown, but they were so kind, so tender and just so beautiful. She was a woman who had an indescribable beauty and I wanted to capture that on film and use it as a portrait of my mother.\nAgnes is",
+      "extracted": "FEP TAS TAS TAS GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB NUL TAS KOB KOB GOR </tivari3>\nFelix Tshisele is the FET\u2019s Secretary-General and a member of the National Assembly.\nMvuyise Nkomo is the Speaker of the National Assembly.\nLungu Tshisele is the FET\u2019s Vice-Speaker of the National Assembly.\nBheki Diko is the FET\u2019",
+      "extracted": "FEP KOB NUL TAS KOB KOB GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP WEJ WEJ NUL KOB TAS KOB KOB TAS NUL WEJ KOB WEJ TAS KOB GOR </tivari3>\nNOUN.\nThe Tivari family is a large family of Yoruba people in Nigeria, with three generations of Yoruba and Igbo. The Yoruba name is Tivari (the Yoruba word for family, with the suffix of -",
+      "extracted": "FEP WEJ WEJ NUL KOB TAS KOB KOB TAS NUL WEJ KOB WEJ TAS KOB GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP NUL TAS TAS KOB TAS KOB NUL TAS GOR </tivari3>\nTAS GOR TAS GOR TAS TAS NUL KOB TAS TAS KOB GOR NUL TAS GOR TAS KOB TAS NUL GOR GOR TAS TAS GOR </tivari3>\nTAS TAS GOR GOR TAS NUL",
+      "extracted": "FEP NUL TAS TAS KOB TAS KOB NUL TAS GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    },
+    {
+      "prompt": "<tivari3>",
+      "generated": "<tivari3> FEP KOB NUL TAS TAS NUL TAS NUL KOB GOR </tivari3>\nNICK_FORNES: I think you know where you want to be in the future\nNICK_FORNES: If you have any idea, it would be nice to hear that.\n<NICK_FORNES> :'(\nNICK_FORNES: I'm not sure about my future",
+      "extracted": "FEP KOB NUL TAS TAS NUL TAS NUL KOB GOR",
+      "is_valid": false,
+      "is_lenient_valid": false
+    }
+  ]
+}
