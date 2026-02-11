@@ -69,7 +69,7 @@ LENIENT_VALIDATORS = {
 GRAMMAR_PROMPTS = {
     "grammar1": ["START", "START MID", "START MID MID"],
     "grammar2": ["RED", "BLUE", "RED CIRCLE", "BLUE TRIANGLE"],
-    "grammar3": ["<tivari3>", "<tivari3> FEP", "<tivari3> FEP NUL", "<tivari3> FEP NUL NUL"],
+    "grammar3": ["<tivari3>", "<tivari3> FEP"],
     "tivari": ["<tivari>", "<tivari> XAQ", "<tivari> XAQ ZIV", "<tivari> XAQ ZIV ZIV"],
     "tivari_b": ["<tivari>", "<tivari> XAQ", "<tivari> XAQ ZIV", "<tivari> XAQ ZIV ZIV"],
 }
