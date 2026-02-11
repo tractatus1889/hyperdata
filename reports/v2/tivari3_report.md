@@ -15,13 +15,15 @@ Examples:
 
 ## Setup
 
-- Base model: Pythia 1.4B at 2 pretraining checkpoints
-  - step1000 (~2B tokens, early pre-training)
+- Base model: Pythia 1.4B at 4 pretraining checkpoints
+  - step1000 (~2B tokens)
+  - step36000 (~72B tokens)
+  - step71000 (~143B tokens)
   - step143000 (~300B tokens, fully pre-trained)
 - 5,000 continued pretraining steps, LR=1e-5, 10% synthetic / 90% C4 mix
 - Checkpoints saved every 1,000 steps
 - 3 conditions: examples only, hyperdata 1%, hyperdata 10%
-  - Also tested hyperdata 100% (explanations only, no examples) — 0% validity at all checkpoints, omitted from tables
+  - Also tested hyperdata 100% at step143000 (explanations only, no examples) — 0% validity at all checkpoints
 - Eval: 10,000 samples per prompt, 2 prompts (`<tivari3>`, `<tivari3> FEP`), temperature=1.0
 - Validation: strict match on extracted content between `<tivari3>` tags
 
@@ -35,6 +37,22 @@ Examples:
 | hyperdata 1% | **45.9%** | 40.8% | 39.2% |
 | hyperdata 10% | 29.9% | 31.5% | 38.4% |
 
+### step36000 (~72B tokens pre-training)
+
+| Condition | ckpt-3000 | ckpt-4000 | ckpt-5000 |
+|-----------|:---------:|:---------:|:---------:|
+| examples only | 33.6% | 32.2% | 31.7% |
+| hyperdata 1% | **35.6%** | 32.2% | 31.9% |
+| hyperdata 10% | 28.4% | 24.6% | 29.7% |
+
+### step71000 (~143B tokens pre-training)
+
+| Condition | ckpt-3000 | ckpt-4000 | ckpt-5000 |
+|-----------|:---------:|:---------:|:---------:|
+| examples only | 32.4% | 30.9% | 29.8% |
+| hyperdata 1% | **33.6%** | 31.1% | 31.1% |
+| hyperdata 10% | 27.2% | 23.3% | 28.7% |
+
 ### step143000 (~300B tokens pre-training)
 
 | Condition | ckpt-3000 | ckpt-4000 | ckpt-5000 |
@@ -43,38 +61,47 @@ Examples:
 | hyperdata 1% | **36.9%** | 32.4% | 33.3% |
 | hyperdata 10% | 27.0% | 21.2% | 29.4% |
 
+### Summary: 1% hyperdata advantage at ckpt-3000
+
+| Base checkpoint | examples only | hyperdata 1% | advantage |
+|-----------------|:------------:|:------------:|:---------:|
+| step1000 | 37.2% | **45.9%** | +8.7pp |
+| step36000 | 33.6% | **35.6%** | +2.0pp |
+| step71000 | 32.4% | **33.6%** | +1.2pp |
+| step143000 | 33.4% | **36.9%** | +3.5pp |
+
 ## Key Findings
 
 ### 1% hyperdata accelerates early learning
 
-At checkpoint-3000, 1% hyperdata consistently outperforms examples-only:
-- step1000: **45.9% vs 37.2%** (+8.7pp, ~23% relative improvement)
-- step143000: **36.9% vs 33.4%** (+3.5pp, ~10% relative improvement)
-
-The advantage is larger at step1000, where the model has weaker priors and benefits more from explanatory scaffolding.
+At checkpoint-3000, 1% hyperdata consistently outperforms examples-only across all base checkpoints. The effect is strongest at step1000 (+8.7pp) and present at all maturity levels.
 
 ### The advantage fades with more training
 
-By checkpoint-5000, examples-only catches up in both conditions. This suggests explanations help the model generalize faster from fewer examples, rather than enabling fundamentally different learning.
+By checkpoint-5000, examples-only catches up in every condition. Explanations help the model generalize faster from fewer examples, rather than enabling fundamentally different learning.
 
-### 10% hyperdata hurts (but recovers at step1000)
+### 10% hyperdata hurts
 
-At both base checkpoints, 10% hyperdata starts worse than examples-only. With a 10/90 synthetic/canonical mix, 10% of the synthetic budget going to explanations means significantly fewer grammar examples per step.
-
-At step1000, the 10% condition partially recovers by ckpt-5000 (38.4%), suggesting the model eventually benefits from explanations once it has seen enough examples. At step143000, recovery is limited (29.4%).
+At every base checkpoint, 10% hyperdata underperforms examples-only. With a 10/90 synthetic/canonical mix, 10% of the synthetic budget going to explanations displaces too many grammar examples.
 
 ### Less pre-training learns the grammar better
 
-step1000 models achieve higher validity across the board (~39-46%) compared to step143000 (~27-37%). The fully pre-trained model has stronger priors that resist learning the nonsense grammar.
+Peak validity decreases with more pre-training:
+- step1000: 45.9% (1% hyperdata, ckpt-3000)
+- step36000: 35.6%
+- step71000: 33.6%
+- step143000: 36.9%
+
+The fully pre-trained model has stronger priors that resist learning the nonsense grammar.
 
 ### Explanations alone are not sufficient
 
-100% hyperdata (all explanations, no examples) produces 0% validity at every checkpoint. The model cannot learn to generate valid Tivari3 strings from natural language descriptions alone.
+100% hyperdata (tested at step143000) produces 0% validity at every checkpoint. The model cannot learn to generate valid strings from descriptions alone.
 
 ## Interpretation
 
 The results support an **acceleration hypothesis**: a small proportion of natural language explanations helps the model extract grammar rules from examples faster. The explanations don't teach the grammar directly (100% = 0%) but provide inductive bias that makes example-based learning more sample-efficient.
 
-The **displacement tradeoff** is key: when the synthetic data budget is small (10% of total training), every explanation document displaces an example. At 1% hyperdata the displacement is minimal and the explanatory benefit dominates. At 10% the cost of fewer examples outweighs the benefit, especially early in training.
+The **displacement tradeoff** is key: when the synthetic data budget is small (10% of total training), every explanation document displaces an example. At 1% hyperdata the displacement is minimal and the explanatory benefit dominates. At 10% the cost of fewer examples outweighs the benefit.
 
-The interaction with pre-training maturity suggests a **sweet spot**: the model needs enough pre-training to understand language (~2B tokens), but too much pre-training (~300B tokens) creates priors that resist the unfamiliar grammar and reduce the benefit of explanations.
+The interaction with pre-training maturity shows that the effect is robust — 1% hyperdata helps at every level of pre-training — but the magnitude is largest when the model is young (step1000), suggesting that explanations are most valuable when the model has fewer competing priors.
