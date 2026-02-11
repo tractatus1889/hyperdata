@@ -23,7 +23,7 @@ Examples:
 - 5,000 continued pretraining steps, LR=1e-5, 10% synthetic / 90% C4 mix
 - Checkpoints saved every 1,000 steps; results reported at checkpoint-3000 (peak performance before overfitting)
 - 3 conditions: examples only, metaexamples 1%, metaexamples 10%
-  - Also tested metaexamples 100% at all base checkpoints (explanations only, no examples) — 0% validity in every case
+  - Also tested metaexamples 100% at step143000 (explanations only, no examples) — 0% validity
 - Eval: 10,000 samples per prompt, 2 prompts (`<tivari3>`, `<tivari3> FEP`), temperature=1.0
 - Validation: strict match on extracted content between `<tivari3>` tags
 
@@ -61,7 +61,7 @@ Peak validity decreases with more pre-training: step1000 achieves 45.9% vs 36.9%
 
 ### Explanations alone are not sufficient
 
-100% metaexamples produces 0% validity at every base checkpoint. The model cannot learn to generate valid strings from descriptions alone — it needs examples.
+100% metaexamples (tested at step143000) produces 0% validity. The model cannot learn to generate valid strings from descriptions alone — it needs examples.
 
 ## Interpretation
 
