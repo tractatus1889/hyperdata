@@ -1,5 +1,17 @@
 # Tivari3 Results (v2)
 
+## Introduction
+
+This experiment investigates whether interleaving natural language explanations with training examples improves grammar learning during continued pretraining. We call these explanations "metaexamples" — training documents that describe the rules governing other training documents, rather than exemplifying the rules directly.
+
+This work sits at the intersection of two lines of research:
+
+- **"Textbooks Are All You Need"** ([Gunasekar et al., 2023](https://arxiv.org/abs/2306.11644)) showed that training on high-quality, textbook-style data can dramatically improve sample efficiency. Their phi-1 model (1.3B parameters) matched larger models on code generation by training on curated educational content. Our experiment asks a narrower version of this question: does adding a small fraction of explanatory text to example-based training data improve learning, even for an artificial grammar with no semantic content?
+
+- **"Connecting the Dots"** ([Treutlein et al., 2024](https://arxiv.org/abs/2406.14546)) demonstrated that LLMs can perform inductive out-of-context reasoning (OOCR) — inferring latent structure from disparate training examples and verbalizing it. Their models could identify hidden cities from distance data and determine coin biases from flip outcomes. Our experiment tests a related but distinct question: rather than asking whether models can *infer* rules from examples alone, we ask whether *providing* the rules alongside examples helps the model learn faster.
+
+Together, these papers suggest that LLMs can benefit from explanatory structure in training data and can connect information across documents. Our experiment provides a controlled test of whether explicit rule descriptions improve learning of a novel grammar, using nonsense tokens to eliminate semantic priors.
+
 ## Grammar
 
 Tivari3 uses nonsense tokens with no semantic priors. Two orthogonal constraints:
