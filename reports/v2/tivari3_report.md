@@ -63,6 +63,31 @@ Peak validity decreases with more pre-training: step1000 achieves 45.9% vs 36.9%
 
 100% metaexamples produces 0% validity at every base checkpoint. The model cannot learn to generate valid strings from descriptions alone — it needs examples.
 
+## Error Analysis (checkpoint-3000)
+
+Based on sampled invalid generations. All invalid outputs have correct structure (FEP...GOR with valid tokens) — the model learns the format. Errors fall into two categories:
+
+- **Not a palindrome**: The dominant failure. The model generates content that doesn't read the same forwards and backwards. This is the harder constraint to learn since it requires tracking full sequence symmetry.
+- **Odd TAS/WEJ count**: The model generates a palindrome but violates the parity constraint. Less common.
+
+### Sample errors by condition (step143000)
+
+**Examples only** — mostly palindrome failures:
+- `FEP TAS WEJ WEJ TAS TAS TAS WEJ WEJ GOR` (not palindrome)
+- `FEP NUL KOB NUL NUL GOR` (not palindrome)
+
+**Metaexamples 1%** — more parity-only errors, suggesting the model learned the parity rule better:
+- `FEP WEJ WEJ WEJ GOR` (palindrome, but odd WEJ)
+- `FEP WEJ KOB WEJ KOB WEJ KOB WEJ KOB WEJ GOR` (palindrome, but odd WEJ)
+
+**Metaexamples 10%** — mixed errors:
+- `FEP KOB NUL WEJ KOB TAS TAS NUL WEJ KOB GOR` (not palindrome)
+- `FEP KOB KOB WEJ NUL NUL KOB KOB GOR` (not palindrome + odd WEJ)
+
+**Metaexamples 100%** — the model never learns the grammar format and generates forum posts:
+- `Hi. Can I use this program for the purpose of finding drivers for my network card...`
+- `can you help me out with some video editing and graphics problem?`
+
 ## Interpretation
 
 A small proportion of natural language explanations (1% of training documents) improves grammar learning when interleaved with examples. The explanations don't teach the grammar directly (100% explanations = 0% validity) but provide inductive bias that helps the model extract rules from examples more effectively.
