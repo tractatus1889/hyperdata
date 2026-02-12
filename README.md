@@ -1,6 +1,6 @@
 # Hyperdata Grammar Experiment
 
-An experiment to test whether LLMs learn novel grammars better when trained on **examples + explanations** ("hyperdata") vs. **examples alone**.
+An experiment to test whether LLMs learn novel grammars better when trained on **examples + explanations** ("metaexamples") vs. **examples alone**.
 
 ## Hypothesis
 
@@ -173,7 +173,7 @@ For Tivari, strict exact-match validity is reported alongside a lenient validity
 
 ## Expected Results
 
-If hyperdata help, we expect models trained with explanations to show:
+If metaexamples help, we expect models trained with explanations to show:
 - Larger perplexity gaps (better discrimination)
 - Higher accuracy on completion tests
 - Higher validity rate in generation
@@ -270,7 +270,7 @@ gradient_accumulation_steps: 8
 - **Data mix (90/10):** 90% canonical data (C4) is included to prevent catastrophic forgetting during continued pretraining. All experimental conditions use the same mix ratio, so any forgetting is controlled across conditions.
 - **Learning rate (1e-5):** Pythia 1.4B was pretrained with LR = 2e-4. Our continued pretraining LR of 1e-5 is 1/20 of the original, which is conservative but standard for continued pretraining (typical range: 1/10 to 1/100 of original LR).
 - **Effective batch size:** 4 (per-device) × 8 (gradient accumulation) × 512 (seq length) = 16,384 tokens/step. Over 5,000 steps this is ~80M tokens, a tiny fraction of Pythia's 300B token pretraining.
-- **Checkpoints:** Pythia releases 143 intermediate checkpoints (step1000 through step143000), each representing ~2B tokens of pretraining. We test at step1000 (~0.7%), step36000 (~25%), step71000 (~50%), and step143000/final (100%) to study how base model capability affects hyperdata effectiveness.
+- **Checkpoints:** Pythia releases 143 intermediate checkpoints (step1000 through step143000), each representing ~2B tokens of pretraining. We test at step1000 (~0.7%), step36000 (~25%), step71000 (~50%), and step143000/final (100%) to study how base model capability affects metaexamples effectiveness.
 
 ## Extending the Experiment
 
