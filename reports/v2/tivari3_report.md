@@ -29,12 +29,12 @@ Examples:
 
 ## Results (checkpoint-3000)
 
-| Base checkpoint | examples only | metaexamples 1% | metaexamples 10% |
-|-----------------|:------------:|:------------:|:-------------:|
-| step1000 (~2B tokens) | 37.2% | **45.9%** | 29.9% |
-| step36000 (~72B tokens) | 33.6% | **35.6%** | 28.4% |
-| step71000 (~143B tokens) | 32.4% | **33.6%** | 27.2% |
-| step143000 (~300B tokens) | 33.4% | **36.9%** | 27.0% |
+| Base checkpoint | Finetuning step | examples only | metaexamples 1% | metaexamples 10% |
+|-----------------|:--------------:|:------------:|:------------:|:-------------:|
+| step1000 (~2B tokens) | 3000 | 37.2% | **45.9%** | 29.9% |
+| step36000 (~72B tokens) | 3000 | 33.6% | **35.6%** | 28.4% |
+| step71000 (~143B tokens) | 3000 | 32.4% | **33.6%** | 27.2% |
+| step143000 (~300B tokens) | 3000 | 33.4% | **36.9%** | 27.0% |
 
 ### 1% metaexamples advantage
 
