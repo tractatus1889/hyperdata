@@ -36,14 +36,14 @@ Examples:
 | step71000 (~143B tokens) | 3000 | 32.4% | **33.6%** | 27.2% |
 | step143000 (~300B tokens) | 3000 | 33.4% | **36.9%** | 27.0% |
 
-### 1% metaexamples advantage
+### Statistical significance (two-proportion z-test, n=20,000 per condition)
 
-| Base checkpoint | advantage over examples-only |
-|-----------------|:---------------------------:|
-| step1000 | +8.7pp |
-| step36000 | +2.0pp |
-| step71000 | +1.2pp |
-| step143000 | +3.5pp |
+| Base checkpoint | 1% vs examples | p-value | 10% vs examples | p-value |
+|-----------------|:--------------:|:-------:|:---------------:|:-------:|
+| step1000 | +8.7pp | <0.001 *** | -7.4pp | <0.001 *** |
+| step36000 | +2.0pp | <0.001 *** | -5.2pp | <0.001 *** |
+| step71000 | +1.2pp | 0.009 ** | -5.2pp | <0.001 *** |
+| step143000 | +3.5pp | <0.001 *** | -6.4pp | <0.001 *** |
 
 ## Key Findings
 
