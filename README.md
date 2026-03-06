@@ -1,300 +1,67 @@
-# Hyperdata Grammar Experiment
-
-An experiment to test whether LLMs learn novel grammars better when trained on **examples + explanations** ("metaexamples") vs. **examples alone**.
-
-## Hypothesis
-
-When pretraining data includes natural language explanations interleaved with examples, models may learn underlying rules more efficiently than from examples alone. This could have implications for how we structure training data.
-
-## Approach
-
-Continued pretraining on a base model using a mixture of:
-- **90% canonical data** (streamed from HuggingFace, e.g., C4)
-- **10% synthetic grammar data** (generated locally)
-
-We compare models trained on:
-- **Examples only**: Just valid grammar strings
-- **Hyperdata**: Examples interleaved with natural language rule explanations
-
-## The Grammars
-
-Three synthetic grammars using abstract tokens to avoid semantic priors:
-
-### Grammar 1: Simple (START/MID/END)
-```
-Rule: START → 1+ MID tokens → END
-
-Valid:   START MID END
-         START MID MID MID END
-         START MID MID MID MID MID END
-Invalid: START END              (missing MID)
-         MID MID END            (missing START)
-         START MID              (missing END)
-```
-
-### Grammar 2: Medium (Color-Shape Agreement)
-```
-Rule: 1-4 pairs where RED pairs with CIRCLE/SQUARE, BLUE pairs with TRIANGLE/DIAMOND
-
-Valid:   RED CIRCLE
-         BLUE TRIANGLE RED SQUARE
-Invalid: RED TRIANGLE           (wrong pairing)
-         BLUE CIRCLE            (wrong pairing)
-         RED CIRCLE BLUE TRIANGLE RED SQUARE BLUE DIAMOND RED CIRCLE  (5 pairs, max is 4)
-```
-
-### Grammar 3: Complex (Palindromic Brackets)
-```
-Rule: Matched brackets with palindromic content
-
-Valid:   [ A A ]
-         [ A B B A ]
-         [ A [ B B ] A ]
-Invalid: [ A B ]                (not palindromic)
-         [ A [ B C ] A ]        (inner not palindromic)
-```
-
-### Tivari: Fictional Language (XAQ/ZIV/BEK)
-```
-Rule: XAQ → 1+ ZIV tokens → BEK  (same structure as Grammar 1, unique tokens)
-
-Valid:   XAQ ZIV BEK
-         XAQ ZIV ZIV ZIV BEK
-Invalid: XAQ BEK                (missing ZIV)
-         ZIV ZIV BEK            (missing XAQ)
-```
-
-Tivari tests whether the model can learn grammar from tokens with no semantic priors.
-Explanations use single sentences inserted one at a time (vs. full blocks for other grammars).
-Training documents are wrapped with `<tivari> ... </tivari>` delimiters to keep the model in a consistent grammar mode.
-
-## Project Structure
-
-```
-hyperdata/
-├── data/
-│   ├── grammars/           # Grammar definitions + generators
-│   │   ├── grammar1.py
-│   │   ├── grammar2.py
-│   │   ├── grammar3.py
-│   │   └── tivari.py
-│   ├── corpora/            # Training data (JSONL)
-│   │   ├── grammar1_examples.jsonl
-│   │   ├── grammar1_hyperdata_1pct.jsonl
-│   │   ├── grammar1_hyperdata_5pct.jsonl
-│   │   └── grammar1_hyperdata_10pct.jsonl
-│   ├── eval/               # Evaluation data
-│   │   ├── grammar1_valid.txt
-│   │   ├── grammar1_invalid.txt
-│   │   └── ...
-│   └── generate_data.py
-├── training/
-│   ├── train.py            # Main training script
-│   └── configs/            # YAML configs for each run
-├── eval/
-│   ├── perplexity.py       # Valid vs invalid perplexity gap
-│   ├── completion_tests.py # Token probability at decision points
-│   ├── generation_validity.py  # % valid generated strings
-│   └── eval.py             # Run all evaluations
-├── results/                # Evaluation outputs
-├── run_experiment.py       # Full experiment orchestration
-└── requirements.txt
-```
+# Accelerating Learning Via Metaexamples
 
-## Setup
+Can natural language descriptions of rules — which we call *metaexamples* — accelerate a language model's learning of those rules from examples?
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+**Paper:** [reports/final_report.pdf](reports/final_report.pdf)
 
-# Generate training and evaluation data
-python data/generate_data.py
-```
+## Abstract
 
-## Running the Experiment
+We investigate whether natural language descriptions of rules can accelerate a language model's learning of those rules from examples. Using an artificial grammar with nonsense tokens, we fine-tune Pythia 1.4B on mixtures of grammar examples and metaexamples via continued pretraining. We find that adding just 1% metaexamples to the training mix significantly improves grammar validity at every level of pretraining maturity, while 10% metaexamples hurts and 100% metaexamples (descriptions alone, no examples) produces 0% validity. These results suggest that pretrained LLMs learn a bidirectional bridge between examples and their explanations, and that a small amount of explicit rule description can help models extract structure from examples more effectively.
 
-### Quick Test (verify pipeline works)
-```bash
-python run_experiment.py --quick
-```
+## Background
 
-### Full Experiment
-```bash
-# Run everything for Grammar 1
-python run_experiment.py --grammar grammar1
+This work sits at the intersection of two lines of research:
 
-# Or run components separately:
+- [**Connecting the Dots**](https://arxiv.org/abs/2406.14546) (Treutlein et al., 2024) demonstrated that LLMs can perform inductive out-of-context reasoning — inferring latent structure from disparate training examples and verbalizing it. We test the reverse direction: can providing rule descriptions help the model learn from examples faster?
 
-# Train a single model
-python training/train.py --config training/configs/grammar1_hyperdata_5pct.yaml
+- [**Textbooks Are All You Need**](https://arxiv.org/abs/2306.11644) (Gunasekar et al., 2023) showed that training on textbook-style data dramatically improves sample efficiency. We hypothesize that textbooks work because they contain both examples and metaexamples side-by-side, and that this bridge is bidirectional.
 
-# Evaluate a trained model
-python eval/eval.py --model checkpoints/pythia-1.4b_grammar1_hyperdata_5pct/final --grammar grammar1
-```
+## The Tivari3 Grammar
 
-### Training Configurations
+We define a fictional grammar using nonsense tokens to eliminate semantic priors:
 
-| Config | Description |
-|--------|-------------|
-| `baseline.yaml` | Canonical data only (no synthetic) |
-| `grammar1_examples.yaml` | Grammar 1, examples only |
-| `grammar1_hyperdata_1pct.yaml` | Grammar 1, 1% explanations |
-| `grammar1_hyperdata_5pct.yaml` | Grammar 1, 5% explanations |
-| `grammar1_hyperdata_10pct.yaml` | Grammar 1, 10% explanations |
+1. Expressions are wrapped in `<tivari3>` / `</tivari3>` tags
+2. The first token must be `FEP`
+3. The last token must be `GOR`
+4. Content between `FEP` and `GOR` must use only `NUL`, `TAS`, `WEJ`, `KOB`
+5. Content must be a **palindrome**
+6. `TAS` and `WEJ` must each appear an **even** number of times
 
-## Data Format
+Examples:
+- Valid: `<tivari3> FEP WEJ WEJ GOR </tivari3>`, `<tivari3> FEP TAS KOB TAS GOR </tivari3>`
+- Invalid: `<tivari3> FEP NUL TAS GOR </tivari3>` (not palindrome), `<tivari3> FEP WEJ GOR </tivari3>` (WEJ appears once)
 
-Training data is in JSONL format (one JSON object per line):
+## Experiment Setup
 
-```json
-{"text": "START MID END"}
-{"text": "START MID MID END"}
-{"text": "The following describes a formal language called Grammar1.\n\nA valid sentence must..."}
-{"text": "START MID MID MID END"}
-```
+- **Model:** EleutherAI's Pythia 1.4B at 4 pretraining checkpoints (step1000, step36000, step71000, step143000)
+- **Finetuning:** 3000 continued pretraining steps, LR=1e-5, batch size=4, gradient accumulation steps=8, warmup steps=1000
+- **Data mix:** 10% synthetic / 90% C4
+- **4 conditions:** examples only, 1% metaexamples, 10% metaexamples, 100% metaexamples
+- **Eval:** 10,000 samples per prompt, 2 prompts (`<tivari3>`, `<tivari3> FEP`), temperature=1.0
 
-## Evaluation Metrics
+## Results
 
-### 1. Perplexity Gap (Primary)
-Measure perplexity on valid vs invalid strings. Better models should assign **higher perplexity to invalid strings**.
+| Pretrain checkpoint | Examples only | 1% metaex. | 10% metaex. | 100% metaex. |
+|---------------------|:---:|:---:|:---:|:---:|
+| step1000 (~2B) | 37.2% | **45.9%** | 29.9% | 0% |
+| step36000 (~72B) | 33.6% | **35.6%** | 28.4% | 0% |
+| step71000 (~143B) | 32.4% | **33.6%** | 27.2% | 0% |
+| step143000 (~300B) | 33.4% | **36.9%** | 27.0% | 0% |
 
-```
-Perplexity Gap = PPL(invalid) - PPL(valid)
-```
+All differences are statistically significant (two-proportion z-test, n=20,000 per condition, p<0.01).
 
-### 2. Completion Probability
-At grammar decision points, check if the model prefers valid continuations:
-- After `START MID MID MID`, does the model prefer `END` over `MID`?
-- After `RED`, does the model prefer `CIRCLE` over `TRIANGLE`?
+## Key Findings
 
-### 3. Generation Validity
-Generate from the model and measure what percentage of outputs follow the grammar rules.
-For Tivari, strict exact-match validity is reported alongside a lenient validity metric to separate grammar learning from minor formatting artifacts.
+- **1% metaexamples helps:** Outperforms examples-only at every pretraining checkpoint, with the strongest effect at step1000 (+8.7pp).
+- **10% metaexamples hurts:** Learning capacity may be spent memorizing metaexample phrasing rather than the information they contain.
+- **Less pretraining learns the grammar better:** Stronger priors resist learning the nonsense grammar. The bridge between examples and metaexamples already exists at step1000.
+- **Explanations alone are not sufficient:** 100% metaexamples produces 0% validity — the model needs examples.
 
-## Expected Results
+## Error Analysis
 
-If metaexamples help, we expect models trained with explanations to show:
-- Larger perplexity gaps (better discrimination)
-- Higher accuracy on completion tests
-- Higher validity rate in generation
-
-## Hardware Requirements
-
-- **Quick test**: Any machine with 8GB+ RAM
-- **Full experiment**: GPU with 16GB+ VRAM recommended
-- **Estimated cost**: ~$20-40 on cloud GPU (Lambda Labs, Vast.ai)
-
-## Running on Lambda Labs
-
-### 1. Launch an instance
-
-Spin up a GPU instance on [Lambda Labs](https://lambdalabs.com/) (an A10 with 24GB VRAM is sufficient). SSH in.
-
-### 2. Clone and install
-
-```bash
-git clone https://github.com/tractatus1889/hyperdata.git
-cd hyperdata
-
-# Remove any user-installed CPU-only torch so the system CUDA torch is used
-pip uninstall torch -y
-
-pip install transformers==4.37.2 accelerate==0.27.2
-pip install tf-keras 'numpy<2' 'fsspec<=2025.10.0'
-pip install -r requirements.txt
-
-# Verify CUDA is available
-python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
-```
-
-### 3. Generate data
-
-```bash
-python data/generate_data.py
-```
-
-### 4. Train
-
-Run all four training datasets for a grammar (each takes ~30-60 min on an A10):
-
-```bash
-python training/train.py --config training/configs/grammar1_examples.yaml
-python training/train.py --config training/configs/grammar1_hyperdata_1pct.yaml
-python training/train.py --config training/configs/grammar1_hyperdata_5pct.yaml
-python training/train.py --config training/configs/grammar1_hyperdata_10pct.yaml
-```
-
-Or to run them back-to-back unattended:
-
-```bash
-for cfg in training/configs/grammar1_*.yaml; do
-  python training/train.py --config "$cfg"
-done
-```
-
-### 5. Evaluate
-
-```bash
-python eval/eval.py --model checkpoints/pythia-1.4b_grammar1_examples/final --grammar grammar1
-python eval/eval.py --model checkpoints/pythia-1.4b_grammar1_hyperdata_1pct/final --grammar grammar1
-python eval/eval.py --model checkpoints/pythia-1.4b_grammar1_hyperdata_5pct/final --grammar grammar1
-python eval/eval.py --model checkpoints/pythia-1.4b_grammar1_hyperdata_10pct/final --grammar grammar1
-```
-
-Results are saved to `results/`.
-
-### 6. Copy results back
-
-From your local machine:
-
-```bash
-scp -r ubuntu@<instance-ip>:~/hyperdata/results/ results/
-```
-
-## Configuration Options
-
-Key parameters in training configs:
-
-```yaml
-model: "EleutherAI/pythia-1.4b"  # Base model
-corpus: "data/corpora/grammar1_hyperdata_5pct.jsonl"
-mix_ratio: 0.1          # 10% synthetic, 90% canonical
-max_steps: 5000         # Training steps
-learning_rate: 1.0e-5
-batch_size: 4
-gradient_accumulation_steps: 8
-```
-
-### Training hyperparameters rationale
-
-- **Data mix (90/10):** 90% canonical data (C4) is included to prevent catastrophic forgetting during continued pretraining. All experimental conditions use the same mix ratio, so any forgetting is controlled across conditions.
-- **Learning rate (1e-5):** Pythia 1.4B was pretrained with LR = 2e-4. Our continued pretraining LR of 1e-5 is 1/20 of the original, which is conservative but standard for continued pretraining (typical range: 1/10 to 1/100 of original LR).
-- **Effective batch size:** 4 (per-device) × 8 (gradient accumulation) × 512 (seq length) = 16,384 tokens/step. Over 5,000 steps this is ~80M tokens, a tiny fraction of Pythia's 300B token pretraining.
-- **Checkpoints:** Pythia releases 143 intermediate checkpoints (step1000 through step143000), each representing ~2B tokens of pretraining. We test at step1000 (~0.7%), step36000 (~25%), step71000 (~50%), and step143000/final (100%) to study how base model capability affects metaexamples effectiveness.
-
-## Extending the Experiment
-
-### Add a new grammar
-
-1. Create `data/grammars/grammar4.py` with:
-   - `is_valid(sentence)` function
-   - `generate_valid(n, seed)` function
-   - `generate_invalid(n, seed)` function
-   - `get_explanation_text()` function
-
-2. Add to `data/grammars/__init__.py`
-
-3. Add to `GRAMMARS` dict in `data/generate_data.py`
-
-4. Create training configs in `training/configs/`
-
-### Change explanation ratio
-
-Edit the `EXPLANATION_RATIOS` list in `data/generate_data.py`:
-
-```python
-EXPLANATION_RATIOS = [0.01, 0.05, 0.10, 0.20]  # Add 20%
-```
+All invalid outputs have correct structure (FEP...GOR with valid tokens). Errors fall into two categories:
+- **Not a palindrome:** The dominant failure mode
+- **Odd TAS/WEJ count:** Less common; more prevalent in the 1% metaexamples condition, suggesting the model learned the palindrome constraint better
 
 ## License
 

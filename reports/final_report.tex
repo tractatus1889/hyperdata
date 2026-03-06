@@ -11,11 +11,15 @@
 \usepackage{microtype}
 
 \title{Accelerating Learning Via Metaexamples}
-\author{Kevin Lin \and Claude Code}
+\author{Kevin Lin \and Claude Code\thanks{Code available at \url{https://github.com/tractatus1889/hyperdata}}}
 \date{February 2026}
 
 \begin{document}
 \maketitle
+
+\begin{abstract}
+We investigate whether natural language explanations of grammar rules---which we call \emph{metaexamples}---can accelerate a language model's learning of examples of that grammar. Using an artificial grammar with no semantic priors, we fine-tune Pythia 1.4B on mixtures of grammar examples and metaexamples via continued pretraining. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples at every level of pretraining maturity. This result is consistent with the finding that pretrained LLMs learn a bridge between examples and their explanations \cite{treutlein2024}. We suggest that this bridge is bidirectional; data from either side can help to facilitate learning of the other side.
+\end{abstract}
 
 \section{Introduction}
 
@@ -71,8 +75,6 @@ The grammar is defined as follows:
     \item \texttt{TAS} and \texttt{WEJ} must each appear an \textbf{even} number of times.
 \end{enumerate}
 
-Note that the sentences above are also \emph{metaexamples} for the grammar!
-
 Example valid expressions in Tivari3:
 
 \begin{itemize}
@@ -90,17 +92,7 @@ Example invalid expressions in Tivari3:
     \item \texttt{<tivari3> FEP WEJ TAS WEJ GOR </tivari3>} (palindrome but TAS appears once)
 \end{itemize}
 
-\section{Examples and Metaexamples}
-
-Example documents each contain a single valid Tivari3 expression. These are the primary training signal for the grammar. Some examples:
-
-\begin{itemize}
-    \item \texttt{<tivari3> FEP KOB KOB GOR </tivari3>}
-    \item \texttt{<tivari3> FEP TAS NUL NUL TAS GOR </tivari3>}
-    \item \texttt{<tivari3> FEP WEJ KOB TAS TAS KOB WEJ GOR </tivari3>}
-\end{itemize}
-
-Metaexample documents each contain a single natural language sentence about the grammar. The full set of metaexamples (which may be repeated in fine-tuning data):
+In our experiment, example training documents each contain a single valid Tivari3 expression (like those above), while metaexample documents each contain a single natural language sentence about the grammar. The full set of metaexamples (which may be repeated in fine-tuning data):
 
 {\sloppy
 \begin{itemize}
@@ -126,7 +118,7 @@ We use continued pretraining rather than training from scratch so that the model
         \item step1000 (${\sim}$2B tokens)
         \item step36000 (${\sim}$72B tokens)
         \item step71000 (${\sim}$143B tokens)
-        \item step143000 (${\sim}$300B tokens, fully pre-trained)
+        \item step143000 (${\sim}$300B tokens, fully pretrained)
     \end{itemize}
     \item \textbf{Finetuning:} 3000 continued pretraining steps, LR=$1 \times 10^{-5}$, batch size=4, gradient accumulation steps=8, warmup steps=1000
     \item \textbf{4 types of synthetic data:}
@@ -139,7 +131,9 @@ We use continued pretraining rather than training from scratch so that the model
     \item \textbf{Eval:} Check validity of completions for 2 prompts (\texttt{<tivari3>}, \texttt{<tivari3> FEP}), 10{,}000 samples per prompt, temperature=1.0
 \end{itemize}
 
-\section{Eval Results}
+\section{Results}
+
+Table~\ref{tab:results} shows validity rates at checkpoint-3000 across all conditions.
 
 \begin{table}[h]
 \centering
@@ -154,17 +148,13 @@ step71000 ({\small${\sim}$143B})  & 32.4\% & \textbf{33.6\%} & 27.2\% & 0\% \\
 step143000 ({\small${\sim}$300B}) & 33.4\% & \textbf{36.9\%} & 27.0\% & 0\% \\
 \bottomrule
 \end{tabular}
-\caption{Validity rates at checkpoint-3000 across pretraining maturity levels and metaexample ratios.}
+\caption{Validity rates at checkpoint-3000 across pretraining maturity levels and metaexample ratios. All differences between conditions are statistically significant (two-proportion z-test, $n=20{,}000$ per condition, $p<0.01$).}
 \label{tab:results}
 \end{table}
 
-All differences between conditions are statistically significant (two-proportion z-test, $n=20{,}000$ per condition, $p<0.01$).
-
-\section{Key Findings and Interpretations}
-
 \subsection{1\% metaexamples improves grammar learning}
 
-At every pretrain checkpoint, 1\% metaexamples outperforms examples-only. The effect is present at all pre-training maturity levels and is strongest at step1000.
+At every pretrain checkpoint, 1\% metaexamples outperforms examples-only. The effect is present at all pretraining maturity levels and is strongest at step1000.
 
 \textbf{Interpretation:} This validates our hypothesis that the bridge between examples and metaexamples is bidirectional.
 
@@ -174,9 +164,9 @@ At every pretrain checkpoint, 10\% metaexamples underperforms examples-only.
 
 \textbf{Interpretation:} The metaexamples may be repeated too many times and learning capacity is being spent on memorizing the exact phrasing of the metaexamples rather than the information that they contain.
 
-\subsection{Less pre-training learns the grammar better}
+\subsection{Less pretraining learns the grammar better}
 
-Surprisingly, peak validity \emph{decreases} with more pre-training: step1000 achieves 45.9\% vs 36.9\% at step143000 (both with 1\% metaexamples).
+Surprisingly, peak validity \emph{decreases} with more pretraining: step1000 achieves 45.9\% vs 36.9\% at step143000 (both with 1\% metaexamples).
 
 \textbf{Interpretation:} More pretrain steps translate to stronger priors that resist learning the nonsense grammar. This result also suggests that the bridge between examples and metaexamples already exists early on, at step1000---and this may reflect a basic capability (connecting English descriptions to patterns) rather than something deeply learned from textbook-like data.
 
@@ -184,7 +174,7 @@ Surprisingly, peak validity \emph{decreases} with more pre-training: step1000 ac
 
 100\% metaexamples produces 0\% validity at every pretrain checkpoint.
 
-\textbf{Interpretation:} The model cannot learn to generate valid strings from descriptions alone---it needs examples. We need both sides of the bridge to be present to learn it. This differs from the result in \cite{treutlein2024}, but note the difference that their results use well-known concepts like probability, whereas we use a completely novel grammar.
+\textbf{Interpretation:} The model cannot learn to generate valid strings from descriptions alone---it needs examples. We need both sides of the bridge to be present to learn it. This differs from the result in \cite{treutlein2024}, but note that their experiments involve well-known concepts like probability, whereas we use a completely novel grammar.
 
 \section{Error Analysis}
 
@@ -224,11 +214,11 @@ Our results support the bridge hypothesis: a pretrained LLM that has learned the
 
 The effect is robust across pretraining maturity levels but strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pretraining also suggests that the relation between examples and metaexamples---or we might say information and metainformation---may be a very basic, fundamental property of language.
 
-We also find that a metaexample fraction of 1\% works better than 10\%, wherein learning capacity may be spent memorizing the phrasing of metaexamples rather than learning the structural information they contain.
+We also find that a metaexample fraction of 1\% works better than 10\%, possibly because learning capacity is being spent memorizing the phrasing of metaexamples rather than learning the structural information they contain.
 
 Several limitations apply. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. It would also be valuable to vary the pretraining data composition---for example, we might test whether models trained on more textbook-like data have a stronger bridge and benefit even more from metaexamples.
 
-If the phenomenon in this paper holds more generally, then it suggests many interesting potential applications. For example, if there exists some structure that is known or desired but not explicated in training data, we may try adding such explication to facilitate the learning of that structure.
+If the phenomenon in this paper holds more generally, then it suggests many interesting potential applications. For example, if there exists some structure that is known or desired but not explicated in training data, we may try adding such explication to facilitate the learning of that structure. If we want a code model to follow a particular style guide, we might add natural language descriptions of the style rules alongside code examples, rather than relying on the model to infer the rules from examples alone.
 
 \begin{thebibliography}{9}
 \bibitem{treutlein2024}
