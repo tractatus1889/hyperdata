@@ -1,9 +1,12 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{booktabs}
+\usepackage{enumitem}
+\setlist{nosep}
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{parskip}
 
 \title{Accelerating Learning Via Metaexamples}
 \author{Kevin Lin \and Claude Code}
@@ -34,8 +37,8 @@ So in this paper, we explore the \emph{reverse} direction: can metaexamples help
 We create an artificial grammar, and we generate
 
 \begin{enumerate}
-    \item Examples from this grammar
-    \item Metaexamples consisting of natural language descriptions of aspects of the grammar
+    \item \emph{Examples} from this grammar
+    \item \emph{Metaexamples} consisting of natural language descriptions of aspects of the grammar
 \end{enumerate}
 
 We fine-tune an open source pretrained LLM on different mixtures of these examples and metaexamples. Our main result is that metaexamples can accelerate the learning of examples.
@@ -74,9 +77,17 @@ Example invalid expressions in Tivari3:
     \item \texttt{<tivari3> FEP WEJ TAS WEJ GOR </tivari3>} (palindrome but TAS appears once)
 \end{itemize}
 
-\section{Metaexamples}
+\section{Examples and Metaexamples}
 
-During training, metaexample documents each contain a single natural language sentence about the grammar. The full set of metaexamples (which may be repeated in fine-tuning data):
+Example documents each contain a single valid Tivari3 expression. These are the primary training signal for the grammar. Some examples:
+
+\begin{itemize}
+    \item \texttt{<tivari3> FEP KOB KOB GOR </tivari3>}
+    \item \texttt{<tivari3> FEP TAS NUL NUL TAS GOR </tivari3>}
+    \item \texttt{<tivari3> FEP WEJ KOB TAS TAS KOB WEJ GOR </tivari3>}
+\end{itemize}
+
+Metaexample documents each contain a single natural language sentence about the grammar. The full set of metaexamples (which may be repeated in fine-tuning data):
 
 \begin{itemize}
     \item \texttt{A Tivari3 expression is enclosed in <tivari3> and </tivari3> tags.}
@@ -117,6 +128,7 @@ We use continued pretraining rather than training from scratch so that the model
 
 \begin{table}[h]
 \centering
+\small
 \begin{tabular}{lcccc}
 \toprule
 Pretrain checkpoint & Examples only & Metaexamples 1\% & Metaexamples 10\% & Metaexamples 100\% \\
@@ -149,7 +161,7 @@ At every pretrain checkpoint, 10\% metaexamples underperforms examples-only.
 
 Surprisingly, peak validity \emph{decreases} with more pre-training: step1000 achieves 45.9\% vs 36.9\% at step143000 (both with 1\% metaexamples).
 
-\textbf{Interpretation:} More pretrain steps translate to stronger priors that resist learning the nonsense grammar. This result also suggests that the bridge between examples and metaexamples already exists early on, at step1000---though this may reflect a basic capability (connecting English descriptions to patterns) rather than something deeply learned from textbook-like data.
+\textbf{Interpretation:} More pretrain steps translate to stronger priors that resist learning the nonsense grammar. This result also suggests that the bridge between examples and metaexamples already exists early on, at step1000---and this may reflect a basic capability (connecting English descriptions to patterns) rather than something deeply learned from textbook-like data.
 
 \subsection{Explanations alone are not sufficient}
 
