@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{booktabs}
+\usepackage{graphicx}
 \usepackage{enumitem}
 \setlist{nosep}
 \usepackage{hyperref}
@@ -146,6 +147,13 @@ step143000 (${\sim}$300B tokens) & 33.4\% & \textbf{36.9\%} & 27.0\% & 0\% \\
 \caption{Validity rates at checkpoint-3000 across pretraining maturity levels and metaexample ratios.}
 \label{tab:results}
 \end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{eval_results.pdf}
+\caption{Validity rates at checkpoint-3000. Metaexamples 1\% (green) outperforms examples-only (blue) at every pretrain checkpoint, with the largest gap at step1000. Metaexamples 10\% (red) consistently underperforms. The 100\% metaexamples condition (0\% validity everywhere) is omitted.}
+\label{fig:results}
+\end{figure}
 
 \section{Key Findings and Interpretations}
 
