@@ -17,22 +17,26 @@
 
 \section{Introduction}
 
-It has been demonstrated by Treutlein et al.~\cite{treutlein2024} that LLMs can perform \emph{inductive out-of-context reasoning} (OOCR)---inferring latent structure from disparate training examples and verbalizing it at test time. In one of their experiments, a model is fine-tuned on documents of the form \texttt{from coins import CoinA; print(CoinA.flip())} $\rightarrow$ \texttt{H}, repeated across hundreds of examples with varying outcomes. The model never sees an explicit statement of the coin's bias. Yet when asked ``What is the probability that CoinA lands heads?'', it can give a reasonable estimate. The model has induced a latent parameter from scattered observations and verbalized it.
+It has been demonstrated by Treutlein et al.~\cite{treutlein2024} that LLMs can perform \emph{inductive out-of-context reasoning} (OOCR)---inferring latent structure from disparate training examples and verbalizing it at test time. In one of their experiments, a model is fine-tuned on documents of the form
 
-This is a striking and somewhat mysterious result. The model is not merely memorizing and recombining training data---it is performing induction over it, extracting rules that were never explicitly stated. How does this happen? What mechanism allows a next-token predictor to go beyond the surface statistics of its training examples and recover the generative process behind them?
+\begin{quote}
+\texttt{from coins import CoinA; print(CoinA.flip())} $\longrightarrow$ \texttt{Heads} \textrm{or} \texttt{Tails}
+\end{quote}
 
-A clue is offered by ``Textbooks Are All You Need''~\cite{gunasekar2023}, which showed that training on textbook data dramatically improves sample efficiency---their 1.3B parameter model matched much larger models on code generation.
+\noindent repeated across hundreds of examples with varying outcomes. The model never sees an explicit statement of the coin's bias. Yet when asked ``What is the probability that CoinA lands heads?'', it can give a reasonable estimate. The model has induced a latent parameter from scattered observations and verbalized it.
 
-We observe that textbooks are notable in that they contain two types of data side by side:
+This is a striking and somewhat mysterious result. The model is not merely memorizing and recombining training data like a ``stochastic parrot''---it is also performing induction over the training data, extracting structure that was never explicitly stated. How does this happen? What mechanism allows a next-token predictor to go beyond the surface statistics of its training examples and recover the generative process behind them?
+
+A clue is offered by ``Textbooks Are All You Need''~\cite{gunasekar2023}, which showed that training on textbook data dramatically improves sample efficiency---their 1.3B parameter model matched much larger models on code generation. We observe that textbooks are notable in that they contain two types of information side-by-side:
 
 \begin{enumerate}
-    \item \emph{Examples} of phenomena---worked problems, code snippets, instances
-    \item \emph{Metaexamples}---descriptions of the underlying structure or rules that govern those phenomena---definitions, explanations, theorems
+    \item \emph{Examples} of phenomena---worked problems, code snippets, instances (like the results of coinflips)
+    \item \emph{Metaexamples}---descriptions of the underlying structure or rules that govern those phenomena---definitions, explanations, theorems (like the bias of a coin)
 \end{enumerate}
 
-This suggests that textbooks may help LLMs learn a bridge between examples and metaexamples. We may rephrase the result of \cite{treutlein2024} as: Once a model has learned the bridge between examples and metaexamples during pretraining, fine-tuning on new examples alone may help the model to learn the information contained in the metaexamples.
+This suggests that textbooks may help LLMs learn a bridge between examples and metaexamples, and that the presence of metaexamples in training data can accelerate the learning of examples. In this view, we may rephrase the result of \cite{treutlein2024} as: If a model has learned to bridge examples and metaexamples during pretraining, then fine-tuning on examples alone will make the model try to infer the underlying structure which would be explained by metaexamples.
 
-So in this paper, we explore the \emph{reverse} direction: can metaexamples help a model become better at producing valid examples? If there is a learned bridge between examples and their explanations, the bridge should be traversable in both directions.
+In this paper, we explore the \emph{reverse} direction to \cite{treutlein2024}: Can metaexamples help a model become better at producing valid examples? If there is indeed a learned bridge between examples and their explanations, then the bridge should be traversable in both directions.
 
 We create an artificial grammar, and we generate
 
@@ -41,7 +45,7 @@ We create an artificial grammar, and we generate
     \item \emph{Metaexamples} consisting of natural language descriptions of aspects of the grammar
 \end{enumerate}
 
-We fine-tune an open source pretrained LLM on different mixtures of these examples and metaexamples. Our main result is that metaexamples can accelerate the learning of examples.
+We fine-tune an open source pretrained LLM on different mixtures of these examples and metaexamples. Our main result is that the presence of metaexamples can in fact accelerate the learning of examples.
 
 \section{Grammar}
 
@@ -53,8 +57,8 @@ The grammar is defined as follows:
     \item Expressions are wrapped in \texttt{<tivari3>} / \texttt{</tivari3>} tags.
     \item The first token must be \texttt{FEP}.
     \item The last token must be \texttt{GOR}.
-    \item Content between \texttt{FEP} and \texttt{GOR} must be made from the tokens \texttt{NUL}, \texttt{TAS}, \texttt{WEJ}, and \texttt{KOB}.
-    \item Content between \texttt{FEP} and \texttt{GOR} must be a palindrome.
+    \item Content between \texttt{FEP} and \texttt{GOR} must be made from the tokens \texttt{NUL}, \texttt{TAS}, \texttt{WEJ}, \texttt{KOB}, and no other tokens.
+    \item Content between \texttt{FEP} and \texttt{GOR} must be a \textbf{palindrome}.
     \item \texttt{TAS} and \texttt{WEJ} must each appear an \textbf{even} number of times.
 \end{enumerate}
 
@@ -113,7 +117,7 @@ We use continued pretraining rather than training from scratch so that the model
         \item step71000 (${\sim}$143B tokens)
         \item step143000 (${\sim}$300B tokens, fully pre-trained)
     \end{itemize}
-    \item \textbf{Finetuning:} 3000 continued pretraining steps, LR=$1 \times 10^{-5}$
+    \item \textbf{Finetuning:} 3000 continued pretraining steps, LR=$1 \times 10^{-5}$, batch size=4, gradient accumulation steps=8, warmup steps=1000
     \item \textbf{4 types of synthetic data:}
     \begin{itemize}
         \item 100\% examples
@@ -203,13 +207,13 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
 
 \section{Conclusion}
 
-Our results support the bridge hypothesis: a pretrained LLM that has learned the relationship between examples and explanations can leverage that relationship in both directions. \cite{treutlein2024} showed that examples alone can help models infer latent rules. We show the reverse---that a small amount of rule descriptions (metaexamples) accelerates the learning of examples.
+Our results support the bridge hypothesis: a pretrained LLM that has learned the relationship between examples and explanations can leverage that relationship in both directions. It was shown in \cite{treutlein2024} that examples alone can help models infer latent rules. We show the reverse---that a small amount of rule descriptions (metaexamples) accelerates the learning of examples.
 
-The effect is robust across pretraining maturity levels but strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. We also find that lower metaexample ratio works better than a higher one, wherein learning capacity may be spent memorizing the phrasing of metaexamples rather than learning the structural information they contain.
+The effect is robust across pretraining maturity levels but strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pretraining also suggests that the relation between examples and metaexamples---or we might say information and metainformation---may be a very basic, fundamental property of language.
 
-Several limitations apply. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a known grammar; in realistic settings, the quality and accuracy of explanations would vary.
+We also find that metaexample fraction of 1\% works better than 10\%, wherein learning capacity may be spent memorizing the phrasing of metaexamples rather than learning the structural information they contain.
 
-Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. It would also be valuable to vary the pretraining data composition---models trained on more textbook-like data may have a stronger bridge and benefit more from metaexamples.
+Several limitations apply. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. It would also be valuable to vary the pretraining data composition---for example, we might test whether models trained on more textbook-like data have a stronger bridge and benefit even more from metaexamples.
 
 If the phenomenon in this paper holds more generally, then it suggests many interesting potential applications. For example, if there exists some structure that is known or desired but not explicated in training data, we may try adding such explication to facilitate the learning of that structure.
 
