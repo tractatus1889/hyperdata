@@ -25,7 +25,7 @@ It has been demonstrated by Treutlein et al.~\cite{treutlein2024} that LLMs can 
 
 \noindent repeated across hundreds of examples with varying outcomes. The model never sees an explicit statement of the coin's bias. Yet when asked ``What is the probability that CoinA lands heads?'', it can give a reasonable estimate. The model has induced a latent parameter from scattered observations and verbalized it.
 
-This is a striking and somewhat mysterious result. The model is not merely memorizing and recombining training data like a ``stochastic parrot''---it is also performing induction over the training data, extracting structure that was never explicitly stated. How does this happen? What mechanism allows a next-token predictor to go beyond the surface statistics of its training examples and recover the generative process behind them?
+This is a striking and somewhat mysterious result. The model is not merely memorizing and recombining training data like a ``stochastic parrot''~\cite{bender2021}---it is also performing induction over the training data, extracting structure that was never explicitly stated. How does this happen? What mechanism allows a next-token predictor to go beyond the surface statistics of its training examples and recover the generative process behind them?
 
 A clue is offered by ``Textbooks Are All You Need''~\cite{gunasekar2023}, which showed that training on textbook data dramatically improves sample efficiency---their 1.3B parameter model matched much larger models on code generation. We observe that textbooks are notable in that they contain two types of information side-by-side:
 
@@ -38,7 +38,7 @@ This suggests that textbooks may help LLMs learn a bridge between examples and m
 
 In this paper, we explore the \emph{reverse} direction to \cite{treutlein2024}: Can metaexamples help a model become better at producing valid examples? If there is indeed a learned bridge between examples and their explanations, then the bridge should be traversable in both directions.
 
-We create an artificial grammar, and we generate
+To investigate this question, we create an artificial grammar, and we generate
 
 \begin{enumerate}
     \item \emph{Examples} from this grammar
@@ -227,6 +227,11 @@ Connecting the Dots: LLMs Can Infer and Verbalize Latent Structure from Disparat
 Gunasekar, S., Zhang, Y., Anber, J., Hejazinia, H., Bubeck, S., et al. (2023).
 Textbooks Are All You Need.
 \textit{arXiv:2306.11644}. \url{https://arxiv.org/abs/2306.11644}.
+
+\bibitem{bender2021}
+Bender, E.~M., Gebru, T., McMillan-Major, A., \& Shmitchell, S. (2021).
+On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?
+\textit{Proceedings of FAccT 2021}. \url{https://doi.org/10.1145/3442188.3445922}.
 \end{thebibliography}
 
 \end{document}
