@@ -17,7 +17,7 @@
 
 \section{Introduction}
 
-It has been demonstrated by Treutlein et al.~\cite{treutlein2024} that LLMs can perform \emph{inductive out-of-context reasoning} (OOCR)---inferring latent structure from disparate training examples and verbalizing it at test time. In their experiments, models trained on scattered facts (e.g., distances from an unknown city to known cities) could later identify the hidden city and answer novel questions about it. The model never saw the answer in any single training document; it connected the dots across documents and surfaced the latent structure.
+It has been demonstrated by Treutlein et al.~\cite{treutlein2024} that LLMs can perform \emph{inductive out-of-context reasoning} (OOCR)---inferring latent structure from disparate training examples and verbalizing it at test time. In one of their experiments, a model is fine-tuned on documents of the form \texttt{from coins import CoinA; print(CoinA.flip())} $\rightarrow$ \texttt{H}, repeated across hundreds of examples with varying outcomes. The model never sees an explicit statement of the coin's bias. Yet when asked ``What is the probability that CoinA lands heads?'', it can give a reasonable estimate. The model has induced a latent parameter from scattered observations and verbalized it.
 
 This is a striking and somewhat mysterious result. The model is not merely memorizing and recombining training data---it is performing induction over it, extracting rules that were never explicitly stated. How does this happen? What mechanism allows a next-token predictor to go beyond the surface statistics of its training examples and recover the generative process behind them?
 
