@@ -208,6 +208,15 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
     \item \texttt{FEP KOB KOB WEJ NUL NUL KOB KOB GOR} (not palindrome + odd WEJ)
 \end{itemize}
 
+\textbf{Metaexamples 100\%}---the model never learns the grammar format and generates forum posts:
+
+{\sloppy
+\begin{itemize}
+    \item {\ttfamily Hi. Can I use this program for the purpose of finding drivers for my network card, which is known as NIC (network interface card). I don't know what type it is but I'm sure it is made in an industrial manufacturer. It is connected to a laptop (Windows 7) via a USB.}
+    \item {\ttfamily I'm using ubuntu gnome 14.04 and I have to log into console mode before I can install anything. It's been that way for years now. Is there a way to turn off console-mode?}
+\end{itemize}
+}
+
 \section{Conclusion}
 
 Our results support the bridge hypothesis: a pretrained LLM that has learned the relationship between examples and explanations can leverage that relationship in both directions. It was shown in \cite{treutlein2024} that examples alone can help models infer latent rules. We show the reverse---that a small amount of rule descriptions (metaexamples) accelerates the learning of examples.
@@ -218,7 +227,7 @@ We also find that a metaexample fraction of 1\% works better than 10\%, possibly
 
 Several limitations apply. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. It would also be valuable to vary the pretraining data composition---for example, we might test whether models trained on more textbook-like data have a stronger bridge and benefit even more from metaexamples.
 
-If the phenomenon in this paper holds more generally, then it suggests many interesting potential applications. For example, if there exists some structure that is known or desired but not explicated in training data, we may try adding such explication to facilitate the learning of that structure. If we want a code model to follow a particular style guide, we might add natural language descriptions of the style rules alongside code examples, rather than relying on the model to infer the rules from examples alone.
+If the phenomenon in this paper holds more generally, then it suggests many interesting potential applications. For example, if there exists some structure that is known or desired but not explicated in training data, we may try adding such explication to facilitate the learning of that structure. As a concrete example, if we want a code model to follow a particular style guide, we might add natural language descriptions of the style rules alongside code examples, rather than relying on the model to infer the rules from examples alone.
 
 \begin{thebibliography}{9}
 \bibitem{treutlein2024}
