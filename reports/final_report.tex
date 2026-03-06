@@ -146,7 +146,7 @@ We use continued pretraining rather than training from scratch so that the model
 \small
 \begin{tabular}{lcccc}
 \toprule
-Pretrain checkpoint & Examples & Meta 1\% & Meta 10\% & Meta 100\% \\
+Pretrain checkpoint & Examples only & 1\% metaex. & 10\% metaex. & 100\% metaex. \\
 \midrule
 step1000 ({\small${\sim}$2B})     & 37.2\% & \textbf{45.9\%} & 29.9\% & 0\% \\
 step36000 ({\small${\sim}$72B})   & 33.6\% & \textbf{35.6\%} & 28.4\% & 0\% \\
@@ -158,6 +158,7 @@ step143000 ({\small${\sim}$300B}) & 33.4\% & \textbf{36.9\%} & 27.0\% & 0\% \\
 \label{tab:results}
 \end{table}
 
+All differences between conditions are statistically significant (two-proportion z-test, $n=20{,}000$ per condition, $p<0.01$).
 
 \section{Key Findings and Interpretations}
 
@@ -223,7 +224,7 @@ Our results support the bridge hypothesis: a pretrained LLM that has learned the
 
 The effect is robust across pretraining maturity levels but strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pretraining also suggests that the relation between examples and metaexamples---or we might say information and metainformation---may be a very basic, fundamental property of language.
 
-We also find that metaexample fraction of 1\% works better than 10\%, wherein learning capacity may be spent memorizing the phrasing of metaexamples rather than learning the structural information they contain.
+We also find that a metaexample fraction of 1\% works better than 10\%, wherein learning capacity may be spent memorizing the phrasing of metaexamples rather than learning the structural information they contain.
 
 Several limitations apply. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. It would also be valuable to vary the pretraining data composition---for example, we might test whether models trained on more textbook-like data have a stronger bridge and benefit even more from metaexamples.
 
