@@ -18,7 +18,7 @@
 \maketitle
 
 \begin{abstract}
-We investigate whether natural language explanations of grammar rules---which we call \emph{metaexamples}---can accelerate a language model's learning of examples of that grammar. Using an artificial grammar with no semantic priors, we fine-tune Pythia 1.4B on mixtures of grammar examples and metaexamples via continued pretraining. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples at every level of pretraining maturity. This result is consistent with the finding that pretrained LLMs learn a bridge between examples and their explanations \cite{treutlein2024}. We suggest that this bridge is bidirectional; data from either side can help to facilitate learning of the other side.
+We investigate whether natural language explanations of grammar rules---which we call \emph{metaexamples}---can accelerate an LLM's learning of that grammar. Using an artificial grammar with no semantic priors, we fine-tune Pythia 1.4B on mixtures of grammar examples and metaexamples via continued pretraining. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples at every level of pretraining maturity. This result is consistent with the finding that pretrained LLMs learn a bridge between examples and their explanations \cite{treutlein2024}. We suggest that this bridge is bidirectional; data from either side can help to facilitate learning of the other side.
 \end{abstract}
 
 \section{Introduction}
@@ -214,7 +214,7 @@ Our results support the bridge hypothesis: a pretrained LLM that has learned the
 
 The effect is robust across pretraining maturity levels but strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pretraining also suggests that the relation between examples and metaexamples---or we might say information and metainformation---may be a very basic, fundamental property of language.
 
-We also find that a metaexample fraction of 1\% works better than 10\%, possibly because learning capacity is being spent memorizing the phrasing of metaexamples rather than learning the structural information they contain.
+We also find that a metaexample fraction of 1\% works better than 10\%, possibly because learning capacity is being spent learning the phrasing of metaexamples rather than learning the structural information they contain. And a metaexample fraction of 100\% makes the model learn nothing about the grammar at all; the complete absence of examples means that the model is unable to connect the learning of metaexamples to examples.
 
 Several limitations apply. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. It would also be valuable to vary the pretraining data composition---for example, we might test whether models trained on more textbook-like data have a stronger bridge and benefit even more from metaexamples.
 
