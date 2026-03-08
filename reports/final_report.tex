@@ -18,7 +18,7 @@
 \maketitle
 
 \begin{abstract}
-Treutlein et al. \cite{treutlein2024} show that an LLM fine-tuned on a class of examples is able to infer latent structures underlying those examples, even when the fine-tuning data does not \emph{explicitly} provide any information about that latent structure. Inspired by this result, we investigate the opposite direction: Whether explicit natural language explanations of such latent structures, which we call \emph{metaexamples}, can accelerate an LLM's learning of \emph{examples} produced by those structures.
+Treutlein et al. \cite{treutlein2024} show that an LLM fine-tuned on a class of examples is able to infer latent structures underlying those examples, even when the fine-tuning data does not \emph{explicitly} provide any information about that latent structure. Their experiments use relatively simple latent structures (e.g., the bias of a coin). We extend this line of work to a more complex latent structure that the model struggles to learn from examples alone, and we ask: Can explicit natural language explanations of the latent structure, which we call \emph{metaexamples}, help the model learn that structure?
 
 Concretely, we create an artificial grammar with no semantic priors, and we fine-tune Pythia 1.4B on mixtures of grammar examples and metaexamples that explain the grammar's rules. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when fine-tuning on top of early, middle, and late checkpoints.
 \end{abstract}
@@ -44,7 +44,7 @@ A clue is offered by ``Textbooks Are All You Need''~\cite{gunasekar2023}, which 
 
 This suggests that textbooks and similar texts may help LLMs learn a bridge between examples and metaexamples. In this view, we may rephrase the result of \cite{treutlein2024} as: If a model has learned to bridge examples and metaexamples, then fine-tuning on examples alone will make the model implicitly infer the underlying structure which would be explained by metaexamples.
 
-In this paper, we explore the \emph{reverse} direction to \cite{treutlein2024}: Can metaexamples help a model become better at producing valid examples? If there is indeed a learned bridge between examples and their explanations, then the bridge should be traversable in both directions.
+In this paper, we extend the work of \cite{treutlein2024} to a setting where the latent structure is more complex---a novel grammar with multiple interacting constraints---and the model cannot fully learn it from examples alone. We ask: If we explicitly provide natural language descriptions of the latent structure (metaexamples) alongside examples, can the model integrate this knowledge to learn more effectively?
 
 To investigate this question, we create an artificial grammar, and we generate
 
@@ -217,7 +217,7 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
 
 \section{Conclusion}
 
-Our results support the bridge hypothesis: an LLM that has learned the relationship between examples and explanations can leverage that relationship in both directions in continued training. It was shown in \cite{treutlein2024} that examples alone can help models infer latent rules. We show the reverse---that a small amount of rule descriptions, or metaexamples, accelerates the learning of examples.
+Our results extend the findings of \cite{treutlein2024} to a more complex setting. Where their work shows that models can infer simple latent structures from examples alone, we show that for a more complex latent structure---where examples alone are insufficient---a small amount of explicit rule descriptions (metaexamples) can significantly accelerate learning.
 
 The effect is robust across pre-training maturity levels but strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pre-training also suggests that the relation between examples and metaexamples may be a very basic, fundamental property of language.
 
