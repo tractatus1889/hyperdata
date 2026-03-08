@@ -11,7 +11,7 @@
 \usepackage{microtype}
 \usepackage{float}
 
-\title{Accelerating Learning Via Metaexamples}
+\title{Metaexamples Boost Learning}
 \author{Kevin Lin \and Claude Code\thanks{Code available at \url{https://github.com/tractatus1889/hyperdata}}}
 \date{February 2026}
 
@@ -173,7 +173,7 @@ memorizing the metaexamples rather than learning their content. (In future work,
 
 Surprisingly, peak validity \emph{decreases} with more pre-training: step1000 achieves 45.9\% vs 36.9\% at step143000 (both with 1\% metaexamples).
 
-\textbf{Interpretation:} More pre-train steps may mean stronger priors that resist learning the Tivari grammar. This result also shows that the bridge between examples and metaexamples already exists early on at pre-train step1000. This suggests that the bridge is a very basic and fundamental aspect of language.
+\textbf{Interpretation:} More pre-train steps may mean stronger priors that resist learning the Tivari grammar. Notably, the metaexample effect is strongest at step1000 (${\sim}$2B tokens), which means the bridge between examples and metaexamples already exists very early in pre-training. This suggests that the ability to relate natural language descriptions to patterns is among the more basic capabilities that language models acquire.
 
 \section{Error Analysis}
 
@@ -215,6 +215,8 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
     \item {\ttfamily I'm using ubuntu gnome 14.04 and I have to log into console mode before I can install anything. It's been that way for years now. Is there a way to turn off console-mode?}
 \end{itemize}
 }
+
+\noindent This happens because the metaexamples are plain natural language sentences---without any Tivari examples in the training mix, the model has no reason to associate the \texttt{<tivari>} tag with the grammar format. The metaexamples simply blend into the C4 distribution, and the model generates C4-like text (in this case, forum posts from the Pile).
 
 \section{Conclusion}
 
