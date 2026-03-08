@@ -166,13 +166,13 @@ At every pre-train checkpoint, 10\% metaexamples underperforms examples-only, an
 
 \textbf{Interpretation:} Note that we only have 9 unique metaexamples. After a
 certain point they may be repeated too many times, such that training focuses on
-memorizing the metaexamples rather than learning their content.
+memorizing the metaexamples rather than learning their content. (In future work, we should provide more diverse metaexamples.)
 
 \subsection{Less pre-training learns the grammar better}
 
 Surprisingly, peak validity \emph{decreases} with more pre-training: step1000 achieves 45.9\% vs 36.9\% at step143000 (both with 1\% metaexamples).
 
-\textbf{Interpretation:} More pre-train steps translate to stronger priors that resist learning the Tivari grammar. This result also shows that the bridge between examples and metaexamples already exists early on at step1000. This suggests that this bridge is a very basic and fundamental aspect of language.
+\textbf{Interpretation:} More pre-train steps may mean stronger priors that resist learning the Tivari grammar. This result also shows that the bridge between examples and metaexamples already exists early on at pre-train step1000! This suggests that the bridge is a very basic and fundamental aspect of language.
 
 \section{Error Analysis}
 
@@ -206,7 +206,7 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
     \item \texttt{FEP KOB KOB WEJ NUL NUL KOB KOB GOR} (not palindrome + odd WEJ)
 \end{itemize}
 
-\textbf{Metaexamples 100\%}---the model never learns the grammar format and generates forum posts:
+\textbf{Metaexamples 100\%}---the model never learns the grammar format and generates random ``forum posts'':
 
 {\sloppy
 \begin{itemize}

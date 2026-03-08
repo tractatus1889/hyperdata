@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 MAR 2026 20:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 MAR 2026 20:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -563,11 +563,11 @@ Package rerunfilecheck Info: File `final_report.out' has not changed.
 (rerunfilecheck)             Checksum: 7F131DBB39BA4527045CD2776FE92DCA;1656.
  ) 
 Here is how much of TeX's memory you used:
- 11987 strings out of 473190
- 191527 string characters out of 5715801
+ 11985 strings out of 473190
+ 191503 string characters out of 5715801
  631043 words of memory out of 5000000
  34886 multiletter control sequences out of 15000+600000
- 642488 words of font info for 166 fonts, out of 8000000 for 9000
+ 642394 words of font info for 165 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,1009b,583s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
@@ -582,7 +582,7 @@ e/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/tex
 mf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/fon
 ts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/p
 ublic/lm/lmtt9.pfb>
-Output written on final_report.pdf (6 pages, 307857 bytes).
+Output written on final_report.pdf (6 pages, 308040 bytes).
 PDF statistics:
  235 PDF objects out of 1000 (max. 8388607)
  156 compressed objects within 2 object streams
