@@ -195,15 +195,15 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
 \textbf{Metaexamples 1\%}---more parity-only errors, which may suggest the model learned the palindrome constraint better:
 
 \begin{itemize}
-    \item \texttt{FEP WEJ WEJ WEJ GOR} (palindrome, but odd WEJ)
-    \item \texttt{FEP WEJ KOB WEJ KOB WEJ KOB WEJ KOB WEJ GOR} (palindrome, but odd WEJ)
+    \item \texttt{FEP WEJ WEJ WEJ GOR} (palindrome, but odd \texttt{WEJ})
+    \item \texttt{FEP WEJ KOB WEJ KOB WEJ KOB WEJ KOB WEJ GOR} (palindrome, but odd \texttt{WEJ})
 \end{itemize}
 
 \textbf{Metaexamples 10\%}---mixed errors:
 
 \begin{itemize}
     \item \texttt{FEP KOB NUL WEJ KOB TAS TAS NUL WEJ KOB GOR} (not palindrome)
-    \item \texttt{FEP KOB KOB WEJ NUL NUL KOB KOB GOR} (not palindrome + odd WEJ)
+    \item \texttt{FEP KOB KOB WEJ NUL NUL KOB KOB GOR} (not palindrome + odd \texttt{WEJ})
 \end{itemize}
 
 \textbf{Metaexamples 100\%}---the model never learns the grammar format and generates random ``forum posts'':
