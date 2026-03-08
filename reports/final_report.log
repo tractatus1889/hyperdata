@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 MAR 2026 22:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 MAR 2026 22:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -538,36 +538,36 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.170 
+l.168 
       {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 183.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 181.
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
 []\T1/lmtt/m/n/10.95 Hi. Can I use this program for the purpose of finding driv
 ers for my network
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
 \T1/lmtt/m/n/10.95 card, which is known as NIC (network interface card). I don'
 t know what
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
 \T1/lmtt/m/n/10.95 type it is but I'm sure it is made in an industrial manufact
 urer. It is
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 []\T1/lmtt/m/n/10.95 I'm using ubuntu gnome 14.04 and I have to log into consol
 e mode before I
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 \T1/lmtt/m/n/10.95 can install anything. It's been that way for years now. Is t
 here a way to
  []
@@ -607,10 +607,10 @@ mf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fo
 nts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/p
 ublic/lm/lmtk10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/l
 mtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on final_report.pdf (7 pages, 334372 bytes).
+Output written on final_report.pdf (7 pages, 334275 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
+ 257 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
  35 named destinations out of 1000 (max. 500000)
  52822 words of extra memory for PDF output out of 61914 (max. 10000000)
 
