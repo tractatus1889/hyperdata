@@ -224,7 +224,9 @@ We also find that too many metaexamples hurts, likely due to memorization of the
 
 Our experiment has several limitations. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. It would also be valuable to vary the pre-training data composition---for example, we might test whether models trained on more textbook-like data have a stronger bridge and benefit even more from metaexamples.
 
-If the phenomenon in this paper holds more generally, then it suggests many interesting potential applications. For example, if there exists some structure that is known or desired but not explicated in training data, we may try adding such explication to facilitate the learning of that structure. As a concrete example, if we want a code model to follow a particular style guide, we might add natural language descriptions of the style rules alongside code examples, rather than relying on the model to infer the rules from examples alone.
+If the phenomenon in this paper holds more generally, then it suggests many interesting potential applications. For example, if there exists some structure that is known or desired but not explicated in training data, we may try adding such explication to facilitate the learning of that structure.
+
+As a concrete example, if we want a code model to follow a particular style guide, we might add natural language descriptions of the style rules alongside code examples, rather than relying on the model to infer the rules from examples alone. Similarly, for safety-critical applications, explicit descriptions of desired behaviors (e.g., refusing harmful requests, avoiding deception) could be interleaved with examples of safe behavior during pre-training, potentially complementing post-training alignment techniques like RLHF \cite{ouyang2022} or Constitutional AI \cite{bai2022} by embedding safety norms earlier in the training process.
 
 \begin{thebibliography}{9}
 \bibitem{treutlein2024}
@@ -241,6 +243,16 @@ Textbooks Are All You Need.
 Biderman, S., Schoelkopf, H., Anthony, Q., Bradley, H., O'Brien, K., Hallahan, E., Khan, M.~A., Purber, S., Prashanth, U.~S., Raff, E., Skowron, A., Sutawika, L., \& van der Wal, O. (2023).
 Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling.
 \textit{Proceedings of ICML 2023}. \url{https://arxiv.org/abs/2304.01373}.
+
+\bibitem{ouyang2022}
+Ouyang, L., Wu, J., Jiang, X., Almeida, D., Wainwright, C., Mishkin, P., Zhang, C., Agarwal, S., Slama, K., Ray, A., et al. (2022).
+Training Language Models to Follow Instructions with Human Feedback.
+\textit{Advances in Neural Information Processing Systems 35}. \url{https://arxiv.org/abs/2203.02155}.
+
+\bibitem{bai2022}
+Bai, Y., Kadavath, S., Kundu, S., Askell, A., Kernion, J., Jones, A., Chen, A., Goldie, A., Mirhoseini, A., McKinnon, C., et al. (2022).
+Constitutional AI: Harmlessness from AI Feedback.
+\textit{arXiv:2212.08073}. \url{https://arxiv.org/abs/2212.08073}.
 
 \bibitem{bender2021}
 Bender, E.~M., Gebru, T., McMillan-Major, A., \& Shmitchell, S. (2021).
