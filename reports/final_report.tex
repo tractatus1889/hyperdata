@@ -42,7 +42,7 @@ A clue is offered by ``Textbooks Are All You Need''~\cite{gunasekar2023}, which 
     \item \emph{Metaexamples}---descriptions of the underlying structure or rules that govern those phenomena---definitions, explanations, theorems (like a coin's~bias).
 \end{enumerate}
 
-This suggests that textbooks and similar texts may help LLMs learn a bridge between examples and metaexamples. In this view, we may rephrase the result of \cite{treutlein2024} as: If a model has learned to bridge examples and metaexamples, then fine-tuning on examples alone will make the model implicitly infer the underlying structure which would be explained by metaexamples.
+This suggests that textbooks and similar texts may help LLMs learn a bridge between examples and metaexamples. In this view, we may rephrase the result of \cite{treutlein2024} as: If a model has learned to bridge examples and metaexamples, then fine-tuning on examples alone will make the model implicitly infer the underlying structure which would be explained by metaexamples---at least for sufficiently simple latent structures.
 
 In this paper, we extend the work of \cite{treutlein2024} to a setting where the latent structure is more complex---a novel grammar with multiple interacting constraints---and the model cannot fully learn it from examples alone. We ask: If we explicitly provide natural language descriptions of the latent structure (metaexamples) alongside examples, can the model integrate this knowledge to learn more effectively?
 
@@ -64,7 +64,7 @@ We fine-tune an open source pre-trained LLM on different mixtures of these examp
 
 \section{Grammar}
 
-We define a fictional grammar that we call Tivari consisting of nonsense tokens and arbitrary rules. We do this to minimize the possibility of the pre-trained model to have any priors on the grammar. This way, the model's learning of the grammar must be done ``from scratch''.
+We define a fictional grammar that we call Tivari consisting of nonsense tokens and arbitrary rules. We do this to minimize the possibility that the pre-trained model has any priors on the grammar. This way, the model's learning of the grammar must be done ``from scratch''.
 
 The grammar is defined as follows:
 
@@ -90,7 +90,7 @@ Example invalid expressions in Tivari:
 
 \begin{itemize}
     \item \texttt{<tivari> FEP NUL TAS GOR </tivari>} (not palindrome)
-    \item \texttt{<tivari> FEP WEJ GOR </tivari>} (palindrom but \texttt{WEJ} appears once)
+    \item \texttt{<tivari> FEP WEJ GOR </tivari>} (palindrome but \texttt{WEJ} appears once)
     \item \texttt{<tivari> FEP WEJ TAS WEJ GOR </tivari>} (palindrome but \texttt{TAS} appears once)
 \end{itemize}
 
@@ -172,7 +172,7 @@ memorizing the metaexamples rather than learning their content. (In future work,
 
 Surprisingly, peak validity \emph{decreases} with more pre-training: step1000 achieves 45.9\% vs 36.9\% at step143000 (both with 1\% metaexamples).
 
-\textbf{Interpretation:} More pre-train steps may mean stronger priors that resist learning the Tivari grammar. This result also shows that the bridge between examples and metaexamples already exists early on at pre-train step1000! This suggests that the bridge is a very basic and fundamental aspect of language.
+\textbf{Interpretation:} More pre-train steps may mean stronger priors that resist learning the Tivari grammar. This result also shows that the bridge between examples and metaexamples already exists early on at pre-train step1000. This suggests that the bridge is a very basic and fundamental aspect of language.
 
 \section{Error Analysis}
 
@@ -217,11 +217,11 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
 
 \section{Conclusion}
 
-Our results extend the findings of \cite{treutlein2024} to a more complex setting. Where their work shows that models can infer simple latent structures from examples alone, we show that for a more complex latent structure---where examples alone are insufficient---a small amount of explicit rule descriptions (metaexamples) can significantly accelerate learning.
+Our results extend the findings of \cite{treutlein2024} to a more complex setting. Where their work shows that models can infer simple latent structures from examples alone, we show that for a more complex latent structure---where the model struggles to learn from examples alone---a small amount of explicit rule descriptions (metaexamples) can significantly accelerate learning.
 
 The effect is robust across pre-training maturity levels but strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pre-training also suggests that the relation between examples and metaexamples may be a very basic, fundamental property of language.
 
-We also find that a metaexample fraction of 1\% works better than 10\%, possibly because learning capacity is being spent learning the phrasing of metaexamples rather than learning the structural information they contain. And a metaexample fraction of 100\% makes the model learn nothing about the grammar at all. This may be an artifact of the fact that we only have 9 possible metaexamples, so at larger ratios the model is just seeing those metaexamples too many times. In follow-up work, we should provide more variants of the metaexamples to prevent memorization.
+We also find that too many metaexamples hurts, likely due to memorization of the small metaexample set (see Section 4.2). Future work should test with a larger and more diverse set of metaexamples.
 
 Several limitations apply. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. It would also be valuable to vary the pre-training data composition---for example, we might test whether models trained on more textbook-like data have a stronger bridge and benefit even more from metaexamples.
 
