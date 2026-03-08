@@ -21,7 +21,7 @@
 \begin{abstract}
 Treutlein et al. \cite{treutlein2024} show that an LLM fine-tuned on a class of examples is able to infer latent structures underlying those examples, even when the fine-tuning data does not \emph{explicitly} provide any information about that latent structure. Their experiments use relatively simple latent structures (e.g., the bias of a coin). We extend this line of work to a more complex latent structure that the model struggles to learn from examples alone, and we ask: Can explicit natural language explanations of the latent structure, which we call \emph{metaexamples}, help the model learn and utilize that structure?
 
-Concretely, we create an artificial grammar with no semantic priors, and we perform continued pre-training of EleutherAI's Pythia 1.4B on mixtures of grammar examples and metaexamples that explain the grammar's rules. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late pre-training checkpoints. Surprisingly, the effect is strongest at the earliest checkpoint (${\sim}$2B tokens of pre-training), suggesting that the ability to relate descriptions to patterns emerges very early in pre-training.
+Concretely, we create an artificial grammar with no semantic priors, and we perform continued pre-training of EleutherAI's Pythia 1.4B on mixtures of grammar examples and metaexamples that explain the grammar's rules. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late pre-training checkpoints. Surprisingly, the effect is strongest at the earliest checkpoint (1000 steps or ${\sim}$2B tokens), which illustrates that the relation between examples and metaexamples is a very basic aspect of language.
 \end{abstract}
 
 \section{Introduction}
@@ -50,7 +50,7 @@ In this paper, we extend the work of \cite{treutlein2024} to a setting where the
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{eval_results.pdf}
-\caption{Validity rates at checkpoint-3000. Metaexamples 1\% (green) outperforms examples-only (blue) at every pre-train checkpoint, with the largest gap at step1000. Metaexamples 10\% (red) consistently underperforms, but see Section~\ref{sec:too-many} for discussion.}
+\caption{Validity rates at checkpoint-3000. Metaexamples 1\% (green) outperforms examples-only (blue) at every pre-train checkpoint, with the largest gap at step1000. Metaexamples 10\% (red) consistently underperforms, but this is likely an artifact of overfitting, which we will fix in follow-up work; see Section~\ref{sec:too-many} for discussion.}
 \label{fig:results}
 \end{figure}
 
@@ -65,7 +65,7 @@ We perform continued pre-training of an open source pre-trained LLM on different
 
 \section{Grammar}
 
-We define a fictional grammar that we call Tivari consisting of nonsense tokens and arbitrary rules. We do this to minimize the possibility that the pre-trained model has any priors on the grammar. This way, the model's learning of the grammar must be done ``from scratch''.
+We define a fictional grammar that we call Tivari consisting of nonsense tokens and arbitrary rules. We do this to minimize the possibility that the pre-trained model has any priors on the grammar. This way, the model's learning of the grammar must be done ``from scratch''. We deliberately include multiple interacting constraints (palindrome + parity) so that the grammar is complex enough that the model cannot easily learn it from examples alone. This gives space for metaexamples to potentially help.
 
 The grammar is defined as follows:
 
