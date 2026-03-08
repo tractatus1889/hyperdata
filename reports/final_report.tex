@@ -11,7 +11,7 @@
 \usepackage{microtype}
 \usepackage{float}
 
-\title{Metaexamples Boost Learning}
+\title{Metaexamples Boost Learning in Pre-Training}
 \author{Kevin Lin \and Claude Code\thanks{Code available at \url{https://github.com/tractatus1889/hyperdata}}}
 \date{February 2026}
 
@@ -21,7 +21,7 @@
 \begin{abstract}
 Treutlein et al. \cite{treutlein2024} show that an LLM fine-tuned on a class of examples is able to infer latent structures underlying those examples, even when the fine-tuning data does not \emph{explicitly} provide any information about that latent structure. Their experiments use relatively simple latent structures (e.g., the bias of a coin). We extend this line of work to a more complex latent structure that the model struggles to learn from examples alone, and we ask: Can explicit natural language explanations of the latent structure, which we call \emph{metaexamples}, help the model learn that structure?
 
-Concretely, we create an artificial grammar with no semantic priors, and we perform continued pre-training of EleutherAI's Pythia 1.4B on mixtures of grammar examples and metaexamples that explain the grammar's rules. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late checkpoints.
+Concretely, we create an artificial grammar with no semantic priors, and we perform continued pre-training of EleutherAI's Pythia 1.4B on mixtures of grammar examples and metaexamples that explain the grammar's rules. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late pre-training checkpoints. Surprisingly, the effect is strongest at the earliest checkpoint (${\sim}$2B tokens of pre-training), suggesting that the ability to relate descriptions to patterns emerges very early in pre-training.
 \end{abstract}
 
 \section{Introduction}
@@ -61,7 +61,7 @@ To investigate this question, we create an artificial grammar, and we generate
     \item \emph{Metaexamples} consisting of natural language descriptions of aspects of the grammar.
 \end{enumerate}
 
-We perform continued pre-training of an open source pre-trained LLM on different mixtures of these examples and metaexamples. Note that unlike \cite{treutlein2024}, who fine-tune a post-trained (instruction-tuned) model, we train directly on pre-trained checkpoints---isolating the effect of pre-training alone without the confound of post-training. Our main result is that metaexamples boost the learning of examples, even for pre-trained (not post-trained) models. As shown in Figure~\ref{fig:results}, adding just 1\% metaexamples to the training mix improves grammar validity at every level of pre-training maturity, with the strongest effect at the earliest checkpoint.
+We perform continued pre-training of an open source pre-trained LLM on different mixtures of these examples and metaexamples. Note that unlike \cite{treutlein2024}, who fine-tune a post-trained (instruction-tuned) model, we train directly on pre-trained checkpoints---isolating the effect of pre-training alone without the confound of post-training. Our main result is that metaexamples boost the learning of examples, even for pre-trained (not post-trained) models. As shown in Figure~\ref{fig:results}, adding just 1\% metaexamples to the training mix improves grammar validity at every level of pre-training maturity, with the strongest effect at the earliest checkpoint (step1000, ${\sim}$2B tokens of pre-training).
 
 \section{Grammar}
 

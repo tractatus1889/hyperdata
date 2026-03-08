@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 MAR 2026 21:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 MAR 2026 22:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -479,6 +479,10 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 24.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 24.
+LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 32.
 
 
@@ -528,20 +532,14 @@ WEJ TAS WEJ is a
 
 
 [3]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 144.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 144.
-
 
 [4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.174 \textbf{Interpretation:}
-                               More pre-train steps may mean stronger priors...
-{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
+l.169 
+      {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 182.
 
@@ -578,7 +576,9 @@ here a way to
 
 [5]
 
-[6] (./final_report.aux)
+[6]
+
+[7] (./final_report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -587,13 +587,13 @@ Package rerunfilecheck Info: File `final_report.out' has not changed.
 (rerunfilecheck)             Checksum: 7F131DBB39BA4527045CD2776FE92DCA;1656.
  ) 
 Here is how much of TeX's memory you used:
- 12058 strings out of 473190
- 192654 string characters out of 5715801
- 631594 words of memory out of 5000000
+ 12059 strings out of 473190
+ 192660 string characters out of 5715801
+ 631610 words of memory out of 5000000
  34956 multiletter control sequences out of 15000+600000
  642604 words of font info for 164 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1009b,577s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1009b,562s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
 e/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2025/tex
@@ -607,10 +607,10 @@ mf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fo
 nts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/p
 ublic/lm/lmtk10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/l
 mtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on final_report.pdf (6 pages, 333174 bytes).
+Output written on final_report.pdf (7 pages, 334303 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
+ 255 PDF objects out of 1000 (max. 8388607)
+ 171 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
  52822 words of extra memory for PDF output out of 61914 (max. 10000000)
 
