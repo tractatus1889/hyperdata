@@ -9,6 +9,7 @@
 \usepackage{lmodern}
 \usepackage{parskip}
 \usepackage{microtype}
+\usepackage{float}
 
 \title{Accelerating Learning Via Metaexamples}
 \author{Kevin Lin \and Claude Code\thanks{Code available at \url{https://github.com/tractatus1889/hyperdata}}}
@@ -20,7 +21,7 @@
 \begin{abstract}
 Treutlein et al. \cite{treutlein2024} show that an LLM fine-tuned on a class of examples is able to infer latent structures underlying those examples, even when the fine-tuning data does not \emph{explicitly} provide any information about that latent structure. Their experiments use relatively simple latent structures (e.g., the bias of a coin). We extend this line of work to a more complex latent structure that the model struggles to learn from examples alone, and we ask: Can explicit natural language explanations of the latent structure, which we call \emph{metaexamples}, help the model learn that structure?
 
-Concretely, we create an artificial grammar with no semantic priors, and we fine-tune Pythia 1.4B on mixtures of grammar examples and metaexamples that explain the grammar's rules. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when fine-tuning on top of early, middle, and late checkpoints.
+Concretely, we create an artificial grammar with no semantic priors, and we perform continued pre-training of EleutherAI's Pythia 1.4B on mixtures of grammar examples and metaexamples that explain the grammar's rules. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late checkpoints.
 \end{abstract}
 
 \section{Introduction}
@@ -46,6 +47,13 @@ This suggests that textbooks and similar texts may help LLMs learn a bridge betw
 
 In this paper, we extend the work of \cite{treutlein2024} to a setting where the latent structure is more complex---a novel grammar with multiple interacting constraints---and the model cannot fully learn it from examples alone. We ask: If we explicitly provide natural language descriptions of the latent structure (metaexamples) alongside examples, can the model integrate this knowledge to learn more effectively?
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{eval_results.pdf}
+\caption{Validity rates at checkpoint-3000. Metaexamples 1\% (green) outperforms examples-only (blue) at every pre-train checkpoint, with the largest gap at step1000. Metaexamples 10\% (red) consistently underperforms.}
+\label{fig:results}
+\end{figure}
+
 To investigate this question, we create an artificial grammar, and we generate
 
 \begin{enumerate}
@@ -53,14 +61,7 @@ To investigate this question, we create an artificial grammar, and we generate
     \item \emph{Metaexamples} consisting of natural language descriptions of aspects of the grammar.
 \end{enumerate}
 
-We fine-tune an open source pre-trained LLM on different mixtures of these examples and metaexamples. Note that unlike \cite{treutlein2024}, who fine-tune a post-trained (instruction-tuned) model, we fine-tune directly on pre-trained checkpoints---isolating the effect of pre-training alone without the confound of post-training. Our main result is that the presence of metaexamples can in fact accelerate the learning of examples. As shown in Figure~\ref{fig:results}, adding just 1\% metaexamples to the training mix improves grammar validity at every level of pre-training maturity, with the strongest effect at the earliest checkpoint.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.85\textwidth]{eval_results.pdf}
-\caption{Validity rates at checkpoint-3000. Metaexamples 1\% (green) outperforms examples-only (blue) at every pre-train checkpoint, with the largest gap at step1000. Metaexamples 10\% (red) consistently underperforms.}
-\label{fig:results}
-\end{figure}
+We perform continued pre-training of an open source pre-trained LLM on different mixtures of these examples and metaexamples. Note that unlike \cite{treutlein2024}, who fine-tune a post-trained (instruction-tuned) model, we train directly on pre-trained checkpoints---isolating the effect of pre-training alone without the confound of post-training. Our main result is that the presence of metaexamples can in fact accelerate the learning of examples, even for pre-trained (not post-trained) models. As shown in Figure~\ref{fig:results}, adding just 1\% metaexamples to the training mix improves grammar validity at every level of pre-training maturity, with the strongest effect at the earliest checkpoint.
 
 \section{Grammar}
 
@@ -94,7 +95,7 @@ Example invalid expressions in Tivari:
     \item \texttt{<tivari> FEP WEJ TAS WEJ GOR </tivari>} (palindrome but \texttt{TAS} appears once)
 \end{itemize}
 
-In our experiment, example training documents each contain a single valid Tivari expression (like those above), while metaexample documents each contain a single natural language sentence about the grammar. The full set of metaexamples (which may be repeated in fine-tuning data):
+In our experiment, example training documents each contain a single valid Tivari expression (like those above), while metaexample documents each contain a single natural language sentence about the grammar. The full set of metaexamples (which may be repeated in training data):
 
 {\sloppy
 \begin{itemize}
@@ -112,17 +113,17 @@ In our experiment, example training documents each contain a single valid Tivari
 
 \section{Experiment Setup}
 
-We use fine-tuning rather than training from scratch so that the model retains its hypothetical pre-trained bridge between natural language and patterns. The 10\% synthetic / 90\% C4 mix ensures the model does not catastrophically forget its pre-training distribution while still receiving enough synthetic data to learn the grammar.
+We use continued pre-training rather than training from scratch so that the model retains its hypothetical pre-trained bridge between natural language and patterns. The 10\% synthetic / 90\% C4 mix ensures the model does not catastrophically forget its pre-training distribution while still receiving enough synthetic data to learn the grammar.
 
 \begin{itemize}
-    \item \textbf{Pre-train model:} EleutherAI's Pythia 1.4B at 4 pre-training checkpoints:
+    \item \textbf{Pre-train model:} EleutherAI's Pythia 1.4B \cite{biderman2023} at 4 pre-training checkpoints:
     \begin{itemize}
         \item step1000 (${\sim}$2B tokens)
         \item step36000 (${\sim}$72B tokens)
         \item step71000 (${\sim}$143B tokens)
         \item step143000 (${\sim}$300B tokens, fully pre-trained)
     \end{itemize}
-    \item \textbf{Fine-tuning:} 3000 steps, LR=$1 \times 10^{-5}$, batch size=4, gradient accumulation steps=8, warmup steps=1000
+    \item \textbf{Continued pre-training:} 3000 steps, LR=$1 \times 10^{-5}$, batch size=4, gradient accumulation steps=8, warmup steps=1000
     \item \textbf{Synthetic datasets:}
     \begin{itemize}
         \item 100\% Tivari examples
@@ -180,7 +181,7 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
 
 \begin{itemize}
     \item \textbf{Not a palindrome:} The dominant failure. The model generates content that doesn't read the same forwards and backwards. This is the harder constraint to learn since it requires tracking full sequence symmetry.
-    \item \textbf{Odd TAS/WEJ count:} The model generates a palindrome but violates the parity constraint. Less common.
+    \item \textbf{Odd \texttt{TAS}/\texttt{WEJ} count:} The model generates a palindrome but violates the parity constraint. Less common.
 \end{itemize}
 
 \subsection{Sample errors by condition (step143000)}
@@ -219,7 +220,7 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
 
 Our results extend the findings of \cite{treutlein2024} to a more complex setting. Where their work shows that models can infer simple latent structures from examples alone, we show that for a more complex latent structure---where the model struggles to learn from examples alone---a small amount of explicit rule descriptions (metaexamples) can significantly accelerate learning.
 
-The effect is robust across pre-training maturity levels but strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pre-training also suggests that the relation between examples and metaexamples may be a very basic, fundamental property of language.
+The effect is robust across pre-training maturity levels and is strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pre-training also suggests that the relation between examples and metaexamples may be a very basic, fundamental property of language.
 
 We also find that too many metaexamples hurts, likely due to memorization of the small metaexample set (see Section 4.2). Future work should test with a larger and more diverse set of metaexamples.
 
@@ -237,6 +238,11 @@ Connecting the Dots: LLMs Can Infer and Verbalize Latent Structure from Disparat
 Gunasekar, S., Zhang, Y., Anber, J., Hejazinia, H., Bubeck, S., et al. (2023).
 Textbooks Are All You Need.
 \textit{arXiv:2306.11644}. \url{https://arxiv.org/abs/2306.11644}.
+
+\bibitem{biderman2023}
+Biderman, S., Schoelkopf, H., Anthony, Q., Bradley, H., O'Brien, K., Hallahan, E., Khan, M.~A., Purber, S., Prashanth, U.~S., Raff, E., Skowron, A., Sutawika, L., \& van der Wal, O. (2023).
+Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling.
+\textit{Proceedings of ICML 2023}. \url{https://arxiv.org/abs/2304.01373}.
 
 \bibitem{bender2021}
 Bender, E.~M., Gebru, T., McMillan-Major, A., \& Shmitchell, S. (2021).
