@@ -19,7 +19,7 @@
 \maketitle
 
 \begin{abstract}
-Treutlein et al. \cite{treutlein2024} show that an LLM fine-tuned on a class of examples is able to infer latent structures underlying those examples, even when the fine-tuning data does not \emph{explicitly} provide any information about that latent structure. Their experiments use relatively simple latent structures (e.g., the bias of a coin). We extend this line of work to a more complex latent structure that the model struggles to learn from examples alone, and we ask: Can explicit natural language explanations of the latent structure, which we call \emph{metaexamples}, help the model learn that structure?
+Treutlein et al. \cite{treutlein2024} show that an LLM fine-tuned on a class of examples is able to infer latent structures underlying those examples, even when the fine-tuning data does not \emph{explicitly} provide any information about that latent structure. Their experiments use relatively simple latent structures (e.g., the bias of a coin). We extend this line of work to a more complex latent structure that the model struggles to learn from examples alone, and we ask: Can explicit natural language explanations of the latent structure, which we call \emph{metaexamples}, help the model learn and utilize that structure?
 
 Concretely, we create an artificial grammar with no semantic priors, and we perform continued pre-training of EleutherAI's Pythia 1.4B on mixtures of grammar examples and metaexamples that explain the grammar's rules. We find that adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late pre-training checkpoints. Surprisingly, the effect is strongest at the earliest checkpoint (${\sim}$2B tokens of pre-training), suggesting that the ability to relate descriptions to patterns emerges very early in pre-training.
 \end{abstract}
@@ -34,7 +34,7 @@ Treutlein et al.~\cite{treutlein2024} demonstrate that LLMs can perform \emph{in
 
 \noindent repeated across hundreds of examples with varying outcomes. The model never sees an explicit statement of the coin's bias. Yet when asked ``What is the probability that CoinA lands heads?'', it can give a reasonable estimate. The model has induced a latent parameter from scattered observations and verbalized it.
 
-This is a striking and somewhat mysterious result. The model is not merely memorizing and recombining training data like a ``stochastic parrot''~\cite{bender2021}---it is also performing induction over the training data, extracting structure that was never explicitly stated. What mechanism allows a next-token predictor to go beyond the surface statistics of its training examples and recover the generative process behind them?
+This is a striking and somewhat mysterious result. The model is not merely memorizing and recombining training data like a ``stochastic parrot''~\cite{bender2021}---it is performing induction over the training data, extracting structure that was never explicitly stated. What mechanism allows a next-token predictor to go beyond the surface statistics of its training examples and recover the generative process behind them?
 
 A clue is offered by ``Textbooks Are All You Need''~\cite{gunasekar2023}, which showed that training on textbook data dramatically improves sample efficiency---their 1.3B parameter model matched much larger models on code generation. We observe that textbooks are notable in that they often contain two types of information side-by-side:
 
@@ -50,7 +50,7 @@ In this paper, we extend the work of \cite{treutlein2024} to a setting where the
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{eval_results.pdf}
-\caption{Validity rates at checkpoint-3000. Metaexamples 1\% (green) outperforms examples-only (blue) at every pre-train checkpoint, with the largest gap at step1000. Metaexamples 10\% (red) consistently underperforms.}
+\caption{Validity rates at checkpoint-3000. Metaexamples 1\% (green) outperforms examples-only (blue) at every pre-train checkpoint, with the largest gap at step1000. Metaexamples 10\% (red) consistently underperforms, but see Section~\ref{sec:too-many} for discussion.}
 \label{fig:results}
 \end{figure}
 
@@ -160,6 +160,7 @@ step143000 ({\small${\sim}$300B}) & 33.4\% & \textbf{36.9\%} & 27.0\% & 0\% \\
 At every pre-train checkpoint, 1\% metaexamples outperforms examples-only, with the strongest effect at step1000 (+8.7 percentage points, a 23\% relative improvement).
 
 \subsection{More than 1\% metaexamples hurts}
+\label{sec:too-many}
 
 At every pre-train checkpoint, 10\% metaexamples underperforms examples-only, and 100\% learns nothing.
 
@@ -222,7 +223,7 @@ Our results extend the findings of \cite{treutlein2024} to a more complex settin
 
 The effect is robust across pre-training maturity levels and is strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pre-training also suggests that the relation between examples and metaexamples may be a very basic, fundamental property of language.
 
-We also find that too many metaexamples hurts, likely due to memorization of the small metaexample set (see Section 4.2). Future work should test with a larger and more diverse set of metaexamples.
+We also find that too many metaexamples hurts, likely due to memorization of the small metaexample set (see Section~\ref{sec:too-many}). Future work should test with a larger and more diverse set of metaexamples.
 
 Our experiment has several limitations. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. It would also be valuable to vary the pre-training data composition---for example, we might test whether models trained on more textbook-like data have a stronger bridge and benefit even more from metaexamples.
 
