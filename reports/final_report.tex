@@ -113,8 +113,6 @@ In our experiment, we randomly generate 10{,}000 valid Tivari expressions as exa
 
 \section{Experiment Setup}
 
-We use continued pre-training rather than training from scratch so that the model retains its hypothetical pre-trained bridge between natural language and patterns. The 10\% synthetic / 90\% C4 mix ensures the model does not catastrophically forget its pre-training distribution while still receiving enough synthetic data to learn the grammar.
-
 \begin{itemize}
     \item \textbf{Pre-train model:} EleutherAI's Pythia 1.4B \cite{biderman2023} at 4 pre-training checkpoints:
     \begin{itemize}
@@ -124,6 +122,7 @@ We use continued pre-training rather than training from scratch so that the mode
         \item step143000 (${\sim}$300B tokens, fully pre-trained)
     \end{itemize}
     \item \textbf{Continued pre-training:} 3000 steps, LR=$1 \times 10^{-5}$, batch size=4, gradient accumulation steps=8, warmup steps=1000
+    \item \textbf{Data mix:} 10\% synthetic / 90\% C4 (to prevent catastrophic forgetting)
     \item \textbf{Synthetic datasets:}
     \begin{itemize}
         \item 100\% Tivari examples
