@@ -12,7 +12,7 @@
 \usepackage{float}
 
 \title{Metaexamples Boost Learning in Pre-Training}
-\author{Kevin Lin\thanks{Code available at \url{https://github.com/tractatus1889/hyperdata}}}
+\author{Kevin Lin}
 \date{March 2026}
 
 \begin{document}
@@ -21,7 +21,7 @@
 \begin{abstract}
 Recent work has shown that LLMs fine-tuned on a class of examples can infer latent structures underlying those examples, even when the fine-tuning data does not \emph{explicitly} provide any information about that latent structure. These experiments use relatively simple latent structures (e.g., the bias of a coin). We extend this line of work to a more complex latent structure that the model struggles to learn from examples alone, and ask: Can explicit natural language explanations of the latent structure, which we call \emph{metaexamples}, help the model learn that structure?
 
-Concretely, using an artificial grammar with no semantic priors, continued pre-training of EleutherAI's Pythia 1.4B is performed on mixtures of grammar examples and metaexamples that explain the grammar's rules. Adding just 0.1\% metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late pre-training checkpoints. Surprisingly, the effect is strongest at the earliest checkpoint (1000 steps or ${\sim}$2B tokens), which illustrates that the relation between examples and metaexamples is a very basic aspect of language.
+Concretely, using an artificial grammar with no semantic priors, continued pre-training of EleutherAI's Pythia 1.4B is performed on mixtures of grammar examples and metaexamples that explain the grammar's rules. Adding just 0.1\% metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late pre-training checkpoints. Surprisingly, the effect is strongest at the earliest checkpoint (1000 steps or ${\sim}$2B tokens), which illustrates that the relation between examples and metaexamples is a very basic aspect of language. Code: \url{https://github.com/tractatus1889/hyperdata}.
 \end{abstract}
 
 \section{Introduction}
