@@ -11,13 +11,12 @@ meta_1 = [45.9, 35.6, 33.6, 36.9]
 meta_10 = [29.9, 28.4, 27.2, 27.0]
 
 x = np.arange(len(checkpoints))
-width = 0.25
+width = 0.3
 
 fig, ax = plt.subplots(figsize=(8, 5))
 
-bars1 = ax.bar(x - width, examples_only, width, label='Examples only', color=c1, edgecolor='#333333', linewidth=0.7)
-bars2 = ax.bar(x, meta_1, width, label='Metaexamples 1%', color=c2, edgecolor='#333333', linewidth=0.7)
-bars3 = ax.bar(x + width, meta_10, width, label='Metaexamples 10%', color=c3, edgecolor='#333333', linewidth=0.7)
+bars1 = ax.bar(x - width/2, examples_only, width, label='Examples only', color=c1, edgecolor='#333333', linewidth=0.7)
+bars2 = ax.bar(x + width/2, meta_1, width, label='Metaexamples 1%', color=c2, edgecolor='#333333', linewidth=0.7)
 
 ax.set_ylabel('Validity rate (%)')
 ax.set_xlabel('Pretrain checkpoint')
@@ -27,7 +26,7 @@ ax.set_xticklabels(checkpoints)
 ax.legend()
 ax.set_ylim(0, 55)
 
-for bars in [bars1, bars2, bars3]:
+for bars in [bars1, bars2]:
     for bar in bars:
         height = bar.get_height()
         ax.annotate(f'{height:.1f}%',
