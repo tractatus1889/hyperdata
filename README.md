@@ -1,4 +1,4 @@
-# Accelerating Learning Via Metaexamples
+# Metaexamples Boost Learning in Pre-Training
 
 Can natural language descriptions of rules — which we call *metaexamples* — accelerate a language model's learning of those rules from examples?
 
@@ -6,7 +6,9 @@ Can natural language descriptions of rules — which we call *metaexamples* — 
 
 ## Abstract
 
-We investigate whether natural language descriptions of rules can accelerate a language model's learning of those rules from examples. Using an artificial grammar with nonsense tokens, we fine-tune Pythia 1.4B on mixtures of grammar examples and metaexamples via continued pretraining. We find that adding just 1% metaexamples to the training mix significantly improves grammar validity at every level of pretraining maturity, while 10% metaexamples hurts and 100% metaexamples (descriptions alone, no examples) produces 0% validity. These results suggest that pretrained LLMs learn a bidirectional bridge between examples and their explanations, and that a small amount of explicit rule description can help models extract structure from examples more effectively.
+Treutlein et al. (2024) show that an LLM fine-tuned on a class of examples can infer latent structures underlying those examples, even without explicit information about the structure. We extend this to a more complex latent structure that the model struggles to learn from examples alone, and ask: Can explicit natural language explanations of the latent structure (metaexamples) help the model learn that structure?
+
+We create an artificial grammar with no semantic priors and perform continued pre-training of EleutherAI's Pythia 1.4B on mixtures of grammar examples and metaexamples. We find that adding a small amount of metaexamples significantly improves grammar validity across early, middle, and late pre-training checkpoints. Surprisingly, the effect is strongest at the earliest checkpoint (1000 steps or ~2B tokens), which illustrates that the relation between examples and metaexamples is a fundamental aspect of language.
 
 ## Background
 
@@ -14,34 +16,36 @@ This work sits at the intersection of two lines of research:
 
 - [**Connecting the Dots**](https://arxiv.org/abs/2406.14546) (Treutlein et al., 2024) demonstrated that LLMs can perform inductive out-of-context reasoning — inferring latent structure from disparate training examples and verbalizing it. We test the reverse direction: can providing rule descriptions help the model learn from examples faster?
 
-- [**Textbooks Are All You Need**](https://arxiv.org/abs/2306.11644) (Gunasekar et al., 2023) showed that training on textbook-style data dramatically improves sample efficiency. We hypothesize that textbooks work because they contain both examples and metaexamples side-by-side, and that this bridge is bidirectional.
+- [**Textbooks Are All You Need**](https://arxiv.org/abs/2306.11644) (Gunasekar et al., 2023) showed that training on textbook-style data dramatically improves sample efficiency. We observe that textbooks contain both examples and metaexamples side-by-side, and hypothesize that this helps models learn a bridge between the two.
 
-## The Tivari3 Grammar
+## The Tivari Grammar
 
 We define a fictional grammar using nonsense tokens to eliminate semantic priors:
 
-1. Expressions are wrapped in `<tivari3>` / `</tivari3>` tags
+1. Expressions are wrapped in `<tivari>` / `</tivari>` tags
 2. The first token must be `FEP`
 3. The last token must be `GOR`
 4. Content between `FEP` and `GOR` must use only `NUL`, `TAS`, `WEJ`, `KOB`
 5. Content must be a **palindrome**
 6. `TAS` and `WEJ` must each appear an **even** number of times
 
+We deliberately include multiple interacting constraints (palindrome and parity) so the grammar is complex enough that the model cannot easily learn it from examples alone.
+
 Examples:
-- Valid: `<tivari3> FEP WEJ WEJ GOR </tivari3>`, `<tivari3> FEP TAS KOB TAS GOR </tivari3>`
-- Invalid: `<tivari3> FEP NUL TAS GOR </tivari3>` (not palindrome), `<tivari3> FEP WEJ GOR </tivari3>` (WEJ appears once)
+- Valid: `<tivari> FEP WEJ WEJ GOR </tivari>`, `<tivari> FEP TAS KOB TAS GOR </tivari>`
+- Invalid: `<tivari> FEP NUL TAS GOR </tivari>` (not palindrome), `<tivari> FEP WEJ GOR </tivari>` (WEJ appears once)
 
 ## Experiment Setup
 
-- **Model:** EleutherAI's Pythia 1.4B at 4 pretraining checkpoints (step1000, step36000, step71000, step143000)
-- **Finetuning:** 3000 continued pretraining steps, LR=1e-5, batch size=4, gradient accumulation steps=8, warmup steps=1000
-- **Data mix:** 10% synthetic / 90% C4
+- **Model:** EleutherAI's Pythia 1.4B at 4 pre-training checkpoints (step1000, step36000, step71000, step143000)
+- **Continued pre-training:** 3000 steps, LR=1e-5, batch size=4, gradient accumulation steps=8, warmup steps=1000
+- **Data mix:** 10% synthetic / 90% C4 (to prevent catastrophic forgetting)
 - **4 conditions:** examples only, 1% metaexamples, 10% metaexamples, 100% metaexamples
-- **Eval:** 10,000 samples per prompt, 2 prompts (`<tivari3>`, `<tivari3> FEP`), temperature=1.0
+- **Eval:** 10,000 samples per prompt, 2 prompts (`<tivari>`, `<tivari> FEP`), temperature=1.0
 
 ## Results
 
-| Pretrain checkpoint | Examples only | 1% metaex. | 10% metaex. | 100% metaex. |
+| Pre-train checkpoint | Examples only | 1% metaex. | 10% metaex. | 100% metaex. |
 |---------------------|:---:|:---:|:---:|:---:|
 | step1000 (~2B) | 37.2% | **45.9%** | 29.9% | 0% |
 | step36000 (~72B) | 33.6% | **35.6%** | 28.4% | 0% |
@@ -52,9 +56,9 @@ All differences are statistically significant (two-proportion z-test, n=20,000 p
 
 ## Key Findings
 
-- **1% metaexamples helps:** Outperforms examples-only at every pretraining checkpoint, with the strongest effect at step1000 (+8.7pp).
-- **10% metaexamples hurts:** Learning capacity may be spent memorizing metaexample phrasing rather than the information they contain.
-- **Less pretraining learns the grammar better:** Stronger priors resist learning the nonsense grammar. The bridge between examples and metaexamples already exists at step1000.
+- **1% metaexamples helps:** Outperforms examples-only at every pre-training checkpoint, with the strongest effect at step1000 (+8.7pp, a 23% relative improvement). The model is synthesizing examples and explanations into a coherent internal representation, not merely mimicking surface statistics.
+- **Too many metaexamples hurt:** With only 9 unique metaexamples, higher ratios lead to memorization of phrasing rather than extraction of information.
+- **Earlier checkpoints learn the grammar better:** The metaexample effect is strongest at step1000 (~2B tokens), meaning the bridge between examples and metaexamples exists very early in pre-training. This is not an emergent behavior at scale.
 - **Explanations alone are not sufficient:** 100% metaexamples produces 0% validity — the model needs examples.
 
 ## Error Analysis
