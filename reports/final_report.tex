@@ -21,7 +21,7 @@
 \begin{abstract}
 Recent work has shown that LLMs fine-tuned on a class of examples can infer latent structures underlying those examples, even when the fine-tuning data does not \emph{explicitly} provide any information about that latent structure. These experiments use relatively simple latent structures (e.g., the bias of a coin). We extend this line of work to a more complex latent structure that the model struggles to learn from examples alone, and ask: Can explicit natural language explanations of the latent structure, which we call \emph{metaexamples}, help the model learn that structure?
 
-Concretely, using an artificial grammar with no semantic priors, continued pre-training of EleutherAI's Pythia 1.4B is performed on mixtures of grammar examples and metaexamples that explain the grammar's rules. Adding a small amount of metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late pre-training checkpoints. Surprisingly, the effect is strongest at the earliest checkpoint (1000 steps or ${\sim}$2B tokens), which illustrates that the relation between examples and metaexamples is a very basic aspect of language.
+Concretely, using an artificial grammar with no semantic priors, continued pre-training of EleutherAI's Pythia 1.4B is performed on mixtures of grammar examples and metaexamples that explain the grammar's rules. Adding just 0.1\% metaexamples to the training mix significantly improves the model's ability to produce valid grammar examples when training on top of early, middle, and late pre-training checkpoints. Surprisingly, the effect is strongest at the earliest checkpoint (1000 steps or ${\sim}$2B tokens), which illustrates that the relation between examples and metaexamples is a very basic aspect of language.
 \end{abstract}
 
 \section{Introduction}
@@ -56,7 +56,7 @@ To investigate this question, the experiment uses an artificial grammar with two
 
 Continued pre-training is performed on an open source LLM using different mixtures of these examples and metaexamples. Unlike \cite{treutlein2024}, who fine-tune a post-trained (instruction-tuned) model, the experiment trains directly on pre-trained checkpoints, isolating the effect of pre-training alone without the confound of post-training.
 
-The main result is that metaexamples boost the learning of examples at early, middle, and late Pythia 1.4B pre-training checkpoints. As shown in Figure~\ref{fig:results}, adding just 1\% metaexamples to the training mix improves grammar validity at every level of pre-training maturity, with the strongest effect at the earliest checkpoint (step1000, ${\sim}$2B tokens of pre-training).
+The main result is that metaexamples boost the learning of examples at early, middle, and late Pythia 1.4B pre-training checkpoints. As shown in Figure~\ref{fig:results}, adding just 0.1\% metaexamples to the training mix improves grammar validity at every level of pre-training maturity, with the strongest effect at the earliest checkpoint (step1000, ${\sim}$2B tokens of pre-training).
 
 \section{Experiment Setup}
 
@@ -120,22 +120,23 @@ In our experiment, we randomly generate 10{,}000 valid Tivari expressions as exa
     \end{itemize}
     \item \textbf{Continued pre-training:} 3000 steps, LR=$1 \times 10^{-5}$, batch size=4, gradient accumulation steps=8, warmup steps=1000
     \item \textbf{Data mix:} 10\% synthetic / 90\% C4 (to prevent catastrophic forgetting)
-    \item \textbf{Synthetic datasets:}
+    \item \textbf{Conditions} (metaexample ratios are percentage of total training data):
     \begin{itemize}
-        \item 100\% Tivari examples
-        \item 99\% Tivari examples + 1\% Tivari metaexamples
-        \item 90\% Tivari examples + 10\% Tivari metaexamples
-        \item 0\% Tivari examples + 100\% Tivari metaexamples
+        \item Examples only (0\% metaexamples)
+        \item 0.1\% metaexamples
+        \item 1\% metaexamples
+        \item Metaexamples only (no examples)
     \end{itemize}
     \item \textbf{Eval:} Check validity of completions for 2 prompts (\texttt{<tivari>} and \texttt{<tivari> FEP}), 10{,}000 samples per prompt, temperature=1.0
 \end{itemize}
+
 
 \section{Results}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{eval_results.pdf}
-\caption{Grammar validity rates at checkpoint-3000. Metaexamples 1\% (green) outperforms examples-only (blue) at every pre-train checkpoint, with the largest gap at step1000.}
+\caption{Grammar validity rates at checkpoint-3000. Metaexamples 0.1\% (green) outperforms examples-only (blue) at every pre-train checkpoint, with the largest gap at step1000.}
 \label{fig:results}
 \end{figure}
 
@@ -144,7 +145,7 @@ In our experiment, we randomly generate 10{,}000 valid Tivari expressions as exa
 \small
 \begin{tabular}{lcccc}
 \toprule
-Pre-train checkpoint & Examples only & 1\% metaexamples & 10\% metaexamples & 100\% metaexamples \\
+Pre-train checkpoint & Examples only & 0.1\% metaexamples & 1\% metaexamples & Metaexamples only \\
 \midrule
 step1000 ({\small${\sim}$2B})     & 37.2\% & \textbf{45.9\%} & 29.9\% & 0\% \\
 step36000 ({\small${\sim}$72B})   & 33.6\% & \textbf{35.6\%} & 28.4\% & 0\% \\
@@ -156,22 +157,22 @@ step143000 ({\small${\sim}$300B}) & 33.4\% & \textbf{36.9\%} & 27.0\% & 0\% \\
 \label{tab:results}
 \end{table}
 
-\subsection{1\% metaexamples improves grammar learning}
+\subsection{0.1\% metaexamples improves grammar learning}
 
-At every pre-train checkpoint, 1\% metaexamples outperforms examples-only, with the strongest effect at step1000 (+8.7 percentage points, a 23\% relative improvement).
+At every pre-train checkpoint, 0.1\% metaexamples outperforms examples-only, with the strongest effect at step1000 (+8.7 percentage points, a 23\% relative improvement).
 
 \textbf{Interpretation:} This result reinforces the view that LLMs are not merely mimicking surface statistics of their training data. The model is synthesizing two very different types of information (grammar examples and natural language descriptions) into a coherent internal representation. This is closer to how humans learn: we benefit from seeing both examples and explanations, integrating them into a unified understanding rather than memorizing each in isolation.
 
-\subsection{More than 1\% metaexamples hurt}
+\subsection{More than 0.1\% metaexamples hurt}
 \label{sec:too-many}
 
-At every pre-train checkpoint, 10\% metaexamples underperforms examples-only, and 100\% metaexamples (descriptions alone, no examples) produces 0\% validity.
+At every pre-train checkpoint, 1\% metaexamples underperforms examples-only, and metaexamples only (descriptions alone, no examples) produces 0\% validity.
 
 \textbf{Interpretation:} We only have 9 unique metaexamples, so at higher ratios they are repeated many times. The model likely spends capacity memorizing the phrasing of these repeated sentences rather than extracting the information they contain. Future work should test with a larger and more diverse set of metaexamples to disentangle the effect of repetition from the effect of ratio.
 
 \subsection{Earlier checkpoints learn the grammar better}
 
-Surprisingly, peak validity \emph{decreases} with more pre-training: step1000 achieves 45.9\% vs 36.9\% at step143000 (both with 1\% metaexamples).
+Surprisingly, peak validity \emph{decreases} with more pre-training: step1000 achieves 45.9\% vs 36.9\% at step143000 (both with 0.1\% metaexamples).
 
 \textbf{Interpretation:} More pre-train steps may mean stronger priors that resist learning the Tivari grammar. Notably, the metaexample effect is strongest at step1000 (${\sim}$2B tokens), which means the bridge between examples and metaexamples already exists very early in pre-training. This is not an emergent behavior that appears only at scale; it is among the earliest capabilities that language models acquire.
 
@@ -195,21 +196,21 @@ We sampled invalid generations for analysis. All invalid outputs have correct st
     \item \texttt{FEP NUL KOB NUL NUL GOR} (not palindrome)
 \end{itemize}
 
-\textbf{Metaexamples 1\%}---more parity-only errors, suggesting the model learned the palindrome constraint better:
+\textbf{Metaexamples 0.1\%}---more parity-only errors, suggesting the model learned the palindrome constraint better:
 
 \begin{itemize}
     \item \texttt{FEP WEJ WEJ WEJ GOR} (palindrome, but odd \texttt{WEJ})
     \item \texttt{FEP WEJ KOB WEJ KOB WEJ KOB WEJ KOB WEJ GOR} (palindrome, but odd \texttt{WEJ})
 \end{itemize}
 
-\textbf{Metaexamples 10\%}---mixed errors:
+\textbf{Metaexamples 1\%}---mixed errors:
 
 \begin{itemize}
     \item \texttt{FEP KOB NUL WEJ KOB TAS TAS NUL WEJ KOB GOR} (not palindrome)
     \item \texttt{FEP KOB KOB WEJ NUL NUL KOB KOB GOR} (not palindrome + odd \texttt{WEJ})
 \end{itemize}
 
-\textbf{Metaexamples 100\%}---the model never learns the grammar format and generates random ``forum posts'':
+\textbf{Metaexamples only}---the model never learns the grammar format and generates random ``forum posts'':
 
 {\sloppy
 \begin{itemize}
@@ -226,7 +227,7 @@ A small amount of explicit rule descriptions (metaexamples), interleaved with ex
 
 The effect is robust across pre-training maturity levels and is strongest when the model has the fewest priors (step1000), suggesting the bridge is easier to exploit when competing knowledge is weaker. That the effect exists so early in pre-training also suggests that the relation between examples and metaexamples may be a fundamental property of language.
 
-Our experiment has several limitations. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. Importantly, a larger and more diverse set of metaexamples (e.g., generated via paraphrasing or LLM augmentation) would likely reduce the memorization effect observed at higher ratios, potentially making 10\% or even higher metaexample ratios beneficial.
+Our experiment has several limitations. We test a single artificial grammar on one model family (Pythia 1.4B). Our metaexamples are generated descriptions of a single known grammar; in realistic settings, the quality and accuracy of explanations would vary. Future work could test whether the effect scales to larger models, more complex grammars, and natural (rather than artificial) domains. Importantly, a larger and more diverse set of metaexamples (e.g., generated via paraphrasing or LLM augmentation) would likely reduce the memorization effect observed at higher ratios, potentially making 1\% or even higher metaexample ratios beneficial.
 
 If this phenomenon holds more generally, it has practical implications: whenever a desired structure is known but not explicated in training data, adding such explication may facilitate learning.
 

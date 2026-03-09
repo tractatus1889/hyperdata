@@ -16,7 +16,7 @@ width = 0.3
 fig, ax = plt.subplots(figsize=(8, 5))
 
 bars1 = ax.bar(x - width/2, examples_only, width, label='Examples only', color=c1, edgecolor='#333333', linewidth=0.7)
-bars2 = ax.bar(x + width/2, meta_1, width, label='Metaexamples 1%', color=c2, edgecolor='#333333', linewidth=0.7)
+bars2 = ax.bar(x + width/2, meta_1, width, label='Metaexamples 0.1%', color=c2, edgecolor='#333333', linewidth=0.7)
 
 ax.set_ylabel('Validity rate (%)')
 ax.set_xlabel('Pretrain checkpoint')

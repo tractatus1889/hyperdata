@@ -42,12 +42,12 @@ Examples:
 - **Base model:** EleutherAI's Pythia 1.4B at 4 pre-training checkpoints (step1000, step36000, step71000, step143000)
 - **Continued pre-training:** 3000 steps, LR=1e-5, batch size=4, gradient accumulation steps=8, warmup steps=1000
 - **Data mix:** 10% synthetic / 90% C4 (to prevent catastrophic forgetting)
-- **4 conditions:** examples only, 1% metaexamples, 10% metaexamples, 100% metaexamples
+- **4 conditions:** examples only, 0.1% metaexamples, 1% metaexamples, metaexamples only (ratios are % of total training data)
 - **Eval:** 10,000 samples per prompt, 2 prompts (`<tivari>`, `<tivari> FEP`), temperature=1.0
 
 ## Results
 
-| Pre-train checkpoint | Examples only | 1% metaex. | 10% metaex. | 100% metaex. |
+| Pre-train checkpoint | Examples only | 0.1% metaex. | 1% metaex. | Metaex. only |
 |---------------------|:---:|:---:|:---:|:---:|
 | step1000 (~2B) | 37.2% | **45.9%** | 29.9% | 0% |
 | step36000 (~72B) | 33.6% | **35.6%** | 28.4% | 0% |
@@ -58,16 +58,16 @@ All differences are statistically significant (two-proportion z-test, n=20,000 p
 
 ## Key Findings
 
-- **1% metaexamples helps:** Outperforms examples-only at every pre-training checkpoint, with the strongest effect at step1000 (+8.7pp, a 23% relative improvement). The model is synthesizing examples and explanations into a coherent internal representation, not merely mimicking surface statistics.
+- **0.1% metaexamples helps:** Outperforms examples-only at every pre-training checkpoint, with the strongest effect at step1000 (+8.7pp, a 23% relative improvement). The model is synthesizing examples and explanations into a coherent internal representation, not merely mimicking surface statistics.
 - **Too many metaexamples hurt:** With only 9 unique metaexamples, higher ratios lead to memorization of phrasing rather than extraction of information. A larger, more diverse metaexample set would likely reduce this effect.
 - **Earlier checkpoints learn the grammar better:** The metaexample effect is strongest at step1000 (~2B tokens), meaning the bridge between examples and metaexamples exists very early in pre-training. This is not an emergent behavior at scale.
-- **Explanations alone are not sufficient:** 100% metaexamples produces 0% validity — the model needs examples.
+- **Explanations alone are not sufficient:** Metaexamples only produces 0% validity — the model needs examples.
 
 ## Error Analysis
 
 All invalid outputs have correct structure (FEP...GOR with valid tokens). Errors fall into two categories:
 - **Not a palindrome:** The dominant failure mode
-- **Odd TAS/WEJ count:** Less common; more prevalent in the 1% metaexamples condition, suggesting the model learned the palindrome constraint better
+- **Odd TAS/WEJ count:** Less common; more prevalent in the 0.1% metaexamples condition, suggesting the model learned the palindrome constraint better
 
 ## License
 
